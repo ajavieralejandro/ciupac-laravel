@@ -11,7 +11,6 @@
         "build": "webpack --config webpack.config.js"
     },
     "devDependencies": {
-        "@tailwindcss/ui": "^0.3",
         "autoprefixer": "^10.4.11",
         "axios": "^0.21",
         "cross-env": "^7.0.3",
