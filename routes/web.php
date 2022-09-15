@@ -5,6 +5,9 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\LocationController;
+
+
 use App\Http\Middleware\IsAdmin;
 
 
@@ -33,13 +36,23 @@ Route::group([
                 Route::get('/admin',[PagesController::class,'admin']);
                 Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team');
                 Route::put('/team', [\App\Http\Controllers\TeamController::class, 'updateMember'])->name('updateMember');
-
+                
                 Route::get('/team/{id}', [\App\Http\Controllers\TeamController::class, 'editMember'])->name('editMember');
                 Route::get('/addmember', [\App\Http\Controllers\TeamController::class, 'addMember'])->name('addMember');
                 Route::get('/uploadImage',[\App\Http\Controllers\ImageController::class, 'index'])->name('newImage');
                 Route::post('/uploadImage',[\App\Http\Controllers\ImageController::class, 'store'])->name('uploadImage');
                 Route::post('/addmember',[\App\Http\Controllers\TeamController::class, 'storeMember'])->name('storeMember');
                 Route::delete('/team',[\App\Http\Controllers\TeamController::class, 'deleteMember'])->name('deleteMember');
+
+
+                //location routes
+                Route::get('/locations', [\App\Http\Controllers\LocationController::class, 'index'])->name('locations');
+                Route::post('/locations', [\App\Http\Controllers\LocationController::class, 'store'])->name('newLocation');
+                Route::get('/newLocation', [\App\Http\Controllers\LocationController::class, 'create'])->name('createLocation');
+                Route::get('/location/{id}', [\App\Http\Controllers\LocationController::class, 'show'])->name('showLocation');
+                Route::delete('/location',[\App\Http\Controllers\LocationController::class, 'destroy'])->name('deleteLocation');
+
+
 
                 
                 });

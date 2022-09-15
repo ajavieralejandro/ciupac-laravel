@@ -19,7 +19,7 @@
    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
    crossorigin=""></script>
 </head>
-<body class=" bg-gray-100 h-screen antialiased leading-none font-sans">
+<body class="smooth-scroll bg-gray-100 h-screen antialiased leading-none font-sans">
 
 
 <div class="grayscale">
@@ -86,7 +86,10 @@
 
       @foreach($members as $member)
       <div class="max-w-sm rounded overflow-hidden shadow-lg">
-  <img class="w-full" src="{{asset($member->image_path.'/'.$member->image_name)}}" alt="Sunset in the mountains">
+      <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
+
+        <img class="w-full" src="{{asset($member->image_path.'/'.$member->image_name)}}" alt="Sunset in the mountains">
+</figure>
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
     <p class="text-gray-700 text-base">
@@ -107,6 +110,10 @@
          
           </div>  
 </section>
+
+
+
+
 
 
 
