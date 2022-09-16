@@ -21,11 +21,11 @@
     </div>
               
     <h3 class="text-lg font-bold mb-2">
-                1. Product
+                1. Equipo
               </h3>
               
     <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
+      Crea, edita o elimina miembros del equipo. 
               </p>
               
             
@@ -41,12 +41,11 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
     </div>
               
     <h3 class="text-lg font-bold mb-2">
-                2. Features
+                2. Portada
               </h3>
               
     <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
-              </p>
+Actualiza la imagen de portada a la página              </p>
             
   </div>
             
@@ -64,11 +63,11 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
     </div>
               
     <h3 class="text-lg font-bold mb-2">
-                3. Card
+                3. Locaciones
               </h3>
               
     <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
+      Agrega, edita o elimina una locación. 
               </p>
             
   </div>
@@ -76,25 +75,59 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
   <div class="p-6 bg-gray-100 rounded-lg">
               
     <div class="mb-5">
+    <a href={{route('logos')}} rel='stylesheet'>
+
                 
     <svg class="h-8 w-8 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
 </svg>
+</a>
 
 
     </div>
+    
               
     <h3 class="text-lg font-bold mb-2">
-                4. Design
+                4. Logos
               </h3>
               
     <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
+      Agrega, edita o elimina logos. 
               </p>
+              
             
   </div>
           
 </div>
 </div>
+          
+<div class="p-6 bg-gray-100 rounded-lg">
+              
+              <div class="mb-5">
+              <a href={{route('posts')}} rel='stylesheet'>
+          
+                          
+              <svg class="h-8 w-8 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+          </svg>
+          </a>
+          
+          
+              </div>
+              
+                        
+              <h3 class="text-lg font-bold mb-2">
+                          4. Posts
+                        </h3>
+                        
+              <p class="text-sm leading-6 text-gray-600">
+                Agrega, edita o elimina noticias. 
+                        </p>
+                        
+                      
+            </div>
+                    
+          </div>
+          </div>
 </div>
 @endsection

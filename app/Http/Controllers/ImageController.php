@@ -18,6 +18,7 @@ class ImageController extends Controller
 
     public function store(Request $request){
 
+
         $validatedData = $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
     
@@ -29,13 +30,25 @@ class ImageController extends Controller
            $filename= 'portada.'.$extension;
            $file-> move(public_path('public/images/portada'), $filename);
         
-        
-           $save = new Image;
+           if(!Image::count()>0){
+            $save = new Image;
     
-           $save->name = $filename;
-           $save->path = 'public/images/portada';
-    
-           $save->save();
+            $save->name = $filename;
+            $save->path = 'public/images/portada';
+     
+            $save->save();
+
+           }
+           else {
+            $image = Image::first();
+            $image->name = $filename;
+            $image->path = 'public/images/portada';
+            $image->save();
+
+
+
+           }
+          
     
         return view('home');
     }

@@ -1,8 +1,18 @@
 @extends('layouts.app')
 @section('content')
-<div class="flex justify-center mt-8">
-    <div class="rounded-lg shadow-xl bg-gray-50 lg:w-1/2">
-        <div class="m-4">
+
+<div class="container mx-auto pt-5 flex flex-col justify-center items-center">
+    
+<!-- component -->
+<div class="py-12">
+    
+    
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <form method="POST" action={{route('createPost')}}>
+                    @csrf
+                    <div class="m-4">
             <label class="inline-block mb-2 text-gray-500">Upload
                 Image(jpg,png,svg,jpeg)</label>
             <div class="flex items-center justify-center w-full">
@@ -18,22 +28,10 @@
                         <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
                             Select a photo</p>
                     </div>
-                    <input type="file" class="opacity-0" />
+                    <input type="file" name="image" id="image" class="opacity-0" />
                 </label>
             </div>
-        </div>
-     
-    </div>
-</div>
-<div class="container mx-auto pt-5 flex flex-col justify-center items-center">
-    
-<!-- component -->
-<div class="py-12">
-    
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <form method="POST" action="action.php">
+
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
                             <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
@@ -51,12 +49,14 @@
                             </textarea>
                         </div>
 
+                        
+
                         <div class="flex p-1">
                             <select class="border-2 border-gray-300 border-r p-2" name="action">
                                 <option>Save and Publish</option>
                                 <option>Save Draft</option>
                             </select>
-                            <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
+                            <button type="submit" role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
                         </div>
                     </form>
                 </div>

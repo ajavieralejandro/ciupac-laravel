@@ -52,7 +52,17 @@ Route::group([
                 Route::get('/location/{id}', [\App\Http\Controllers\LocationController::class, 'show'])->name('showLocation');
                 Route::delete('/location',[\App\Http\Controllers\LocationController::class, 'destroy'])->name('deleteLocation');
 
+                //logos routes
+                Route::get('/logos', [\App\Http\Controllers\LogoController::class, 'index'])->name('logos');
+                Route::get('/logos/{id}', [\App\Http\Controllers\LogoController::class, 'show'])->name('editLogo');
 
+                Route::get('/addlogo', [\App\Http\Controllers\LogoController::class, 'create'])->name('addLogo');
+                Route::post('/logo', [\App\Http\Controllers\LogoController::class, 'store'])->name('storeLogo');
+
+
+                //post routes
+                Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts');
+                Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->name('createPost');
 
                 
                 });
