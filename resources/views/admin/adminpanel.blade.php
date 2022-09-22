@@ -130,4 +130,5 @@ Actualiza la imagen de portada a la página              </p>
           </div>
           </div>
 </div>
+
 @endsection

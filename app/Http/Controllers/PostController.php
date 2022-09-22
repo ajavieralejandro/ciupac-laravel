@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+
 
 class PostController extends Controller
 {
@@ -14,7 +16,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        return view('admin.createpost');
+        $posts = Post::paginate(20);
+        return view('admin.posts',['posts'=>$posts]);
         
     }
 
@@ -26,6 +29,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -37,7 +41,25 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'content' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]);
+        
+        $post = new Post;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->body = $request->content;
+        $file= $request->file('image');
+        $extension = $file->extension();
+        $filename = "post-".$post->id.".".$extension;
+        $file-> move(public_path('public/images/posts'), $filename);
+        $post->image_name = $filename;
+        $post->image_path = "public/images/posts";
+        $post->save();
+        return redirect('/admin'); 
     }
 
     /**

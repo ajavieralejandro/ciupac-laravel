@@ -113,8 +113,12 @@ class LogoController extends Controller
      * @param  \App\Models\Logo  $logo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Logo $logo)
+    public function destroy(Request $request)
     {
         //
+        
+        $member = Logo::find($request->logo_id);
+        $member->delete();
+        return redirect('/logos');
     }
 }

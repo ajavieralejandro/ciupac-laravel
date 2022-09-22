@@ -6,15 +6,30 @@
 <!-- component -->
 <div class="py-12">
     
-    
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form method="POST" action={{route('createPost')}}>
+                    <form enctype="multipart/form-data" method="POST" action={{route('createPost')}}>
                     @csrf
                     <div class="m-4">
             <label class="inline-block mb-2 text-gray-500">Upload
                 Image(jpg,png,svg,jpeg)</label>
+                <div class="flex justify-between mb-1">
+  <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
+  <span class="text-sm font-medium text-blue-700 dark:text-white">0%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+  <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+</div>
             <div class="flex items-center justify-center w-full">
                 <label class="flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
                     <div class="flex flex-col items-center justify-center pt-7">
@@ -28,7 +43,7 @@
                         <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
                             Select a photo</p>
                     </div>
-                    <input type="file" name="image" id="image" class="opacity-0" />
+                    <input onchange="console()" type="file" name="image" id="image" class="opacity-0" />
                 </label>
             </div>
 
@@ -69,6 +84,13 @@
     <script>
         CKEDITOR.replace( 'content' );
     </script>
+
+    <script>
+        function console(){
+            windows.console.log("Hola");
+        }
+    </script>
+    
 
     
 

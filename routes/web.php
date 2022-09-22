@@ -33,7 +33,7 @@ Route::resource('/blog',PostController::class);
 Auth::routes();
 Route::group([
             'middleware' => IsAdmin::class], function() {
-                Route::get('/admin',[PagesController::class,'admin']);
+                Route::get('/admin',[PagesController::class,'admin'])->name('admin');
                 Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team');
                 Route::put('/team', [\App\Http\Controllers\TeamController::class, 'updateMember'])->name('updateMember');
                 
@@ -50,6 +50,7 @@ Route::group([
                 Route::post('/locations', [\App\Http\Controllers\LocationController::class, 'store'])->name('newLocation');
                 Route::get('/newLocation', [\App\Http\Controllers\LocationController::class, 'create'])->name('createLocation');
                 Route::get('/location/{id}', [\App\Http\Controllers\LocationController::class, 'show'])->name('showLocation');
+                Route::put('/location',[\App\Http\Controllers\LocationController::class, 'update'])->name('updateLocation');
                 Route::delete('/location',[\App\Http\Controllers\LocationController::class, 'destroy'])->name('deleteLocation');
 
                 //logos routes
@@ -58,6 +59,8 @@ Route::group([
 
                 Route::get('/addlogo', [\App\Http\Controllers\LogoController::class, 'create'])->name('addLogo');
                 Route::post('/logo', [\App\Http\Controllers\LogoController::class, 'store'])->name('storeLogo');
+                Route::delete('/logo',[\App\Http\Controllers\LogoController::class, 'destroy'])->name('deleteLogo');
+
 
 
                 //post routes

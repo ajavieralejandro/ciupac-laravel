@@ -1,11 +1,23 @@
 @extends('layouts.app')
 @section('content')
+
+<div class="flex items-center justify-left p-3">
+
+<a href={{route('admin') }} >
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+</a>
+</div>
 <form enctype="multipart/form-data" action={{route('uploadImage')}} method="POST">
 @csrf
 
+
+
 <div class="flex justify-center mt-8">
+    
+    
     <div class="rounded-lg shadow-xl bg-gray-50 lg:w-1/2">
         <div class="m-4">
+            
             <label class="inline-block mb-2 text-gray-500">Upload
                 Image(jpg,png,svg,jpeg)</label>
             <div class="flex items-center justify-center w-full">
