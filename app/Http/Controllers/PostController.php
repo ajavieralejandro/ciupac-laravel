@@ -29,6 +29,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('admin.createPost');
         
     }
 
@@ -59,7 +60,7 @@ class PostController extends Controller
         $post->image_name = $filename;
         $post->image_path = "public/images/posts";
         $post->save();
-        return redirect('/admin'); 
+        return redirect('/posts'); 
     }
 
     /**
@@ -79,9 +80,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $member = Post::find($request->route('id'));
+        return view('admin.editpost',['post'=>$member]);
+
     }
 
     /**
@@ -91,9 +94,35 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+        ]);
+        $member = Post::whereId($request->post_id)->update($validatedData);
+        $member = Post::find($request->post_id);
+        $member->body = $request->content;
+
+        if($request->image){
+
+            $validatedData = $request->validate([
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        
+               ]);
+               $file= $request->file('image');
+               $extension = $file->extension();
+               $filename = "post-".$request->member_id.".".$extension;
+               $file-> move(public_path('public/images/members'), $filename);
+               Post::whereId($request->member_id)->update(['image_name'=>$filename]);
+        
+
+        }
+        $member->save();
+
+        
+        return redirect('/posts');
     }
 
     /**

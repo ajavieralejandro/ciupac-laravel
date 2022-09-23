@@ -18,8 +18,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form enctype="multipart/form-data" method="POST" action={{route('createPost')}}>
+                    <form enctype="multipart/form-data" method="POST" action={{route('updatePost')}}>
+                    <input type="hidden" name="post_id" value="{{$post->id}}"/>
+
                     @csrf
+                    @method('put')
+
                     <div class="m-4">
             <label class="inline-block mb-2 text-gray-500">Upload
                 Image(jpg,png,svg,jpeg)</label>
@@ -49,18 +53,18 @@
 
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Title <span class="text-red-500">*</span></label></br>
-                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
+                            <input type="text" value={{$post->title}} class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Description</label></br>
-                            <input type="text" class="border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
+                            <input value={{$post->description}} type="text" class="border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
                         </div>
 
                         <div class="mb-8">
                             <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
                             <textarea name="content" class="border-2 border-gray-500">
-                                
+                                {{$post->body}}
                             </textarea>
                         </div>
 

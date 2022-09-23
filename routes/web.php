@@ -67,6 +67,10 @@ Route::group([
                 Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index'])->name('posts');
                 Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store'])->name('createPost');
 
+                Route::get('/newpost', [\App\Http\Controllers\PostController::class, 'create'])->name('newPost');
+                Route::get('/editposts/{id}', [\App\Http\Controllers\PostController::class, 'edit'])->name('editPost');
+                Route::put('/editpost', [\App\Http\Controllers\PostController::class, 'update'])->name('updatePost');
+
                 
                 });
 
