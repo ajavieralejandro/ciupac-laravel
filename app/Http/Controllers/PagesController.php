@@ -26,7 +26,7 @@ class PagesController extends Controller
         $image = Image::first();
         $logos = Logo::all();
         $posts = Post::paginate(20);
-        return view('welcome',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations]);
+        return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations]);
     }
 
     public function admin(){

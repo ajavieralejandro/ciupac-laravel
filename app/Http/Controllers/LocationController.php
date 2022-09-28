@@ -96,7 +96,7 @@ class LocationController extends Controller
         //
     
         $validatedData = $request->validate([
-            'name' => 'required|unique:locations|max:255',
+            'name' => 'required|max:255',
             'longitude' => 'required|numeric|between:-90,90'
             ,
             'latitude' => 'required|numeric|between:-90,90'

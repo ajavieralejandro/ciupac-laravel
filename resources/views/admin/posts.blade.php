@@ -64,7 +64,7 @@
                             @method('delete')
 
 
-                            <input type="hidden" name="member_id" value="{{$post->id}}"/>
+                            <input type="hidden" name="post_id" value="{{$post->id}}"/>
 
                             <button type="submit" class="   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400  hover:text-green-700" fill="none"

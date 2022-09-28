@@ -1,44 +1,29 @@
+<html lang="en" class="scroll-smooth">
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--   Acá instalamos el CDN que está disponible en la página de Tailwind CSS -->
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <title>TailwindCSS</title>
+  <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
 
-    <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
-
+  <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-
 
 
 <style>
 
-#mapid { height: 400px; width: 100vh; }
+#mapid { height: 400px; width: 200vh; }
 
 </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
-        .font-family-karla {
-            font-family: karla;
-        }
-    </style>
-
-
-    <!-- AlpineJS -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
-<body class="bg-white font-family-karla">
-    
 
-<nav class="relative px-4 py-4 flex justify-between items-center bg-transparent">
+<body class="bg-white-200		">
+    <header>
+    <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
 		<a class="text-3xl font-bold leading-none" href="#">
 			<svg class="h-10" alt="logo" viewBox="0 0 10240 10240">
 				<path xmlns="http://www.w3.org/2000/svg" d="M8284 9162 c-2 -207 -55 -427 -161 -667 -147 -333 -404 -644 -733 -886 -81 -59 -247 -169 -256 -169 -3 0 -18 -9 -34 -20 -26 -19 -344 -180 -354 -180 -3 0 -29 -11 -58 -24 -227 -101 -642 -225 -973 -290 -125 -25 -397 -70 -480 -80 -22 -3 -76 -9 -120 -15 -100 -13 -142 -17 -357 -36 -29 -2 -98 -7 -153 -10 -267 -15 -436 -28 -525 -40 -14 -2 -45 -7 -70 -10 -59 -8 -99 -14 -130 -20 -14 -3 -41 -7 -60 -11 -19 -3 -39 -7 -45 -8 -5 -2 -28 -6 -50 -10 -234 -45 -617 -165 -822 -257 -23 -10 -45 -19 -48 -19 -7 0 -284 -138 -340 -170 -631 -355 -1107 -842 -1402 -1432 -159 -320 -251 -633 -308 -1056 -26 -190 -27 -635 -1 -832 3 -19 7 -59 10 -89 4 -30 11 -84 17 -120 6 -36 12 -77 14 -91 7 -43 33 -174 39 -190 3 -8 7 -28 9 -45 6 -35 52 -221 72 -285 7 -25 23 -79 35 -120 29 -99 118 -283 189 -389 67 -103 203 -244 286 -298 75 -49 178 -103 196 -103 16 0 27 16 77 110 124 231 304 529 485 800 82 124 153 227 157 230 3 3 28 36 54 74 116 167 384 497 546 671 148 160 448 450 560 542 14 12 54 45 90 75 88 73 219 172 313 238 42 29 77 57 77 62 0 5 -13 34 -29 66 -69 137 -149 405 -181 602 -7 41 -14 82 -15 90 -1 8 -6 46 -10 83 -3 37 -8 77 -10 88 -2 11 -7 65 -11 122 -3 56 -8 104 -9 107 -2 3 0 12 5 19 6 10 10 8 15 -10 10 -34 167 -346 228 -454 118 -210 319 -515 340 -515 4 0 40 18 80 40 230 128 521 255 787 343 118 40 336 102 395 113 28 5 53 11 105 23 25 5 59 12 75 15 17 3 41 8 55 11 34 7 274 43 335 50 152 18 372 29 565 29 194 0 481 -11 489 -19 2 -3 -3 -6 -12 -6 -9 -1 -20 -2 -24 -3 -33 -8 -73 -16 -98 -21 -61 -10 -264 -56 -390 -90 -649 -170 -1243 -437 -1770 -794 -60 -41 -121 -82 -134 -93 l-24 -18 124 -59 c109 -52 282 -116 404 -149 92 -26 192 -51 220 -55 17 -3 64 -12 105 -21 71 -14 151 -28 230 -41 19 -3 46 -7 60 -10 14 -2 45 -7 70 -10 25 -4 56 -8 70 -10 14 -2 53 -7 88 -10 35 -4 71 -8 81 -10 10 -2 51 -6 92 -9 101 -9 141 -14 147 -21 3 -3 -15 -5 -39 -6 -24 0 -52 -2 -62 -4 -21 -4 -139 -12 -307 -22 -242 -14 -700 -7 -880 13 -41 4 -187 27 -250 39 -125 23 -274 68 -373 111 -43 19 -81 34 -86 34 -4 0 -16 -8 -27 -17 -10 -10 -37 -33 -59 -52 -166 -141 -422 -395 -592 -586 -228 -257 -536 -672 -688 -925 -21 -36 -43 -66 -47 -68 -4 -2 -8 -7 -8 -11 0 -5 -24 -48 -54 -97 -156 -261 -493 -915 -480 -935 2 -3 47 -21 101 -38 54 -18 107 -36 118 -41 58 -25 458 -138 640 -181 118 -27 126 -29 155 -35 14 -2 45 -9 70 -14 66 -15 137 -28 300 -55 37 -7 248 -33 305 -39 28 -3 84 -9 125 -13 163 -16 792 -8 913 12 12 2 58 9 102 15 248 35 423 76 665 157 58 19 134 46 170 60 86 33 344 156 348 166 2 4 8 7 13 7 14 0 205 116 303 184 180 126 287 216 466 396 282 281 511 593 775 1055 43 75 178 347 225 455 100 227 236 602 286 790 59 220 95 364 120 485 6 28 45 245 50 275 2 14 7 41 10 60 3 19 8 49 10 65 2 17 6 46 9 65 15 100 35 262 40 335 3 39 8 89 10 112 22 225 33 803 21 1043 -3 41 -7 129 -11 195 -3 66 -8 136 -10 155 -2 19 -6 76 -10 125 -3 50 -8 101 -10 115 -2 14 -6 57 -10 95 -7 72 -12 113 -20 175 -2 19 -7 55 -10 80 -6 46 -43 295 -51 340 -2 14 -9 54 -15 90 -5 36 -16 97 -24 135 -8 39 -17 84 -20 100 -12 68 -18 97 -50 248 -19 87 -47 204 -61 260 -14 56 -27 109 -29 117 -30 147 -232 810 -253 832 -4 4 -7 -23 -8 -60z"></path>
@@ -97,167 +82,131 @@
             </div>
         </section>
     </section>
-    <div class="z-30 relative items-center justify-center w-full h-full overflow-auto">
-    <div class="inset-0 h-screen bg-cover bg-center" 
-        style=" 
-        background-image: 
-        url({{asset($image->path.'/'.$image->name)}});"
-    >
-    </div>
-    <div class="absolute inset-0 z-20 flex items-center justify-center h-screen w-full bg-gray-900 bg-opacity-75"></div>
-    <div class="absolute inset-0  z-30  flex flex-col items-center justify-center">
-        <div class="shadow-2xl rounded-lg w-4/5 h-96 bg-cover bg-center"
-            style=" 
-            background-image: 
-            url({{asset($image->path.'/'.$image->name)}});"
->
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+					<svg class="h-12" alt="logo" viewBox="0 0 10240 10240">
+				        <path xmlns="http://www.w3.org/2000/svg" d="M8284 9162 c-2 -207 -55 -427 -161 -667 -147 -333 -404 -644 -733 -886 -81 -59 -247 -169 -256 -169 -3 0 -18 -9 -34 -20 -26 -19 -344 -180 -354 -180 -3 0 -29 -11 -58 -24 -227 -101 -642 -225 -973 -290 -125 -25 -397 -70 -480 -80 -22 -3 -76 -9 -120 -15 -100 -13 -142 -17 -357 -36 -29 -2 -98 -7 -153 -10 -267 -15 -436 -28 -525 -40 -14 -2 -45 -7 -70 -10 -59 -8 -99 -14 -130 -20 -14 -3 -41 -7 -60 -11 -19 -3 -39 -7 -45 -8 -5 -2 -28 -6 -50 -10 -234 -45 -617 -165 -822 -257 -23 -10 -45 -19 -48 -19 -7 0 -284 -138 -340 -170 -631 -355 -1107 -842 -1402 -1432 -159 -320 -251 -633 -308 -1056 -26 -190 -27 -635 -1 -832 3 -19 7 -59 10 -89 4 -30 11 -84 17 -120 6 -36 12 -77 14 -91 7 -43 33 -174 39 -190 3 -8 7 -28 9 -45 6 -35 52 -221 72 -285 7 -25 23 -79 35 -120 29 -99 118 -283 189 -389 67 -103 203 -244 286 -298 75 -49 178 -103 196 -103 16 0 27 16 77 110 124 231 304 529 485 800 82 124 153 227 157 230 3 3 28 36 54 74 116 167 384 497 546 671 148 160 448 450 560 542 14 12 54 45 90 75 88 73 219 172 313 238 42 29 77 57 77 62 0 5 -13 34 -29 66 -69 137 -149 405 -181 602 -7 41 -14 82 -15 90 -1 8 -6 46 -10 83 -3 37 -8 77 -10 88 -2 11 -7 65 -11 122 -3 56 -8 104 -9 107 -2 3 0 12 5 19 6 10 10 8 15 -10 10 -34 167 -346 228 -454 118 -210 319 -515 340 -515 4 0 40 18 80 40 230 128 521 255 787 343 118 40 336 102 395 113 28 5 53 11 105 23 25 5 59 12 75 15 17 3 41 8 55 11 34 7 274 43 335 50 152 18 372 29 565 29 194 0 481 -11 489 -19 2 -3 -3 -6 -12 -6 -9 -1 -20 -2 -24 -3 -33 -8 -73 -16 -98 -21 -61 -10 -264 -56 -390 -90 -649 -170 -1243 -437 -1770 -794 -60 -41 -121 -82 -134 -93 l-24 -18 124 -59 c109 -52 282 -116 404 -149 92 -26 192 -51 220 -55 17 -3 64 -12 105 -21 71 -14 151 -28 230 -41 19 -3 46 -7 60 -10 14 -2 45 -7 70 -10 25 -4 56 -8 70 -10 14 -2 53 -7 88 -10 35 -4 71 -8 81 -10 10 -2 51 -6 92 -9 101 -9 141 -14 147 -21 3 -3 -15 -5 -39 -6 -24 0 -52 -2 -62 -4 -21 -4 -139 -12 -307 -22 -242 -14 -700 -7 -880 13 -41 4 -187 27 -250 39 -125 23 -274 68 -373 111 -43 19 -81 34 -86 34 -4 0 -16 -8 -27 -17 -10 -10 -37 -33 -59 -52 -166 -141 -422 -395 -592 -586 -228 -257 -536 -672 -688 -925 -21 -36 -43 -66 -47 -68 -4 -2 -8 -7 -8 -11 0 -5 -24 -48 -54 -97 -156 -261 -493 -915 -480 -935 2 -3 47 -21 101 -38 54 -18 107 -36 118 -41 58 -25 458 -138 640 -181 118 -27 126 -29 155 -35 14 -2 45 -9 70 -14 66 -15 137 -28 300 -55 37 -7 248 -33 305 -39 28 -3 84 -9 125 -13 163 -16 792 -8 913 12 12 2 58 9 102 15 248 35 423 76 665 157 58 19 134 46 170 60 86 33 344 156 348 166 2 4 8 7 13 7 14 0 205 116 303 184 180 126 287 216 466 396 282 281 511 593 775 1055 43 75 178 347 225 455 100 227 236 602 286 790 59 220 95 364 120 485 6 28 45 245 50 275 2 14 7 41 10 60 3 19 8 49 10 65 2 17 6 46 9 65 15 100 35 262 40 335 3 39 8 89 10 112 22 225 33 803 21 1043 -3 41 -7 129 -11 195 -3 66 -8 136 -10 155 -2 19 -6 76 -10 125 -3 50 -8 101 -10 115 -2 14 -6 57 -10 95 -7 72 -12 113 -20 175 -2 19 -7 55 -10 80 -6 46 -43 295 -51 340 -2 14 -9 54 -15 90 -5 36 -16 97 -24 135 -8 39 -17 84 -20 100 -12 68 -18 97 -50 248 -19 87 -47 204 -61 260 -14 56 -27 109 -29 117 -30 147 -232 810 -253 832 -4 4 -7 -23 -8 -60z"></path>
+			        </svg>
+				</a>
+				<button class="navbar-close">
+					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-auto">
+			
+				<p class="my-4 text-xs text-center text-gray-400">
+					<span>Copyright © 2021</span>
+				</p>
+			</div>
+		</nav>
+    </header>
+  <main class="h-screen w-screen py-6  flex items-center justify-center bg-green-100 flex-wrap">
+    <!-- This is an example component -->
+    <div class="container mx-auto">
 
-            <div class="grid grid-cols-12 gap-1">
-                <div class="relative my-6 px-8 col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-7 xxl:col-span-7">
-                    <div class="border-l-4 border-gray-400 py-20 px-5 mx-2 absolute left-0">
-                        <p class="italic text-white text-xl md:text-4xl lg:text-6xl uppercase text-center  font-semibold ">
-                            The Mysteries Of The Forest
-                        </p>
-                    </div>
-                    <div class="absolute border-gray-400 border-t-4 bottom-0 py-1 px-4 w-4/5"></div>
-                </div>
-                <div class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-5 xxl:col-span-5">
-                    <div class="relative bg-pink-900 h-full md:h-96 w-full bg-opacity-50 rounded-tr-lg rounded-br-lg">
-                        <div class="p-8">
-                            <p class="text-white text-xs md:text-sm lg:text-xl mb-4">
-                                Forests are truly amazing places. 
-                                Combining impressive biodiversity with natural beauty, 
-                                the woods of the world can be both captivating and perplexing. 
-                                A hike through a forest can be a relaxing way to pass an afternoon or, 
-                                sometimes, a glimpse into the unknown.
-                            </p>
-                            <div class="bottom-0 absolute p-2 right-0">
-                                <button class="opacity-75 bg-gray-100 hover:bg-pink-900 hover:text-white text-sm font-bold py-2 px-4 rounded inline-flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span>LEARN MORE</span>
-                                </button> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="sm:mb-10 lg:grid lg:grid-cols-5 md:grid-cols-none  lg:bg-white lg:h-full">
+      <div class=" px-10 py-4 max-w-md m-auto lg:col-span-2 mt-5 mb-20 shadow-xl rounded-xl lg:mt-10 md:shadow-xl md:rounded-xl lg:shadow-none lg:rounded-none lg:w-full lg:mb-10 lg:px-5 lg:pt-5 lg:pb-5 lg:max-w-lg bg-white">
+        <img class="h-10" src="data:image/png;base64,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" alt="Workcation logo">
+        <img class="h-64 sm:h-52 sm:w-full sm:object-cover lg:hidden object-center mt-2 rounded-lg shadow-2xl" src="{{asset($image->path.'/'.$image->name)}}" alt="Ad- woman on a beach">
+        <h1 class="mt-5 font-bold text-lg lg:mt-7">You can school from home!</h1>
+        <h1 class="font-bold text-lg text-gray-600">Get started today!</h1>
+        <h1 class="text-lg text-gray-600 text-justify pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h1>
+        <button class="mt-5 bg-gray-600 p-3 shadow-2xl rounded-xl text-white font-bold hover:bg-gray-800">START STUDYING</button>
+      </div>
+
+
+      <div class="hidden relative lg:block  lg:col-span-3">
+        <img class="absolute inset-0 w-full h-full object-cover object-center" src="{{asset($image->path.'/'.$image->name)}}" alt="Ad- woman on a beach">
+      </div>
     </div>
 </div>
 
 
-    <!-- Text Header -->
-    <header class="w-full container mx-auto">
-        <div class="flex flex-col items-center py-12">
-            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
-                Minimal Blog
-            </a>
-            <p class="text-lg text-gray-600">
-                Lorem Ipsum Dolor Sit Amet
-            </p>
+
+ 
+<div class="container my-24 px-6 mx-auto  ">
+
+
+<!-- Section: Design Block -->
+<section class="mb-32 text-gray-800 text-center ">
+  <h2 class="text-3xl font-bold mb-32">Meet the <u class="text-blue-600">team</u></h2>
+  <div class="grid gap-x-6 lg:gap-x-12 md:grid-cols-3 ">
+
+
+@foreach($members as $member)
+<div class="mb-24 md:mb-0">
+      <div class="rounded-lg shadow-lg h-full block bg-white">
+        <div class="flex justify-center">
+          <div class="flex justify-center" style="margin-top: -75px">
+            <img src="{{asset($member->image_path.'/'.$member->image_name)}}" class="rounded-full mx-auto shadow-lg" alt=""
+              style="width: 150px" />
+          </div>
         </div>
-    </header>
+        <div class="p-6">
+          <h5 class="text-lg font-bold mb-4">Marta Smith</h5>
+          <p class="mb-6">Frontend Developer</p>
+          <ul class="list-inside flex mx-auto justify-center">
+            <a href="#!" class="px-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="w-4 h-4 text-blue-600">
+                <path fill="currentColor"
+                  d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+              </svg>
+            </a>
+            <a href="#!" class="px-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 text-blue-600">
+                <path fill="currentColor"
+                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+              </svg>
+            </a>
+            <a href="#!" class="px-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 text-blue-600">
+                <path fill="currentColor"
+                  d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
+              </svg>
+            </a>
+          </ul>
+        </div>
+      </div>
+</div>
+@endforeach
 
-    
+   
 
-
-    <div class="container mx-auto flex flex-wrap py-6">
-
-        <!-- Posts Section -->
-        <section class="w-full md:w-2/3 flex flex-col items-center px-3">
-          @foreach($posts as $post)
-          <article class="flex flex-col shadow my-4">
-                <!-- Article Image -->
-                <a href="#" class="hover:opacity-75">
-                    <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
-                </a>
-                <div class="bg-white flex flex-col justify-start p-6">
-                    <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a>
-                    <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-                    <p href="#" class="text-sm pb-3">
-                        By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>, Published on April 25th, 2020
-                    </p>
-                    <a href="#" class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
-                    <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
-
-          @endforeach
-
-           
-
-            <!-- Pagination -->
-            <div class="flex items-center py-8">
-                <a href="#" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">1</a>
-                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">2</a>
-                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Next <i class="fas fa-arrow-right ml-2"></i></a>
-            </div>
-
-        </section>
-
-        
-
-        <!-- Sidebar Section -->
-        <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
-
-            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-                <p class="text-xl font-semibold pb-5">About Us</p>
-                <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
-                    Get to know us
-                </a>
-            </div>
-
-            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-                <p class="text-xl font-semibold pb-5">Instagram</p>
-                <div class="grid grid-cols-3 gap-3">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
-                </div>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
-                    <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
-                </a>
-            </div>
-
-        </aside>
-
-    </div>
-
-    
-
-    <div id="mapid"></div>
+</section>
 
 
-<script>
 
-var mymap = L.map('mapid').setView([-43.505, -49.09], 4);
-var app = @json($locations);
-    app.forEach(element=>{
-        console.log(element);
-        var marker = L.marker([element.longitude,element.latitude]).addTo(mymap);
-        marker.bindPopup(element.name).openPopup();
-        marker.on('click',()=>console.log("buenardo"));
+<!-- Section: Design Block -->
+
+</div>
 
 
-    });
-
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(mymap);
-
-
-</script>
-
-    <div class="container my-24 px-6 mx-auto">
+<!-- Container for demo purpose -->
+<div class="container my-24 px-6 mx-auto">
   
   <!-- Section: Design Block -->
   <section class="mb-32 text-gray-800 text-center">
@@ -285,11 +234,30 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   <!-- Section: Design Block -->
   
 </div>
+<!-- Container for demo purpose -->
+<!-- Container for demo purpose -->
+<div id="mapid"></div>
 
 
+<script>
+
+var mymap = L.map('mapid').setView([-53.505, 99.09], 6);
+var app = @json($locations);
+    app.forEach(element=>{
+        console.log(element);
+        var marker = L.marker([element.longitude,element.latitude]).addTo(mymap);
+        marker.bindPopup(element.name).openPopup();
+        marker.on('click',()=>console.log("buenardo"));
 
 
+    });
 
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+
+
+</script>
 <div class="text-center w-full">
 <a name="contactsection"></a>
 
@@ -825,182 +793,228 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           </div>
         </div>
       </div>
-
-         
+      
 <div class="pt-6">
     
-    <footer class="bottom-0 pt-6    text-center lg:text-left bg-gray-100 text-gray-600">
-<div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
-  <div class="mr-12 hidden lg:block">
-    <span>Get connected with us on social networks:</span>
-  </div>
-  <div class="flex justify-center">
-    <a href="#!" class="mr-6 text-gray-600">
-      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
-        class="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 320 512">
-        <path fill="currentColor"
-          d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
-        </path>
-      </svg>
-    </a>
-    <a href="#!" class="mr-6 text-gray-600">
-      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter"
-        class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-        <path fill="currentColor"
-          d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
-        </path>
-      </svg>
-    </a>
-    <a href="#!" class="mr-6 text-gray-600">
-      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google"
-        class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
-        <path fill="currentColor"
-          d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
-        </path>
-      </svg>
-    </a>
-    <a href="#!" class="mr-6 text-gray-600">
-      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
-        class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-        <path fill="currentColor"
-          d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-        </path>
-      </svg>
-    </a>
-    <a href="#!" class="mr-6 text-gray-600">
-      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in"
-        class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 448 512">
-        <path fill="currentColor"
-          d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
-        </path>
-      </svg>
-    </a>
-    <a href="#!" class="text-gray-600">
-      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
-        class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-        <path fill="currentColor"
-          d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
-        </path>
-      </svg>
-    </a>
-  </div>
-</div>
-<div class="mx-6 py-10 text-center md:text-left">
-  <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-    <div class="">
-      <h6 class="
-          uppercase
-          font-semibold
-          mb-4
-          flex
-          items-center
-          justify-center
-          md:justify-start
-        ">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cubes"
-          class="w-4 mr-3" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512">
-          <path fill="currentColor"
-            d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z">
-          </path>
-        </svg>
-        Tailwind ELEMENTS
-      </h6>
-      <p>
-        Here you can use rows and columns to organize your footer content. Lorem ipsum dolor
-        sit amet, consectetur adipisicing elit.
-      </p>
+      <footer class="bottom-0 pt-6    text-center lg:text-left bg-gray-100 text-gray-600">
+  <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
+    <div class="mr-12 hidden lg:block">
+      <span>Get connected with us on social networks:</span>
     </div>
-    <div class="">
-      <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-        Products
-      </h6>
-      <p class="mb-4">
-        <a href="#!" class="text-gray-600">Angular</a>
-      </p>
-      <p class="mb-4">
-        <a href="#!" class="text-gray-600">React</a>
-      </p>
-      <p class="mb-4">
-        <a href="#!" class="text-gray-600">Vue</a>
-      </p>
-      <p>
-        <a href="#!" class="text-gray-600">Laravel</a>
-      </p>
-    </div>
-    <div class="">
-      <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-        Useful links
-      </h6>
-      <p class="mb-4">
-        <a href="#!" class="text-gray-600">Pricing</a>
-      </p>
-      <p class="mb-4">
-        <a href="#!" class="text-gray-600">Settings</a>
-      </p>
-      <p class="mb-4">
-        <a href="#!" class="text-gray-600">Orders</a>
-      </p>
-      <p>
-        <a href="#!" class="text-gray-600">Help</a>
-      </p>
-    </div>
-    <div class="">
-      <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-        Contact
-      </h6>
-      <p class="flex items-center justify-center md:justify-start mb-4">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home"
-          class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+    <div class="flex justify-center">
+      <a href="#!" class="mr-6 text-gray-600">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
+          class="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 320 512">
           <path fill="currentColor"
-            d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z">
+            d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
           </path>
         </svg>
-        New York, NY 10012, US
-      </p>
-      <p class="flex items-center justify-center md:justify-start mb-4">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope"
-          class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512">
+      </a>
+      <a href="#!" class="mr-6 text-gray-600">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter"
+          class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path fill="currentColor"
-            d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+            d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
           </path>
         </svg>
-        info@example.com
-      </p>
-      <p class="flex items-center justify-center md:justify-start mb-4">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone"
-          class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512">
+      </a>
+      <a href="#!" class="mr-6 text-gray-600">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google"
+          class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
           <path fill="currentColor"
-            d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
+            d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
           </path>
         </svg>
-        + 01 234 567 88
-      </p>
-      <p class="flex items-center justify-center md:justify-start">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="print"
-          class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512">
+      </a>
+      <a href="#!" class="mr-6 text-gray-600">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
+          class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path fill="currentColor"
-            d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z">
+            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
           </path>
         </svg>
-        + 01 234 567 89
-      </p>
+      </a>
+      <a href="#!" class="mr-6 text-gray-600">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in"
+          class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512">
+          <path fill="currentColor"
+            d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+          </path>
+        </svg>
+      </a>
+      <a href="#!" class="text-gray-600">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
+          class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+          <path fill="currentColor"
+            d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+          </path>
+        </svg>
+      </a>
     </div>
   </div>
-</div>
-<div class="text-center p-6 bg-gray-200">
-  <span>© 2021 Copyright:</span>
-  <a class="text-gray-600 font-semibold" href="https://tailwind-elements.com/">Tailwind Elements</a>
-</div>
+  <div class="mx-6 py-10 text-center md:text-left">
+    <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="">
+        <h6 class="
+            uppercase
+            font-semibold
+            mb-4
+            flex
+            items-center
+            justify-center
+            md:justify-start
+          ">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cubes"
+            class="w-4 mr-3" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z">
+            </path>
+          </svg>
+          Tailwind ELEMENTS
+        </h6>
+        <p>
+          Here you can use rows and columns to organize your footer content. Lorem ipsum dolor
+          sit amet, consectetur adipisicing elit.
+        </p>
+      </div>
+      <div class="">
+        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+          Products
+        </h6>
+        <p class="mb-4">
+          <a href="#!" class="text-gray-600">Angular</a>
+        </p>
+        <p class="mb-4">
+          <a href="#!" class="text-gray-600">React</a>
+        </p>
+        <p class="mb-4">
+          <a href="#!" class="text-gray-600">Vue</a>
+        </p>
+        <p>
+          <a href="#!" class="text-gray-600">Laravel</a>
+        </p>
+      </div>
+      <div class="">
+        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+          Useful links
+        </h6>
+        <p class="mb-4">
+          <a href="#!" class="text-gray-600">Pricing</a>
+        </p>
+        <p class="mb-4">
+          <a href="#!" class="text-gray-600">Settings</a>
+        </p>
+        <p class="mb-4">
+          <a href="#!" class="text-gray-600">Orders</a>
+        </p>
+        <p>
+          <a href="#!" class="text-gray-600">Help</a>
+        </p>
+      </div>
+      <div class="">
+        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
+          Contact
+        </h6>
+        <p class="flex items-center justify-center md:justify-start mb-4">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home"
+            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path fill="currentColor"
+              d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z">
+            </path>
+          </svg>
+          New York, NY 10012, US
+        </p>
+        <p class="flex items-center justify-center md:justify-start mb-4">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope"
+            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
+            </path>
+          </svg>
+          info@example.com
+        </p>
+        <p class="flex items-center justify-center md:justify-start mb-4">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone"
+            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
+            </path>
+          </svg>
+          + 01 234 567 88
+        </p>
+        <p class="flex items-center justify-center md:justify-start">
+          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="print"
+            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path fill="currentColor"
+              d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z">
+            </path>
+          </svg>
+          + 01 234 567 89
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-6 bg-gray-200">
+    <span>© 2021 Copyright:</span>
+    <a class="text-gray-600 font-semibold" href="https://tailwind-elements.com/">Tailwind Elements</a>
+  </div>
 </footer>
 </div>
 
 
+  </main>
 </body>
+<script>
+// Burger menus
+document.addEventListener('DOMContentLoaded', function() {
+    // open
+    const burger = document.querySelectorAll('.navbar-burger');
+    const menu = document.querySelectorAll('.navbar-menu');
+
+    if (burger.length && menu.length) {
+        for (var i = 0; i < burger.length; i++) {
+            burger[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    // close
+    const close = document.querySelectorAll('.navbar-close');
+    const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+    if (close.length) {
+        for (var i = 0; i < close.length; i++) {
+            close[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    if (backdrop.length) {
+        for (var i = 0; i < backdrop.length; i++) {
+            backdrop[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+});
+</script>
+<script>
+    
+</script>
+
 
 </html>
