@@ -7,6 +7,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Location;
+use Illuminate\Validation\Rule;
+
 
 class LocationController extends Controller
 {
@@ -94,9 +96,15 @@ class LocationController extends Controller
     public function update(Request $request)
     {
         //
-    
+        $id = $request->location_id;
+        Rule::unique('locations', 'name')->ignore($id, 'id');
+
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
+            
+            'name' => [
+                'required',
+                Rule::unique('locations')->ignore($request->location_id),
+            ],
             'longitude' => 'required|numeric|between:-90,90'
             ,
             'latitude' => 'required|numeric|between:-90,90'

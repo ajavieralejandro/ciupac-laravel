@@ -14,11 +14,14 @@
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
-
+<!-- jQuery, vinculado directo a cdn de google -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!-- ArgenMap v2, vinculado directo desde el Instituto Geográfico Nacional -->
+<script type="text/javascript" src="https://www.ign.gob.ar/argenmap2/argenmap.jquery.min.js"></script>
 
 <style>
 
-#mapid { height: 400px; width: 100vh; }
+#mapid { height: 100vh; width: 100%; }
 
 </style>
     <style>
@@ -35,10 +38,10 @@
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 </head>
-<body class="bg-white font-family-karla">
+<body class="bg-teal-100		 font-family-karla">
     
 
-<nav class="relative px-4 py-4 flex justify-between items-center bg-transparent">
+<nav class="sticky top-0 bg-blue-50 z-50  relative px-4 py-4 flex justify-between items-center bg-transparent">
 		<a class="text-3xl font-bold leading-none" href="#">
 			<svg class="h-10" alt="logo" viewBox="0 0 10240 10240">
 				<path xmlns="http://www.w3.org/2000/svg" d="M8284 9162 c-2 -207 -55 -427 -161 -667 -147 -333 -404 -644 -733 -886 -81 -59 -247 -169 -256 -169 -3 0 -18 -9 -34 -20 -26 -19 -344 -180 -354 -180 -3 0 -29 -11 -58 -24 -227 -101 -642 -225 -973 -290 -125 -25 -397 -70 -480 -80 -22 -3 -76 -9 -120 -15 -100 -13 -142 -17 -357 -36 -29 -2 -98 -7 -153 -10 -267 -15 -436 -28 -525 -40 -14 -2 -45 -7 -70 -10 -59 -8 -99 -14 -130 -20 -14 -3 -41 -7 -60 -11 -19 -3 -39 -7 -45 -8 -5 -2 -28 -6 -50 -10 -234 -45 -617 -165 -822 -257 -23 -10 -45 -19 -48 -19 -7 0 -284 -138 -340 -170 -631 -355 -1107 -842 -1402 -1432 -159 -320 -251 -633 -308 -1056 -26 -190 -27 -635 -1 -832 3 -19 7 -59 10 -89 4 -30 11 -84 17 -120 6 -36 12 -77 14 -91 7 -43 33 -174 39 -190 3 -8 7 -28 9 -45 6 -35 52 -221 72 -285 7 -25 23 -79 35 -120 29 -99 118 -283 189 -389 67 -103 203 -244 286 -298 75 -49 178 -103 196 -103 16 0 27 16 77 110 124 231 304 529 485 800 82 124 153 227 157 230 3 3 28 36 54 74 116 167 384 497 546 671 148 160 448 450 560 542 14 12 54 45 90 75 88 73 219 172 313 238 42 29 77 57 77 62 0 5 -13 34 -29 66 -69 137 -149 405 -181 602 -7 41 -14 82 -15 90 -1 8 -6 46 -10 83 -3 37 -8 77 -10 88 -2 11 -7 65 -11 122 -3 56 -8 104 -9 107 -2 3 0 12 5 19 6 10 10 8 15 -10 10 -34 167 -346 228 -454 118 -210 319 -515 340 -515 4 0 40 18 80 40 230 128 521 255 787 343 118 40 336 102 395 113 28 5 53 11 105 23 25 5 59 12 75 15 17 3 41 8 55 11 34 7 274 43 335 50 152 18 372 29 565 29 194 0 481 -11 489 -19 2 -3 -3 -6 -12 -6 -9 -1 -20 -2 -24 -3 -33 -8 -73 -16 -98 -21 -61 -10 -264 -56 -390 -90 -649 -170 -1243 -437 -1770 -794 -60 -41 -121 -82 -134 -93 l-24 -18 124 -59 c109 -52 282 -116 404 -149 92 -26 192 -51 220 -55 17 -3 64 -12 105 -21 71 -14 151 -28 230 -41 19 -3 46 -7 60 -10 14 -2 45 -7 70 -10 25 -4 56 -8 70 -10 14 -2 53 -7 88 -10 35 -4 71 -8 81 -10 10 -2 51 -6 92 -9 101 -9 141 -14 147 -21 3 -3 -15 -5 -39 -6 -24 0 -52 -2 -62 -4 -21 -4 -139 -12 -307 -22 -242 -14 -700 -7 -880 13 -41 4 -187 27 -250 39 -125 23 -274 68 -373 111 -43 19 -81 34 -86 34 -4 0 -16 -8 -27 -17 -10 -10 -37 -33 -59 -52 -166 -141 -422 -395 -592 -586 -228 -257 -536 -672 -688 -925 -21 -36 -43 -66 -47 -68 -4 -2 -8 -7 -8 -11 0 -5 -24 -48 -54 -97 -156 -261 -493 -915 -480 -935 2 -3 47 -21 101 -38 54 -18 107 -36 118 -41 58 -25 458 -138 640 -181 118 -27 126 -29 155 -35 14 -2 45 -9 70 -14 66 -15 137 -28 300 -55 37 -7 248 -33 305 -39 28 -3 84 -9 125 -13 163 -16 792 -8 913 12 12 2 58 9 102 15 248 35 423 76 665 157 58 19 134 46 170 60 86 33 344 156 348 166 2 4 8 7 13 7 14 0 205 116 303 184 180 126 287 216 466 396 282 281 511 593 775 1055 43 75 178 347 225 455 100 227 236 602 286 790 59 220 95 364 120 485 6 28 45 245 50 275 2 14 7 41 10 60 3 19 8 49 10 65 2 17 6 46 9 65 15 100 35 262 40 335 3 39 8 89 10 112 22 225 33 803 21 1043 -3 41 -7 129 -11 195 -3 66 -8 136 -10 155 -2 19 -6 76 -10 125 -3 50 -8 101 -10 115 -2 14 -6 57 -10 95 -7 72 -12 113 -20 175 -2 19 -7 55 -10 80 -6 46 -43 295 -51 340 -2 14 -9 54 -15 90 -5 36 -16 97 -24 135 -8 39 -17 84 -20 100 -12 68 -18 97 -50 248 -19 87 -47 204 -61 260 -14 56 -27 109 -29 117 -30 147 -232 810 -253 832 -4 4 -7 -23 -8 -60z"></path>
@@ -97,56 +100,8 @@
             </div>
         </section>
     </section>
-    <div class="z-30 relative items-center justify-center w-full h-full overflow-auto">
-    <div class="inset-0 h-screen bg-cover bg-center" 
-        style=" 
-        background-image: 
-        url({{asset($image->path.'/'.$image->name)}});"
-    >
-    </div>
-    <div class="absolute inset-0 z-20 flex items-center justify-center h-screen w-full bg-gray-900 bg-opacity-75"></div>
-    <div class="absolute inset-0  z-30  flex flex-col items-center justify-center">
-        <div class="shadow-2xl rounded-lg w-4/5 h-96 bg-cover bg-center"
-            style=" 
-            background-image: 
-            url({{asset($image->path.'/'.$image->name)}});"
->
-
-            <div class="grid grid-cols-12 gap-1">
-                <div class="relative my-6 px-8 col-span-12 sm:col-span-12 md:col-span-7 lg:col-span-7 xxl:col-span-7">
-                    <div class="border-l-4 border-gray-400 py-20 px-5 mx-2 absolute left-0">
-                        <p class="italic text-white text-xl md:text-4xl lg:text-6xl uppercase text-center  font-semibold ">
-                            The Mysteries Of The Forest
-                        </p>
-                    </div>
-                    <div class="absolute border-gray-400 border-t-4 bottom-0 py-1 px-4 w-4/5"></div>
-                </div>
-                <div class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-5 xxl:col-span-5">
-                    <div class="relative bg-pink-900 h-full md:h-96 w-full bg-opacity-50 rounded-tr-lg rounded-br-lg">
-                        <div class="p-8">
-                            <p class="text-white text-xs md:text-sm lg:text-xl mb-4">
-                                Forests are truly amazing places. 
-                                Combining impressive biodiversity with natural beauty, 
-                                the woods of the world can be both captivating and perplexing. 
-                                A hike through a forest can be a relaxing way to pass an afternoon or, 
-                                sometimes, a glimpse into the unknown.
-                            </p>
-                            <div class="bottom-0 absolute p-2 right-0">
-                                <button class="opacity-75 bg-gray-100 hover:bg-pink-900 hover:text-white text-sm font-bold py-2 px-4 rounded inline-flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span>LEARN MORE</span>
-                                </button> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+    <div class=" z-30 relative items-center justify-center w-full h-full overflow-auto">
+   
 
     <!-- Text Header -->
     <header class="w-full container mx-auto">
@@ -188,12 +143,166 @@
 
            
 
-            <!-- Pagination -->
-            <div class="flex items-center py-8">
-                <a href="#" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">1</a>
-                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">2</a>
-                <a href="#" class="h-10 w-10 font-semibold text-gray-800 hover:text-gray-900 text-sm flex items-center justify-center ml-3">Next <i class="fas fa-arrow-right ml-2"></i></a>
+         
+
+            <div class="flex flex-wrap -mx-4">
+         <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+            <div class="max-w-[370px] mx-auto mb-10">
+               <div class="rounded overflow-hidden mb-8">
+                  <img
+                     src="https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-01.jpg"
+                     alt="image"
+                     class="w-full"
+                     />
+               </div>
+               <div>
+                  <span
+                     class="
+                     bg-primary
+                     rounded
+                     inline-block
+                     text-center
+                     py-1
+                     px-4
+                     text-xs
+                     leading-loose
+                     font-semibold
+                     text-white
+                     mb-5
+                     "
+                     >
+                  Dec 22, 2023
+                  </span>
+                  <h3>
+                     <a
+                        href="javascript:void(0)"
+                        class="
+                        font-semibold
+                        text-xl
+                        sm:text-2xl
+                        lg:text-xl
+                        xl:text-2xl
+                        mb-4
+                        inline-block
+                        text-dark
+                        hover:text-primary
+                        "
+                        >
+                     Meet AutoManage, the best AI management tools
+                     </a>
+                  </h3>
+                  <p class="text-base text-body-color">
+                     Lorem Ipsum is simply dummy text of the printing and
+                     typesetting industry.
+                  </p>
+               </div>
             </div>
+         </div>
+         <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+            <div class="max-w-[370px] mx-auto mb-10">
+               <div class="rounded overflow-hidden mb-8">
+                  <img
+                     src="https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-02.jpg"
+                     alt="image"
+                     class="w-full"
+                     />
+               </div>
+               <div>
+                  <span
+                     class="
+                     bg-primary
+                     rounded
+                     inline-block
+                     text-center
+                     py-1
+                     px-4
+                     text-xs
+                     leading-loose
+                     font-semibold
+                     text-white
+                     mb-5
+                     "
+                     >
+                  Mar 15, 2023
+                  </span>
+                  <h3>
+                     <a
+                        href="javascript:void(0)"
+                        class="
+                        font-semibold
+                        text-xl
+                        sm:text-2xl
+                        lg:text-xl
+                        xl:text-2xl
+                        mb-4
+                        inline-block
+                        text-dark
+                        hover:text-primary
+                        "
+                        >
+                     How to earn more money as a wellness coach
+                     </a>
+                  </h3>
+                  <p class="text-base text-body-color">
+                     Lorem Ipsum is simply dummy text of the printing and
+                     typesetting industry.
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="w-full md:w-1/2 lg:w-1/3 px-4">
+            <div class="max-w-[370px] mx-auto mb-10">
+               <div class="rounded overflow-hidden mb-8">
+                  <img
+                     src="https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-03.jpg"
+                     alt="image"
+                     class="w-full"
+                     />
+               </div>
+               <div>
+                  <span
+                     class="
+                     bg-primary
+                     rounded
+                     inline-block
+                     text-center
+                     py-1
+                     px-4
+                     text-xs
+                     leading-loose
+                     font-semibold
+                     text-white
+                     mb-5
+                     "
+                     >
+                  Jan 05, 2023
+                  </span>
+                  <h3>
+                     <a
+                        href="javascript:void(0)"
+                        class="
+                        font-semibold
+                        text-xl
+                        sm:text-2xl
+                        lg:text-xl
+                        xl:text-2xl
+                        mb-4
+                        inline-block
+                        text-dark
+                        hover:text-primary
+                        "
+                        >
+                     The no-fuss guide to upselling and cross selling
+                     </a>
+                  </h3>
+                  <p class="text-base text-body-color">
+                     Lorem Ipsum is simply dummy text of the printing and
+                     typesetting industry.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
 
         </section>
 
@@ -202,60 +311,308 @@
         <!-- Sidebar Section -->
         <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
 
-            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-                <p class="text-xl font-semibold pb-5">About Us</p>
-                <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
-                    Get to know us
-                </a>
-            </div>
-
-            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
-                <p class="text-xl font-semibold pb-5">Instagram</p>
-                <div class="grid grid-cols-3 gap-3">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=1">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=2">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=3">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=4">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=5">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=6">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=7">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
-                    <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
+        <article class="flex flex-col shadow-xl mx-auto max-w-sm bg-blue-100 py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer max-h-190 rounded-md">
+                <div class="min-h-62">
+                <div id="mapa" style="padding-top:5%;height:400px;width:auto"></div>
                 </div>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
-                    <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
-                </a>
-            </div>
+                <h1 class="font-extrabold text-6xl mt-28 mb-10 text-gray-800">03.</h1>
+                <h2 class="font-bold mb-5 text-gray-800">Modern Wooden Chair</h2>
+                <p class="text-sm leading-relaxed text-gray-700">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
+                </p>
+            </article>
+
+            
+
+
+
+           
 
         </aside>
 
     </div>
 
-    
+   
+    <div class=" grid md:grid-cols-2 grid-cols-1 md:gap-4">
+      <div>
+      <div class="flex flex-row min-h-screen justify-center items-center">
 
-    <div id="mapid"></div>
+  
+      </div>
+
+      </div>
+      <div >
+      <div class="flex flex-row min-h-screen justify-center items-center">
+
+      </div>
+
+
+      </div>
+
+      </div>
+
+
 
 
 <script>
 
-var mymap = L.map('mapid').setView([-43.505, -49.09], 4);
-var app = @json($locations);
-    app.forEach(element=>{
-        console.log(element);
-        var marker = L.marker([element.longitude,element.latitude]).addTo(mymap);
-        marker.bindPopup(element.name).openPopup();
-        marker.on('click',()=>console.log("buenardo"));
-
-
-    });
-
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(mymap);
 
 
 </script>
+<div class="pt-10">
+
+<div class=" bg-blue-50 px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+    <div>
+      <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+        Core Team
+      </p>
+    </div>
+    <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+      <span class="relative inline-block">
+        <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+          <defs>
+            <pattern id="1d4040f3-9f3e-4ac7-b117-7d4009658ced" x="0" y="0" width=".135" height=".30">
+              <circle cx="1" cy="1" r=".7"></circle>
+            </pattern>
+          </defs>
+          <rect fill="url(#1d4040f3-9f3e-4ac7-b117-7d4009658ced)" width="52" height="24"></rect>
+        </svg>
+        <span class="relative">Welcome</span>
+      </span>
+      our talented team of professionals
+    </h2>
+    <p class="text-base text-gray-700 md:text-lg">
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
+    </p>
+  </div>
+  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Oliver Aguilerra</p>
+          <p class="mb-4 text-xs text-gray-100">Product Manager</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            Vincent Van Gogh’s most popular painting, The Starry Night.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Marta Clermont</p>
+          <p class="mb-4 text-xs text-gray-100">Design Team Lead</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            Amet I love liquorice jujubes pudding croissant I love pudding.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Anthony Geek</p>
+          <p class="mb-4 text-xs text-gray-100">CTO, Lorem Inc.</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            Apple pie macaroon toffee jujubes pie tart cookie caramels.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/3747435/pexels-photo-3747435.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Alice Melbourne</p>
+          <p class="mb-4 text-xs text-gray-100">Human Resources</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            Lorizzle ipsum bling bling sit amizzle, consectetuer adipiscing elit.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Martin Garix</p>
+          <p class="mb-4 text-xs text-gray-100">Good guy</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            Bacon ipsum dolor sit amet salami jowl corned beef, andouille flank.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/3931603/pexels-photo-3931603.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Andrew Larkin</p>
+          <p class="mb-4 text-xs text-gray-100">Backend Developer</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            Moonfish, steelhead, lamprey southern flounder tadpole fish bigeye.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Sophie Denmo</p>
+          <p class="mb-4 text-xs text-gray-100">Designer</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            Veggies sunt bona vobis, proinde vos postulo esse magis grape pea.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80" src="https://images.pexels.com/photos/3931553/pexels-photo-3931553.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">Benedict Caro</p>
+          <p class="mb-4 text-xs text-gray-100">Frontend Developer</p>
+          <p class="mb-4 text-xs tracking-wide text-gray-400">
+            I love cheese, especially airedale queso. Cheese and biscuits halloumi.
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="container my-24 px-6 mx-auto">
   
@@ -285,6 +642,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   <!-- Section: Design Block -->
   
 </div>
+</div>
 
 
 
@@ -294,7 +652,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 <a name="contactsection"></a>
 
       <div
-        class="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
+        class="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-blue-50 text-gray-900 rounded-lg shadow-lg">
         <div class="flex flex-col justify-between">
           <div>
             <h2 class="text-4xl lg:text-5xl font-bold leading-tight">Lets talk about everything!</h2>
@@ -829,7 +1187,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
          
 <div class="pt-6">
     
-    <footer class="bottom-0 pt-6    text-center lg:text-left bg-gray-100 text-gray-600">
+    <footer class="bottom-0 pt-6    text-center lg:text-left bg-blue-50 text-gray-600">
 <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
   <div class="mr-12 hidden lg:block">
     <span>Get connected with us on social networks:</span>
@@ -1000,7 +1358,84 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 </footer>
 </div>
 
+<script>
+// Burger menus
+document.addEventListener('DOMContentLoaded', function() {
+    // open
+    const burger = document.querySelectorAll('.navbar-burger');
+    const menu = document.querySelectorAll('.navbar-menu');
+
+    if (burger.length && menu.length) {
+        for (var i = 0; i < burger.length; i++) {
+            burger[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    // close
+    const close = document.querySelectorAll('.navbar-close');
+    const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+    if (close.length) {
+        for (var i = 0; i < close.length; i++) {
+            close[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+
+    if (backdrop.length) {
+        for (var i = 0; i < backdrop.length; i++) {
+            backdrop[i].addEventListener('click', function() {
+                for (var j = 0; j < menu.length; j++) {
+                    menu[j].classList.toggle('hidden');
+                }
+            });
+        }
+    }
+});
+</script>
+
 
 </body>
+
+<script>
+//con esta llamada, el código se ejecuta
+//cuando la página terminó de cargarse
+$(document).ready(function(){
+  
+  $('#mapa').argenmap();
+  var marcadores = [];
+  var marcadores = [
+  {nombre: 'cataratas', lat: -25.695278, lon: -54.436667, contenido:'Cataratas del Iguazú!'},
+  {nombre: 'atucha', lat: -34.05, lon: -59.2, contenido:'Atucha: central eléctrica'},
+  {nombre: 'minera', lat: -27.31,  lon: -66.608617, contenido:'Minera Lumbrera: buena mina'},
+  {nombre: 'vacio', lat: -32.911,lon: -68.833, contenido:'No soy solo un marcador vacío, tengo sentimientos :(',icono:'hueco'}
+];
+  var app = @json($locations);
+    app.forEach(element=>{
+      marcadores.push({contenido:element.name,lat:element.latitude,lon:element.longitude});
+
+});
+
+
+
+console.log(marcadores);
+$('#mapa').agregarMarcadores(marcadores);
+
+
+
+
+
+
+
+});
+</script>
+
 
 </html>
