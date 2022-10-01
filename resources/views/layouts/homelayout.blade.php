@@ -1,26 +1,54 @@
 <html lang="en" class="scroll-smooth">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--   Acá instalamos el CDN que está disponible en la página de Tailwind CSS -->
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-  <title>TailwindCSS</title>
-  <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Blog Template</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+    
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Tailwind -->
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
+<!-- jQuery, vinculado directo a cdn de google -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!-- ArgenMap v2, vinculado directo desde el Instituto Geográfico Nacional -->
+<script type="text/javascript" src="https://www.ign.gob.ar/argenmap2/argenmap.jquery.min.js"></script>
 
 <style>
 
-#mapid { height: 400px; width: 200vh; }
+#mapid { height: 400px; width:300px; }
 
 </style>
 
+<style type="text/css">
+@font-face {
+    font-family: LucidaGrande;
+    src: url('{{ public_path('lucida-grande/LucidaGrande.tff') }}');
+}
+</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+    </style>
+
+
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+</head>
 </head>
 
-<body class="bg-teal-50		">
+<body class="bg-white		">
     <header>
     <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
 		<a class="text-3xl font-bold leading-none" href="#">
@@ -66,21 +94,6 @@
 	
 	</nav>
 
-  <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
-        <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
-            <img class="xl:max-w-6xl" src="https://images.pexels.com/photos/5990153/pexels-photo-5990153.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1860" alt="">
-            <div class="content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
-                <div class="flex justify-between font-bold text-sm">
-                    <p>Product Review</p>
-                    <p class="text-gray-400">17th March, 2021</p>
-                </div>
-                <h2 class="text-3xl font-semibold mt-4 md:mt-10">Coffee From Heaven</h2>
-                <p class="my-3 text-justify font-medium text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aperiam nulla cupiditate saepe sed quis veritatis minus rem adipisci aliquid.</p>
-                <button class="mt-2 md:mt-5 p-3 px-5 bg-black text-white font-bold text-sm hover:bg-purple-800">Read
-          More</button>
-            </div>
-        </section>
-    </section>
 	<div class="navbar-menu relative z-50 hidden">
 		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
 		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
@@ -111,7 +124,7 @@
 						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contactsection">Contact</a>
 					</li>
 				</ul>
 			</div>
@@ -123,12 +136,12 @@
 			</div>
 		</nav>
     </header>
-  <main class="h-screen w-screen py-6  flex items-center justify-center bg-green-100 flex-wrap">
-    <!-- This is an example component -->
-    <div class="container mx-auto">
+  <main class="h-screen w-screen py-6  flex items-center justify-center  flex-wrap">
+   <div>
+    @yield('content')
+    </div>
 
-
-      <footer class="bottom-0 pt-6    text-center lg:text-left bg-gray-100 text-gray-600">
+      <footer class="bottom-0 pt-40   text-center lg:text-left text-gray-600">
   <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
     <div class="mr-12 hidden lg:block">
       <span>Get connected with us on social networks:</span>
@@ -297,11 +310,12 @@
     <a class="text-gray-600 font-semibold" href="https://tailwind-elements.com/">Tailwind Elements</a>
   </div>
 </footer>
-</div>
+
+</main>
 
 
-  </main>
 </body>
+
 <script>
 // Burger menus
 document.addEventListener('DOMContentLoaded', function() {

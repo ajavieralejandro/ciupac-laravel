@@ -25,8 +25,8 @@ class PagesController extends Controller
         $members = Team::all();
         $image = Image::first();
         $logos = Logo::all();
-        $posts = Post::paginate(20);
-        return view('welcome',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations]);
+        $posts = Post::orderBy('created_at')->paginate(4);
+        return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations]);
     }
 
     public function admin(){

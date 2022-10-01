@@ -1,26 +1,53 @@
 <html lang="en" class="scroll-smooth">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--   Acá instalamos el CDN que está disponible en la página de Tailwind CSS -->
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-  <title>TailwindCSS</title>
-  <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Blog Template</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+    
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
+<!-- jQuery, vinculado directo a cdn de google -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<!-- ArgenMap v2, vinculado directo desde el Instituto Geográfico Nacional -->
+<script type="text/javascript" src="https://www.ign.gob.ar/argenmap2/argenmap.jquery.min.js"></script>
 
 <style>
 
-#mapid { height: 400px; width: 200vh; }
+#mapid { height: 400px; width:300px; }
 
 </style>
 
+<style type="text/css">
+@font-face {
+    font-family: LucidaGrande;
+    src: url('{{ public_path('lucida-grande/LucidaGrande.tff') }}');
+}
+</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+    </style>
+
+
+    <!-- AlpineJS -->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+</head>
 </head>
 
-<body class="bg-teal-50		">
+<body class="bg-white		">
     <header>
     <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
 		<a class="text-3xl font-bold leading-none" href="#">
@@ -66,21 +93,6 @@
 	
 	</nav>
 
-  <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
-        <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
-            <img class="xl:max-w-6xl" src="https://images.pexels.com/photos/5990153/pexels-photo-5990153.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1860" alt="">
-            <div class="content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
-                <div class="flex justify-between font-bold text-sm">
-                    <p>Product Review</p>
-                    <p class="text-gray-400">17th March, 2021</p>
-                </div>
-                <h2 class="text-3xl font-semibold mt-4 md:mt-10">Coffee From Heaven</h2>
-                <p class="my-3 text-justify font-medium text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aperiam nulla cupiditate saepe sed quis veritatis minus rem adipisci aliquid.</p>
-                <button class="mt-2 md:mt-5 p-3 px-5 bg-black text-white font-bold text-sm hover:bg-purple-800">Read
-          More</button>
-            </div>
-        </section>
-    </section>
 	<div class="navbar-menu relative z-50 hidden">
 		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
 		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
@@ -111,7 +123,7 @@
 						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contactsection">Contact</a>
 					</li>
 				</ul>
 			</div>
@@ -123,308 +135,288 @@
 			</div>
 		</nav>
     </header>
-  <main class="h-screen w-screen py-6  flex items-center justify-center bg-green-100 flex-wrap">
-    <!-- This is an example component -->
-    <div class="container mx-auto">
+  <main class="h-screen w-screen py-6 font-serif flex items-center justify-center  flex-wrap">
+   <div>
+    
+   <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
+        <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
+            <img class="xl:max-w-6xl" src="{{asset($image->path.'/'.$image->name)}}" alt="">
+            <div class="content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
+                <div class="flex justify-between font-bold text-sm">
+                    <p>Product Review</p>
+                    <p class="text-gray-400">17th March, 2021</p>
+                </div>
+                <h2 class="text-3xl font-semibold mt-4 md:mt-10">Coffee From Heaven</h2>
+                <p class="my-3 text-justify font-medium text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aperiam nulla cupiditate saepe sed quis veritatis minus rem adipisci aliquid.</p>
+                <button class="mt-2 md:mt-5 p-3 px-5 bg-black text-white font-bold text-sm hover:bg-purple-800">Read
+          More</button>
+            </div>
+        </section>
+    </section>
+        </div>
 
-    <div class="sm:mb-10 lg:grid lg:grid-cols-5 md:grid-cols-none  lg:bg-white lg:h-full">
-      <div class=" px-10 py-4 max-w-md m-auto lg:col-span-2 mt-5 mb-20 shadow-xl rounded-xl lg:mt-10 md:shadow-xl md:rounded-xl lg:shadow-none lg:rounded-none lg:w-full lg:mb-10 lg:px-5 lg:pt-5 lg:pb-5 lg:max-w-lg bg-white">
-        <img class="h-10" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbQAAAB0CAMAAADadTd0AAAAkFBMVEX///8jHyAAAAAfGxwTDA4GAAAXEhMKAAAbFheqqakNAwYPCAoeGRqhoKAaFRbY2NjNzMxzcXKxsLDFxcXg39+OjY6Xlpf5+fk5NTbz8/Pn5+ft7e309PQ9OjtaV1gpJSZJRkdGQ0RoZmeCgIExLS69vL1RTk97eXq4t7eSkZFpZ2fT0tJ/fX6lpKVUUlM0MTIeJ+jdAAAUgUlEQVR4nO1daWOqsLYtCSACggNO4Dy3tvX//7snyU6yE6LVe6/a88r6dA7FELKSPSe8vdX4f49xieGre1HjNuTp4X0/W0xLLL8/1l/tbPzqPtW4gnG7Pzt5JPKTmJaIA98NSbzoNPN60f1KTA77DXED6lQQ+15jNshe3cEaJtr7iPgWwgSCiCya9XL7TdiOiH+ZMLHgPNLPX93TGoDewot/pIzBjfu1VfIbkK7c4DbKzqDhphaSL8fwPflZMGpCknynr+70H0e2IHdRViLxB6/u9p9G103u5uwMspq8uud/FsP9hWUWu1HY8IjXCN3E6gb4YS0iX4PxLrIJv4i4u/Wg1Twcus1WfzX1bP4bJYdXd/9PohhVLZCEOKvBUQsUT4ruflrljUatl/X87yKrcpZEq4PVex73PjYhNVl7f3aX/zyyk2mCBP6sffn+fLAJjR80ataei2JqrDNKFlcoKzFpha7+G1JLyGdiYnLmB90bfvVJ9NhJbY08EzNjzXiz20KKx0VDZ+344I7WkGjp6ol661t/OVlrrl2wrOPHT0Kq+9TUb97x426Ezcjw82G9rIExnAY6Z6ZmGqYtkaZuNzMzqH+gOI8T3qALa/z36HvaQmv0tL9Omh2HEGFJfhGy+ezqvLUdxFo8L57U7T+Noy4cicZZuiehTx1JWrPhUJeQjuYOHAPEmrt6Ws//LobfmldNsHhLVw1uVmLSSvjeN6ath4OWxkqt8QA0NeEYIbuxWLvCezNJc5zE7SA5uEWrNT49tf9/EZMlNiPcmfpLe6p8sCpp53vnaLGtkdNQu9iPRhO7aPFIxYe/EmRT2khz4saXamep7o6nz32Fv4cpXmjICNkT7H5ZSTtfViHi1LU2U+MB6OGF5nbk9ZnuBlwgzSFKBSIBmdQG5EMxQ6YjdaRpsdc5u0gaYq0YqaVJ6pLxByLHPhqRKurLrBW5SJpDZMjrSxHt3hy7rHE/cKQ43ohAR7tSTHCZNBXYL6byV3EdN34gdshC9IRbXUwrFcZXSAtGonxuoGaA90MCtcZ/jgKJQeqIq3uzjuAqaU4oZGGhDMhaPj4OXWRvhEKjtS2FdNdIUwKyI9Pf8eL5L/NX8KnWBp0LKbewbL+4Sloiwig4mFUXrz4IOIQlBVq7Khx/IM2JhDOt5oC3fcH7/Algg98VtHzYNs1cJ0060yvp9dVK7VHoKdLiBdj7E2s5/3XS6Byc6S+5Smul9igMlMkhV0bXs7CCSLP+uQEetsqn0vkrXugvYO9XWelYtxTKP/esCzHYwZ/R0v1f78b+/ftNL/Xw5p5nt3i3SgXRE4Qdh1bOopV8cMu61BL4uyODIq69AwOXzDCd2Yx41WryZkyWyvwcb9fTBiHEmTUrNunxvQ947+pPHHcI2Wvjle6IvkukOHRO53bJfFVtWEeLiG635QPlg/lzs535vDN6g2///IBk0a8kPlohmWo9Hs8ICfFt4+7s/GN39oUHbLKTxqM0JTLbSvJ3KCq1tmk1QdFMuguh1XzsE+q4U9XaZORqCR6OwfkufwrTKF/PQ5fNBZo0gp3e7JcXuoDI8zct1M9y31YDpxtyL9F2ZKUdx/Nlw9/X0kllnipiobmWeqBASMqNsOOlqyU9ypfrTqOID0gcRaeWFtprnZsMPPzQztkgoK4iqDlvsEUVhHSt9myiYKFSaRbSgpEm6joWn0AUzq2l0d+wpa+LUzlN0MAd2OMi/a4tU7VcIg9bc62uMghXaFHk+tE01JvKCmeuXlG6gQfnpE857scu/nFCVhcF+oDN07Lb47ntLJz5GHxUOkdt9BYNnKuMvSkeEpbHjDeof6xpT4Q4hh2V0KTRUuZf8o28HAqxMaiGQ2iiJ1omZg05+r36ecNW8MqDLVFfXuBmD9FuOlIqSStWxBwld67evWlOscQ56i1LATRcsV4L7ZstzK1ajru5oFIO/KXKbh+tu5uTowi9u2qoWpUzIuJQvXjKLyEZlrL+RGL7+qf2av5GsJafZL89MRDrKiGeKTgsAWV3j4eKXem/VcHNGPcqafmGtR6PinJvqmVVIxFXtZoCoZxN0qB8HTJJ+dyiuwPHytoRVmTZbetKo864Spp1J3TjQ44EjHMkBTinUZC2NX4e7cXwqLSlLBD4rJBGqksmr0x/H3LeW8+8cjdpSz6cjJml6E0QNbxQjrPsLZDmRlHkgihq9K2ktQgeo/FcTLsENxxsLIZe0YCXZd1ukfD8sAgWXPngKGQ7vAzS3sWgU7fhNaQgDsXYt8WbyXC7ThqkXyJC4PEEBC/SaeYwIM5sx02kJmvCkNlKK+U/JQ1kL5sqIt2QkN2g2W12AtF6mOHebt5brdb7jg8TDQoLaQc+mfzdED/Eccmq1T03nMDIWEze8Unwy7udtkp0GGvumv2HSWSdNOEZUTJfn3vePxGYU2IJSNLkpj6NtCP/s/ue5V1edU/AAhur0KO4hF03/geblCttBZ01/0MbHOdW8diKDNL6RD1WuOpkBYpqOIAKMfcDkUZHQBN/UQiEaqQducEiLCqhCskepu+4xZdeULH8QRWab8TfE1dVaKSNR3xkfXmc0XYB2j7kSkyRJvqokcalo8cYzuZxaYuA2Ecmv0yAGjot7FzwDL/0+4ROUwV5oW1XqElaysWMIu2LryVeWg71Kx5a6ymoU3hRIC3HfQ/57Zi08Zy9KAUrZcwr0GjQxA1HlHrVgqRPVEOBSIPWEccaaeDMJgtlTI4/+NBANTAiLeZBQI001hrdcIK3keuqUhDkVYkh7mvWo/99sWygr7lrMFLY5LftnjFIK0D0SNJ63G9Kluy9CH5LQMYtAVjZOml8ZYL3gkgbfoOaBHECoTj3CzdcfMw3+8rbDlAo4XbSQIQFU20vCpTfu+wiIu3MbXlJI421T5fgnh33aO+EUmCyQ1pAON5c2QGjuWshGHQqxhLZnGudtOE39FyQlvEVEWwYC9wmCpZ6Ewf2WOpk8gUkaekF0jr8naR25kreNZVuVvXTQOIq61H+4SppoNECI0TDZTSXeZg0Jyq7opHGJ2zDZs2qdSHNhjYuQCBX44c79FyhwZXn59s28uqkSdEDpI1HjHKasLGA6RqZDsc3G3Ju9uuk8XGriMcBf6WGeEWxWH8u8wNjPzht7iONL4aKKcadWH4ZSIMKqlKFa6TxPsYbS5hG1WIFM9BdQ0UajSzjjpbecKQ8TRF7RL+2Ea6RJq1iQdqCL3zYdcOTfbRSYs6FG391jbSUrwjTEAGrQ+1S6KEGrgI8m2TJx/N20vh0I6ZVk83LyzETmpw0vw+usvdlmPxcn1My7ZoiWy0rKsWv0nMuirqkogMtdDGXmwmDb37lp9QMJq2L7Cf2xw5Xp8Io5vdWxzZjt/HIhiRt3O71wdrYaMN6bHOh5C/kdIMF+ePxGeMNazB2sjy+i7SCMUGrZYTc8PPLOcZJ8w7CyQ7bmUZaD6RQ3HBWW62hQqnZSAgLufrwW42XMp9GkJw9io27ImaFkqC7NwsQaSkKGzLSBsjYV22FX2Yb3LuMmaoTJn96IgQcWPEDQRqveKFTJQy5V/PjfoOh8Bh7b3eSxmWbpTaea3zmKABpXSEI6Hw7x6Qh79wPRwN0yN94WnXUxKZ5D/tZK5UEJSjG+baFKLnIXKtSBXu5gSKt2KBgaknaFhv7JbgGqIYwC9ZpOiqnHydtmqtoaCgCRXxYwwMbCif5UA1wjUN+yl2t+YwuI7h3kpayZ/r7apNulTSxeTre6KS9vatTHKmH5hwyH5UY4gI5xGKpE6FyA3+J9BovBffFSKvInL2wR5EGVjgVpMHCS5bSL+Slr+EF0uIpIi2Vb9eQfiUfVq8NplGonL3bSIOFz6JM/9lK+zCbFE/WSXub4XiGIu2tvfBlCCNB6QNliVCZ5OqWU97H0q1PtBoRd4ccbraKhahBhULUmlWUpPENHtT55ipbeGwB2mW/NaMnAD6CvAYFSMsgUkdHigkhHlsi+iGVMV/C3vVTGCDyzWOV95LGJkr8XTm4lNsLnkHacI7i7xGOGqaDEQG/Ge1kRylPtVP6/EgtclruxtAKeyK0XbQcfpmjQiptao2kCNL4SNIoW3H7HU55orhaks+AeGm2wcnkGkPoNGEAhcreldYj5DiodHrAwqlKL9xRD8wX3hV6F2kgrCLTfs7ZCqQbZT3ymZOj0yEiI9Sbv3vGrvezlS1v9+Vq7oYxzuWxQdKrsTTZOXOlTkeutT1k2QMzHmbPFuZeALrQxTK14IItNv2OFbuXm0nSeoT1hFiXpAmDglJYxUewMq8EDnIfHLTiWEaE+859pPHXCc1Qe5fdwqc4Ju2tp4wyk7SybILdiowEVVxFlWRaYce4zVKSRgkdDv0PR2Ll5iqa4ttrLnpibEUj4GBANEvXX+CiGkZYm9/Lj99VfhrEdROpcJVzXUwT+BusftDalw86HI+4yRmkX41GGMJhe7eTxv8q624EuE/Gj8XUSENpSEnaUK6bIVtZgRJvyJdWNS8pmvAZT0madY/YPpA1RGrXTIIFKAKu5WLLdYbEuZlQgDygfgTQhJvwAderirThDhar4BiFsTIKxshe76duihw+OqD2JjADyLbAOc/bSYOSACNQBvEnnhrQSVORXEHaYXeSBVDsLWNUp6PsR0otoyxmqUka9atuzkTJWnJByyPSeKIdkRaZ1tYQ0n34XBI5nl+q9zwikp3400VSEUf5xWMJjhGdjWw05sNP4vswbSDJ7b2LtNa9pL2toUAB602Q4CA5DNLeVpFG2tZLqHsCmpjWEQko9mO0p8wy0hBZqlYY06p5qBiJRxdOfFe3UJ/1QZGWVE2Xrj7WZ6SQlYqn/AE4jCU2+0BSUcunSROSvyLM61i9cZsdgUidsiVh7HckvXeTlsOZ6t5KjPRYlB/AFiOTtDdYHUAaOysCsoa8eCTeoTFV5/VYIk/Saa2WhceValS1fdu7FCJSpEH+UJIWzC1JIHDmnIbz3s7H6WEmzgQVpo8WezyIYWmjYYV+g6dME17iJYpcyKl1zItjdwcNl3FLEatkkbkBiVwXjsC5gzSZZvXJvpcWWW/dEOEqOKWvQlqR4MIerv7IvpAnj2kBlp6SAJ4ZMvqUloWllj+Y68upjQTtpZpaSZrorSAtntsslyKGP9OyBMQXlRmqUFKP8ovIT5S+maQJ8QN2sSyXoJF/bjgUjzmvtB4fvASCsb2yHPXzbtJU4qrsdeCKQfaFPKmQdn4wIq0DSYB4uYHwnG6loaVmWMEDpYFsGzAS3YVaSUF7caFJ0qRHAKTZVCQb3I2tZC2Uk04nTZiQrBLEIG0MhgpEDcAPM3DWYkM+r+M5Ttzc66e9lSZftazt/Oel6GqVNC3Kn4pvVoANZaY2VQGVE2r2WxefnGTbNdPQTIdMdDO+vPcCSIukWQWkeZdOBT2OKu9OQ6XeDdImkAkva3vMEroMgp2QBtrSynSI3YEcDVebRLdHRGTc/W0yq1aQhjv5516VNK3uEafM2aOMEUJHiSRYSLXQd2dspAWu7gjmwFp4+WgsCEYonco9Zc/uirNGV0ZRqeugdcyKI1RaCVLfzI3mj0JnKoPJJbLkZ5tGbzg8lUQduB+qK4qceZZ4ZkGMDS1HrsVidKXv60VScdRRepuvNJxq4O6FfPJae+9KfRU67zH5xtooXSq7oWqIkKWZ+i0Ya8ni7SKK8vD/JFA/ZMaDpZ4G4TAnsmwwCMkeP5V13UPu0LZUVtxXK4vWAhc3VN6sFvlbK1ZfY0wapM9m0rj8GTHP9C01YoxT3UU5O1w8Wnkc49LTEumKRMILoi6Z4tXLMsixZhaU9mUSS163DUmba6lj3CsR1NAzKi1XlEoapAVkpDkIfTb9mSC/EAzhaDuEjPCw9wkhP+WQe/s54di1DJO1e744wxPtcL5w4saGT4immcpTYQlOUbxtOy5v11t1xfAdN6RaNlgsz/doeYv2+ZdTrfVtZLR+RjZYQs83ayOrkJ6fY5RkrI0mWxvilbWw+kQFoPCTeQTx5PzDMg6nnawaRGSmZ17OY8cMuuHOtWxcwhj2DJMj396ypX7c2263qa3+92AMxmQrHnB+lPGDYlspoCjKhvWZYC1A622Ny+OtaTsNt7ZszzA9P+Bo6fmwtzWvDk33NmsO3lvmWwDQqUrUN+byeNtxCMqnnafvbGDcU5rJXC+Nd8v6S2pPwkKZHMG0Mup5+30mlsN2kFa+S84NM29dXs/qryk8Cxn6lF30cedG2Qm4QN6lauQajwF2C8jV9GAVMtYVzmrWngq8UbBi8V4FqnYn9eGcT0UxQtVRjcvObgVoM2Y0q42Q56KN3ffbWUMn8kc3fgmqxv8O2mmqt36+LlPli+53/b2S5+MTxygrx0RYUSxUIGh5dbdGjQdBO7XgJtY+pHDUCrhqPBFaDuiG71isVS3X9V1RNR4H/DVXd/Wj06UMx/iGzV41HoR8KVi7WsvJcZTrLKZ18OqFkKzx9Fx1sX115dEx0nCM4/ozJS9FziUkVA9Wvk4+JuS05rtrd3JRuvXRty9GMY3KWiT27z4x5V4/KnOwu+YQ7ZOvv7z1C9AhUNPYJWfJp7GWwwY4z1O75GvOfgVaXKGxSphYq3hXhQmqAvyezyvXeBz4LgJehhvP1VpLq0e3/bzfvMYTIeIjgSr+7VSKEKvbqWq8EGsZoQpETVNaqe8M78jh1Hg4cqLya4K1D7y5nemzu7KlNR6Otm+yBpu16DQUR1r9fOhNjefiiLZvB+XhIbBTI8yLPSvNDatnLtR4NY7oqITklEOoke2TSj88v+bsV+I4V2stmcIGF/Cl27OfswA1XoGUKtbgn3QDxTvDmrNfiswxD3O3Hk1c41chnxu+Wf0F638AOJntqIMda/xqFFrhiPULMjV+HYqlWms0rs2PfwPi1B6n/tLnPwS2U5qrtPpDyP8Mig2XkIH1YOIavxNgQ9aVBf8UWJFWPK23WPxTyE9BbYb8c8icIKzNkH8NWXThuNQavxjHuojn1fg/BstEt7PY5O0AAAAASUVORK5CYII=" alt="Workcation logo">
-        <img class="h-64 sm:h-52 sm:w-full sm:object-cover lg:hidden object-center mt-2 rounded-lg shadow-2xl" src="{{asset($image->path.'/'.$image->name)}}" alt="Ad- woman on a beach">
-        <h1 class="mt-5 font-bold text-lg lg:mt-7">You can school from home!</h1>
-        <h1 class="font-bold text-lg text-gray-600">Get started today!</h1>
-        <h1 class="text-lg text-gray-600 text-justify pt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h1>
-        <button class="mt-5 bg-gray-600 p-3 shadow-2xl rounded-xl text-white font-bold hover:bg-gray-800">START STUDYING</button>
-      </div>
-
-
-      <div class="hidden relative lg:block  lg:col-span-3">
-        <img class="absolute inset-0 w-full h-full object-cover object-center" src="{{asset($image->path.'/'.$image->name)}}" alt="Ad- woman on a beach">
-      </div>
-    </div>
-</div>
-
-
-
-
-<div class="container mx-auto flex flex-wrap py-6">
+        <div class="container mx-auto px-20">
+        <div class="container mx-auto flex flex-wrap py-6">
+          
 
 <!-- Posts Section -->
-<section class="w-full md:w-2/3 flex flex-col items-center px-3">
-  @foreach($posts as $post)
-  <article class="flex flex-col shadow my-4">
-        <!-- Article Image -->
-        <a href="#" class="hover:opacity-75">
-            <img src="https://source.unsplash.com/collection/1346951/1000x500?sig=1">
-        </a>
-        <div class="bg-white flex flex-col justify-start p-6">
-            <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">Technology</a>
-            <a href="#" class="text-3xl font-bold hover:text-gray-700 pb-4">Lorem Ipsum Dolor Sit Amet Dolor Sit Amet</a>
-            <p href="#" class="text-sm pb-3">
-                By <a href="#" class="font-semibold hover:text-gray-800">David Grzyb</a>, Published on April 25th, 2020
-            </p>
-            <a href="#" class="pb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis porta dui. Ut eu iaculis massa. Sed ornare ligula lacus, quis iaculis dui porta volutpat. In sit amet posuere magna..</a>
-            <a href="#" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
-        </div>
-    </article>
+<section class="w-full md:w-2/3 flex flex-col items-center pt-5">
+  
+        @foreach($posts as $post)
+        @if ($loop->first)
+ 
+        <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
+                <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
+                </h1>
+                <div class="mt-20">
+                    <span class="text-xl">Moonlanding - </span>
+                    <span class="font-bold text-xl">Neil Armstrong</span>
+                </div>
+                <div class="mt-16 flex justify-between ">
+                    <span class="p-3 pl-0 font-bold">Travel Guide</span>
+                    <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black ">Paid
+            Membership</span>
+                </div>
+            </article>
 
-  @endforeach
+    @else 
+
+    @endif
+    @endforeach
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
+                <div class="relative max-h-125 overflow-hidden">
+                    <img class="absolute" src="https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
+                    <img class="relative transform duration-500 group-hover:opacity-0" src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
+                </div>
+                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
+                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    </a>
+                </div>
+                <ul class="mt-6 font-semibold text-gray-500">
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
+                </ul>
+                <p class="mt-6  text-xl leading-relaxed text-gray-700">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
+                </p>
+                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
+            </article>
+     <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
+                <div class="relative max-h-125 overflow-hidden">
+                    <img class="absolute" src="https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
+                    <img class="relative transform duration-500 group-hover:opacity-0" src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
+                </div>
+                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
+                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    </a>
+                </div>
+                <ul class="mt-6 font-semibold text-gray-500">
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
+                </ul>
+                <p class="mt-6  text-xl leading-relaxed text-gray-700">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
+                </p>
+                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
+            </article>
+
+ 
+    </div>
+
 
    
 
- 
-
-    <div class="flex flex-wrap -mx-4">
- <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-    <div class="max-w-[370px] mx-auto mb-10">
-       <div class="rounded overflow-hidden mb-8">
-          <img
-             src="https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-01.jpg"
-             alt="image"
-             class="w-full"
-             />
-       </div>
-       <div>
-          <span
-             class="
-             bg-primary
-             rounded
-             inline-block
-             text-center
-             py-1
-             px-4
-             text-xs
-             leading-loose
-             font-semibold
-             text-white
-             mb-5
-             "
-             >
-          Dec 22, 2023
-          </span>
-          <h3>
-             <a
-                href="javascript:void(0)"
-                class="
-                font-semibold
-                text-xl
-                sm:text-2xl
-                lg:text-xl
-                xl:text-2xl
-                mb-4
-                inline-block
-                text-dark
-                hover:text-primary
-                "
-                >
-             Meet AutoManage, the best AI management tools
-             </a>
-          </h3>
-          <p class="text-base text-body-color">
-             Lorem Ipsum is simply dummy text of the printing and
-             typesetting industry.
-          </p>
-       </div>
-    </div>
- </div>
- <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-    <div class="max-w-[370px] mx-auto mb-10">
-       <div class="rounded overflow-hidden mb-8">
-          <img
-             src="https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-02.jpg"
-             alt="image"
-             class="w-full"
-             />
-       </div>
-       <div>
-          <span
-             class="
-             bg-primary
-             rounded
-             inline-block
-             text-center
-             py-1
-             px-4
-             text-xs
-             leading-loose
-             font-semibold
-             text-white
-             mb-5
-             "
-             >
-          Mar 15, 2023
-          </span>
-          <h3>
-             <a
-                href="javascript:void(0)"
-                class="
-                font-semibold
-                text-xl
-                sm:text-2xl
-                lg:text-xl
-                xl:text-2xl
-                mb-4
-                inline-block
-                text-dark
-                hover:text-primary
-                "
-                >
-             How to earn more money as a wellness coach
-             </a>
-          </h3>
-          <p class="text-base text-body-color">
-             Lorem Ipsum is simply dummy text of the printing and
-             typesetting industry.
-          </p>
-       </div>
-    </div>
- </div>
- <div class="w-full md:w-1/2 lg:w-1/3 px-4">
-    <div class="max-w-[370px] mx-auto mb-10">
-       <div class="rounded overflow-hidden mb-8">
-          <img
-             src="https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-03.jpg"
-             alt="image"
-             class="w-full"
-             />
-       </div>
-       <div>
-          <span
-             class="
-             bg-primary
-             rounded
-             inline-block
-             text-center
-             py-1
-             px-4
-             text-xs
-             leading-loose
-             font-semibold
-             text-white
-             mb-5
-             "
-             >
-          Jan 05, 2023
-          </span>
-          <h3>
-             <a
-                href="javascript:void(0)"
-                class="
-                font-semibold
-                text-xl
-                sm:text-2xl
-                lg:text-xl
-                xl:text-2xl
-                mb-4
-                inline-block
-                text-dark
-                hover:text-primary
-                "
-                >
-             The no-fuss guide to upselling and cross selling
-             </a>
-          </h3>
-          <p class="text-base text-body-color">
-             Lorem Ipsum is simply dummy text of the printing and
-             typesetting industry.
-          </p>
-       </div>
-    </div>
- </div>
-</div>
-
 </section>
-
-
 
 <!-- Sidebar Section -->
 <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
 
-<article class="flex flex-col shadow-xl mx-auto max-w-sm bg-blue-100 py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer max-h-190 rounded-md">
-        <div class="min-h-62">
-        <div id="mapa" style="padding-top:5%;height:400px;width:auto"></div>
-        </div>
-        <h1 class="font-extrabold text-6xl mt-28 mb-10 text-gray-800">03.</h1>
-        <h2 class="font-bold mb-5 text-gray-800">Modern Wooden Chair</h2>
-        <p class="text-sm leading-relaxed text-gray-700">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
-        </p>
-    </article>
-
-    
-
-
-
-   
+<article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
+                <div class="relative max-h-125 overflow-hidden">
+                    <img class="relative " src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
+                </div>
+                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
+                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    </a>
+                </div>
+                <ul class="mt-6 font-semibold text-gray-500">
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
+                </ul>
+                <p class="mt-6  text-xl leading-relaxed text-gray-700">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
+                </p>
+                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
+            </article>
 
 </aside>
 
+
+</div>
+
+
+<div style='background-color:rgb(255, 255, 255)'>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4 pt-20 pb-10 lg:pt-40 lg:pb-20" style="cursor: auto;">
+            
+  <div class="p-6 bg-gray-100 rounded-lg">
+              
+    <div class="mb-5">
+                
+      <svg class="hi-outline hi-template inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+      </svg>
+              
+    </div>
+              
+    <h3 class="text-lg font-bold mb-2">
+                1. Product
+              </h3>
+              
+    <p class="text-sm leading-6 text-gray-600">
+Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
+              </p>
+            
+  </div>
+            
+  <div class="p-6 bg-gray-100 rounded-lg">
+              
+    <div class="mb-5">
+                
+      <svg class="hi-outline hi-cube inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+      </svg>
+              
+    </div>
+              
+    <h3 class="text-lg font-bold mb-2">
+                2. Features
+              </h3>
+              
+    <p class="text-sm leading-6 text-gray-600">
+Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
+              </p>
+            
+  </div>
+            
+  <div class="p-6 bg-gray-100 rounded-lg" style="cursor: auto;">
+              
+    <div class="mb-5" style="cursor: auto;">
+                
+      <svg class="hi-outline hi-cog inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+      </svg>
+              
+    </div>
+              
+    <h3 class="text-lg font-bold mb-2">
+                3. Card
+              </h3>
+              
+    <p class="text-sm leading-6 text-gray-600">
+Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
+              </p>
+            
+  </div>
+            
+  <div class="p-6 bg-gray-100 rounded-lg">
+              
+    <div class="mb-5">
+                
+      <svg class="hi-outline hi-sparkles inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+      </svg>
+              
+    </div>
+              
+    <h3 class="text-lg font-bold mb-2">
+                4. Design
+              </h3>
+              
+    <p class="text-sm leading-6 text-gray-600">
+Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
+              </p>
+            
+  </div>
+          
+</div>
+</div>
 </div>
 
  
-<div class="container my-24 px-6 mx-auto  ">
+<div class="pt-10">
 
-
-<!-- Section: Design Block -->
-<section class="mb-32 text-gray-800 text-center ">
-  <h2 class="text-3xl font-bold mb-32">Meet the <u class="text-blue-600">team</u></h2>
-  <div class="grid gap-x-6 lg:gap-x-12 md:grid-cols-3 ">
-
-
-@foreach($members as $member)
-<div class="mb-24 md:mb-0">
-      <div class="rounded-lg shadow-lg h-full block bg-white">
-        <div class="flex justify-center">
-          <div class="flex justify-center" style="margin-top: -75px">
-            <img src="{{asset($member->image_path.'/'.$member->image_name)}}" class="rounded-full mx-auto shadow-lg" alt=""
-              style="width: 150px" />
+<div class=" bg-blue-50 px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+    <div>
+     
+    </div>
+    <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+      <span class="relative inline-block">
+        <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
+          <defs>
+            <pattern id="1d4040f3-9f3e-4ac7-b117-7d4009658ced" x="0" y="0" width=".135" height=".30">
+              <circle cx="1" cy="1" r=".7"></circle>
+            </pattern>
+          </defs>
+          <rect fill="url(#1d4040f3-9f3e-4ac7-b117-7d4009658ced)" width="52" height="24"></rect>
+        </svg>
+        <span class="relative">Conoce</span>
+      </span>
+      a nuestro equipo
+    </h2>
+    <p class="text-base text-gray-700 md:text-lg">
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
+    </p>
+  </div>
+  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    @foreach($members as $member)
+    <div>
+      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+        <img class="object-cover w-full h-56 md:h-64 xl:h-80"        src="{{asset($member->image_path.'/'.$member->image_name)}}"
+ alt="Person" />
+        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+          <p class="mb-1 text-lg font-bold text-gray-100">{{$member->name}}</p>
+          <p class="mb-4 text-xs text-gray-100">{{$member->email}}</p>
+          <p class="mb-4 text-xs  text-gray-400">
+            {{$member->description}}
+          </p>
+          <div class="flex items-center justify-center space-x-3">
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                ></path>
+              </svg>
+            </a>
+            <a href="/" class="text-white transition-colors duration-300 hover:text-teal-accent-400">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                <path
+                  d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z"
+                ></path>
+              </svg>
+            </a>
           </div>
         </div>
-        <div class="p-6">
-          <h5 class="text-lg font-bold mb-4">Marta Smith</h5>
-          <p class="mb-6">Frontend Developer</p>
-          <ul class="list-inside flex mx-auto justify-center">
-            <a href="#!" class="px-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="w-4 h-4 text-blue-600">
-                <path fill="currentColor"
-                  d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-              </svg>
-            </a>
-            <a href="#!" class="px-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 text-blue-600">
-                <path fill="currentColor"
-                  d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
-              </svg>
-            </a>
-            <a href="#!" class="px-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-4 h-4 text-blue-600">
-                <path fill="currentColor"
-                  d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
-              </svg>
-            </a>
-          </ul>
-        </div>
       </div>
-</div>
-@endforeach
-
-   
-
-</section>
-
-
-
-<!-- Section: Design Block -->
-
-</div>
-
-
-
-
-<!-- Container for demo purpose -->
-<div class="container my-24 px-6 mx-auto">
+    </div>
+    @endforeach
+ 
+  </div>
+  </div>
   
-  <!-- Section: Design Block -->
+         <!-- Section: Design Block -->
   <section class="mb-32 text-gray-800 text-center">
     <style>
       .grayscale {
@@ -433,13 +425,13 @@
     </style>
     <h2 class="text-3xl font-bold mb-12">Trusted by <u class="">2,000,000+</u> users</h2>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 content-center">
         @foreach($logos as $logo)
         <div class="mb-12 lg:mb-0">
         <img
         src="{{asset($logo->image_path.'/'.$logo->image_name)}}"
           class="img-fluid grayscale px-6 md:px-12"
-          alt="Nasa - logo"
+          alt="logo"
         />
       </div>
         @endforeach
@@ -447,46 +439,20 @@
 
     </div>
   </section>
-  <!-- Section: Design Block -->
+
   
-</div>
 
+  
 
-<!-- Container for demo purpose -->
-<!-- Container for demo purpose -->
-<div id="mapid"></div>
-
-
-<script>
-
-var mymap = L.map('mapid').setView([-53.505, 99.09], 6);
-var app = @json($locations);
-    app.forEach(element=>{
-        console.log(element);
-        var marker = L.marker([element.longitude,element.latitude]).addTo(mymap);
-        marker.bindPopup(element.name).openPopup();
-        marker.on('click',()=>console.log("buenardo"));
-
-
-    });
-
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(mymap);
-
-
-</script>
 <div class="text-center w-full">
 <a name="contactsection"></a>
 
       <div
-        class="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
+        class="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-blue-50 text-gray-900 rounded-lg shadow-lg">
         <div class="flex flex-col justify-between">
           <div>
-            <h2 class="text-4xl lg:text-5xl font-bold leading-tight">Lets talk about everything!</h2>
-            <div class="text-gray-700 mt-8">
-              Hate forms? Send us an <span class="underline">email</span> instead.
-            </div>
+            <h2 class="text-4xl lg:text-5xl  leading-tight">Contactanos!</h2>
+   
           </div>
           <div class="mt-8 text-center">
             <svg class="w-full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -990,31 +956,30 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         <div class="">
           <div>
             <span class="uppercase text-sm text-gray-600 font-bold">Full Name</span>
-            <input class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            <input class="w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               type="text" placeholder="">
           </div>
           <div class="mt-8">
             <span class="uppercase text-sm text-gray-600 font-bold">Email</span>
-            <input class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+            <input class="w-full bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               type="text">
           </div>
           <div class="mt-8">
             <span class="uppercase text-sm text-gray-600 font-bold">Message</span>
             <textarea
-              class="w-full h-32 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+              class="w-full h-32 bg-gray-200 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
           </div>
           <div class="mt-8">
             <button
-              class="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
-              Send Message
+              class="uppercase text-sm font-bold tracking-wide bg-black text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
+              Enviar 
             </button>
           </div>
         </div>
       </div>
-      
-<div class="pt-6">
-    
-      <footer class="bottom-0 pt-6    text-center lg:text-left bg-gray-100 text-gray-600">
+
+
+      <footer class="bottom-0 pt-40   text-center lg:text-left text-gray-600">
   <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
     <div class="mr-12 hidden lg:block">
       <span>Get connected with us on social networks:</span>
@@ -1183,11 +1148,12 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     <a class="text-gray-600 font-semibold" href="https://tailwind-elements.com/">Tailwind Elements</a>
   </div>
 </footer>
-</div>
+
+</main>
 
 
-  </main>
 </body>
+
 <script>
 // Burger menus
 document.addEventListener('DOMContentLoaded', function() {

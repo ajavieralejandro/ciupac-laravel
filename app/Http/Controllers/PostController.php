@@ -55,7 +55,8 @@ class PostController extends Controller
         $post->body = $request->content;
         $file= $request->file('image');
         $extension = $file->extension();
-        $filename = "post-".$post->id.".".$extension;
+        $count = Post::count();
+        $filename = "post-".$count.".".$extension;
         $file-> move(public_path('public/images/posts'), $filename);
         $post->image_name = $filename;
         $post->image_path = "public/images/posts";
@@ -69,9 +70,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $id)
     {
         //
+        return view('layouts.post');
     }
 
     /**
