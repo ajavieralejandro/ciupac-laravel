@@ -137,6 +137,8 @@
     </header>
   <main class="h-screen w-screen py-6 font-serif flex items-center justify-center  flex-wrap">
    <div>
+
+
     
    <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
         <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
@@ -155,7 +157,61 @@
     </section>
         </div>
 
-        <div class="container mx-auto px-20">
+       <!-- Posts Section  <div class="container mx-auto px-20">
+ -->
+ <div >
+ <div class="container mx-auto flex flex-wrap py-6">
+
+<!-- Posts Section -->
+<section class="w-full md:w-2/3 flex flex-col items-center px-3">
+<div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+        <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
+          justice. Six draw
+          you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
+          resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
+          outlived peculiar rendered led six.</p>
+          <p class="pb-6">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as
+          thoroughly
+          partiality considered on in estimating. Middletons acceptance discovered projecting so is so or. In or
+          attachment inquietude remarkably comparison at an. Is surrounded prosperous stimulated am me discretion
+          expression. But truth being state can she china widow. Occasional preference fat remarkably now projecting
+          uncommonly dissimilar. Sentiments projection particular companions interested do at my delightful. Listening
+          newspaper in advantage frankness to concluded unwilling.</p>
+          <header
+  class="flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-cover custom-img"
+>
+  <div class="p-5 text-2xl text-white bg-purple-300 bg-opacity-50 rounded-xl">
+    Welcome to my site!
+  </div>
+</header>
+
+        <p class="pb-6">Adieus except say barton put feebly favour him. Entreaties unpleasant sufficient few pianoforte
+          discovered
+          uncommonly ask. Morning cousins amongst in mr weather do neither. Warmth object matter course active law
+          spring six. Pursuit showing tedious unknown winding see had man add. And park eyes too more him. Simple excuse
+          active had son wholly coming number add. Though all excuse ladies rather regard assure yet. If feelings so
+          prospect no as raptures quitting.</p>
+      </div>
+
+</section>
+<aside class="bw-full md:w-1/3 container gap-3 flex flex-col items-center px-3">
+<article class="flex flex-col shadow-xl mx-auto max-w-sm bg-red-100 py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer max-h-190 rounded-md">
+                <div class="min-h-62">
+                    <img class="mx-auto" src="https://demo.happyaddons.com/wp-content/uploads/2019/05/card-image13a.png" alt="" />
+                </div>
+                <h1 class="font-extrabold text-6xl mt-28 mb-10 text-gray-800">01.</h1>
+                <h2 class="font-bold mb-5 text-gray-800">Stylish Egg Chair</h2>
+                <p class="text-sm leading-relaxed text-gray-700">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
+                </p>
+            </article>
+
+
+
+
+</aside>
+
+</div>
         <div class="container mx-auto flex flex-wrap py-6">
           
 
@@ -164,7 +220,8 @@
   
         @foreach($posts as $post)
         @if ($loop->first)
- 
+        <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
+
         <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
                 <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
                 </h1>
@@ -178,14 +235,71 @@
             Membership</span>
                 </div>
             </article>
+            <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+        <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
+          justice. Six draw
+          you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
+          resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
+          outlived peculiar rendered led six.</p>
+        </div>
+        </article>
 
     @else 
 
     @endif
     @endforeach
+    <div class="container  px-20">
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                        </div>
+
+   
+
+</section>
+
+<!-- Sidebar Section -->
+<aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+  
+
+<article class="bg-blue-50 mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl">
+                <img class="mx-auto mb-20 mt-10 w-40" src="https://penpot.app/images/cross-teams.webp" alt="" />
+                <h2 class="text-center text-3xl mt-8 font-bold min-h-18 px-12">
+                    For cross-domain teams
+                </h2>
+                <p class="m-4 text-lg p-4 leading-relaxed text-center ">
+                    Product features and capabilities meant for the different roles in the next-decade team. Say goodbye to the legendary pain of the design silo.
+                </p>
+            </article>
+
+
+
+</aside>
+
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2">
     <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
+                <div class="relative max-h-125 overflow-hidden">
+                    <img class="absolute" src="https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
+                    <img class="relative transform duration-500 group-hover:opacity-0" src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
+                </div>
+                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
+                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
+                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    </a>
+                </div>
+                <ul class="mt-6 font-semibold text-gray-500">
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
+                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
+                </ul>
+                <p class="mt-6  text-xl leading-relaxed text-gray-700">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
+                </p>
+                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
+            </article>
+            <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
                 <div class="relative max-h-125 overflow-hidden">
                     <img class="absolute" src="https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
                     <img class="relative transform duration-500 group-hover:opacity-0" src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
@@ -227,43 +341,12 @@
                 </p>
                 <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
             </article>
+            
 
  
     </div>
+  
 
-
-   
-
-</section>
-
-<!-- Sidebar Section -->
-<aside class="w-full md:w-1/3 flex flex-col items-center px-3">
-
-<article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
-                <div class="relative max-h-125 overflow-hidden">
-                    <img class="relative " src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
-                </div>
-                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
-                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
-                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    </a>
-                </div>
-                <ul class="mt-6 font-semibold text-gray-500">
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
-                </ul>
-                <p class="mt-6  text-xl leading-relaxed text-gray-700">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
-                </p>
-                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
-            </article>
-
-</aside>
-
-
-</div>
 
 
 <div style='background-color:rgb(255, 255, 255)'>
@@ -357,7 +440,7 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
  
 <div class="pt-10">
 
-<div class=" bg-blue-50 px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+<div class=" bg-gray-100 px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
      
@@ -422,6 +505,9 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
       .grayscale {
         filter: grayscale(100%);
       }
+      .custom-img {
+  background-image: url("https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80");
+}
     </style>
     <h2 class="text-3xl font-bold mb-12">Trusted by <u class="">2,000,000+</u> users</h2>
 
@@ -448,7 +534,7 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
 <a name="contactsection"></a>
 
       <div
-        class="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-blue-50 text-gray-900 rounded-lg shadow-lg">
+        class="max-w-screen-xl mt-24 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-50 text-gray-900 rounded-lg shadow-lg">
         <div class="flex flex-col justify-between">
           <div>
             <h2 class="text-4xl lg:text-5xl  leading-tight">Contactanos!</h2>
