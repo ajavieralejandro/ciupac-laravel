@@ -70,10 +70,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $id)
+    public function show(Request $request)
     {
         //
-        return view('layouts.post');
+        $member = Post::find($request->route('id'));
+        return view('layouts.post',['post'=>$member]);
+
     }
 
     /**

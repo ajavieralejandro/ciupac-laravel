@@ -75,4 +75,4 @@ Route::group([
                 });
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/post', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
+Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');

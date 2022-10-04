@@ -841,7 +841,9 @@
 
   </main>
 </body>
+
 <script>
+
 // Burger menus
 document.addEventListener('DOMContentLoaded', function() {
     // open

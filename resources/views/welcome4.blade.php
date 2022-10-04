@@ -37,6 +37,127 @@
         .font-family-karla {
             font-family: karla;
         }
+        html, body {
+    margin: 0px;
+    padding: 0px;
+    background: url("http://digital.bnint.com/filelib/s9/photos/white_wood_4500x3000_lo_res.jpg");
+}
+
+.carousel {
+    position: relative;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+    margin-top: 26px;
+}
+
+.carousel-inner {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+}
+
+.carousel-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
+}
+
+.carousel-item img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.carousel-control {
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    font-size: 40px;
+    height: 40px;
+    line-height: 35px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+    cursor: pointer;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 40px;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 2%;
+}
+
+.carousel-control.next {
+    right: 2%;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #aaaaaa;
+}
+
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3 {
+    display: block;
+}
+
+.carousel-indicators {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 2%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.carousel-bullet {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 35px;
+}
+
+.carousel-bullet:hover {
+    color: #aaaaaa;
+}
+
+#carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
+#carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
+#carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
+    color: #428bca;
+}
+
+#title {
+    width: 100%;
+    position: absolute;
+    padding: 0px;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 27px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+}
     </style>
 
 
@@ -180,9 +301,7 @@
           <header
   class="flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-cover custom-img"
 >
-  <div class="p-5 text-2xl text-white bg-purple-300 bg-opacity-50 rounded-xl">
-    Welcome to my site!
-  </div>
+ 
 </header>
 
         <p class="pb-6">Adieus except say barton put feebly favour him. Entreaties unpleasant sufficient few pianoforte
@@ -220,11 +339,13 @@
   
         @foreach($posts as $post)
         @if ($loop->first)
+        <a href="{{route('showPost', ['id' => $post->id]);}}">
+
         <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
 
-        <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
-                <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
-                </h1>
+        <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}});">
+               <div class="bg-black"> <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
+                </h1></div>
                 <div class="mt-20">
                     <span class="text-xl">Moonlanding - </span>
                     <span class="font-bold text-xl">Neil Armstrong</span>
@@ -236,15 +357,12 @@
                 </div>
             </article>
             <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-        <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-          justice. Six draw
-          you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-          resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-          outlived peculiar rendered led six.</p>
+        <p class="pb-6">{{$post->description}}</p>
         </div>
-        </article>
+        <a href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
 
-    @else 
+        </article>
+</a>
 
     @endif
     @endforeach
@@ -257,10 +375,10 @@
 </section>
 
 <!-- Sidebar Section -->
-<aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+<aside class="w-full pt-5 md:w-1/3 flex flex-col items-center px-3">
   
 
-<article class="bg-blue-50 mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl">
+<article class="bg-blue-50  mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl">
                 <img class="mx-auto mb-20 mt-10 w-40" src="https://penpot.app/images/cross-teams.webp" alt="" />
                 <h2 class="text-center text-3xl mt-8 font-bold min-h-18 px-12">
                     For cross-domain teams
@@ -276,171 +394,74 @@
 
 
 </div>
+<div class="container mx-auto">
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-    <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
-                <div class="relative max-h-125 overflow-hidden">
-                    <img class="absolute" src="https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
-                    <img class="relative transform duration-500 group-hover:opacity-0" src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
-                </div>
-                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
-                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
-                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    </a>
-                </div>
-                <ul class="mt-6 font-semibold text-gray-500">
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
-                </ul>
-                <p class="mt-6  text-xl leading-relaxed text-gray-700">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
-                </p>
-                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
-            </article>
-            <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
-                <div class="relative max-h-125 overflow-hidden">
-                    <img class="absolute" src="https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
-                    <img class="relative transform duration-500 group-hover:opacity-0" src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
-                </div>
-                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
-                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
-                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    </a>
-                </div>
-                <ul class="mt-6 font-semibold text-gray-500">
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
-                </ul>
-                <p class="mt-6  text-xl leading-relaxed text-gray-700">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
-                </p>
-                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
-            </article>
-     <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
-                <div class="relative max-h-125 overflow-hidden">
-                    <img class="absolute" src="https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
-                    <img class="relative transform duration-500 group-hover:opacity-0" src="https://images.unsplash.com/photo-1579612635567-e45dc47a0985?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="">
-                </div>
-                <div class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100">
-                    <a target="_blank" href="https://unsplash.com/@mehranhadad">
-                        <svg class="w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="rgba(0,0,0,0.5)">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    </a>
-                </div>
-                <ul class="mt-6 font-semibold text-gray-500">
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Features</li>
-                    <li class="inline mr-3 pb-1 border-b-2 border-green-500">Fashion</li>
-                </ul>
-                <p class="mt-6  text-xl leading-relaxed text-gray-700">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe aliquid atque officia? Earum dolores voluptatibus reiciendis, excepturi corporis corrupti eaque!
-                </p>
-                <p class="text-gray-400 mt-10 font-semibold">23rd March, 2021</p>
-            </article>
-            
+<div class="pt-1 grid grid-cols-1 md:grid-cols-4 gap-1  justify-center items-center">
 
- 
+  @foreach($posts as $post)
+  <div class="max-w-lg mx-auto">
+    <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
+        <a href="#">
+            <img class="rounded-t-lg" src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
+        </a>
+        <div class="p-5">
+            <a href="#">
+                <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">Noteworthy technology acquisitions 2021</h5>
+            </a>
+            <p class="font-normal text-gray-700 mb-3">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        
+        </div>
     </div>
+</div>
+            @endforeach
+
+</div>
+ 
+</div>
+
+
   
 
+    <div class="carousel">
+    <div class="carousel-inner">
+        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/0079D8/fff/?text=Without">
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/DA5930/fff/?text=JavaScript">
+        </div>
+        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+        <div class="carousel-item">
+            <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
+        </div>
+        <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+        <label for="carousel-2" class="carousel-control next control-1">›</label>
+        <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+        <label for="carousel-3" class="carousel-control next control-2">›</label>
+        <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+        <label for="carousel-1" class="carousel-control next control-3">›</label>
+        <ol class="carousel-indicators">
+            <li>
+                <label for="carousel-1" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-2" class="carousel-bullet">•</label>
+            </li>
+            <li>
+                <label for="carousel-3" class="carousel-bullet">•</label>
+            </li>
+        </ol>
+    </div>
+</div>
 
 
-<div style='background-color:rgb(255, 255, 255)'>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4 pt-20 pb-10 lg:pt-40 lg:pb-20" style="cursor: auto;">
-            
-  <div class="p-6 bg-gray-100 rounded-lg">
-              
-    <div class="mb-5">
-                
-      <svg class="hi-outline hi-template inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-      </svg>
-              
-    </div>
-              
-    <h3 class="text-lg font-bold mb-2">
-                1. Product
-              </h3>
-              
-    <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
-              </p>
-            
-  </div>
-            
-  <div class="p-6 bg-gray-100 rounded-lg">
-              
-    <div class="mb-5">
-                
-      <svg class="hi-outline hi-cube inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
-      </svg>
-              
-    </div>
-              
-    <h3 class="text-lg font-bold mb-2">
-                2. Features
-              </h3>
-              
-    <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
-              </p>
-            
-  </div>
-            
-  <div class="p-6 bg-gray-100 rounded-lg" style="cursor: auto;">
-              
-    <div class="mb-5" style="cursor: auto;">
-                
-      <svg class="hi-outline hi-cog inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-      </svg>
-              
-    </div>
-              
-    <h3 class="text-lg font-bold mb-2">
-                3. Card
-              </h3>
-              
-    <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
-              </p>
-            
-  </div>
-            
-  <div class="p-6 bg-gray-100 rounded-lg">
-              
-    <div class="mb-5">
-                
-      <svg class="hi-outline hi-sparkles inline-block w-12 h-12 text-indigo-500" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-      </svg>
-              
-    </div>
-              
-    <h3 class="text-lg font-bold mb-2">
-                4. Design
-              </h3>
-              
-    <p class="text-sm leading-6 text-gray-600">
-Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut cras orci vitae parturient id nisi vulputate consectetur, primis venenatis cursus tristique malesuada viverra congue risus.
-              </p>
-            
-  </div>
-          
-</div>
-</div>
-</div>
 
  
 <div class="pt-10">
 
-<div class=" bg-gray-100 px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+<div class="  px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
      
@@ -498,6 +519,8 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
  
   </div>
   </div>
+
+  
   
          <!-- Section: Design Block -->
   <section class="mb-32 text-gray-800 text-center">
@@ -506,7 +529,11 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
         filter: grayscale(100%);
       }
       .custom-img {
-  background-image: url("https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80");
+  background-image: url({{asset($image->path.'/'.$image->name)}});
+  background-size: contain;
+  background-repeat: no-repeat;
+
+
 }
     </style>
     <h2 class="text-3xl font-bold mb-12">Trusted by <u class="">2,000,000+</u> users</h2>
@@ -1239,6 +1266,17 @@ Metus potenti velit sollicitudin porttitor magnis elit lacinia tempor varius, ut
 
 
 </body>
+<script>
+var mymap = L.map('mapid').setView([-38.505, -63.09], 4);
+var app = @json($locations);
+    app.forEach(element=>{
+        var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
+        marker.bindPopup(element.name).openPopup();
+    });
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+</script>
 
 <script>
 // Burger menus
