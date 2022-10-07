@@ -8,6 +8,8 @@ use App\Models\Image;
 use App\Models\Logo;
 use App\Models\Post;
 use App\Models\Location;
+use App\Models\About;
+
 
 
 
@@ -25,8 +27,11 @@ class PagesController extends Controller
         $members = Team::all();
         $image = Image::first();
         $logos = Logo::all();
+        $about = About::first();
         $posts = Post::orderBy('created_at')->paginate(4);
-        return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations]);
+        return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations,
+                                'about'=>$about
+        ]);
     }
 
     public function admin(){

@@ -30,6 +30,8 @@
               
             
   </div>
+
+  
             
   <div class="p-6 bg-gray-100 rounded-lg">
               
@@ -97,10 +99,88 @@ Actualiza la imagen de portada a la página              </p>
               
             
   </div>
-          
-</div>
-</div>
-          
+
+            
+  <div class="p-6 bg-gray-100 rounded-lg">
+              
+    <div class="mb-5">
+    <a href={{route('showAbout')}} rel='stylesheet'>
+
+                
+    <svg class="hover:text-green-500 h-8 w-8 text-red-500"  fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+</svg>
+</a>
+
+
+    </div>
+    
+              
+    <h3 class="text-lg font-bold mb-2">
+                5. About
+              </h3>
+              
+    <p class="text-sm leading-6 text-gray-600">
+      Modifica la imágen y el texto de la sección about.  
+              </p>
+              
+            
+  </div>
+
+            
+  <div class="p-6 bg-gray-100 rounded-lg">
+              
+    <div class="mb-5">
+    <a href={{route('logos')}} rel='stylesheet'>
+
+                
+    <svg class="h-8 w-8 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+</svg>
+</a>
+
+
+    </div>
+    
+              
+    <h3 class="text-lg font-bold mb-2">
+                4. Logos
+              </h3>
+              
+    <p class="text-sm leading-6 text-gray-600">
+      Agrega, edita o elimina logos. 
+              </p>
+              
+            
+  </div>
+
+            
+  <div class="p-6 bg-gray-100 rounded-lg">
+              
+    <div class="mb-5">
+    <a href={{route('logos')}} rel='stylesheet'>
+
+                
+    <svg class="h-8 w-8 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+</svg>
+</a>
+
+
+    </div>
+    
+              
+    <h3 class="text-lg font-bold mb-2">
+                4. Logos
+              </h3>
+              
+    <p class="text-sm leading-6 text-gray-600">
+      Agrega, edita o elimina logos. 
+              </p>
+              
+            
+  </div>
+
+            
 <div class="p-6 bg-gray-100 rounded-lg">
               
               <div class="mb-5">
@@ -126,9 +206,29 @@ Actualiza la imagen de portada a la página              </p>
                         
                       
             </div>
+
+            
+
+            
                     
           </div>
+          
+</div>
+
+
+</div>
+
+
+
+
+
+          
+          
+
+          
+
           </div>
+
 </div>
 
 @endsection

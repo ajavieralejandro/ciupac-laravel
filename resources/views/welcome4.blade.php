@@ -286,30 +286,14 @@
 <!-- Posts Section -->
 <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-        <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-          justice. Six draw
-          you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-          resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-          outlived peculiar rendered led six.</p>
-          <p class="pb-6">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as
-          thoroughly
-          partiality considered on in estimating. Middletons acceptance discovered projecting so is so or. In or
-          attachment inquietude remarkably comparison at an. Is surrounded prosperous stimulated am me discretion
-          expression. But truth being state can she china widow. Occasional preference fat remarkably now projecting
-          uncommonly dissimilar. Sentiments projection particular companions interested do at my delightful. Listening
-          newspaper in advantage frankness to concluded unwilling.</p>
+      {!!$about->body!!}
           <header
   class="flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-cover custom-img"
 >
  
 </header>
 
-        <p class="pb-6">Adieus except say barton put feebly favour him. Entreaties unpleasant sufficient few pianoforte
-          discovered
-          uncommonly ask. Morning cousins amongst in mr weather do neither. Warmth object matter course active law
-          spring six. Pursuit showing tedious unknown winding see had man add. And park eyes too more him. Simple excuse
-          active had son wholly coming number add. Though all excuse ladies rather regard assure yet. If feelings so
-          prospect no as raptures quitting.</p>
+  
       </div>
 
 </section>
@@ -402,7 +386,7 @@
   <div class="max-w-lg mx-auto">
     <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
         <a href="#">
-            <img class="rounded-t-lg" src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
+            <img class="rounded-t-lg h-48 w-96 " src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
         </a>
         <div class="p-5">
             <a href="#">
@@ -529,7 +513,7 @@
         filter: grayscale(100%);
       }
       .custom-img {
-  background-image: url({{asset($image->path.'/'.$image->name)}});
+  background-image: url({{asset($about->image_path.'/'.$about->image_name)}});
   background-size: contain;
   background-repeat: no-repeat;
 

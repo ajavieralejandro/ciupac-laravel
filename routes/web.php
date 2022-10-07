@@ -6,6 +6,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\AboutController;
+
 
 
 use App\Http\Middleware\IsAdmin;
@@ -70,9 +72,12 @@ Route::group([
                 Route::get('/newpost', [\App\Http\Controllers\PostController::class, 'create'])->name('newPost');
                 Route::get('/editposts/{id}', [\App\Http\Controllers\PostController::class, 'edit'])->name('editPost');
                 Route::put('/editpost', [\App\Http\Controllers\PostController::class, 'update'])->name('updatePost');
+                //about controller
+                Route::get('/editAbout', [\App\Http\Controllers\AboutController::class, 'show'])->name('showAbout');
+                Route::post('/storeAbout', [\App\Http\Controllers\AboutController::class, 'store'])->name('storeAbout');
 
                 
                 });
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
+Route::post('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
