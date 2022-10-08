@@ -98,7 +98,8 @@ class AboutController extends Controller
     public function show(Request $request)
     {
         //
-        return view('admin.editabout');
+        $about = About::first();
+        return view('admin.editabout',['about'=>$about]);
     }
 
     /**

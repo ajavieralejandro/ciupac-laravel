@@ -281,10 +281,15 @@
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
  <div >
+
+
  <div class="container mx-auto flex flex-wrap py-6">
+
 
 <!-- Posts Section -->
 <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+<h2 class=" text-3xl font-semibold mt-4 md:mt-10">Nosotros </h2>
+
 <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
       {!!$about->body!!}
           <header
@@ -380,9 +385,10 @@
 </div>
 <div class="container mx-auto">
 
-<div class="pt-1 grid grid-cols-1 md:grid-cols-4 gap-1  justify-center items-center">
+<div class="pt-1 grid grid-cols-1 md:grid-cols-3 gap-1  justify-center items-center">
 
   @foreach($posts as $post)
+  @if (!$loop->first)
   <div class="max-w-lg mx-auto">
     <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
         <a href="#">
@@ -393,10 +399,14 @@
                 <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">Noteworthy technology acquisitions 2021</h5>
             </a>
             <p class="font-normal text-gray-700 mb-3">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-        
+            <a href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
+
         </div>
+
     </div>
+
 </div>
+  @endif
             @endforeach
 
 </div>
