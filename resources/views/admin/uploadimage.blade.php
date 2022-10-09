@@ -1,23 +1,12 @@
+
 @extends('layouts.app')
 @section('content')
-
-<div class="flex items-center justify-left p-3">
-
-<a href={{route('admin') }} >
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-</a>
-</div>
-<form enctype="multipart/form-data" action={{route('uploadImage')}} method="POST">
-@csrf
-
-
-
 <div class="flex justify-center mt-8">
-    
-    
-    <div class="rounded-lg shadow-xl bg-gray-50 lg:w-1/2">
-        <div class="m-4">
-            
+<div class="w-full max-w-xs">
+<form enctype="multipart/form-data" action={{route('uploadImage')}} method="POST">
+    @csrf
+
+  <div class="m-4">
             <label class="inline-block mb-2 text-gray-500">Upload
                 Image(jpg,png,svg,jpeg)</label>
             <div class="flex items-center justify-center w-full">
@@ -36,15 +25,41 @@
                     <input type="file" name="image" id="image" class="opacity-0" />
                 </label>
             </div>
-        </div>
-     
+    <div class="mb-4 pt-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+        Titulo
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="title" type="text" placeholder="Titulo">
+
     </div>
+
+    <div class="mb-8">
+                            <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
+                            <textarea name="content" class="border-2 border-gray-500">
+                               
+                            </textarea>
+                        </div>
+
+
+
+    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="submit">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Add Logo</button>
+    </div>
+
+
+    
+
+    
+    
+  </form>
+
 </div>
-<div class="container mx-auto pt-5 flex flex-col justify-center items-center">
-<button type="submite" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-        Cargar Imagen
-      </button>
 </div>
-</form>
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
+
 
 @endsection

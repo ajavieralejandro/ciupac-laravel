@@ -261,16 +261,14 @@
     
    <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
         <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
-            <img class="xl:max-w-6xl" src="{{asset($image->path.'/'.$image->name)}}" alt="">
+        <img class="xl:max-w-6xl" src="{{asset($portrait->image_path.'/'.$portrait->image_name)}}" alt="">
             <div class="content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
                 <div class="flex justify-between font-bold text-sm">
-                    <p>Product Review</p>
-                    <p class="text-gray-400">17th March, 2021</p>
+                 
                 </div>
-                <h2 class="text-3xl font-semibold mt-4 md:mt-10">Coffee From Heaven</h2>
-                <p class="my-3 text-justify font-medium text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aperiam nulla cupiditate saepe sed quis veritatis minus rem adipisci aliquid.</p>
-                <button class="mt-2 md:mt-5 p-3 px-5 bg-black text-white font-bold text-sm hover:bg-purple-800">Read
-          More</button>
+                <h2 class="text-3xl font-semibold mt-4 md:mt-10">{{$portrait->title}}</h2>
+                {!!$portrait->body!!}
+   
             </div>
         </section>
     </section>
@@ -294,11 +292,7 @@
 <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
       {!!$about->body!!}
 
-      <header
-  class="flex items-l md:h-screen mb-12 bg-fixed bg-cover custom-img"
->
- <div></div>
-</header>
+ 
   
       </div>
 
@@ -306,12 +300,13 @@
 
 </section>
 <aside class="bw-full md:w-1/3 container gap-3 flex flex-col items-center px-3">
-<article class="flex flex-col shadow-xl mx-auto max-w-sm bg-blue-100 h-full py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
-                
-                <div id="mapid"></div>
-                <h1 class="font-extrabold text-6xl mt-28 mb-10 text-gray-800">01.</h1>
-                <h2 class="font-bold mb-5 text-gray-800">Stylish Egg Chair</h2>
-                <p class="text-sm leading-relaxed text-gray-700">
+
+<article class="flex flex-col  mx-auto max-w-sm bg-blue-50 h-screen py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+<h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
+
+<div id="mapid"></div>
+
+                <p class="text-sm p-10 leading-relaxed text-gray-700">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
                 </p>
             </article>
@@ -323,7 +318,14 @@
 
 </aside>
 
+
+
 </div>
+<section class="pt-40 pb-32 relative">
+  <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
+  <h1 class="text-black display-2 text-center relative">Noticias</h1>
+</section>
+<section class="h-[500px]"></section>
         <div class="container mx-auto flex flex-wrap py-6">
           
 
