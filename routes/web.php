@@ -26,7 +26,7 @@ use App\Http\Middleware\IsAdmin;
 |
 */
 
-Route::get('/',[PagesController::class,'index']);
+Route::get('/',[PagesController::class,'index'])->name('welcome');
 Route::resource('/blog',PostController::class);
 
 /*Route::get('/', function () {

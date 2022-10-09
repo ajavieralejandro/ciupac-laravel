@@ -16,8 +16,6 @@
 
 <!-- jQuery, vinculado directo a cdn de google -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<!-- ArgenMap v2, vinculado directo desde el Instituto Geográfico Nacional -->
-<script type="text/javascript" src="https://www.ign.gob.ar/argenmap2/argenmap.jquery.min.js"></script>
 
 <style>
 
@@ -232,19 +230,19 @@
 			<div>
 				<ul>
 					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
+						<a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contactsection">Contact</a>
+						<a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contactsection">Contact</a>
 					</li>
 				</ul>
 			</div>
@@ -282,6 +280,7 @@
  -->
  <div >
 
+ 
 
  <div class="container mx-auto flex flex-wrap py-6">
 
@@ -290,29 +289,34 @@
 <section class="w-full md:w-2/3 flex flex-col items-center px-3">
 <h2 class=" text-3xl font-semibold mt-4 md:mt-10">Nosotros </h2>
 
+
+
 <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
       {!!$about->body!!}
-          <header
-  class="flex items-center justify-center h-screen mb-12 bg-fixed bg-center bg-cover custom-img"
->
- 
-</header>
 
+      <header
+  class="flex items-l md:h-screen mb-12 bg-fixed bg-cover custom-img"
+>
+ <div></div>
+</header>
   
       </div>
 
+  
+
 </section>
 <aside class="bw-full md:w-1/3 container gap-3 flex flex-col items-center px-3">
-<article class="flex flex-col shadow-xl mx-auto max-w-sm bg-red-100 py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer max-h-190 rounded-md">
-                <div class="min-h-62">
-                    <img class="mx-auto" src="https://demo.happyaddons.com/wp-content/uploads/2019/05/card-image13a.png" alt="" />
-                </div>
+<article class="flex flex-col shadow-xl mx-auto max-w-sm bg-blue-100 h-full py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+                
+                <div id="mapid"></div>
                 <h1 class="font-extrabold text-6xl mt-28 mb-10 text-gray-800">01.</h1>
                 <h2 class="font-bold mb-5 text-gray-800">Stylish Egg Chair</h2>
                 <p class="text-sm leading-relaxed text-gray-700">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
                 </p>
             </article>
+
+
 
 
 
@@ -1260,17 +1264,7 @@
 
 
 </body>
-<script>
-var mymap = L.map('mapid').setView([-38.505, -63.09], 4);
-var app = @json($locations);
-    app.forEach(element=>{
-        var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
-        marker.bindPopup(element.name).openPopup();
-    });
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(mymap);
-</script>
+
 
 <script>
 // Burger menus
@@ -1314,9 +1308,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
 <script>
-    
+  
+console.log("Hola");
+var mymap = L.map('mapid').setView([-38.505, -63.09], 4);
+var app = @json($locations);
+    app.forEach(element=>{
+        var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
+        marker.bindPopup(element.name).openPopup();
+    });
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
 </script>
+
+    
 
 
 </html>
