@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Location;
 use App\Models\About;
 use App\Models\Portrait;
+use App\Models\Articles;
 
 
 
@@ -30,10 +31,11 @@ class PagesController extends Controller
         $image = Image::first();
         $logos = Logo::all();
         $about = About::first();
+        $articles = Articles::paginate(5);
         $portrait = Portrait::first();
-        $posts = Post::orderBy('created_at')->paginate(4);
+        $posts = Post::orderBy('created_at')->paginate(3);
         return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations,
-                                'about'=>$about,'portrait'=>$portrait
+                                'about'=>$about,'portrait'=>$portrait,'articles'=>$articles
         ]);
     }
 

@@ -1,4 +1,4 @@
-<html lang="en" class="scroll-smooth">
+<html lang="en" >
 
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,8 @@
     
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
@@ -166,7 +168,7 @@
 </head>
 </head>
 
-<body class="bg-white		">
+<body class="scroll-smooth">
     <header>
     <nav class="relative  px-4 py-4 flex justify-between items-center bg-white">
 		<a class="text-3xl font-bold leading-none" href="#">
@@ -189,25 +191,25 @@
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-blue-600 font-bold" href="#">About Us</a></li>
+			<li><a class="text-sm text-gray-500 font-bold" href="#">Nosotros</a></li>
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Services</a></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Novedades</a></li>
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Pricing</a></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Equipo</a></li>
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#contactsection">Contact</a></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#contactsection">Contacto</a></li>
 		</ul>
 	
 	</nav>
@@ -323,27 +325,47 @@
 
 
 </div>
-<h1 class="font-medium text-center font-serif leading-tight text-5xl mt-0 mb-2 text-black">Noticias</h1>
+<h1 class="font-medium text-center font-serif leading-tight text-5xl mt-0 mb-2 text-black">Novedades</h1>
 
 <section class="pt-40 pb-32 relative">
   <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
 </section>
 <section class="h-[500px] "></section>
-
+   <!-- Topic Nav -->
+   <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
+        <div class="block sm:hidden">
+            <a
+                class="block md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
+                @click="open = !open"
+            >
+                Topics <i :class="open ? 'fa-chevron-down': 'fa-chevron-up'" class="fas ml-2"></i>
+            </a>
+        </div>
+        <div :class="open ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
+            <div class="w-full container mx-auto flex flex-col sm:flex-row items-center justify-center text-sm font-bold uppercase mt-0 px-6 py-2">
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Technology</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Automotive</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Finance</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Politics</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Culture</a>
+                <a href="#" class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
+            </div>
+        </div>
+    </nav>
         <div class="container mx-auto flex flex-wrap py-6"  >
           
 
 <!-- Posts Section -->
-<section class="w-full md:w-2/3 flex flex-col items-center pt-5">
+<section class="w-full md:w-2/3 flex flex-col items-center ">
   
         @foreach($posts as $post)
         @if ($loop->first)
         <a href="{{route('showPost', ['id' => $post->id]);}}">
-
         <article class="p-5 transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl group">
-       
+        <p>{{$post->created_at->format('d-m-Y')}}</p>
+
         <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}});">
-               <div class="bg-black opacity-60"> 
+               <div class="bg-black opacity-80"> 
                <h1 class="mt-5 text-5xl text-gray-100 leading-snug  min-h-33">{{$post->title}}
                 </h1>
                 <h1 class="mt-5 text-5xl text-gray-100 leading-snug  min-h-33">{{$post->description}}
@@ -366,6 +388,7 @@
     @endif
     @endforeach
     <div class="container  px-20">
+      
 
                         </div>
 
@@ -375,17 +398,33 @@
 
 <!-- Sidebar Section -->
 <aside class="w-full pt-5 md:w-1/3 flex flex-col items-center px-3">
-  
 
-<article class="bg-blue-50  mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl ">
-                <img class="mx-auto mb-20 mt-10 w-40" src="https://penpot.app/images/cross-teams.webp" alt="" />
-                <h2 class="text-center text-3xl mt-8 font-bold min-h-18 px-12">
-                    For cross-domain teams
-                </h2>
-                <p class="m-4 text-lg p-4 leading-relaxed text-center ">
-                    Product features and capabilities meant for the different roles in the next-decade team. Say goodbye to the legendary pain of the design silo.
-                </p>
-            </article>
+
+
+            @foreach($posts as $post)
+  @if (!$loop->first)
+  <div class="max-w-lg mx-auto ">
+
+    <div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white  rounded-lg max-w-sm mb-5">
+    <a href="{{route('showPost', ['id' => $post->id]);}}">
+      
+            <img class="rounded-t-lg h-48 w-96 " src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
+        </a>
+        <div class="p-5">
+            <a href="#">
+                <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{$post->title}}</h5>
+            </a>
+            <p class="font-normal text-gray-700 mb-3">{{$post->description}}</p>
+            <a class="hover:text-green-500" href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
+  <p>{{$post->created_at->format('d-m-Y')}}</p>
+
+        </div>
+
+    </div>
+
+</div>
+  @endif
+        @endforeach
 
 
 
@@ -397,102 +436,41 @@
 
 <div class="pt-1 grid grid-cols-1 md:grid-cols-3 gap-1  justify-center items-center">
 
-  @foreach($posts as $post)
-  @if (!$loop->first)
-  <div class="max-w-lg mx-auto ">
-    <div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white shadow-md border border-gray-200 rounded-lg max-w-sm mb-5">
-    <a href="{{route('showPost', ['id' => $post->id]);}}">
-            <img class="rounded-t-lg h-48 w-96 " src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
-        </a>
-        <div class="p-5">
-            <a href="#">
-                <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{$post->title}}</h5>
-            </a>
-            <p class="font-normal text-gray-700 mb-3">{{$post->description}}</p>
-            <a class="hover:text-green-500" href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
-
-        </div>
-
-    </div>
-
-</div>
-  @endif
-            @endforeach
+  
 
 </div>
  
 </div>
 
-
-  
-<div class="grid h-screen place-items-center">
-    <div class="carousel" >
-    <div class="carousel-inner" >
-        <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-        <div class="carousel-item">
-            <img src="https://www.argenports.com.ar/public/img/notas/175/bahia-blanca-ya-funciona-una-obra-clave-para-disminuir-la-contaminacion-del-estuario-aga-bahia-blanca-desktop.JPG">
-        </div>
-        <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-        <div class="carousel-item">
-            <img  src="https://px.cdn.lanueva.com/092018/1536251670645.webp?cw=1121&ch=633&extw=jpg">
-        </div>
-        <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-        <div class="carousel-item">
-            <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
-        </div>
-        <label for="carousel-3" class="carousel-control prev control-1">‹</label>
-        <label for="carousel-2" class="carousel-control next control-1">›</label>
-        <label for="carousel-1" class="carousel-control prev control-2">‹</label>
-        <label for="carousel-3" class="carousel-control next control-2">›</label>
-        <label for="carousel-2" class="carousel-control prev control-3">‹</label>
-        <label for="carousel-1" class="carousel-control next control-3">›</label>
-        <ol class="carousel-indicators">
-            <li>
-                <label for="carousel-1" class="carousel-bullet">•</label>
-            </li>
-            <li>
-                <label for="carousel-2" class="carousel-bullet">•</label>
-            </li>
-            <li>
-                <label for="carousel-3" class="carousel-bullet">•</label>
-            </li>
-        </ol>
-    </div>
-</div>
-</div>
-
-
+ 
 
  
 <div class="pt-10">
-
+  
 <div class="  px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
-     
+      
     </div>
+    
     <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
       <span class="relative inline-block">
-        <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
-          <defs>
-            <pattern id="1d4040f3-9f3e-4ac7-b117-7d4009658ced" x="0" y="0" width=".135" height=".30">
-              <circle cx="1" cy="1" r=".7"></circle>
-            </pattern>
-          </defs>
-          <rect fill="url(#1d4040f3-9f3e-4ac7-b117-7d4009658ced)" width="52" height="24"></rect>
-        </svg>
+      <div class="flex justify-center items-center ">
+      <svg class="w-10 h-10 content-center animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+</div>
         <span class="relative">Conoce</span>
       </span>
       a nuestro equipo
     </h2>
+    
     <p class="text-base text-gray-700 md:text-lg">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
     </p>
   </div>
   <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
     @foreach($members as $member)
     <div>
-      <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+      <div class="relative overflow-hidden transition duration-300 transform rounded-lg shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
         <img class="object-cover w-full h-56 md:h-64 xl:h-80"        src="{{asset($member->image_path.'/'.$member->image_name)}}"
  alt="Person" />
         <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
@@ -1097,175 +1075,7 @@
       </div>
 
 
-      <footer class="bottom-0 pt-40   text-center lg:text-left text-gray-600">
-  <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
-    <div class="mr-12 hidden lg:block">
-      <span>Get connected with us on social networks:</span>
-    </div>
-    <div class="flex justify-center">
-      <a href="#!" class="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
-          class="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 320 512">
-          <path fill="currentColor"
-            d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" class="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter"
-          class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="currentColor"
-            d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" class="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google"
-          class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">
-          <path fill="currentColor"
-            d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" class="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
-          class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path fill="currentColor"
-            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" class="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in"
-          class="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512">
-          <path fill="currentColor"
-            d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" class="text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
-          class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-          <path fill="currentColor"
-            d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
-          </path>
-        </svg>
-      </a>
-    </div>
-  </div>
-  <div class="mx-6 py-10 text-center md:text-left">
-    <div class="grid grid-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="">
-        <h6 class="
-            uppercase
-            font-semibold
-            mb-4
-            flex
-            items-center
-            justify-center
-            md:justify-start
-          ">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cubes"
-            class="w-4 mr-3" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M488.6 250.2L392 214V105.5c0-15-9.3-28.4-23.4-33.7l-100-37.5c-8.1-3.1-17.1-3.1-25.3 0l-100 37.5c-14.1 5.3-23.4 18.7-23.4 33.7V214l-96.6 36.2C9.3 255.5 0 268.9 0 283.9V394c0 13.6 7.7 26.1 19.9 32.2l100 50c10.1 5.1 22.1 5.1 32.2 0l103.9-52 103.9 52c10.1 5.1 22.1 5.1 32.2 0l100-50c12.2-6.1 19.9-18.6 19.9-32.2V283.9c0-15-9.3-28.4-23.4-33.7zM358 214.8l-85 31.9v-68.2l85-37v73.3zM154 104.1l102-38.2 102 38.2v.6l-102 41.4-102-41.4v-.6zm84 291.1l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6zm240 112l-85 42.5v-79.1l85-38.8v75.4zm0-112l-102 41.4-102-41.4v-.6l102-38.2 102 38.2v.6z">
-            </path>
-          </svg>
-          Tailwind ELEMENTS
-        </h6>
-        <p>
-          Here you can use rows and columns to organize your footer content. Lorem ipsum dolor
-          sit amet, consectetur adipisicing elit.
-        </p>
-      </div>
-      <div class="">
-        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-          Products
-        </h6>
-        <p class="mb-4">
-          <a href="#!" class="text-gray-600">Angular</a>
-        </p>
-        <p class="mb-4">
-          <a href="#!" class="text-gray-600">React</a>
-        </p>
-        <p class="mb-4">
-          <a href="#!" class="text-gray-600">Vue</a>
-        </p>
-        <p>
-          <a href="#!" class="text-gray-600">Laravel</a>
-        </p>
-      </div>
-      <div class="">
-        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-          Useful links
-        </h6>
-        <p class="mb-4">
-          <a href="#!" class="text-gray-600">Pricing</a>
-        </p>
-        <p class="mb-4">
-          <a href="#!" class="text-gray-600">Settings</a>
-        </p>
-        <p class="mb-4">
-          <a href="#!" class="text-gray-600">Orders</a>
-        </p>
-        <p>
-          <a href="#!" class="text-gray-600">Help</a>
-        </p>
-      </div>
-      <div class="">
-        <h6 class="uppercase font-semibold mb-4 flex justify-center md:justify-start">
-          Contact
-        </h6>
-        <p class="flex items-center justify-center md:justify-start mb-4">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home"
-            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-            <path fill="currentColor"
-              d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z">
-            </path>
-          </svg>
-          New York, NY 10012, US
-        </p>
-        <p class="flex items-center justify-center md:justify-start mb-4">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope"
-            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
-            </path>
-          </svg>
-          info@example.com
-        </p>
-        <p class="flex items-center justify-center md:justify-start mb-4">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone"
-            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
-            </path>
-          </svg>
-          + 01 234 567 88
-        </p>
-        <p class="flex items-center justify-center md:justify-start">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="print"
-            class="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z">
-            </path>
-          </svg>
-          + 01 234 567 89
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="text-center p-6 bg-gray-200">
-    <span>© 2021 Copyright:</span>
-    <a class="text-gray-600 font-semibold" href="https://tailwind-elements.com/">Tailwind Elements</a>
-  </div>
-</footer>
+     @include('layouts.footer')
 
 </main>
 
@@ -1317,9 +1127,29 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
+var greenIcon = L.icon({
+    iconUrl: "{{url('/public/images/malvinas.png')}}" ,
+    
+
+    iconSize:     [259, 190 ], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+var southWest = L.latLng(-34.712, -58.227),
+    northEast = L.latLng(-40.774, -63.125),
+    bounds = L.latLngBounds(southWest, northEast);
+
+
   
-console.log("Hola");
-var mymap = L.map('mapid').setView([-38.505, -63.09], 4);
+var mymap = L.map('mapid',{
+  maxBounds: bounds,
+ 
+}).setView([-38.505, -63.09], 4);
+
+L.marker([-50.5, -59.09], {icon: greenIcon}).addTo(mymap);
+
 var app = @json($locations);
     app.forEach(element=>{
         var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);

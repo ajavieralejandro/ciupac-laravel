@@ -1,5 +1,5 @@
-<footer class="bottom-0 pt-40   text-center lg:text-left text-gray-600">
-  <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
+<footer class="   text-center lg:text-left text-gray-600" style="padding:20px">
+  <div class=" flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
     <div class="mr-12 hidden lg:block">
       <span>Get connected with us on social networks:</span>
     </div>
@@ -162,7 +162,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center p-6 bg-gray-200">
+  <div class="text-center p-6 ">
     <span>© 2021 Copyright:</span>
     <a class="text-gray-600 font-semibold" href="https://tailwind-elements.com/">Tailwind Elements</a>
   </div>

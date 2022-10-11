@@ -20,8 +20,6 @@
 </head>
 
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
-<div class="flex flex-col h-screen justify-between">
-
     <div id="app">
         <header class="bg-gray-800 py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
@@ -53,8 +51,6 @@
                 </nav>
             </div>
         </header>
-        <main class="mb-auto ">
-
         <div>
             @yield('content')
 
@@ -62,8 +58,6 @@
         <div>
             @include('layouts.footer')
         </div>
-</main>
     </div>
-</div>
 </body>
 </html>

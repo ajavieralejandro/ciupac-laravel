@@ -28,34 +28,9 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-          //
-          $count = Article::count();
-          $article = new Article;
-          $validatedData = $request->validate([
-              'image' => 'required|max:50',
-              "document" => "required|mimes:pdf"
-      
-             ]);
-             $document = $request->file('document');
-             $extension = $image->extension();
-             $img = Image::make($image->getRealPath());
-             
-          
-             $filename = "logo-".$count.".".$extension;
-             $logo->image_name = $filename;
-             $logo->image_path = "public/images/logos";
-  
-  
-             $img->resize(250,250 , function ($constraint) {
-              $constraint->aspectRatio();
-          })->save('public/images/logos'.'/'.$filename);
-          $logo->name = $request->name;
-          $logo->save();
-  
-          return redirect('/logos');
-  
+       
      
   
 
@@ -71,7 +46,28 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+           //
+           $count = Articles::count();
+           $article = new Articles;
+           $validatedData = $request->validate([
+               'name' => 'required|max:50',
+               "document" => "required|mimes:pdf"
+       
+              ]);
+              $document = $request->file('document');
+              $extension = $document->extension();
+              $uniqueFileName = $request->name.'.'.$extension;
+        
+        $request->file('document')->move(public_path('public/documents/'), $uniqueFileName);
+              
+           
+              $article->name = $request->name;
+              $article->path = "public/documents/".$uniqueFileName;
+    
+           $article->save();
+   
+           return redirect('/articles');
+   
     }
 
     /**
@@ -114,8 +110,12 @@ class ArticlesController extends Controller
      * @param  \App\Models\Articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Articles $articles)
+    public function destroy(Request $request)
     {
         //
+         //
+         $member = Articles::find($request->article_id);
+         $member->delete();
+         return redirect('/articles');
     }
 }

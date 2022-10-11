@@ -53,12 +53,12 @@
                         </td>
                         <td
                             class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <form method="POST" action="{{route('deleteLogo')}}">
+                            <form method="POST" action="{{route('deleteArticle')}}">
                             @csrf
                             @method('delete')
 
 
-                            <input type="hidden" name="logo_id" value="{{$article->id}}"/>
+                            <input type="hidden" name="article_id" value="{{$article->id}}"/>
 
                             <button type="submit" class="   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400  hover:text-green-700" fill="none"

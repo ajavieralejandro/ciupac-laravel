@@ -82,6 +82,7 @@ Route::group([
                 Route::get('/articles', [\App\Http\Controllers\ArticlesController::class, 'index'])->name('showArticles');
                 Route::get('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'create'])->name('addArticle');
                 Route::post('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'store'])->name('storeArticle');
+                Route::delete('/article', [\App\Http\Controllers\ArticlesController::class, 'destroy'])->name('deleteArticle');
 
 
                 

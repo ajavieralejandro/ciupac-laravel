@@ -1,10 +1,10 @@
 @extends('layouts.homelayout')
 @section('content')
-<div class="max-w-screen-xl mx-auto">
+<div class="max-w-screen-xl mx-auto py-5">
   
     <!-- header ends here -->
 
-    <main class="mt-10">
+    <main class="mt-10 ">
 
       <div class="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative" style="height: 24em;">
         <div class="absolute left-0 bottom-0 w-full h-full z-10"
@@ -19,11 +19,9 @@
 </div>
          
           <div class="flex mt-3">
-            <img src="https://randomuser.me/api/portraits/men/97.jpg"
-              class="h-10 w-10 rounded-full mr-2 object-cover" />
-            <div>
-              <p class="font-semibold text-gray-200 text-sm"> Mike Sullivan </p>
-              <p class="font-semibold text-gray-400 text-xs"> 14 Aug </p>
+
+             
+              <p class="font-semibold text-gray-400 text-xs">{{$post->created_at->format('d-m-Y')}} </p>
             </div>
           </div>
         </div>
@@ -33,11 +31,18 @@
      {!!$post->body!!}
 
       </div>
+
+      @include('layouts.footer')
+
+      
+      
     </main>
     <!-- main ends here -->
     
 
     <!-- footer -->
+    
    
   </div>
+  
 @endsection
