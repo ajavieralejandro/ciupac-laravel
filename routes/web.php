@@ -8,6 +8,8 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortraitController;
+use App\Http\Controllers\ArticlesController;
+
 
 
 
@@ -77,6 +79,10 @@ Route::group([
                 //about controller
                 Route::get('/editAbout', [\App\Http\Controllers\AboutController::class, 'show'])->name('showAbout');
                 Route::post('/storeAbout', [\App\Http\Controllers\AboutController::class, 'store'])->name('storeAbout');
+                Route::get('/articles', [\App\Http\Controllers\ArticlesController::class, 'index'])->name('showArticles');
+                Route::get('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'create'])->name('addArticle');
+                Route::post('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'store'])->name('storeArticle');
+
 
                 
                 });

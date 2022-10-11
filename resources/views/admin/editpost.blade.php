@@ -58,7 +58,8 @@
 
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Description</label></br>
-                            <input value={{$post->description}} type="text" class="border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
+                            <input value="{{$post->description}}"  type="text" class="border-2 border-gray-300 p-2 w-full" name="description" id="description" placeholder="(Optional)">
+
                         </div>
 
                         <div class="mb-8">

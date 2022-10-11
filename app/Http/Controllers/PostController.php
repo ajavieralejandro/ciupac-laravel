@@ -115,10 +115,12 @@ class PostController extends Controller
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         
                ]);
+               $count = Post::count();
                $file= $request->file('image');
                $extension = $file->extension();
-               $filename = "post-".$request->member_id.".".$extension;
-               $file-> move(public_path('public/images/members'), $filename);
+               $filename = "post-".$count.".".$extension;
+               $file-> move(public_path('public/images/posts'), $filename);
+               $member->image_name = $filename;
                Post::whereId($request->member_id)->update(['image_name'=>$filename]);
         
 
