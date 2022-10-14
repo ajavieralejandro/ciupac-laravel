@@ -282,21 +282,24 @@
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
  <div >
+@foreach($posts as $post)
+@if ($loop->first)
+ <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}})">
+             <h1 class="opacity-80 bg-black w-1/2 mt-5 text-4xl text-white leading-snug  min-h-33">{{$post->title}}
+             <h1 class="opacity-80  bg-black w-1/2 text-4xl text-white leading-snug  min-h-33">{{$post->description}}
 
- <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
-             <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
              </h1>
              <div class="mt-20">
-                 <span class="text-xl">Moonlanding - </span>
-                 <span class="font-bold text-xl">Neil Armstrong</span>
+            
              </div>
              <div class="mt-16 flex justify-between ">
-                 <span class="p-3 pl-0 font-bold">Travel Guide</span>
-                 <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black ">Paid
-         Membership</span>
+              <span  class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black "></span>
+                 <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black ">Leer más
+         </span>
              </div>
          </article>
-
+@endif
+@endforeach
 
  <div class="container mx-auto flex flex-wrap">
 
