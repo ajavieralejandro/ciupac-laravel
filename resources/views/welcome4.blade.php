@@ -21,7 +21,7 @@
 
 <style>
 
-#mapid { height: 400px; width:300px; }
+#mapid { height: 300px; width:100%; }
 
 </style>
 
@@ -283,18 +283,7 @@
  -->
  <div >
 
- 
-
- <div class="container mx-auto flex flex-wrap">
-
-
- <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
- <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
-         
-
-
-
-         <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
+ <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
              <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
              </h1>
              <div class="mt-20">
@@ -308,30 +297,23 @@
              </div>
          </article>
 
-         <article class="p-10 min-h-116 max-w-xl w-full bg-blue-600 rounded-xl text-gray-100 transform duration-500 hover:-translate-y-1 cursor-pointer">
-             <h1 class="mt-0 text-3xl text-gray-100 leading-snug  min-h-33">Artículos de Investigación
-             </h1>
-             <ul class="mt-10">
-               @foreach($articles as $article)
-               <a href="{{$article->path}}">
-               <li class="hover:text-black">
-       
-               <svg class="inline-block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> {{$article->name}}
-                 </li>
-               </a>
-               @endforeach
-             </ul>
 
-       
-     
-         </article>
+ <div class="container mx-auto flex flex-wrap">
+
+
+ <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
+ <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
+         
+<div class="p-4 m-auto grid">
+
+ </div>
 
      </section>
 
 
-<h1 class="font-medium text-left font-serif leading-tight text-5xl ml-2 mt-0 mb-2 text-black">Novedades</h1>
 
 <div class="p-4 m-auto grid grid-cols-1 gap-1 md:grid-cols-3">
+  
 
 @foreach($posts as $post)
 <div class="max-w-lg mx-auto ">
@@ -365,9 +347,6 @@
 </section>
 <section class="h-[500px] "></section>
 
-      
-    
-        
     </section>
     
 
@@ -380,8 +359,9 @@
 
 
 
+<div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed" style="paddin-top:-100px">
 
-<div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+
 <h2 class=" text-3xl font-semibold ">Nosotros </h2>
 
       {!!$about->body!!}
@@ -390,19 +370,33 @@
   
       </div>
 
+    
+
   
 
 </section>
-<aside class=" py-20 bw-full md:w-1/3 container gap-3 flex flex-col items-center px-3">
+
+<aside class=" py-20 bw-full lg:w-1/3 container gap-3 flex flex-col items-center px-3">
 
 <article class="flex flex-col  mx-auto max-w-sm bg-blue-50 h-screen py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
-
 <div id="mapid"></div>
 
                 <p class="text-sm p-10 leading-relaxed text-gray-700">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
                 </p>
+                <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Artículos de Investigación
+             </h1>
+             <ul class="mt-10">
+               @foreach($articles as $article)
+               <a href="{{$article->path}}">
+               <li class="hover:text-green-500 text-black">
+       
+               <svg class="inline-block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> {{$article->name}}
+                 </li>
+               </a>
+               @endforeach
+             </ul>
             </article>
 
 
@@ -421,8 +415,9 @@
 <div class="container mx-auto">
 
 
+        
+
  
-</div>
 
  
 
@@ -1110,7 +1105,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 var greenIcon = L.icon({
-    iconUrl: "{{url('/public/images/malvinas.png')}}" ,
+    iconUrl: "{{url('/public/images/iconomalvinas.ico')}}" ,
     
 
     iconSize:     [159, 120 ], // size of the icon
