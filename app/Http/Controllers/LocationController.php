@@ -32,7 +32,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        return view('admin.createLocation');
+        return view('admin.createlocation');
     }
 
     /**
