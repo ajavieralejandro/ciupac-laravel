@@ -289,6 +289,45 @@
 
 
  <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
+ <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
+         
+
+
+
+         <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
+             <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
+             </h1>
+             <div class="mt-20">
+                 <span class="text-xl">Moonlanding - </span>
+                 <span class="font-bold text-xl">Neil Armstrong</span>
+             </div>
+             <div class="mt-16 flex justify-between ">
+                 <span class="p-3 pl-0 font-bold">Travel Guide</span>
+                 <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black ">Paid
+         Membership</span>
+             </div>
+         </article>
+
+         <article class="p-10 min-h-116 max-w-xl w-full bg-blue-600 rounded-xl text-gray-100 transform duration-500 hover:-translate-y-1 cursor-pointer">
+             <h1 class="mt-0 text-3xl text-gray-100 leading-snug  min-h-33">Artículos de Investigación
+             </h1>
+             <ul class="mt-10">
+               @foreach($articles as $article)
+               <a href="{{$article->path}}">
+               <li class="hover:text-black">
+       
+               <svg class="inline-block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> {{$article->name}}
+                 </li>
+               </a>
+               @endforeach
+             </ul>
+
+       
+     
+         </article>
+
+     </section>
+
 
 <h1 class="font-medium text-left font-serif leading-tight text-5xl ml-2 mt-0 mb-2 text-black">Novedades</h1>
 
@@ -320,52 +359,29 @@
 
   
 </div>
-        <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
-         
+<section class="pt-40 pb-32 relative">
+  
+  <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
+</section>
+<section class="h-[500px] "></section>
 
-
-
-            <article class="p-10 min-h-116 max-w-3xl w-full rounded-xl text-gray-100 xl:col-span-2 bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url(https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80);">
-                <h1 class="mt-5 text-4xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
-                </h1>
-                <div class="mt-20">
-                    <span class="text-xl">Moonlanding - </span>
-                    <span class="font-bold text-xl">Neil Armstrong</span>
-                </div>
-                <div class="mt-16 flex justify-between ">
-                    <span class="p-3 pl-0 font-bold">Travel Guide</span>
-                    <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black ">Paid
-            Membership</span>
-                </div>
-            </article>
-
-            <article class="p-10 min-h-116 max-w-xl w-full bg-blue-600 rounded-xl text-gray-100 transform duration-500 hover:-translate-y-1 cursor-pointer">
-                <h1 class="mt-5 text-3xl text-gray-100 leading-snug  min-h-33">One small step for man one giant leap for mankind
-                </h1>
-                <div class="mt-20">
-                    <span class="text-xl">Moonlanding - </span>
-                    <span class="font-bold text-xl">Neil Armstrong</span>
-                </div>
-                <div class="mt-16 flex justify-between ">
-                    <span class="p-3 pl-0">Story</span>
-                    <span class="p-3  border-2 border-gray-200 rounded-md text-base hover:bg-gray-200 hover:border-gray-200 cursor-pointer hover:text-black ">Paid
-            Membership</span>
-                </div>
-            </article>
-
-        </section>
-
+      
+    
         
     </section>
+    
 
 
 <!-- Posts Section -->
 
-<section class="w-full grid md:w-2/3 flex flex-col items-center px-3">
+
+<section class="w-full grid md:w-2/3 flex flex-col items-center ">
 
 
 
-<div class="px-4 lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+
+
+<div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
 <h2 class=" text-3xl font-semibold ">Nosotros </h2>
 
       {!!$about->body!!}
@@ -400,13 +416,7 @@
 
 </div>
 
-<section class="pt-40 pb-32 relative">
-  
-  <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
-</section>
-<section class="h-[500px] "></section>
 
-      
 
 <div class="container mx-auto">
 
