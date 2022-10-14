@@ -40,7 +40,7 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         //
-        if(About::count()==0){
+        if(About::count()0){
 
             $validatedData = $request->validate([
                 'content' => 'required',
@@ -81,7 +81,7 @@ class AboutController extends Controller
         
 
         }
-        $about>save();
+        $about->save();
         }
         return view('admin.adminpanel');
 
