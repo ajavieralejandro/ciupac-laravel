@@ -21,7 +21,7 @@
 
 <style>
 
-#mapid { height: 300px; width:100%; }
+#mapid { height: 900px; width:100%; }
 
 </style>
 
@@ -344,6 +344,7 @@
 
   
 </div>
+
 <section class="pt-40 pb-32 relative">
   
   <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
@@ -365,13 +366,16 @@
 <div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed" style="paddin-top:-100px">
 
 
+
 <h2 class=" text-3xl font-semibold ">Nosotros </h2>
 
       {!!$about->body!!}
 
- 
+   
   
       </div>
+
+
 
     
 
@@ -379,15 +383,11 @@
 
 </section>
 
-<aside class=" py-20 bw-full lg:w-1/3 container gap-3 flex flex-col items-center px-3">
+<aside class=" py-2  bw-full md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
 
-<article class="flex flex-col  mx-auto max-w-sm bg-blue-50 h-screen py-20 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
-<h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
-<div id="mapid"></div>
+<article class="flex flex-col  mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
 
-                <p class="text-sm p-10 leading-relaxed text-gray-700">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
-                </p>
+
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Artículos de Investigación
              </h1>
              <ul class="mt-10">
@@ -411,8 +411,20 @@
 
 
 
+
+
 </div>
 
+
+<article class="flex flex-col  mx-auto  h-screen py-20  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+<h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
+<div id="mapid"></div>
+
+                <p class="text-sm p-10 leading-relaxed text-gray-700">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
+                </p>
+             
+            </article>
 
 
 <div class="container mx-auto">
@@ -1117,18 +1129,18 @@ var greenIcon = L.icon({
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-var southWest = L.latLng(-34.712, -8.227),
-    northEast = L.latLng(-50.774, -63.125),
+var southWest = L.latLng(-30.712, -57.227),
+    northEast = L.latLng(-41.774,  -62.227),
     bounds = L.latLngBounds(southWest, northEast);
 
 
   
 var mymap = L.map('mapid',{
   maxBounds: bounds,
-  minZoom:5,
-  maxZoom:8
+  minZoom:6,
+  maxZoom:7
  
-}).setView([-50.505, -48.09], 4);
+}).setView([-38.505, -62.09], 4);
 
 L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);
 
