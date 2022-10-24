@@ -281,7 +281,7 @@
 
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
- <div >
+ <div class="container mx-auto flex flex-wrap">
 @foreach($posts as $post)
 @if ($loop->first)
  <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}})">
@@ -349,7 +349,7 @@
   
   <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
 </section>
-<section class="h-[500px] "></section>
+<section class="h-[300px] "></section>
 
     </section>
     
@@ -429,10 +429,6 @@
 
 <div class="container mx-auto">
 
-
-        
-
- 
 
  
 
@@ -1147,7 +1143,7 @@ L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);
 var app = @json($locations);
     app.forEach(element=>{
         var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
-        marker.bindPopup(element.name).openPopup();
+        marker.bindPopup('<div style="height:100%"">'+element.name+'</div>').openPopup();
     });
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
