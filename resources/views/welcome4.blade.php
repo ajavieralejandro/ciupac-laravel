@@ -1063,7 +1063,7 @@
       </div>
 
 
-     @include('layouts.footer',['conf'=>$conf])
+     @include('layouts.footerPage',['conf'=>$conf])
 
 </main>
 
