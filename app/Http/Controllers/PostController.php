@@ -60,6 +60,10 @@ class PostController extends Controller
         $file-> move(public_path('public/images/posts'), $filename);
         $post->image_name = $filename;
         $post->image_path = "public/images/posts";
+        if($request->visible)
+            $post->visible=true;
+        else
+            $post->visible=false;
         $post->save();
         return redirect('/posts'); 
     }
@@ -104,9 +108,15 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+
         ]);
+
         $member = Post::whereId($request->post_id)->update($validatedData);
         $member = Post::find($request->post_id);
+        if($request->visible)
+            $member->visible=true;
+        else
+            $member->visible=false;
         $member->body = $request->content;
 
         if($request->image){

@@ -1063,7 +1063,7 @@
       </div>
 
 
-     @include('layouts.footer')
+     @include('layouts.footer',['conf'=>$conf])
 
 </main>
 
@@ -1142,8 +1142,9 @@ L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);
 
 var app = @json($locations);
     app.forEach(element=>{
+        var display = '<div style="height:100%"">'+element.name+'</div>';
         var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
-        marker.bindPopup('<div style="height:100%"">'+element.name+'</div>').openPopup();
+        marker.bindPopup(display).openPopup();
     });
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

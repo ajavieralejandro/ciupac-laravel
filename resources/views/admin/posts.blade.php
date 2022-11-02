@@ -15,6 +15,10 @@
                         <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                             Titulo</th>
+                            <th
+                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                            Visible
+                        </th>
                        
             
                         <th
@@ -43,6 +47,17 @@
                                 </div>
                             </div>
                         </td>
+                        <td
+                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                            @if($post->visible)
+                            <svg class="w-8 h-8 text-green-500 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            @endif
+                            @if(!$post->visible)
+                            <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>                            @endif
+
+                        </td>
+
+ 
 
              
 
@@ -88,7 +103,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 </svg>
-  <span class="pl-4">Agregar colaborador</span>
+  <span class="pl-4">Agregar Post   </span>
 </button>
 </a>
         </div>

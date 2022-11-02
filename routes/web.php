@@ -9,6 +9,8 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortraitController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\ConfigurationController;
+
 
 
 
@@ -79,11 +81,15 @@ Route::group([
                 //about controller
                 Route::get('/editAbout', [\App\Http\Controllers\AboutController::class, 'show'])->name('showAbout');
                 Route::post('/storeAbout', [\App\Http\Controllers\AboutController::class, 'store'])->name('storeAbout');
+                //articles
                 Route::get('/articles', [\App\Http\Controllers\ArticlesController::class, 'index'])->name('showArticles');
                 Route::get('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'create'])->name('addArticle');
                 Route::post('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'store'])->name('storeArticle');
                 Route::delete('/article', [\App\Http\Controllers\ArticlesController::class, 'destroy'])->name('deleteArticle');
 
+                //configuration
+                Route::get('/config', [\App\Http\Controllers\ConfigurationController::class, 'index'])->name('config');
+                Route::post('/config', [\App\Http\Controllers\ConfigurationController::class, 'update'])->name('setConfig');
 
                 
                 });
