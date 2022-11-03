@@ -57,7 +57,7 @@ class LogoController extends Controller
            $logo->image_path = "public/images/logos";
 
 
-           $img->resize(250,250 , function ($constraint) {
+           $img->resize(350,350 , function ($constraint) {
             $constraint->aspectRatio();
         })->save('public/images/logos'.'/'.$filename);
         $logo->name = $request->name;

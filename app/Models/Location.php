@@ -13,4 +13,8 @@ class Location extends Model
         'longitude'
     ];
     use HasFactory;
+    public function asambleas()
+    {
+        return $this->hasMany(Asamblea::class);
+    }
 }

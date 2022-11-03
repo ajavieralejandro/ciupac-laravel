@@ -17,21 +17,15 @@
 @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form enctype="multipart/form-data" method="POST" action={{route('storeAsamblea')}}>
                     @csrf
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <form enctype="multipart/form-data" method="POST" action={{route('createPost')}}>
-                    @csrf
                     <div class="m-4">
-            <label class="inline-block mb-2 text-gray-500">Upload
-                Image(jpg,png,svg,jpeg)</label>
+         
                 <div class="flex justify-between mb-1">
-  <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-  <span class="text-sm font-medium text-blue-700 dark:text-white">0%</span>
+  <span class="text-base font-medium text-blue-700 dark:text-white">Logo</span>
+  <label class="inline-block mb-2 text-gray-500">Upload
+                Image(jpg,png,svg,jpeg)</label>
 </div>
 <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
   <div class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
@@ -52,18 +46,15 @@
                     <input onchange="console()" type="file" name="image" id="image" class="opacity-0" />
                 </label>
             </div>
-           
 
                         <div class="mb-4">
                             <label class="text-xl text-gray-600">Nombre <span class="text-red-500">*</span></label></br>
                             <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required>
                         </div>
-
-                      
-
-                        <div class="mb-4">
+     
+<div class="mb-4">
                         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Locacion : </label>
-<select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<select name="location" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
     @foreach($locations as $location)
   <option value="{{$location->id}}">{{$location->name}}</option>
   @endforeach
@@ -71,28 +62,38 @@
 </select>
                         </div>
 
-                    
 
+                     
                         <div class="mb-8">
-                            <label class="text-xl text-gray-600">Descripcion <span class="text-red-500">*</span></label></br>
+                            <label class="text-xl text-gray-600">descripcion <span class="text-red-500">*</span></label></br>
                             <textarea name="content" class="border-2 border-gray-500">
                                 
                             </textarea>
                         </div>
 
-                  
                         
 
                         <div class="flex p-1">
-                         
-                            <button type="submit" role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Agregar Asamblea</button>
+                            <select class="border-2 border-gray-300 border-r p-2" name="action">
+                                <option>Save and Publish</option>
+                                <option>Save Draft</option>
+                            </select>
+                            <button type="submit" role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
                         </div>
                     </form>
                     
-                 
+
+
                 </div>
-            
             </div>
+            <div class="mb-4 float-right">
+                        <a href={{route('addAsamblea')}}>
+            <button class=" text-align-center bg-transparent rounded inline-flex items-center h-10 px-5 text-green-500 transition-colors duration-150  rounded-lg focus:shadow-outline hover:text-white hover:bg-green-800">
+                
+  <p class="float-right" >Agregar Imagen</p>
+</button>
+</a>
+                        </div>
         </div>
     </div>
 

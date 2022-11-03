@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Asamblea extends Model
 {
     use HasFactory;
+    public function location()
+{
+    return $this->belongsTo('App\Models\Location');
+}
 }

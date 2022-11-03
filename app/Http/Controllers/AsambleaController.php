@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asamblea;
+use App\Models\Location;
+use Image;
+
+
 use Illuminate\Http\Request;
 
 class AsambleaController extends Controller
@@ -15,6 +19,8 @@ class AsambleaController extends Controller
     public function index()
     {
         //
+        $logos = Asamblea::all();
+        return view('admin.asambleas',['logos'=>$logos]);
     }
 
     /**
@@ -25,6 +31,8 @@ class AsambleaController extends Controller
     public function create()
     {
         //
+        $locations = Location::all();
+        return view('admin.createAsamblea',['locations'=>$locations]);
     }
 
     /**
@@ -36,6 +44,28 @@ class AsambleaController extends Controller
     public function store(Request $request)
     {
         //
+        $count = Asamblea::count();
+        $asamblea = new Asamblea;
+        $asamblea->name = $request->title;
+        $asamblea->description = $request->content;
+        $asamblea->location_id = $request->location;
+        $image = $request->file('image');
+        $extension = $image->extension();
+        $img = Image::make($image->getRealPath());
+        
+     
+        $filename = "asamblea-".$count.".".$extension;
+        $asamblea->image_name = $filename;
+        $asamblea->image_path = "public/images/asambleas";
+
+        if (!file_exists($asamblea->image_path)) {
+            mkdir($asamblea->image_path, 755, true);
+        }
+        $img->resize(350,350 , function ($constraint) {
+         $constraint->aspectRatio();
+     })->save('public/images/asambleas'.'/'.$filename);
+     $asamblea->save();
+     return view('admin.asambleas');
     }
 
     /**

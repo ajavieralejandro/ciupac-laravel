@@ -91,6 +91,13 @@ Route::group([
                 Route::get('/config', [\App\Http\Controllers\ConfigurationController::class, 'index'])->name('config');
                 Route::post('/config', [\App\Http\Controllers\ConfigurationController::class, 'update'])->name('setConfig');
 
+                //asambleas 
+                Route::get('/asambleas', [\App\Http\Controllers\AsambleaController::class, 'index'])->name('asambleas');
+                Route::get('/addAsamblea', [\App\Http\Controllers\AsambleaController::class, 'create'])->name('addAsamblea');
+                Route::post('/asamblea', [\App\Http\Controllers\AsambleaController::class, 'store'])->name('storeAsamblea');
+
+
+
                 
                 });
 
