@@ -45,7 +45,6 @@ class AsambleaController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
@@ -57,12 +56,12 @@ class AsambleaController extends Controller
         $asamblea = new Asamblea;
         $asamblea->name = $request->title;
         $asamblea->description = $request->content;
-        $asamblea->location_id = $request->location;
+        $asamblea->location_id = $request->location_id;
         $image = $request->file('image');
         $extension = $image->extension();
         $img = Image::make($image->getRealPath());
         
-     
+        $logos = Asamblea::all();
         $filename = "asamblea-".$count.".".$extension;
         $asamblea->image_name = $filename;
         $asamblea->image_path = "public/images/asambleas";
@@ -74,7 +73,7 @@ class AsambleaController extends Controller
          $constraint->aspectRatio();
      })->save('public/images/asambleas'.'/'.$filename);
      $asamblea->save();
-     return view('admin.asambleas');
+     return view('admin.asambleas',['logos'=>$logos]);
     }
 
     /**
