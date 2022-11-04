@@ -2,7 +2,7 @@
 
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
+    <title>Ciupac</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
     
@@ -195,13 +195,12 @@ body {
             <img class="xl:max-w-6xl" src="https://images.pexels.com/photos/5990153/pexels-photo-5990153.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1860" alt="">
             <div class="content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
                 <div class="flex justify-between font-bold text-sm">
-                    <p>Product Review</p>
-                    <p class="text-gray-400">17th March, 2021</p>
+                    <p></p>
+                    <p class="text-gray-400"></p>
                 </div>
-                <h2 class="text-3xl font-semibold mt-4 md:mt-10">Coffee From Heaven</h2>
-                <p class="my-3 text-justify font-medium text-gray-700 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem aperiam nulla cupiditate saepe sed quis veritatis minus rem adipisci aliquid.</p>
-                <button class="mt-2 md:mt-5 p-3 px-5 bg-black text-white font-bold text-sm hover:bg-purple-800">Read
-          More</button>
+                <h2 class="text-3xl font-semibold mt-4 md:mt-10">Sitio en Mantenimiento</h2>
+                <p class="my-3 text-justify font-medium text-gray-700 leading-relaxed">Proximamente Novedades</p>
+              
             </div>
         </section>
     </section>
