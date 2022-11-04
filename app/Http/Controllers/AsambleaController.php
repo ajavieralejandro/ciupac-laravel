@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Asamblea;
 use App\Models\Location;
 use Image;
+use App\Models\Configuration;
+
 
 
 use Illuminate\Http\Request;
@@ -44,6 +46,13 @@ class AsambleaController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'location_id' => 'required',
+            'image'=>'required'
+
+        ]);
         $count = Asamblea::count();
         $asamblea = new Asamblea;
         $asamblea->name = $request->title;
@@ -74,9 +83,12 @@ class AsambleaController extends Controller
      * @param  \App\Models\Asamblea  $asamblea
      * @return \Illuminate\Http\Response
      */
-    public function show(Asamblea $asamblea)
+    public function show(Request $request)
     {
         //
+        $asamblea = Asamblea::find($request->id);
+        $conf = Configuration::first();
+        return view('layouts.asamblea',['asamblea'=>$asamblea,'conf'=>$conf]);
     }
 
     /**
@@ -85,9 +97,9 @@ class AsambleaController extends Controller
      * @param  \App\Models\Asamblea  $asamblea
      * @return \Illuminate\Http\Response
      */
-    public function edit(Asamblea $asamblea)
+    public function edit(Request $request)
     {
-        //
+     
     }
 
     /**
@@ -97,9 +109,44 @@ class AsambleaController extends Controller
      * @param  \App\Models\Asamblea  $asamblea
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Asamblea $asamblea)
+    public function update(Request $request)
     {
         //
+           //
+        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'content' => 'required',
+            'location_id' => 'required',
+
+
+        ]);
+
+        $member = Asamblea::whereId($request->post_id)->update($validatedData);
+        $member = Asamblea::find($request->post_id);
+      
+        $member->description = $request->content;
+
+        if($request->image){
+
+            $validatedData = $request->validate([
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        
+               ]);
+               $count = Post::count();
+               $file= $request->file('image');
+               $extension = $file->extension();
+               $filename = "asamblea-".$count.".".$extension;
+               $file-> move(public_path('public/images/asambleas'), $filename);
+               $member->image_name = $filename;
+               Post::whereId($request->member_id)->update(['image_name'=>$filename]);
+        
+
+        }
+        $member->save();
+
+        
+        return redirect('/posts');
     }
 
     /**
@@ -108,8 +155,12 @@ class AsambleaController extends Controller
      * @param  \App\Models\Asamblea  $asamblea
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Asamblea $asamblea)
+    public function destroy(Request $request)
     {
         //
+         //
+         $member = Asamblea::find($request->asamblea_id);
+         $member->delete();
+         return redirect('/asambleas');
     }
 }

@@ -2,7 +2,7 @@
 
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
+    <title>Ciupac</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
     
@@ -186,31 +186,35 @@
 			</button>
 		</div>
 		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Home</a></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" 		href="{{route('welcome')}}">
+Home</a></li>
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-500 font-bold" href="#">Nosotros</a></li>
+			<li><a class="text-sm text-gray-400 font-bold" 		href="{{route('welcome').'/#about'}}">Nosotros</a></li>
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Novedades</a></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" 		href="{{route('welcome').'/#news'}}">
+Novedades</a></li>
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Equipo</a></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" 		href="{{route('welcome').'/#team'}}">
+Equipo</a></li>
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#contactsection">Contacto</a></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" 		href="{{route('welcome').'/#contactsection'}}">
+Contacto</a></li>
 		</ul>
 	
 	</nav>
@@ -233,19 +237,24 @@
 			<div>
 				<ul>
 					<li class="mb-1">
-						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome')}}">
+Home</a>
 					</li>
 					<li class="mb-1">
-						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#about'}}">
+Nosotros</a>
 					</li>
 					<li class="mb-1">
-						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#news'}}">
+Novedades</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
+						<a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#team'}}">
+Equipo</a>
 					</li>
 					<li class="mb-1">
-						<a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#contactsection">Contact</a>
+						<a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#contactsection'}}">
+Contacto</a>
 					</li>
 				</ul>
 			</div>
@@ -255,8 +264,7 @@
 					<span>Copyright © 2021</span>
 				</p>
 			</div>
-		</nav>
-    </header>
+		</nav>  </header>
   <main class="h-screen w-screen py-6 font-serif flex items-center justify-center  flex-wrap">
    <div>
 
@@ -281,6 +289,8 @@
 
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
+ <a name="news"></a>
+
  <div class="container mx-auto flex flex-wrap">
 @foreach($posts as $post)
 @if ($loop->first)
@@ -293,13 +303,15 @@
             
              </div>
              <div class="mt-16 flex justify-between ">
-              <span  class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black "></span>
-                 <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-orange-600 cursor-pointer hover:text-white text-black ">Leer más
+              <span   ></span>
+                 <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
+
          </span>
              </div>
          </article>
 @endif
 @endforeach
+<a name="news"></a>
 
  <div class="container mx-auto flex flex-wrap">
 
@@ -369,6 +381,7 @@
 
 <div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed" >
 
+<a name="about"></a>
 
 
 <h2 class=" text-3xl font-semibold ">Nosotros </h2>
@@ -387,11 +400,8 @@
 
 </section>
 
-<aside class=" py-2  bw-full md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
-
-<article class="flex flex-col  mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
-
-
+<aside class=" py-2 bw-full text-center md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
+<article class="flex flex-col   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Artículos de Investigación
              </h1>
              <ul class="mt-10">
@@ -408,7 +418,7 @@
 
 
 
-
+</div>
 
 
 </aside>
@@ -417,7 +427,6 @@
 
 
 
-</div>
 
 
 <article class="flex flex-col  mx-auto  h-screen py-20  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
@@ -445,6 +454,8 @@
     <div>
       
     </div>
+    <a name="team"></a>
+
     
     <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
       <span class="relative inline-block">
@@ -513,7 +524,7 @@
     </style>
     <h2 class="text-3xl font-bold mb-12">Trusted by <u class="">2,000,000+</u> users</h2>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 content-center">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center">
         @foreach($logos as $logo)
         <div class="mb-12 lg:mb-0">
         <img
@@ -531,101 +542,106 @@
   
 
   
-
+<section >
 <a name="contactsection"></a>
 
-<!-- Container for demo purpose -->
-<div class="container my-24 px-6 mx-auto">
+<div class="grid md:grid-cols-2 sm:grid-cols-1 gap-1">
+<div style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})">
+</div>
+<div>
+<article class="mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl">
 
-  <!-- Section: Design Block -->
-  <section class="mb-32 text-gray-800">
-    <div class="relative overflow-hidden bg-no-repeat bg-cover"
-      style="background-position: 50%; background-image: url('https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80'); height: 300px;">
-    </div>
-    <div class="container text-gray-800 px-4 md:px-12">
-      <div class="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6"
-        style="margin-top: -100px; background: hsla(0, 0%, 100%, 0.8); backdrop-filter: blur(30px);">
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 mb-12">
-   
-        </div>
-        <div class="max-w-[700px] mx-auto">
-          <form>
-            <div class="form-group mb-6">
-              <input type="text" class="form-control block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              text-gray-700
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput7"
-                placeholder="Name">
-            </div>
-            <div class="form-group mb-6">
-              <input type="email" class="form-control block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              text-gray-700
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput8"
-                placeholder="Email address">
-            </div>
-            <div class="form-group mb-6">
-              <textarea class="
-              form-control
-              block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              text-gray-700
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-            " id="exampleFormControlTextarea13" rows="3" placeholder="Message"></textarea>
-            </div>
-            
-            <button type="submit" class="
+<div class="w-full  md:max-w-full mx-auto bg-white" >
+  <div class="p-6 sm:rounded-md">
+    <form id="myForm">
+      <label class="block mb-6">
+        <span class="text-gray-700">Nombre : </span>
+        <input
+          type="text"
+          name="name"
+          class="
+            block
             w-full
-            px-6
-            py-2.5
-            bg-blue-600
-            text-white
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            rounded
-            shadow-md
-            hover:bg-blue-700 hover:shadow-lg
-            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-            active:bg-blue-800 active:shadow-lg
-            transition
+            mt-1
+            border-gray-300
+            rounded-md
+            shadow-sm
+            focus:border-indigo-300
+            focus:ring
+            focus:ring-indigo-200
+            focus:ring-opacity-50
+          "
+        />
+      </label>
+      <label class="block mb-6">
+        <span class="text-gray-700">Mail : </span>
+        <input
+          name="email"
+          type="email"
+          class="
+            block
+            w-full
+            mt-1
+            border-gray-300
+            rounded-md
+            shadow-sm
+            focus:border-indigo-300
+            focus:ring
+            focus:ring-indigo-200
+            focus:ring-opacity-50
+          "
+          required
+        />
+      </label>
+      <label class="block mb-6">
+        <span class="text-gray-700">Mensaje: </span>
+        <textarea
+          name="message"
+          class="
+            block
+            w-full
+            mt-1
+            border-gray-300
+            rounded-md
+            shadow-sm
+            focus:border-indigo-300
+            focus:ring
+            focus:ring-indigo-200
+            focus:ring-opacity-50
+          "
+          rows="3"
+        ></textarea>
+      </label>
+      <div class="mb-6">
+        <button
+          type="submit"
+          class="
+            h-10
+            px-5
+            text-indigo-100
+            bg-indigo-700
+            rounded-lg
+            transition-colors
             duration-150
-            ease-in-out">Send</button>
-          </form>
-        </div>
+            float-right
+            w-full
+            focus:shadow-outline
+            hover:bg-indigo-800
+          "
+        >
+          Contactanos
+        </button>
       </div>
-    </div>
+     
+    </form>
+  </div>
+</div>
+</article>
+
+</div>
+
+</div>
+
 
   </section>
   <!-- Section: Design Block -->
@@ -719,9 +735,11 @@ var display= '';
         asambleas.forEach(asamblea=>
           display+= `
           <div>
+          <a href="/asamblea/${asamblea.id}">
           <img src="${asamblea.image_path}/${asamblea.image_name}" />
           <span className="text-light">${asamblea.name}</span>
           </div>
+          </a>
           `
           
         );
@@ -734,7 +752,39 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     }).addTo(mymap);
 </script>
 
-    
+<script>
+$('#myForm').on('submit', function(event) {
+  const inputs = document.getElementById("myForm").elements;
 
+    event.preventDefault(); // prevent reload
+
+
+  let username = inputs[0].value;
+  let email = inputs[1].value;
+  let message = inputs[2].value;
+    var formData = new FormData(this);
+    formData.append('from_name',username);
+    formData.append('message',message);
+    formData.append('email',email);
+
+
+    formData.append('service_id', 'service_9dgk7kn');
+    formData.append('template_id', 'template_xkto9ir');
+    formData.append('user_id', 'user_KRxr45LRpsTkhXElJp8Wx');
+    
+ 
+    $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+        type: 'POST',
+        data: formData,
+        contentType: false, // auto-detection
+        processData: false // no need to parse formData to string
+    }).done(function() {
+        alert('Your mail is sent!');
+    }).fail(function(error) {
+        alert('Oops... ' + JSON.stringify(error));
+    });
+});
+
+</script>
 
 </html>

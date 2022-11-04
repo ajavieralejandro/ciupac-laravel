@@ -63,7 +63,7 @@ class PostController extends Controller
         if($request->visible)
             $post->visible=true;
         else
-            $post->visible=false;
+            $post   ->visible=false;
         $post->save();
         return redirect('/posts'); 
     }
@@ -107,7 +107,7 @@ class PostController extends Controller
         //
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required',
+            'description' => 'required|max:255',
 
         ]);
 
