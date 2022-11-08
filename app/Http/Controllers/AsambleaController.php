@@ -98,6 +98,9 @@ class AsambleaController extends Controller
      */
     public function edit(Request $request)
     {
+        $asamblea = Asamblea::find($request->id);
+        $locations = Location::all();
+        return view('admin.editAsamblea',['asamblea'=>$asamblea,'locations'=>$locations]);
      
     }
 
@@ -121,9 +124,9 @@ class AsambleaController extends Controller
 
         ]);
 
-        $member = Asamblea::whereId($request->post_id)->update($validatedData);
-        $member = Asamblea::find($request->post_id);
-      
+        $member = Asamblea::find($request->asamblea_id);
+        $member->name = $request->name;
+        $member->location_id = $request->location_id;
         $member->description = $request->content;
 
         if($request->image){
@@ -145,7 +148,7 @@ class AsambleaController extends Controller
         $member->save();
 
         
-        return redirect('/posts');
+        return redirect('/asambleas');
     }
 
     /**

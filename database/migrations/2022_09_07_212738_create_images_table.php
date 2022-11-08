@@ -20,7 +20,9 @@ class CreateImagesTable extends Migration
         $table->string('path');
         $table->timestamps();
     });
+   
     }
+    
 
     /**
      * Reverse the migrations.

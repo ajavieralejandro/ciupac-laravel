@@ -12,4 +12,8 @@ class Asamblea extends Model
 {
     return $this->belongsTo('App\Models\Location');
 }
+public function imagenes()
+    {
+        return $this->hasMany(ImagenAsamblea::class);
+    }
 }

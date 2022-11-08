@@ -95,8 +95,13 @@ Route::group([
                 Route::get('/asambleas', [\App\Http\Controllers\AsambleaController::class, 'index'])->name('asambleas');
                 Route::get('/addAsamblea', [\App\Http\Controllers\AsambleaController::class, 'create'])->name('addAsamblea');
                 Route::post('/asamblea', [\App\Http\Controllers\AsambleaController::class, 'store'])->name('storeAsamblea');
+                Route::get('/editAsamblea/{id}', [\App\Http\Controllers\AsambleaController::class, 'edit'])->name('editAsamblea');
+                Route::put('/updateAsamblea', [\App\Http\Controllers\AsambleaController::class, 'update'])->name('updateAsamblea');
+
                 Route::delete('/asamblea', [\App\Http\Controllers\AsambleaController::class, 'destroy'])->name('deleteAsamblea');
 
+                //imagenes asamblea
+                Route::get('/addImagenAsamblea/{id}', [\App\Http\Controllers\ImagenAsambleaController::class, 'index'])->name('addImagenAsamblea');
 
 
                 

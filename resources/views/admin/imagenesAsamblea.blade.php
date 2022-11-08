@@ -26,18 +26,18 @@
                 </thead>
 
                 <tbody class="bg-white">
-                    @foreach($logos as $logo)
+                    @foreach($imagenes as $imagen)
                     <tr>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 w-10 h-10">
-                                    <img class="w-10 h-10 rounded-full"  src="{{asset($logo->image_path.'/'.$logo->image_name)}}"
+                                    <img class="w-10 h-10 rounded-full"  src="{{asset($imagen->image_path.'/'.$imagen->image_name)}}"
                                         alt="admin dashboard ui">
                                 </div>
 
                                 <div class="ml-4">
                                     <div class="text-sm font-medium leading-5 text-gray-900">
-                                        {{$logo->name}}
+                                        {{$asamblea->name}}
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
 
                         <td
                             class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <a href="{{route('editAsamblea', ['id' => $logo->id]);}}">                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none"
+                            <a href="{{route('editLogo', ['id' => $asamblea->id]);}}">                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -56,12 +56,12 @@
                         </td>
                         <td
                             class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <form method="POST" action="{{route('deleteAsamblea')}}">
+                            <form method="POST" action="{{route('deleteLogo')}}">
                             @csrf
                             @method('delete')
 
 
-                            <input type="hidden" name="asamblea_id" value="{{$logo->id}}"/>
+                            <input type="hidden" name="logo_id" value="{{$imagen->id}}"/>
 
                             <button type="submit" class="   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400  hover:text-green-700" fill="none"
@@ -79,13 +79,13 @@
                  
                 </tbody>
             </table>
-            <a href={{route('addAsamblea')}}>
+            <a href={{route('addImagenAsamblea')}}>
             <button class="w-full bg-transparent rounded inline-flex items-center h-10 px-5 text-green-500 transition-colors duration-150  rounded-lg focus:shadow-outline hover:text-white hover:bg-green-800">
                 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
 </svg>
-  <span class="pl-4">Agregar Asamblea</span>
+  <span class="pl-4">Agregar Imagen</span>
 </button>
 </a>
         </div>
