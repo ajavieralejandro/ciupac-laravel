@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Configuration;
+
+
 
 
 class PostController extends Controller
@@ -78,7 +81,8 @@ class PostController extends Controller
     {
         //
         $member = Post::find($request->route('id'));
-        return view('layouts.post',['post'=>$member]);
+        $conf = Configuration::first();
+        return view('layouts.post',['post'=>$member,'conf'=>$conf]);
 
     }
 
