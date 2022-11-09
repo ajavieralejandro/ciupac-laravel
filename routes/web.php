@@ -101,7 +101,9 @@ Route::group([
                 Route::delete('/asamblea', [\App\Http\Controllers\AsambleaController::class, 'destroy'])->name('deleteAsamblea');
 
                 //imagenes asamblea
-                Route::get('/addImagenAsamblea/{id}', [\App\Http\Controllers\ImagenAsambleaController::class, 'index'])->name('addImagenAsamblea');
+                Route::get('/showImagenAsamblea/{id}', [\App\Http\Controllers\ImagenAsambleaController::class, 'index'])->name('showImagenAsamblea');
+                Route::get('/createImagenAsamblea/{id}', [\App\Http\Controllers\ImagenAsambleaController::class, 'create'])->name('createImagenAsamblea');
+                Route::post('/storeImagenAsamblea', [\App\Http\Controllers\ImagenAsambleaController::class, 'store'])->name('storeImagenAsamblea');
 
 
                 

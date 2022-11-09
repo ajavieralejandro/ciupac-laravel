@@ -4,8 +4,8 @@
   
     <!-- header ends here -->
 
-    <main class="mt-10 container ">
-      <div class="grid md:grid-cols-2 grid-cols-1 pt-10 mb-20">
+    <main class="mt-10 container py-20 ">
+      <div class="grid md:grid-cols-2 grid-cols-1 gap-2 pt-10 mb-20">
         <div>
         <article class="mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl">
                 <img class="mx-auto mb-4 p-5  w-40 rounded-full " src="{{asset($asamblea->image_path.'/'.$asamblea->image_name)}}" alt="" />
@@ -19,34 +19,18 @@
         </div>
         <div>
         <div class="container grid grid-cols-1 md:grid-cols-3 gap-2 mx-auto">
+            @foreach($images as $image)
     <div class="w-full rounded">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
+        <img  src="{{asset($image->image_path.'/'.$image->image_name)}}"
             alt="image">
     </div>
-    <div class="w-full rounded">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-            alt="image">
-    </div>
-    <div class="w-full rounded">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-            alt="image">
-    </div>
-    <div class="w-full rounded">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-            alt="image">
-    </div>
-    <div class="w-full rounded">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-            alt="image">
-    </div>
-    <div class="w-full rounded">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
-            alt="image">
-    </div>
-</div>
+    @endforeach
+
         </div>
+        {{$images->links()}}
 
       </div>
+</div>
 
         
       @include('layouts.footerPage')

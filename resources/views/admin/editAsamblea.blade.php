@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="mb-4 float-right">
-            <a href={{route('addImagenAsamblea',['id'=>$asamblea->id])}}>
+            <a href={{route('showImagenAsamblea',['id'=>$asamblea->id])}}>
             <button class=" text-align-center bg-transparent rounded inline-flex items-center h-10 px-5 text-green-500 transition-colors duration-150  rounded-lg focus:shadow-outline hover:text-white hover:bg-green-800">
                 
   <p class="float-right" >Agregar Imagen</p>

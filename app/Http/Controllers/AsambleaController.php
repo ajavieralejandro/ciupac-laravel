@@ -25,6 +25,8 @@ class AsambleaController extends Controller
         return view('admin.asambleas',['logos'=>$logos]);
     }
 
+  
+
     /**
      * Show the form for creating a new resource.
      *
@@ -34,6 +36,7 @@ class AsambleaController extends Controller
     {
         //
         $locations = Location::all();
+
         return view('admin.createAsamblea',['locations'=>$locations]);
     }
 
@@ -73,7 +76,7 @@ class AsambleaController extends Controller
          $constraint->aspectRatio();
      })->save('public/images/asambleas'.'/'.$filename);
      $asamblea->save();
-     return view('admin.asambleas',['logos'=>$logos]);
+     return redirect('/asambleas');
     }
 
     /**
@@ -85,9 +88,11 @@ class AsambleaController extends Controller
     public function show(Request $request)
     {
         //
+        
         $asamblea = Asamblea::find($request->id);
+        $images = $asamblea->imagenes()->paginate(6);
         $conf = Configuration::first();
-        return view('layouts.asamblea',['asamblea'=>$asamblea,'conf'=>$conf]);
+        return view('layouts.asamblea',['asamblea'=>$asamblea,'conf'=>$conf,'images'=>$images]);
     }
 
     /**

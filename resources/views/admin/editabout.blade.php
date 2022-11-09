@@ -63,11 +63,8 @@
                         
 
                         <div class="flex p-1">
-                            <select class="border-2 border-gray-300 border-r p-2" name="action">
-                                <option>Save and Publish</option>
-                                <option>Save Draft</option>
-                            </select>
-                            <button type="submit" role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Submit</button>
+                         
+                            <button type="submit" role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400" required>Guardar Cambios</button>
                         </div>
                     </form>
                 </div>

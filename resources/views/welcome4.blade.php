@@ -303,11 +303,13 @@ Contacto</a>
 
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
- <a name="news"></a>
 
  <div class="container mx-auto flex flex-wrap">
+ <a name="news"></a>
+
 @foreach($posts as $post)
 @if ($loop->first)
+
  <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}})">
              <h1 class="opacity-80 bg-black w-1/2 mt-5 text-4xl text-white leading-snug  min-h-33">{{$post->title}}
              <h1 class="opacity-80  bg-black w-1/2 text-4xl text-white leading-snug  min-h-33">{{$post->description}}
@@ -385,6 +387,7 @@ Contacto</a>
 
 
 <!-- Posts Section -->
+<a name="about"></a>
 
 
 <section class="w-full grid md:w-2/3 flex flex-col items-center ">
@@ -395,7 +398,6 @@ Contacto</a>
 
 <div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed" >
 
-<a name="about"></a>
 
 
 <h2 class=" text-3xl font-semibold ">Nosotros </h2>
@@ -551,13 +553,14 @@ Contacto</a>
     
 
     </div>
+    <a name="contactsection"></a>
+
   </section>
 
   
 
   
 <section >
-<a name="contactsection"></a>
 
 <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-1">
 <div style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})">
@@ -743,12 +746,14 @@ L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);
 
 var app = @json($locations);
 var aux = @json($asambleas);
-var display= '';
     app.forEach(element=>{
-        var asambleas = aux.filter(asamblea=> asamblea.location_id = element.id);
+      var display=`<h1>${element.name}</h1>`;
+
+        var asambleas = aux.filter(asamblea=> asamblea.location_id == element.id);
         asambleas.forEach(asamblea=>
+
           display+= `
-          <div>
+          <div class="overflor-scroll">
           <a href="/asamblea/${asamblea.id}">
           <img src="${asamblea.image_path}/${asamblea.image_name}" />
           <span className="text-light">${asamblea.name}</span>
@@ -757,9 +762,10 @@ var display= '';
           `
           
         );
-
         var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
         marker.bindPopup(display).openPopup();
+        
+
     });
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

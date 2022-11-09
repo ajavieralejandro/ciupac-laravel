@@ -23,7 +23,7 @@ class CreateAsambleasTable extends Migration
             
         });
         Schema::table('asambleas', function (Blueprint $table) {
-            $table->foreignId('location_id')->constrained('locations');
+            $table->foreignId('location_id')->constrained('locations')->onDelete('cascade');
         });
     }
 

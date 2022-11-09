@@ -63,6 +63,12 @@ class TeamController extends Controller
     }
 
     public function storeMember(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|unique:teams',
+            'description' => 'required',
+            'image'=>'required'
+        ]);
         $member = new Team;
         $member->name = $request->name;
         $member->email = $request->email;

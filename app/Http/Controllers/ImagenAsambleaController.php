@@ -19,7 +19,9 @@ class ImagenAsambleaController extends Controller
     {
         //
         $asamblea = Asamblea::find($request->id);
-        $imagenes = $asamblea->imagenes()->get();
+        $imagenes;
+        if($asamblea)
+            $imagenes = $asamblea->imagenes()->get();
         return view('admin.imagenesAsamblea',['asamblea'=>$asamblea,'imagenes'=>$imagenes]);
 
         
@@ -30,9 +32,9 @@ class ImagenAsambleaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('admin.createAsambleaImagen',['id'=>$request->id]);       
     }
 
     /**
@@ -44,8 +46,27 @@ class ImagenAsambleaController extends Controller
     public function store(Request $request)
     {
         //
-        
-    }
+        $validatedData = $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+    
+            
+           ]);
+           $count = ImagenAsamblea::count();
+           $file= $request->file('image');
+           $extension = $request->file('image')->extension();
+           $imagename= 'image-'.$count.'.'.$extension;
+           $img = new ImagenAsamblea;
+           $img->image_name = $imagename;
+           $img->image_path = 'public/images/imagenasamblea';
+           $img->asamblea_id = $request->id;
+           $file-> move(public_path('public/images/imagenasamblea'), $imagename);        
+           $img->save();
+           $asamblea = Asamblea::find($request->id);
+           $imagenes;
+           if($asamblea)
+               $imagenes = $asamblea->imagenes()->get();
+           return view('admin.imagenesAsamblea',['asamblea'=>$asamblea,'imagenes'=>$imagenes]);
+       }
 
     /**
      * Display the specified resource.

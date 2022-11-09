@@ -2,10 +2,20 @@
 @section('content')
 <div class="flex justify-center mt-8">
 <div class="w-full max-w-xs">
+
   <form enctype="multipart/form-data" action={{route('newLocation')}} method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     @csrf
 
   <div class="m-4">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         
     <div class="mb-4 pt-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
