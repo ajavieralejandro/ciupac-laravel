@@ -67,6 +67,7 @@ Route::group([
                 Route::get('/addlogo', [\App\Http\Controllers\LogoController::class, 'create'])->name('addLogo');
                 Route::post('/logo', [\App\Http\Controllers\LogoController::class, 'store'])->name('storeLogo');
                 Route::delete('/logo',[\App\Http\Controllers\LogoController::class, 'destroy'])->name('deleteLogo');
+                Route::put('/update', [\App\Http\Controllers\LogoController::class, 'update'])->name('updateLogo');
 
 
 

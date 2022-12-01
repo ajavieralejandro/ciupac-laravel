@@ -90,7 +90,7 @@ class AsambleaController extends Controller
         //
         
         $asamblea = Asamblea::find($request->id);
-        $images = $asamblea->imagenes()->paginate(6);
+        $images = $asamblea->imagenes()->paginate(3);
         $conf = Configuration::first();
         return view('layouts.asamblea',['asamblea'=>$asamblea,'conf'=>$conf,'images'=>$images]);
     }

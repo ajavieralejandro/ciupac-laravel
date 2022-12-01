@@ -42,16 +42,6 @@
     padding: 0px;
     background: url("http://digital.bnint.com/filelib/s9/photos/white_wood_4500x3000_lo_res.jpg");
 }
-Sure, although it depends on how you want to handle it.
-
-Regarding Icon Fonts
-
-Most of the images used in your examples are actually based on fonts that was create map each glyph to a specific Unicode value and then use CSS classes to set the content property to that specific value, thus displaying the icon. It's unlikely that you would want to make a font to do just that, but there are quite a few out there that you might want to explore if you want to use a uniform set of icons for your site or application.
-
-Using CSS Classes
-
-A simpler approach would be to create a CSS class that points to your specific image as a background and sets the amount of space necessary to accommodate it :
-
 
 
 .carousel {
@@ -289,7 +279,7 @@ Contacto</a>
                  
                 </div>
          
-                <img class="float-right" src="{{asset('/public/images/ciupac.ico')}}"  />
+                <img class="float-right w-1/2" src="{{asset('/public/images/Ciupac.jpeg')}}"  />
 
                 <h2 class="text-3xl font-semibold mt-4 md:mt-10">{{$portrait->title}}</h2>
     
@@ -300,12 +290,12 @@ Contacto</a>
     </section>
         </div>
 
+
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
-
- <div class="container mx-auto flex flex-wrap">
  <a name="news"></a>
-
+ <div class="container mx-auto flex flex-wrap">
+<h1>Noticias</h1>
 @foreach($posts as $post)
 @if ($loop->first)
 
@@ -375,10 +365,11 @@ Contacto</a>
 
   
 </div>
+<a name="about"></a>
 
 <section class="pt-40 pb-32 relative">
   
-  <div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
+<div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
 </section>
 
     </section>
@@ -386,7 +377,6 @@ Contacto</a>
 
 
 <!-- Posts Section -->
-<a name="about"></a>
 
 
 <section class="w-full grid md:w-2/3 flex flex-col items-center ">
@@ -416,10 +406,10 @@ Contacto</a>
 </section>
 
 <aside class=" py-2 bw-full text-center md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
-<article class="flex flex-col   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
-                <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Artículos de Investigación
+<article class="text-left flex flex-col   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+                <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
-             <ul class="mt-10">
+             <ul class="mt-10 ">
                @foreach($articles as $article)
                <a href="{{$article->path}}">
                <li class="hover:text-green-500 text-black">
@@ -492,9 +482,7 @@ Contacto</a>
         <img class="object-cover w-full h-56 md:h-64 xl:h-80"        src="{{asset($member->image_path.'/'.$member->image_name)}}"
  alt="Person" />
         <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-          <p class="mb-1 text-lg font-bold text-gray-100">{{$member->name}}</p>
-          <p class="mb-4 text-xs text-gray-100">{{$member->email}}</p>
-          <p class="mb-4 text-xs  text-gray-400">
+          <p class="mb-4 text-xs  text-white whitespace-pre-line	">
             {{$member->description}}
           </p>
           <div class="flex items-center justify-center space-x-3">
@@ -502,7 +490,11 @@ Contacto</a>
           </div>
         </div>
       </div>
+      <p class="mb-1 text-lg font-bold text-center text-black">{{$member->name}}</p>
+      <p class="mb-4 text-xs text-center text-black">{{$member->email}}</p>
+
     </div>
+
     @endforeach
  
   </div>
@@ -524,7 +516,7 @@ Contacto</a>
 
 }
     </style>
-    <h2 class="text-3xl font-bold mb-12">Empresas que nos patrocinan : </h2>
+    <h2 class="text-3xl font-bold mb-12">instituciones contrapartes </h2>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center">
         @foreach($logos as $logo)
@@ -539,109 +531,41 @@ Contacto</a>
     
 
     </div>
-    <a name="contactsection"></a>
 
   </section>
 
   
+  <a name="contactsection"></a>
 
   
 <section >
 
-<div class="grid md:grid-cols-2 sm:grid-cols-1 gap-1">
+
 <div style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})">
-</div>
-<div>
-<article class="mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl">
 
-<div class="w-full  md:max-w-full mx-auto bg-white" >
-  <div class="p-6 sm:rounded-md">
-    <form id="myForm">
-      <label class="block mb-6">
-        <span class="text-gray-700">Nombre : </span>
-        <input
-          type="text"
-          name="name"
-          class="
-            block
-            w-full
-            mt-1
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
-        />
-      </label>
-      <label class="block mb-6">
-        <span class="text-gray-700">Mail : </span>
-        <input
-          name="email"
-          type="email"
-          class="
-            block
-            w-full
-            mt-1
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
-          required
-        />
-      </label>
-      <label class="block mb-6">
-        <span class="text-gray-700">Mensaje: </span>
-        <textarea
-          name="message"
-          class="
-            block
-            w-full
-            mt-1
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
-          rows="3"
-        ></textarea>
-      </label>
-      <div class="mb-6">
-        <button
-          type="submit"
-          class="
-            h-10
-            px-5
-            text-indigo-100
-            bg-indigo-700
-            rounded-lg
-            transition-colors
-            duration-150
-            float-right
-            w-full
-            focus:shadow-outline
-            hover:bg-indigo-800
-          "
-        >
-          Contactanos
-        </button>
-      </div>
-     
-    </form>
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contactanos</h2>
+      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Hacenos conocer tu inquietud</p>
+      <form id="myForm" class="space-y-8">
+          <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">e-mail</label>
+              <input  name="email"
+          type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
+          </div>
+          <div>
+              <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
+              <input     name="name" type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
+          </div>
+          <div class="sm:col-span-2">
+              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
+              <textarea           name="message" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" ></textarea>
+          </div>
+          <button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-green-400 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 hover:bg-green-700 dark:focus:ring-primary-800">Enviar mensaje</button>
+      </form>
   </div>
-</div>
-</article>
+</section>
 
-</div>
 
 </div>
 
@@ -715,8 +639,8 @@ var greenIcon = L.icon({
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-var southWest = L.latLng(-30.712, -57.227),
-    northEast = L.latLng(-41.774,  -62.227),
+var southWest = L.latLng(-20.712, -77.227),
+    northEast = L.latLng(-41.774,  -42.227),
     bounds = L.latLngBounds(southWest, northEast);
 
 

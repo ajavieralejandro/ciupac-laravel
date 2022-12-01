@@ -1,6 +1,5 @@
 @extends('layouts.homelayout')
 @section('content')
-<div class="max-w-screen-xl mx-auto py-5">
   
     <!-- header ends here -->
 
@@ -36,7 +35,6 @@
       
       
     </main>
-    @include('layouts.footerPage')
 
     <!-- main ends here -->
 
@@ -44,6 +42,8 @@
 
    
   </div>
+  @include('layouts.footerPage')
+
   
 @endsection
 

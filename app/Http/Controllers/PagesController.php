@@ -28,7 +28,7 @@ class PagesController extends Controller
             return view('index');
         else{
             $locations = Location::all();
-            $members = Team::all();
+            $members = Team::all()->where('status');
             $image = Image::first();
             $logos = Logo::all();
             $about = About::first();

@@ -34,6 +34,14 @@ class TeamController extends Controller
             'description' => 'required',
         ]);
         $member = Team::whereId($request->member_id)->update($validatedData);
+        //dd(Team::whereId($request->member_id)->get());
+        $member = Team::find($request->member_id);
+
+        if($request->visible)
+        $member->status=true;
+    else
+        $member->status=false;
+        $member->save();
 
 
         if($request->image){
@@ -67,8 +75,9 @@ class TeamController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|unique:teams',
             'description' => 'required',
-            'image'=>'required'
+            'image'=>'required',
         ]);
+        
         $member = new Team;
         $member->name = $request->name;
         $member->email = $request->email;
@@ -76,7 +85,10 @@ class TeamController extends Controller
         $member->image_name = "default";
         $member->image_path = "public/images/members";
         $member->path = "";
-        $member->status = true;
+        if($request->visible)
+            $member->status=(int)true;
+        else
+            $member->status=(int) false;
 
         $member->save();
         if($request->image){

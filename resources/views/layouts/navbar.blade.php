@@ -1,4 +1,4 @@
-<nav class="  px-4 py-4 flex justify-between items-center bg-white shadow-md w-full
+    <nav class="  px-4 py-4 flex justify-between items-center bg-white shadow-md w-full
             fixed top-0 left-0 right-0 z-10">
 		<a class="text-3xl font-bold leading-none" href="#">
 			<svg class="h-10" alt="logo" viewBox="0 0 10240 10240">

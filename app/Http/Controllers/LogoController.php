@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Logo;
 use Image;
+use Illuminate\Validation\Rule;
 
 
 class LogoController extends Controller
@@ -44,6 +45,7 @@ class LogoController extends Controller
         $count = Logo::count();
         $logo = new Logo;
         $validatedData = $request->validate([
+            'name' => 'required|unique:logos',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
     
            ]);
@@ -92,7 +94,9 @@ class LogoController extends Controller
      */
     public function edit(Request $request)
     {
-        //
+      
+        
+        
     }
 
     /**
@@ -102,9 +106,46 @@ class LogoController extends Controller
      * @param  \App\Models\Logo  $logo
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateLogoRequest $request, Logo $logo)
+    public function update(Request $request)
     {
         //
+        $id = $request->logo_id;
+        Rule::unique('logos', 'name')->ignore('id',$id);
+
+        $validatedData = $request->validate([
+            'name' => [
+                'required',
+                //Rule::unique('logos')->ignore($request->logos_id),
+            ],
+  
+           ]);
+           $member = Logo::whereId($request->logo_id)->update($validatedData);
+           $member = Logo::find($request->logo_id)->first();
+      
+
+           if($request->image){
+
+            $validatedData = $request->validate([
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        
+               ]);
+               $member = Logo::where('id');
+               $count = Logo::count();
+               $file= $request->file('image');
+               $extension = $file->extension();
+               $filename = "logos-".$count.".".$extension;
+               $file-> move(public_path('public/images/logos'), $filename);
+               //$member->image_name = $filename;
+               Logo::whereId($request->logo_id)->update(['image_name'=>$filename]);        
+
+        }
+        //$member->save();
+
+        
+        return redirect('/logos');
+
+           
+ 
     }
 
     /**

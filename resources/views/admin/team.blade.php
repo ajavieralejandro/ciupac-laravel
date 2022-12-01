@@ -53,8 +53,13 @@
                         </td>
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            @if($member->status)
                             <span
                                 class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">Active</span>
+                            @else
+                            <span
+                                class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-red-100 rounded-full">Invisible</span>
+                            @endif
                         </td>
 
                         <td

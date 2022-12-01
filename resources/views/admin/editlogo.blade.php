@@ -2,10 +2,21 @@
 @section('content')
 <div class="flex justify-center mt-8">
 <div class="w-full max-w-xs">
-  <form enctype="multipart/form-data" action={{route('storeLogo')}} method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+  <form enctype="multipart/form-data" action={{route('updateLogo')}} method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     @csrf
+    @method('put')
+    <input type="hidden" name="logo_id" value="{{$logo->id}}"/>
 
   <div class="m-4">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             <label class="inline-block mb-2 text-gray-500">Upload
                 Image(jpg,png,svg,jpeg)</label>
             <div class="flex items-center justify-center w-full">
@@ -28,7 +39,7 @@
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
         name
       </label>
-      <input value={{$logo->name}} class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" placeholder="Username">
+      <input value="{{$logo->name}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" placeholder="Username" >
     </div>
 
     <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="submit">
