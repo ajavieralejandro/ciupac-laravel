@@ -140,13 +140,13 @@ class AsambleaController extends Controller
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         
                ]);
-               $count = Post::count();
+               $count = $member->id;
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "asamblea-".$count.".".$extension;
                $file-> move(public_path('public/images/asambleas'), $filename);
                $member->image_name = $filename;
-               Post::whereId($request->member_id)->update(['image_name'=>$filename]);
+               Asamblea::whereId($request->member_id)->update(['image_name'=>$filename]);
         
 
         }

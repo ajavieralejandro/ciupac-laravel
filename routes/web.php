@@ -84,6 +84,8 @@ Route::group([
                 Route::post('/storeAbout', [\App\Http\Controllers\AboutController::class, 'store'])->name('storeAbout');
                 //articles
                 Route::get('/articles', [\App\Http\Controllers\ArticlesController::class, 'index'])->name('showArticles');
+                Route::get('/editArticle/{id}', [\App\Http\Controllers\ArticlesController::class, 'edit'])->name('editArticle');
+
                 Route::get('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'create'])->name('addArticle');
                 Route::post('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'store'])->name('storeArticle');
                 Route::delete('/article', [\App\Http\Controllers\ArticlesController::class, 'destroy'])->name('deleteArticle');
