@@ -108,8 +108,13 @@ class ImagenAsambleaController extends Controller
      * @param  \App\Models\ImagenAsamblea  $imagenAsamblea
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ImagenAsamblea $imagenAsamblea)
+    public function destroy(Request $request)
     {
         //
+        $member = ImagenAsamblea::find($request->imagen_id);
+        $id = $request->asamblea_id;
+        $member->delete();
+        return redirect()->route('showImagenAsamblea', ['id' => $id]);
+
     }
 }

@@ -15,6 +15,8 @@ class LinkController extends Controller
     public function index()
     {
         //
+        $links = Link::all();
+        return view('admin.links',['links'=>$links]);
     }
 
     /**
@@ -25,6 +27,7 @@ class LinkController extends Controller
     public function create()
     {
         //
+        return view('admin.addLink');
     }
 
     /**
@@ -35,7 +38,16 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|unique:links|max:255',
+            'link' =>  'required|unique:links|max:255'
+
+        ]);
+        $link = new Link;
+        $link->name = $request->name;
+        $link->link = $request->link;
+        $link->save();
+        return redirect('/links');
     }
 
     /**
@@ -55,9 +67,11 @@ class LinkController extends Controller
      * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function edit(Link $link)
+    public function edit(Request $request)
     {
         //
+        $link = Link::find($request->id);
+        return view('admin.editlink',['link'=>$link]);
     }
 
     /**
@@ -78,8 +92,12 @@ class LinkController extends Controller
      * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Link $link)
+    public function destroy(Request $request)
     {
         //
+        
+        $member = Link::find($request->link_id);
+        $member->delete();
+        return redirect('/links');
     }
 }

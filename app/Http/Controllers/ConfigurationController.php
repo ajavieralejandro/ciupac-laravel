@@ -96,6 +96,7 @@ class ConfigurationController extends Controller
             $config->tel = $request->tel;
             $config->adress = $request->address;
             $config->email = $request->email;
+            $config->youtube = $request->youtube;
             if($request->visible)
             $config->visible=true;
             else

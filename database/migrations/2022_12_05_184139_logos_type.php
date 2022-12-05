@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TeamVisibility extends Migration
+class LogosType extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class TeamVisibility extends Migration
     {
         //
 
-        Schema::table('teams', function (Blueprint $table) {
-            $table->boolean('visibility')->nullable();
-        });
+    Schema::table('logos', function ($table) {
+        $table->string("type")->nullable();
+    });
     }
 
     /**
@@ -27,6 +27,8 @@ class TeamVisibility extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('logos', function($table) {
+            $table->dropColumn('type');
+        });
     }
 }

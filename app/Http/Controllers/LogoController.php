@@ -41,7 +41,6 @@ class LogoController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $count = Logo::count();
         $logo = new Logo;
         $validatedData = $request->validate([
@@ -57,6 +56,7 @@ class LogoController extends Controller
            $filename = "logo-".$count.".".$extension;
            $logo->image_name = $filename;
            $logo->image_path = "public/images/logos";
+           $logo->type = $request->type;
 
 
            $img->resize(350,350 , function ($constraint) {
@@ -121,9 +121,8 @@ class LogoController extends Controller
            ]);
            $member = Logo::whereId($request->logo_id)->update($validatedData);
            $member = Logo::find($request->logo_id)->first();
-      
-
-           if($request->image){
+           $member->type = $request->type;
+               if($request->image){
 
             $validatedData = $request->validate([
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -139,7 +138,7 @@ class LogoController extends Controller
                Logo::whereId($request->logo_id)->update(['image_name'=>$filename]);        
 
         }
-        //$member->save();
+        $member->save();
 
         
         return redirect('/logos');

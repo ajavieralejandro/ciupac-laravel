@@ -10,6 +10,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortraitController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\LinkController;
+
 
 
 
@@ -107,7 +109,14 @@ Route::group([
                 Route::get('/showImagenAsamblea/{id}', [\App\Http\Controllers\ImagenAsambleaController::class, 'index'])->name('showImagenAsamblea');
                 Route::get('/createImagenAsamblea/{id}', [\App\Http\Controllers\ImagenAsambleaController::class, 'create'])->name('createImagenAsamblea');
                 Route::post('/storeImagenAsamblea', [\App\Http\Controllers\ImagenAsambleaController::class, 'store'])->name('storeImagenAsamblea');
+                Route::delete('/deleteImagenAsamblea', [\App\Http\Controllers\ImagenAsambleaController::class, 'destroy'])->name('deleteImagenAsamblea');
 
+                //links
+                Route::get('/links', [\App\Http\Controllers\LinkController::class, 'index'])->name('links');
+                Route::get('/addLink', [\App\Http\Controllers\LinkController::class, 'create'])->name('addLink');
+                Route::post('/addLink', [\App\Http\Controllers\LinkController::class, 'store'])->name('storeLink');
+                Route::get('/links/{id}', [\App\Http\Controllers\LinkController::class, 'edit'])->name('editLink');
+                Route::delete('/link', [\App\Http\Controllers\LinkController::class, 'destroy'])->name('deleteLink');
 
                 
                 });

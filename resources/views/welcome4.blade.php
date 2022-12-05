@@ -531,6 +531,39 @@ Contacto</a>
     
 
     </div>
+    <div class="pt-10">
+
+    <h2 class="text-3xl font-bold mb-12">Financia </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center">
+        @foreach($logos1 as $logo)
+        <div class="mb-12 lg:mb-0">
+        <img
+        src="{{asset($logo->image_path.'/'.$logo->image_name)}}"
+          class="img-fluid  px-6 md:px-12"
+          alt="logo"
+        />
+      </div>
+        @endforeach
+    </div>
+
+    </div>
+<div class="pt-10">
+    <h2 class="text-3xl font-bold mb-12 pt-10">Instituciones que nos acompañan</h2>
+
+    <div class="grid grid-cols-3  gap-2 content-center">
+    @foreach($logos2 as $logo)
+    <div class="mb-12 pt-10 lg:mb-0 block">
+    <img
+    src="{{asset($logo->image_path.'/'.$logo->image_name)}}"
+      class="img-fluid  px-6 md:px-12"
+      alt="logo"
+    />
+  </div>
+    @endforeach
+    </div>
+
+</div>
 
   </section>
 
