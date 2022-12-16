@@ -4,8 +4,18 @@
 <div class="w-full max-w-xs">
   <form enctype="multipart/form-data" action={{route('storeArticle')}} method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     @csrf
+    
 
   <div class="m-4">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             <label class="inline-block mb-2 text-gray-500">Upload
                 pdf </label>
             <div class="flex items-center justify-center w-full">

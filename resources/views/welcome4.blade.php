@@ -701,7 +701,6 @@ var mymap = L.map('mapid',{
 }).setView([-38.505, -62.09], 4);
 
 L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);
-
 var app = @json($locations);
 var aux = @json($asambleas);
     app.forEach(element=>{
@@ -711,7 +710,7 @@ var aux = @json($asambleas);
         asambleas.forEach(asamblea=>
 
           display+= `
-          <div class="overflor-scroll">
+          <div class="overflow-scroll">
           <a href="/asamblea/${asamblea.id}">
           <img src="${asamblea.image_path}/${asamblea.image_name}" />
           <span className="text-light">${asamblea.name}</span>
@@ -721,7 +720,7 @@ var aux = @json($asambleas);
           
         );
         var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
-        marker.bindPopup(display).openPopup();
+        marker.bindPopup("hola").openPopup();
         
 
     });
