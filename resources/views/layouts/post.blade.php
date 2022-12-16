@@ -1,6 +1,5 @@
 @extends('layouts.homelayout')
 @section('content')
-<div class=" ">
   
     <!-- header ends here -->
 
@@ -25,13 +24,19 @@
               <p class="font-semibold   text-xs">{{$post->created_at->format('d-m-Y')}} </p>
             </div>
           </div>
+          
         </div>
+        
+     
       </div>
 
-      <div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+      <div class="text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
      {!!$post->body!!}
 
       </div>
+      
+
+    
 
       @include('layouts.footerPage')
 

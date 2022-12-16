@@ -13,6 +13,7 @@ use App\Models\Portrait;
 use App\Models\Articles;
 use App\Models\Configuration;
 use App\Models\Asamblea;
+use App\Models\Link;
 
 
 
@@ -33,7 +34,7 @@ class PagesController extends Controller
             $logos = Logo::all()->where('type','CP');
             $logos1 = Logo::all()->where('type','F');
             $logos2 = Logo::all()->where('type','A');
-
+            $links = Link::paginate(10);
 
             $about = About::first();
             $asambleas = Asamblea::all();
@@ -42,7 +43,7 @@ class PagesController extends Controller
             $posts = Post::orderBy('created_at','DESC')->paginate(3)->where('visible');
             return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations,
                                     'about'=>$about,'portrait'=>$portrait,'articles'=>$articles,'conf'=>$conf,'asambleas'=>$asambleas,
-                                    'logos1'=>$logos1,'logos2'=>$logos2,
+                                    'logos1'=>$logos1,'logos2'=>$logos2,'links'=>$links
             ]);
 
         }

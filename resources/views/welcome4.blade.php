@@ -15,6 +15,7 @@
     <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src="https://cdn.tailwindcss.com/"></script>
 
 <!-- jQuery, vinculado directo a cdn de google -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -174,11 +175,11 @@
     <nav class="  px-4 py-4 flex justify-between items-center bg-white shadow-md w-full
             fixed top-0 left-0 right-0 z-10">
 		<a class="text-3xl font-bold leading-none" href="#">
-    <img  src="{{asset('/public/images/ciupac.ico')}}"  />
+    <img  src="{{asset('/public/images/Ciupac_2.ico')}}"  />
 
 		</a>
 		<div class="lg:hidden">
-			<button class="navbar-burger  flex items-center text-blue-600 p-3">
+			<button class="navbar-burger  flex items-center text-gray-600 p-3">
 				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 					<title>Mobile menu</title>
 					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -224,7 +225,7 @@ Contacto</a></li>
 		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
 			<div class="flex items-center mb-8">
 				<a class="mr-auto text-3xl font-bold leading-none" href="#">
-        <img class="float-right" src="{{asset('/public/images/ciupac.ico')}}"  />
+        <img class="float-right" src="{{asset('/public/images/Ciupac_2.ico')}}"  />
 
 				</a>
 				<button class="navbar-close">
@@ -314,8 +315,11 @@ Contacto</a>
          </span>
              </div>
          </article>
+         
+      
 @endif
 @endforeach
+
 <a name="news"></a>
 
  <div class="container mx-auto flex flex-wrap">
@@ -324,15 +328,13 @@ Contacto</a>
  <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
  <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
          
-<div class="p-4 m-auto grid">
 
- </div>
 
      </section>
 
 
 
-<div class="p-4 m-auto grid grid-cols-1 gap-1 md:grid-cols-3">
+<div class=" m-auto grid grid-cols-1 gap-1 md:grid-cols-3">
   
 
 @foreach($posts as $post)
@@ -381,7 +383,6 @@ Contacto</a>
 
 <section class="w-full grid md:w-2/3 flex flex-col items-center ">
 
-<section class="h-[200px] "></section>
 
 
 
@@ -406,7 +407,7 @@ Contacto</a>
 </section>
 
 <aside class=" py-2 bw-full text-center md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
-<article class="text-left flex flex-col   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+    <article class="text-left  pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
              <ul class="mt-10 ">
@@ -419,11 +420,25 @@ Contacto</a>
                </a>
                @endforeach
              </ul>
+             <h1 class="pt-10 mt-0 text-3xl text-black leading-snug  min-h-33">Links
+             </h1>
+             <ul class="mt-10 ">
+               @foreach($links as $article)
+               <a href="{{$article->path}}">
+               <li class="hover:text-green-500 text-black">
+       
+               <svg class="inline-block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> {{$article->name}}
+                 </li>
+               </a>
+               @endforeach
+             </ul>
             </article>
+            </div>
+           
 
+           
+       
 
-
-</div>
 
 
 </aside>
@@ -535,7 +550,7 @@ Contacto</a>
 
     <h2 class="text-3xl font-bold mb-12">Financia </h2>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center w-full">
         @foreach($logos1 as $logo)
         <div class="mb-12 lg:mb-0">
         <img
@@ -551,7 +566,7 @@ Contacto</a>
 <div class="pt-10">
     <h2 class="text-3xl font-bold mb-12 pt-10">Instituciones que nos acompañan</h2>
 
-    <div class="grid grid-cols-3  gap-2 content-center">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center w-full">
     @foreach($logos2 as $logo)
     <div class="mb-12 pt-10 lg:mb-0 block">
     <img

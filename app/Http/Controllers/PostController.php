@@ -36,6 +36,13 @@ class PostController extends Controller
         
     }
 
+    public function noticias(){
+        $posts = Post::paginate(2);
+        $conf = Configuration::first();
+
+        return view('postsections',['posts'=>$posts,'conf'=>$conf]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -126,7 +133,7 @@ class PostController extends Controller
         if($request->image){
 
             $validatedData = $request->validate([
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
         
                ]);
                $count = Post::count();

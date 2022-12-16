@@ -42,13 +42,12 @@
             justify-center
             md:justify-start
           ">
-          <img class="float-right" src="{{asset('/public/images/ciupac.ico')}}"  />
+          <img class="float-right" src="{{asset('/public/images/Ciupac_2.ico')}}"  />
 
           Ciupac
         </h6>
         <p>
-        What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of 
+        Ciudadanos por el ambiente costero
         </p>
       </div>
       <div class="">

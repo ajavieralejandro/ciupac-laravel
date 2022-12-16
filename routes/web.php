@@ -124,3 +124,4 @@ Route::group([
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
 Route::get('/asamblea/{id}', [\App\Http\Controllers\AsambleaController::class, 'show'])->name('showAsamblea');
+Route::get('/noticias', [\App\Http\Controllers\PostController::class, 'noticias'])->name('showNoticias');

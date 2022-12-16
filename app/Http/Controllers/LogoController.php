@@ -45,7 +45,7 @@ class LogoController extends Controller
         $logo = new Logo;
         $validatedData = $request->validate([
             'name' => 'required|unique:logos',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
     
            ]);
            $image = $request->file('image');
@@ -125,7 +125,7 @@ class LogoController extends Controller
                if($request->image){
 
             $validatedData = $request->validate([
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
         
                ]);
                $member = Logo::where('id');

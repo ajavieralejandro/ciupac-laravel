@@ -57,7 +57,7 @@
 
 		</a>
 		<div class="lg:hidden">
-			<button class="navbar-burger  flex items-center text-blue-600 p-3">
+			<button class="navbar-burger  flex items-center text-gray-600 p-3">
 				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 					<title>Mobile menu</title>
 					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
@@ -103,7 +103,7 @@ Contacto</a></li>
 		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
 			<div class="flex items-center mb-8">
 				<a class="mr-auto text-3xl font-bold leading-none" href="#">
-        <img class="float-right" src="{{asset('/public/images/ciupac.ico')}}"  />
+        <img class="float-right" src="{{asset('/public/images/Ciupac_2.ico')}}"  />
 
 				</a>
 				<button class="navbar-close">
@@ -145,7 +145,7 @@ Contacto</a>
 		</nav> 
     </header>
   <main class="h-screen w-screen py-6  flex items-center justify-center  flex-wrap">
-   <div style="padding-bottom:10%">
+   <div style="">
     @yield('content')
     </div>
 
