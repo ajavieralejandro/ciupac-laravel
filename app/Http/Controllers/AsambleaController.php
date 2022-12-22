@@ -69,7 +69,7 @@ class AsambleaController extends Controller
         $filename = "asamblea-".$count.".".$extension;
         $asamblea->image_name = $filename;
         $asamblea->image_path = "public/images/asambleas";
-        $filename_aux = 'public/images/asambleas'.$filename;
+        $filename_aux = 'public/images/asambleas/'.$filename;
         if(File::exists($filename_aux)){
             unlink($filename_aux);
         }
@@ -148,7 +148,7 @@ class AsambleaController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "asamblea-".$count.".".$extension;
-               $filename_aux = 'public/images/asambleas'.$filename;
+               $filename_aux = 'public/images/asambleas/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
                }
