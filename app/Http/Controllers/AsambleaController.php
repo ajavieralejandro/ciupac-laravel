@@ -53,7 +53,7 @@ class AsambleaController extends Controller
             'title' => 'required|max:255',
             'content' => 'required',
             'location_id' => 'required',
-            'image'=>'required'
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
 
         ]);
         $count = Asamblea::count();
@@ -141,7 +141,7 @@ class AsambleaController extends Controller
         if($request->image){
 
             $validatedData = $request->validate([
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
         
                ]);
                $count = $member->id;
