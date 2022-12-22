@@ -105,6 +105,7 @@ class TeamController extends Controller
                $extension = $image->extension();
                $img = Image::make($image->getRealPath());
             
+               //esto es un comentario auxiliar
                $filename = "member-".$member->id.".".$extension;
                $filename_aux = 'public/images/members/'.$filename;
                if(File::exists($filename_aux)){
