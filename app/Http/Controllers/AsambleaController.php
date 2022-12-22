@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Asamblea;
 use App\Models\Location;
 use Image;
+use File;
 use App\Models\Configuration;
 
 
@@ -68,7 +69,10 @@ class AsambleaController extends Controller
         $filename = "asamblea-".$count.".".$extension;
         $asamblea->image_name = $filename;
         $asamblea->image_path = "public/images/asambleas";
-
+        $filename_aux = 'public/images/asambleas'.$filename;
+        if(File::exists($filename_aux)){
+            unlink($filename_aux);
+        }
         if (!file_exists($asamblea->image_path)) {
             mkdir($asamblea->image_path, 755, true);
         }
@@ -144,6 +148,10 @@ class AsambleaController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "asamblea-".$count.".".$extension;
+               $filename_aux = 'public/images/asambleas'.$filename;
+               if(File::exists($filename_aux)){
+                   unlink($filename_aux);
+               }
                $file-> move(public_path('public/images/asambleas'), $filename);
                $member->image_name = $filename;
                Asamblea::whereId($request->member_id)->update(['image_name'=>$filename]);

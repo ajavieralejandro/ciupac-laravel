@@ -6,7 +6,7 @@ use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
 use App\Models\About;
 use Illuminate\Http\Request;
-
+use File;
 
 
 class AboutController extends Controller
@@ -39,12 +39,12 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Si no tengo about lo creo
         if(About::count()==0){
 
             $validatedData = $request->validate([
                 'content' => 'required',
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
             ]);
     
             $about = new About;
@@ -53,7 +53,12 @@ class AboutController extends Controller
             $extension = $file->extension();
             $count = About::count();
             $filename = "about-".$count.".".$extension;
+            $filename_aux = 'public/images/about'.$filename;
+            if(File::exists($filename_aux)){
+                unlink($filename_aux);
+            }
             $file-> move(public_path('public/images/about'), $filename);
+            
             $about->image_name = $filename;
             $about->image_path = "public/images/about";
             $about->save();
@@ -70,12 +75,16 @@ class AboutController extends Controller
         if($request->image){
 
             $validatedData = $request->validate([
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
         
                ]);
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "about-".$request->member_id.".".$extension;
+               $filename_aux = 'public/images/about'.$filename;
+               if(File::exists($filename_aux)){
+                   unlink($filename_aux);
+               }
                $file-> move(public_path('public/images/about'), $filename);
                About::first()->update(['image_name'=>$filename]);
         

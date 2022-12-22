@@ -9,6 +9,7 @@
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link rel="icon" href="{{asset('/public/images/ciupac_2.ico')}}">
 
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
@@ -21,7 +22,9 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <style>
-
+html {
+  scroll-behavior: smooth;
+}
 #mapid { height: 900px; width:100%; }
 
 </style>
@@ -272,10 +275,10 @@ Contacto</a>
 
 
     
-   <section class="container  mx-auto p-10 py-20 px-0 :p-10 md:px-0">
+   <section class="container overflow-y-scroll  mx-auto p-10 py-20 px-0 :p-10 md:px-0">
         <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
         <img class="xl:max-w-6xl" src="{{asset($portrait->image_path.'/'.$portrait->image_name)}}" alt="">
-            <div class="group-hover:scale-100 content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
+            <div class=" group-hover:scale-100 content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
                 <div class="flex justify-between font-bold text-sm">
                  
                 </div>
@@ -449,19 +452,19 @@ Contacto</a>
 
 
 
+
+<div class="container mx-auto">
+
+
 <article class="flex flex-col  mx-auto  h-screen py-20  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
 <div id="mapid"></div>
-
-                <p class="text-sm p-10 leading-relaxed text-gray-700">
+                <div stlye="height:900px"></div>
+                <p style="visibility: hidden" class="text-sm p-10 leading-relaxed text-gray-700">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
                 </p>
              
             </article>
-
-
-<div class="container mx-auto">
-
 
  
 
@@ -675,12 +678,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-
 <script>
 var greenIcon = L.icon({
     iconUrl: "{{url('/public/images/iconomalvinas.ico')}}" ,
     
-
     iconSize:     [159, 120 ], // size of the icon
     shadowSize:   [50, 64], // size of the shadow
     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
@@ -690,8 +691,6 @@ var greenIcon = L.icon({
 var southWest = L.latLng(-20.712, -77.227),
     northEast = L.latLng(-41.774,  -42.227),
     bounds = L.latLngBounds(southWest, northEast);
-
-
   
 var mymap = L.map('mapid',{
   maxBounds: bounds,
@@ -699,18 +698,15 @@ var mymap = L.map('mapid',{
   maxZoom:7
  
 }).setView([-38.505, -62.09], 4);
-
 L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);
 var app = @json($locations);
 var aux = @json($asambleas);
     app.forEach(element=>{
       var display=`<h1>${element.name}</h1>`;
-
         var asambleas = aux.filter(asamblea=> asamblea.location_id == element.id);
         asambleas.forEach(asamblea=>
-
           display+= `
-          <div class="overflow-scroll">
+          <div>
           <a href="/asamblea/${asamblea.id}">
           <img src="${asamblea.image_path}/${asamblea.image_name}" />
           <span className="text-light">${asamblea.name}</span>
@@ -720,9 +716,8 @@ var aux = @json($asambleas);
           
         );
         var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
-        marker.bindPopup("hola").openPopup();
+        marker.bindPopup(display).openPopup();
         
-
     });
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -732,10 +727,7 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 <script>
 $('#myForm').on('submit', function(event) {
   const inputs = document.getElementById("myForm").elements;
-
     event.preventDefault(); // prevent reload
-
-
   let username = inputs[0].value;
   let email = inputs[1].value;
   let message = inputs[2].value;
@@ -743,8 +735,6 @@ $('#myForm').on('submit', function(event) {
     formData.append('from_name',username);
     formData.append('message',message);
     formData.append('email',email);
-
-
     formData.append('service_id', 'service_9dgk7kn');
     formData.append('template_id', 'template_xkto9ir');
     formData.append('user_id', 'user_KRxr45LRpsTkhXElJp8Wx');
@@ -761,7 +751,7 @@ $('#myForm').on('submit', function(event) {
         alert('Oops... ' + JSON.stringify(error));
     });
 });
-
 </script>
+
 
 </html>

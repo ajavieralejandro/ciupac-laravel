@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Configuration;
-
+use File;
 
 
 
@@ -37,7 +37,8 @@ class PostController extends Controller
     }
 
     public function noticias(){
-        $posts = Post::paginate(2);
+        $posts = Post::where('visible','=',true)->orderBy('created_at','DESC')->paginate(2);
+    
         $conf = Configuration::first();
 
         return view('postsections',['posts'=>$posts,'conf'=>$conf]);
@@ -56,7 +57,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'content' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
         ]);
         
         $post = new Post;
@@ -67,6 +68,10 @@ class PostController extends Controller
         $extension = $file->extension();
         $count = Post::count();
         $filename = "post-".$count.".".$extension;
+        $filename_aux = 'public/images/posts'.$filename;
+        if(File::exists($filename_aux)){
+            unlink($filename_aux);
+        }
         $file-> move(public_path('public/images/posts'), $filename);
         $post->image_name = $filename;
         $post->image_path = "public/images/posts";
@@ -140,6 +145,10 @@ class PostController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "post-".$count.".".$extension;
+               $filename_aux = 'public/images/posts'.$filename;
+               if(File::exists($filename_aux)){
+                   unlink($filename_aux);
+               }
                $file-> move(public_path('public/images/posts'), $filename);
                $member->image_name = $filename;
                Post::whereId($request->member_id)->update(['image_name'=>$filename]);

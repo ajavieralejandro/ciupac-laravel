@@ -6,6 +6,8 @@ use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
 use App\Models\Portrait;
 use Illuminate\Http\Request;
+use File;
+
 
 
 
@@ -55,6 +57,10 @@ class PortraitController extends Controller
             $extension = $file->extension();
             $count = Portrait::count();
             $filename = "portrait-".$count.".".$extension;
+            $filename_aux = 'public/images/portrait'.$filename;
+            if(File::exists($filename_aux)){
+                unlink($filename_aux);
+            }
             $file-> move(public_path('public/images/portrait'), $filename);
             $portrait->image_name = $filename;
             $portrait->image_path = "public/images/portrait";
@@ -79,8 +85,13 @@ class PortraitController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "portrait-".$portrait->id.".".$extension;
+               $filename_aux = 'public/images/portrait'.$filename;
+               if(File::exists($filename_aux)){
+                   unlink($filename_aux);
+               }
                $file-> move(public_path('public/images/portrait'), $filename);
                $portrait->image_name = $filename;
+             
                $portrait->image_path = "public/images/portrait";
         
 

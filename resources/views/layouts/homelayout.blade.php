@@ -2,7 +2,9 @@
 
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
+    <title>Ciupac</title>
+	<link rel="icon" href="{{asset('/public/images/ciupac_2.ico')}}">
+
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
     

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ImagenAsamblea;
 use App\Models\Asamblea;
-
+use File;
 use Illuminate\Http\Request;
 
 
@@ -59,6 +59,10 @@ class ImagenAsambleaController extends Controller
            $img->image_name = $imagename;
            $img->image_path = 'public/images/imagenasamblea';
            $img->asamblea_id = $request->id;
+           $filename_aux = 'public/images/imagenasamblea/'.$imagename;
+           if(File::exists($filename_aux)){
+               unlink($filename_aux);
+           }
            $file-> move(public_path('public/images/imagenasamblea'), $imagename);        
            $img->save();
            $asamblea = Asamblea::find($request->id);

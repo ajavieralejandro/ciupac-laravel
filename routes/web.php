@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ImageController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\AboutController;

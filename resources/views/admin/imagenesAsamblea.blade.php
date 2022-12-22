@@ -13,7 +13,7 @@
                 <thead>
                     <tr>
                         <th>
-                            
+                            Imagen
                         </th>
                      
                         <th

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Logo;
 use Image;
 use Illuminate\Validation\Rule;
+use File;
+
 
 
 class LogoController extends Controller
@@ -57,6 +59,10 @@ class LogoController extends Controller
            $logo->image_name = $filename;
            $logo->image_path = "public/images/logos";
            $logo->type = $request->type;
+           $filename_aux = 'public/images/logos'.$filename;
+           if(File::exists($filename_aux)){
+               unlink($filename_aux);
+           }
 
 
            $img->resize(350,350 , function ($constraint) {
@@ -121,8 +127,8 @@ class LogoController extends Controller
            ]);
            $member = Logo::whereId($request->logo_id)->update($validatedData);
            $member = Logo::find($request->logo_id)->first();
-           $member->type = $request->type;
-               if($request->image){
+           //$member->type = $request->type;
+            if($request->image){
 
             $validatedData = $request->validate([
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
@@ -133,12 +139,16 @@ class LogoController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "logos-".$count.".".$extension;
+               $filename_aux = 'public/images/logos'.$filename;
+               if(File::exists($filename_aux)){
+                   unlink($filename_aux);
+               }
                $file-> move(public_path('public/images/logos'), $filename);
                //$member->image_name = $filename;
                Logo::whereId($request->logo_id)->update(['image_name'=>$filename]);        
 
         }
-        $member->save();
+        //$member->save();
 
         
         return redirect('/logos');

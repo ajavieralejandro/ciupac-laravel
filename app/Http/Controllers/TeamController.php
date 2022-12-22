@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use Image;
+use File;
 
 
 class TeamController extends Controller
@@ -53,6 +54,9 @@ class TeamController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "member-".$request->member_id.".".$extension;
+               if(File::exists($filename)){
+                unlink($filename);
+            }
                $file-> move(public_path('public/images/members'), $filename);
                Team::whereId($request->member_id)->update(['image_name'=>$filename]);
         
@@ -101,7 +105,9 @@ class TeamController extends Controller
                $img = Image::make($image->getRealPath());
             
                $filename = "member-".$member->id.".".$extension;
-
+               if(File::exists($filename)){
+                unlink($filename);
+            }
 
                $img->resize(180, 180, function ($constraint) {
                 $constraint->aspectRatio();
