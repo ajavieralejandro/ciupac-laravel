@@ -59,9 +59,11 @@ class LogoController extends Controller
            $logo->image_name = $filename;
            $logo->image_path = "public/images/logos";
            $logo->type = $request->type;
-           $filename_aux = 'public/images/logos'.$filename;
+           $filename_aux = 'public/images/logos/'.$filename;
            if(File::exists($filename_aux)){
                unlink($filename_aux);
+               File::delete(public_path($filename_aux));
+
            }
 
 
@@ -139,9 +141,11 @@ class LogoController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "logos-".$count.".".$extension;
-               $filename_aux = 'public/images/logos'.$filename;
+               $filename_aux = 'public/images/logos/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
+                   File::delete(public_path($filename_aux));
+
                }
                $file-> move(public_path('public/images/logos'), $filename);
                //$member->image_name = $filename;

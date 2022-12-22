@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use Image;
-use File;
+use Illuminate\Support\Facades\File;
 
 
 class TeamController extends Controller
@@ -57,6 +57,8 @@ class TeamController extends Controller
                $filename_aux = 'public/images/members/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
+                   File::delete(public_path($filename_aux));
+
                }
                $file-> move(public_path('public/images/members'), $filename);
                Team::whereId($request->member_id)->update(['image_name'=>$filename]);

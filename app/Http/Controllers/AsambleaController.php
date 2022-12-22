@@ -72,6 +72,8 @@ class AsambleaController extends Controller
         $filename_aux = 'public/images/asambleas/'.$filename;
         if(File::exists($filename_aux)){
             unlink($filename_aux);
+            File::delete(public_path($filename_aux));
+
         }
         if (!file_exists($asamblea->image_path)) {
             mkdir($asamblea->image_path, 755, true);
@@ -151,6 +153,8 @@ class AsambleaController extends Controller
                $filename_aux = 'public/images/asambleas/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
+                   File::delete(public_path($filename_aux));
+
                }
                $file-> move(public_path('public/images/asambleas'), $filename);
                $member->image_name = $filename;

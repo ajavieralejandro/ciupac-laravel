@@ -56,6 +56,8 @@ class AboutController extends Controller
             $filename_aux = 'public/images/about'.$filename;
             if(File::exists($filename_aux)){
                 unlink($filename_aux);
+                File::delete(public_path($filename_aux));
+
             }
             $file-> move(public_path('public/images/about'), $filename);
             
@@ -84,6 +86,8 @@ class AboutController extends Controller
                $filename_aux = 'public/images/about/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
+                   File::delete(public_path($filename_aux));
+
                }
                $file-> move(public_path('public/images/about'), $filename);
                About::first()->update(['image_name'=>$filename]);

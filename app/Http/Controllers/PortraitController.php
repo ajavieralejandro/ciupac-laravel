@@ -57,7 +57,7 @@ class PortraitController extends Controller
             $extension = $file->extension();
             $count = Portrait::count();
             $filename = "portrait-".$count.".".$extension;
-            $filename_aux = 'public/images/portrait'.$filename;
+            $filename_aux = 'public/images/portrait/'.$filename;
             if(File::exists($filename_aux)){
                 unlink($filename_aux);
             }
@@ -85,9 +85,11 @@ class PortraitController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "portrait-".$portrait->id.".".$extension;
-               $filename_aux = 'public/images/portrait'.$filename;
+               $filename_aux = 'public/images/portrait/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
+                   File::delete(public_path($filename_aux));
+
                }
                $file-> move(public_path('public/images/portrait'), $filename);
                $portrait->image_name = $filename;

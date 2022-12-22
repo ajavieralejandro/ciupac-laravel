@@ -62,6 +62,8 @@ class ImagenAsambleaController extends Controller
            $filename_aux = 'public/images/imagenasamblea/'.$imagename;
            if(File::exists($filename_aux)){
                unlink($filename_aux);
+               File::delete(public_path($filename_aux));
+
            }
            $file-> move(public_path('public/images/imagenasamblea'), $imagename);        
            $img->save();
