@@ -54,9 +54,10 @@ class TeamController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "member-".$request->member_id.".".$extension;
-               if(File::exists($filename)){
-                unlink($filename);
-            }
+               $filename_aux = 'public/images/members/'.$filename;
+               if(File::exists($filename_aux)){
+                   unlink($filename_aux);
+               }
                $file-> move(public_path('public/images/members'), $filename);
                Team::whereId($request->member_id)->update(['image_name'=>$filename]);
         
@@ -105,9 +106,10 @@ class TeamController extends Controller
                $img = Image::make($image->getRealPath());
             
                $filename = "member-".$member->id.".".$extension;
-               if(File::exists($filename)){
-                unlink($filename);
-            }
+               $filename_aux = 'public/images/members/'.$filename;
+               if(File::exists($filename_aux)){
+                   unlink($filename_aux);
+               }
 
                $img->resize(180, 180, function ($constraint) {
                 $constraint->aspectRatio();

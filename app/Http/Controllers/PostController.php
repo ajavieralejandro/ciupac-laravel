@@ -68,11 +68,11 @@ class PostController extends Controller
         $extension = $file->extension();
         $count = Post::count();
         $filename = "post-".$count.".".$extension;
-        $filename_aux = 'public/images/posts'.$filename;
+        $filename_aux = 'public/images/posts/'.$filename;
         if(File::exists($filename_aux)){
             unlink($filename_aux);
         }
-        $file-> move(public_path('public/images/posts'), $filename);
+        $file-> move(public_path('public/images/posts/'), $filename);
         $post->image_name = $filename;
         $post->image_path = "public/images/posts";
         if($request->visible)
