@@ -112,6 +112,8 @@ class TeamController extends Controller
                $filename_aux = 'public/images/members/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
+                   File::delete(public_path($filename_aux));
+
                }
 
                $img->resize(180, 180, function ($constraint) {
