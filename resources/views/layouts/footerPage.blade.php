@@ -42,7 +42,7 @@
             justify-center
             md:justify-start
           ">
-          <img class="float-right" src="{{asset('/public/images/Ciupac_2.ico')}}"  />
+          <img class="float-right" src="{{asset('/public/images/ciupac_2.ico')}}"  />
 
           Ciupac
         </h6>

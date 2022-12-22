@@ -81,7 +81,7 @@ class AboutController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "about-".$request->member_id.".".$extension;
-               $filename_aux = 'public/images/about'.$filename;
+               $filename_aux = 'public/images/about/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
                }
