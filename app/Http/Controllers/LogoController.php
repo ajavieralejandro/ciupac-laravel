@@ -125,6 +125,10 @@ class LogoController extends Controller
                 'required',
                 //Rule::unique('logos')->ignore($request->logos_id),
             ],
+            'type'=>[
+                'required',
+
+            ]
   
            ]);
            $member = Logo::whereId($request->logo_id)->update($validatedData);
