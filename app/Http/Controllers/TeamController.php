@@ -13,6 +13,7 @@ class TeamController extends Controller
     //
     public function index(Request $request){
         $data = Team::paginate(20);
+        Cache::flush();
         return view('admin.team',['members'=>$data]);
 
     }
