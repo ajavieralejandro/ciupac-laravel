@@ -46,6 +46,13 @@ class TeamController extends Controller
 
 
         if($request->image){
+            
+            $filename_aux = $member->image_path.'/'.$member->image_name;
+            if(File::exists($filename_aux)){
+                unlink($filename_aux);
+                File::delete(public_path($filename_aux));
+
+            }
 
             $validatedData = $request->validate([
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
@@ -54,12 +61,6 @@ class TeamController extends Controller
                $file= $request->file('image');
                $extension = $file->extension();
                $filename = "member-".$request->member_id.".".$extension;
-               $filename_aux = 'public/images/members/'.$filename;
-               if(File::exists($filename_aux)){
-                   unlink($filename_aux);
-                   File::delete(public_path($filename_aux));
-
-               }
                $file-> move(public_path('public/images/members'), $filename);
                Team::whereId($request->member_id)->update(['image_name'=>$filename]);
         
