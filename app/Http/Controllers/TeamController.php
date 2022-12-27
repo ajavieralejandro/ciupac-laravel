@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Cache;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
