@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Cache;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
@@ -61,7 +62,8 @@ class TeamController extends Controller
                ]);
                $file= $request->file('image');
                $extension = $file->extension();
-               $filename = "member-".$request->member_id.".".$extension;
+               $_aux = Str::random(3);
+               $filename = "member-".$_aux.$request->member_id.".".$extension;
                $file-> move(public_path('public/images/members'), $filename);
                Team::whereId($request->member_id)->update(['image_name'=>$filename]);
         
@@ -110,7 +112,8 @@ class TeamController extends Controller
                $img = Image::make($image->getRealPath());
             
                //esto es un comentario auxiliar
-               $filename = "member-".$member->id.".".$extension;
+               $_aux = Str::random(3);
+               $filename = "member-".$_aux.$request->member_id.".".$extension;               
                $filename_aux = 'public/images/members/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
