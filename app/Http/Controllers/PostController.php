@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Configuration;
 use File;
+use Illuminate\Support\Str;
+
 
 
 
@@ -67,11 +69,13 @@ class PostController extends Controller
         $file= $request->file('image');
         $extension = $file->extension();
         $count = Post::count();
-        $filename = "post-".$count.".".$extension;
+        $_aux = Str::random(5);
+        $filename = "post-".$_aux.$request->member_id.".".$extension; 
         $filename_aux = 'public/images/posts/'.$filename;
         if(File::exists($filename_aux)){
             unlink($filename_aux);
             File::delete(public_path($filename_aux));
+            
 
         }
         $file-> move(public_path('public/images/posts/'), $filename);
@@ -146,8 +150,10 @@ class PostController extends Controller
                $count = Post::count();
                $file= $request->file('image');
                $extension = $file->extension();
-               $filename = "post-".$count.".".$extension;
-               $filename_aux = 'public/images/posts/'.$filename;
+               
+               $_aux = Str::random(5);
+               $filename = "post-".$_aux.$request->member_id.".".$extension; 
+               $filename_aux = 'public/images/posts/'.$member->image_name;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
                    File::delete(public_path($filename_aux));

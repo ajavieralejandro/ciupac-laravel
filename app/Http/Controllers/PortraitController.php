@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateAboutRequest;
 use App\Models\Portrait;
 use Illuminate\Http\Request;
 use File;
+use Str;
 
 
 
@@ -84,6 +85,7 @@ class PortraitController extends Controller
                ]);
                $file= $request->file('image');
                $extension = $file->extension();
+               $_aux = Str::random(5);
                $filename = "portrait-".$portrait->id.".".$extension;
                $filename_aux = 'public/images/portrait/'.$filename;
                if(File::exists($filename_aux)){
@@ -91,6 +93,7 @@ class PortraitController extends Controller
                    File::delete(public_path($filename_aux));
 
                }
+               $filename = "portrait-".$portrait->id.$_aux.".".$extension;
                $file-> move(public_path('public/images/portrait'), $filename);
                $portrait->image_name = $filename;
              

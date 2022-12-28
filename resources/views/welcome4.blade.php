@@ -299,15 +299,16 @@ Contacto</a>
  -->
  <a name="news"></a>
  <div class="container mx-auto flex flex-wrap">
-<h1>Noticias</h1>
 @foreach($posts as $post)
 @if ($loop->first)
 
  <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}})">
-             <h1 class="opacity-80 bg-black w-1/2 mt-5 text-4xl text-white leading-snug  min-h-33">{{$post->title}}
-             <h1 class="opacity-80  bg-black w-1/2 text-4xl text-white leading-snug  min-h-33">{{$post->description}}
+            <div class="w-fit opacity-80 bg-black">
+             <h1 class=" mt-5 text-4xl text-white leading-snug  min-h-33">{{$post->title}}
+             <h1 class=" text-4xl text-white leading-snug  min-h-33">{{$post->description}}
 
              </h1>
+             </div>
              <div class="mt-20">
             
              </div>
@@ -325,25 +326,16 @@ Contacto</a>
 
 <a name="news"></a>
 
- <div class="container mx-auto flex flex-wrap">
+<section class="container   p-10 md:py-20 px-0 md:p-10 md:px-0">
 
 
- <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
- <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
-         
-
-
-     </section>
-
-
-
-<div class=" m-auto grid grid-cols-1 gap-1 md:grid-cols-3">
+<div class=" grid place-items-center 	 grid-cols-1 gap-1 md:grid-cols-4">
   
 
 @foreach($posts as $post)
 @if (!$loop->first)
 
-<div class="max-w-lg mx-auto ">
+<div  style="max-width:400px;max-height:300px">
 
 <div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white  rounded-lg max-w-sm mb-5">
 <a href="{{route('showPost', ['id' => $post->id]);}}">
@@ -355,7 +347,7 @@ Contacto</a>
             <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{$post->title}}</h5>
         </a>
         <p class="font-normal text-gray-700 mb-3">{{$post->description}}</p>
-        <a class="hover:text-green-500" href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
+        <a class="hover:text-blue-400" href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
 <p>{{$post->created_at->format('d-m-Y')}}</p>
 
     </div>
@@ -370,6 +362,23 @@ Contacto</a>
 
   
 </div>
+
+</section>
+<span class="p-3 px-5 bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver todas las noticias.</a>
+
+</span>
+ <div class="container mx-auto flex flex-wrap">
+
+
+ <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
+ <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
+         
+
+
+     </section>
+    
+
+
 <a name="about"></a>
 
 <section class="pt-40 pb-32 relative">
@@ -401,6 +410,8 @@ Contacto</a>
   
       </div>
 
+      
+
 
 
     
@@ -409,7 +420,7 @@ Contacto</a>
 
 </section>
 
-<aside class=" py-2 bw-full text-center md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
+<aside class=" bg-blue-100 py-2 bw-full text-center md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
     <article class="text-left  pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
@@ -436,7 +447,6 @@ Contacto</a>
                @endforeach
              </ul>
             </article>
-            </div>
            
 
            
@@ -447,7 +457,7 @@ Contacto</a>
 </aside>
 
 
-
+</section>
 
 
 
@@ -456,7 +466,7 @@ Contacto</a>
 <div class="container mx-auto">
 
 
-<article class="flex flex-col  mx-auto  h-screen py-20  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+<article class="flex flex-col  mx-auto  h-screen py-10  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
 <div id="mapid"></div>
                 <div stlye="height:900px"></div>
@@ -469,9 +479,9 @@ Contacto</a>
  
 
  
-<div class="pt-10">
+<div class="">
   
-<div class="  px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+<div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
 
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
@@ -493,7 +503,7 @@ Contacto</a>
     <p class="text-base text-gray-700 md:text-lg">
     </p>
   </div>
-  <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
     @foreach($members as $member)
     <div>
       <div class="relative overflow-hidden transition duration-300 transform rounded-lg shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
@@ -553,10 +563,9 @@ Contacto</a>
 
     <h2 class="text-3xl font-bold mb-12">Financia </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center w-full">
+    <div class="grid grid-cols-1 gap-2 content-center w-full">
         @foreach($logos1 as $logo)
-        <div class="mb-12 lg:mb-0">
-        <img
+        <div class="grid place-items-center">        <img 
         src="{{asset($logo->image_path.'/'.$logo->image_name)}}"
           class="img-fluid  px-6 md:px-12"
           alt="logo"

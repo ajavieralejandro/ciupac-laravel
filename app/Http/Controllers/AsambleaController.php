@@ -7,6 +7,7 @@ use App\Models\Location;
 use Image;
 use File;
 use App\Models\Configuration;
+use Str;
 
 
 
@@ -66,7 +67,8 @@ class AsambleaController extends Controller
         $img = Image::make($image->getRealPath());
         
         $logos = Asamblea::all();
-        $filename = "asamblea-".$count.".".$extension;
+        $_aux = Str::random(3);
+        $filename = "asamblea-".$_aux.$count.".".$extension;
         $asamblea->image_name = $filename;
         $asamblea->image_path = "public/images/asambleas";
         $filename_aux = 'public/images/asambleas/'.$filename;
@@ -149,13 +151,17 @@ class AsambleaController extends Controller
                $count = $member->id;
                $file= $request->file('image');
                $extension = $file->extension();
-               $filename = "asamblea-".$count.".".$extension;
+               $filename = $member->image_name;
+               
                $filename_aux = 'public/images/asambleas/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
                    File::delete(public_path($filename_aux));
 
                }
+               $_aux = Str::random(5);
+               $filename = "asamblea-".$_aux.".".$extension;
+
                $file-> move(public_path('public/images/asambleas'), $filename);
                $member->image_name = $filename;
                Asamblea::whereId($request->member_id)->update(['image_name'=>$filename]);

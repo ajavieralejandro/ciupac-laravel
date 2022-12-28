@@ -63,7 +63,7 @@ class TeamController extends Controller
                ]);
                $file= $request->file('image');
                $extension = $file->extension();
-               $_aux = Str::random(3);
+               $_aux = Str::random(5);
                $filename = "member-".$_aux.$request->member_id.".".$extension;
                $file-> move(public_path('public/images/members'), $filename);
                Team::whereId($request->member_id)->update(['image_name'=>$filename]);
@@ -113,7 +113,7 @@ class TeamController extends Controller
                $img = Image::make($image->getRealPath());
             
                //esto es un comentario auxiliar
-               $_aux = Str::random(3);
+               $_aux = Str::random(5);
                $filename = "member-".$_aux.$request->member_id.".".$extension;               
                $filename_aux = 'public/images/members/'.$filename;
                if(File::exists($filename_aux)){

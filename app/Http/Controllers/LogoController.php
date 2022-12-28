@@ -7,6 +7,7 @@ use App\Models\Logo;
 use Image;
 use Illuminate\Validation\Rule;
 use File;
+use Illuminate\Support\Str;
 
 
 
@@ -54,8 +55,8 @@ class LogoController extends Controller
            $extension = $image->extension();
            $img = Image::make($image->getRealPath());
            
-        
-           $filename = "logo-".$count.".".$extension;
+           $_aux = Str::random(5);
+           $filename = "logo-".$count.$_aux.".".$extension;
            $logo->image_name = $filename;
            $logo->image_path = "public/images/logos";
            $logo->type = $request->type;
@@ -67,7 +68,7 @@ class LogoController extends Controller
            }
 
 
-           $img->resize(350,350 , function ($constraint) {
+           $img->resize(650,650 , function ($constraint) {
             $constraint->aspectRatio();
         })->save('public/images/logos'.'/'.$filename);
         $logo->name = $request->name;
@@ -144,8 +145,10 @@ class LogoController extends Controller
                $count = Logo::count();
                $file= $request->file('image');
                $extension = $file->extension();
-               $filename = "logos-".$count.".".$extension;
-               $filename_aux = 'public/images/logos/'.$filename;
+               
+               $_aux = Str::random(5);
+               $filename = "logo-".$count.$_aux.".".$extension;
+                $filename_aux = 'public/images/logos/'.$member->image_name;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
                    File::delete(public_path($filename_aux));

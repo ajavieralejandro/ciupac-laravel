@@ -40,7 +40,7 @@ class PagesController extends Controller
             $asambleas = Asamblea::all();
             $articles = Articles::paginate(5);
             $portrait = Portrait::first();
-            $posts = Post::orderBy('created_at','DESC')->paginate(3)->where('visible');
+            $posts = Post::orderBy('created_at','DESC')->paginate(5)->where('visible');
             return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations,
                                     'about'=>$about,'portrait'=>$portrait,'articles'=>$articles,'conf'=>$conf,'asambleas'=>$asambleas,
                                     'logos1'=>$logos1,'logos2'=>$logos2,'links'=>$links

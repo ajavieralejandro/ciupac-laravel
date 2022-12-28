@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateAboutRequest;
 use App\Models\About;
 use Illuminate\Http\Request;
 use File;
+use Str;
 
 
 class AboutController extends Controller
@@ -52,13 +53,15 @@ class AboutController extends Controller
             $file= $request->file('image');
             $extension = $file->extension();
             $count = About::count();
-            $filename = "about-".$count.".".$extension;
+            $_aux = Str::random(5);
+            $filename = "about-".$_aux.".".$extension;
             $filename_aux = 'public/images/about'.$filename;
             if(File::exists($filename_aux)){
                 unlink($filename_aux);
                 File::delete(public_path($filename_aux));
 
             }
+
             $file-> move(public_path('public/images/about'), $filename);
             
             $about->image_name = $filename;
@@ -82,13 +85,16 @@ class AboutController extends Controller
                ]);
                $file= $request->file('image');
                $extension = $file->extension();
-               $filename = "about-".$request->member_id.".".$extension;
+               $filename = $about->image_name;
                $filename_aux = 'public/images/about/'.$filename;
                if(File::exists($filename_aux)){
                    unlink($filename_aux);
                    File::delete(public_path($filename_aux));
 
                }
+               $_aux = Str::random(5);
+               $filename = "about-".$_aux.".".$extension;
+
                $file-> move(public_path('public/images/about'), $filename);
                About::first()->update(['image_name'=>$filename]);
         

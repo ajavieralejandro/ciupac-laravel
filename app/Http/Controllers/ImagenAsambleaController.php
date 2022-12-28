@@ -6,6 +6,7 @@ use App\Models\ImagenAsamblea;
 use App\Models\Asamblea;
 use File;
 use Illuminate\Http\Request;
+use Str;
 
 
 class ImagenAsambleaController extends Controller
@@ -54,7 +55,8 @@ class ImagenAsambleaController extends Controller
            $count = ImagenAsamblea::count();
            $file= $request->file('image');
            $extension = $request->file('image')->extension();
-           $imagename= 'image-'.$count.'.'.$extension;
+           $_aux = Str::random(5);
+           $imagename= 'image-'.$_aux.'.'.$extension;
            $img = new ImagenAsamblea;
            $img->image_name = $imagename;
            $img->image_path = 'public/images/imagenasamblea';
