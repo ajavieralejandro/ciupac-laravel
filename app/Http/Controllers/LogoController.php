@@ -141,7 +141,7 @@ class LogoController extends Controller
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:10240',
         
                ]);
-               $member = Logo::where('id');
+               $member = Logo::whereId($request->logo_id)->first();
                $count = Logo::count();
                $file= $request->file('image');
                $extension = $file->extension();
