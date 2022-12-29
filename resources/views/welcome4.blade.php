@@ -335,16 +335,13 @@ Contacto</a>
 @if (!$loop->first)
 
 <div class="md:max-h-72">
+<a href="{{route('showPost', ['id' => $post->id]);}}">
 
 <div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white  rounded-lg max-w-sm mb-5">
-<a href="{{route('showPost', ['id' => $post->id]);}}">
   
         <img class="rounded-t-lg h-48 w-96 " src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
-    </a>
     <div class="p-5">
-        <a href="#">
             <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{$post->title}}</h5>
-        </a>
         <p class="font-normal text-gray-700 mb-3">{{$post->description}}</p>
         <a class="hover:text-blue-400" href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
 <p>{{$post->created_at->format('d-m-Y')}}</p>
@@ -352,6 +349,8 @@ Contacto</a>
     </div>
 
 </div>
+</a>
+
 
 </div>
 @endif
@@ -361,14 +360,14 @@ Contacto</a>
 
   
 </div>
-
+</div>
 </section>
 
 
  <div class="container mx-auto flex flex-wrap">
 
  <div class="pt-10">
-<p class="p-3  bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
+<p class="p-3  relative bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
 
 </p>
 </div>
@@ -428,7 +427,7 @@ Contacto</a>
     <article class="bg-blue-100 text-left   pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
-             <ul class="mt-10 overflow-auto ">
+             <ul class="mt-10 overflow-y-scroll ">
                @foreach($articles as $article)
                <a href="{{$article->path}}">
                <li class="hover:text-green-500 text-black">
