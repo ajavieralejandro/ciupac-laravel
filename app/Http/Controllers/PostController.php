@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::paginate(20);
+        $posts = Post::paginate(15);
         return view('admin.posts',['posts'=>$posts]);
         
     }
@@ -39,7 +39,7 @@ class PostController extends Controller
     }
 
     public function noticias(){
-        $posts = Post::where('visible','=',true)->orderBy('created_at','DESC')->paginate(2);
+        $posts = Post::where('visible','=',true)->orderBy('created_at','DESC')->paginate(10);
     
         $conf = Configuration::first();
 

@@ -20,7 +20,7 @@ class LocationController extends Controller
     public function index()
     {
         //
-        $data = Location::paginate(2);
+        $data = Location::paginate(20);
         return view('admin.locations',['locations'=>$data]);
         
     }
