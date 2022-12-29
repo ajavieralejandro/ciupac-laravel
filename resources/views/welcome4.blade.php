@@ -19,7 +19,7 @@
 <script src="https://cdn.tailwindcss.com/"></script>
 
 <!-- jQuery, vinculado directo a cdn de google -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <style>
 html {
@@ -29,7 +29,7 @@ html {
 
 </style>
 
-<style type="text/css">
+<style>
 @font-face {
     font-family: LucidaGrande;
     src: url('{{ public_path('lucida-grande/LucidaGrande.tff') }}');
@@ -169,7 +169,6 @@ html {
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-</head>
 </head>
 
 <body class="scroll-smooth">
@@ -369,9 +368,9 @@ Contacto</a>
  <div class="container mx-auto flex flex-wrap">
 
  <div class="pt-10">
-<span class="p-3  bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
+<p class="p-3  bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
 
-</span>
+</p>
 </div>
  <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
   
@@ -424,12 +423,12 @@ Contacto</a>
 
 </section>
 
-<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-sm flex flex-col items-center px-3">
+<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3">
 <div class="grid h-screen place-items-center">
-    <article class="bg-blue-100 text-left overflow-auto  pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+    <article class="bg-blue-100 text-left   pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
-             <ul class="mt-10 ">
+             <ul class="mt-10 overflow-auto ">
                @foreach($articles as $article)
                <a href="{{$article->path}}">
                <li class="hover:text-green-500 text-black">
