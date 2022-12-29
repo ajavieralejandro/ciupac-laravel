@@ -1,6 +1,6 @@
 <footer class="container mx-auto md:pt-20   text-center lg:text-left text-gray-600" >
   <div class=" flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
-    <div class="mr-12 hidden lg:block">
+    <div class="mr-12  lg:block">
       <span>Seguinos en nuestras redes sociales : </span>
     </div>
     <div class="flex justify-center">

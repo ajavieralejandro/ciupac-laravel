@@ -324,13 +324,9 @@ Contacto</a>
 @endforeach
 </div>
 <a name="news"></a>
-<div class="pt-10">
-<span class="p-3 w-screen bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver todas las noticias.</a>
-
-</span>
-</div>
 
 <section class="container   p-10 md:py-20 px-0 md:p-10 md:px-0">
+
 
 
 <div class=" grid place-items-center 	 grid-cols-1 gap-1 md:grid-cols-4">
@@ -339,7 +335,7 @@ Contacto</a>
 @foreach($posts as $post)
 @if (!$loop->first)
 
-<div class="md:max-h-56">
+<div class="md:max-h-72">
 
 <div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white  rounded-lg max-w-sm mb-5">
 <a href="{{route('showPost', ['id' => $post->id]);}}">
@@ -371,7 +367,11 @@ Contacto</a>
 
 
  <div class="container mx-auto flex flex-wrap">
+ <div class="pt-10">
+<span class="p-3  bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
 
+</span>
+</div>
 
  <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
   
@@ -475,8 +475,8 @@ Contacto</a>
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
 <div id="mapid"></div>
                 <div stlye="height:900px"></div>
-                <p style="visibility: hidden" class="text-sm p-10 leading-relaxed text-gray-700">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id beatae repellendus nam! Dolor dignissimos unde, dolore laboriosam atque numquam quam.
+                <p  class="text-sm p-10 leading-relaxed text-gray-700">
+                  Explora nuestras localidades distribuidas por toda la provincia de Buenos Aires. 
                 </p>
              
             </article>
@@ -626,7 +626,7 @@ Contacto</a>
               <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Mensaje</label>
               <textarea           name="message" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" ></textarea>
           </div>
-          <button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-green-400 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 hover:bg-green-700 dark:focus:ring-primary-800">Enviar mensaje</button>
+          <button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-blue-300 sm:w-fit hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 hover:bg-blue-500 dark:focus:ring-primary-800">Enviar mensaje</button>
       </form>
   </div>
 </section>
@@ -709,9 +709,10 @@ var southWest = L.latLng(-20.712, -77.227),
 var mymap = L.map('mapid',{
   maxBounds: bounds,
   minZoom:7,
-  maxZoom:10
+  maxZoom:12,
  
 }).setView([-38.505, -62.09], 4);
+mymap.setZoom(8);
 L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);
 var app = @json($locations);
 var aux = @json($asambleas);
