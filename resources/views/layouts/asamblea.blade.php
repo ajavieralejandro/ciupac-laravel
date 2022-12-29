@@ -4,19 +4,37 @@
     <!-- header ends here -->
 
     <main class="mt-10 container py-20 ">
-      <div class="grid md:grid-cols-2 grid-cols-1 gap-2 pt-10 mb-20">
-        <div>
-        <article class="mx-auto max-w-sm pb-8 bg-cover bg-center cursor-pointer transform duration-500 hover:-translate-y-1 shadow-2xl rounded-xl">
-                <img class="mx-auto mb-4 p-5  w-80  " src="{{asset($asamblea->image_path.'/'.$asamblea->image_name)}}" alt="" />
-                <h2 class="text-center text-3xl  font-bold min-h-18 ">
-                    {{$asamblea->name}}
-                </h2>
-                <div class="text-center">
-                    {!!$asamblea->description!!}
-                    </div>
+
+
+ 
+
+      <div class="grid md:grid-cols-2 grid-cols-1  gap-2 pt-10 mb-20">
+        <div class="grid place-items-center">
+        <article class="p-10 min-h-116 max-w-xl w-full bg-blue-100 rounded-xl text-black transform duration-500 hover:-translate-y-1 cursor-pointer">
+
+                <h1 class="mt-5 text-3xl text-black-100 leading-snug  min-h-33">{{$asamblea->name}} </h1>
+                <img class="mx-auto p-5"  src="{{asset($asamblea->image_path.'/'.$asamblea->image_name)}}" alt="">
+
+                <div class="mt-20">
+                    <span class="text-xl">Ubicación :  </span>
+                    <span class="font-bold text-xl">{{$asamblea->location->name}}</span>
+                </div>
+               
             </article>
+
+           
+<div class="max-w-lg m-auto">
+
+  <p class="mb-4">
+    
+  {!!$asamblea->description!!}
+  </p>
+ 
+</div>
+          
         </div>
-        <div>
+        
+        <div >
         <div class="container grid grid-cols-1 md:grid-cols-3 gap-2 mx-auto">
             @foreach($images as $image)
     <div class="w-full">

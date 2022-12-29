@@ -44,7 +44,6 @@ html {
         html, body {
     margin: 0px;
     padding: 0px;
-    background: url("http://digital.bnint.com/filelib/s9/photos/white_wood_4500x3000_lo_res.jpg");
 }
 
 
@@ -264,7 +263,7 @@ Contacto</a>
 			<div class="mt-auto">
 			
 				<p class="my-4 text-xs text-center text-gray-400">
-					<span>Copyright © 2021</span>
+					<span>Copyright © 2023</span>
 				</p>
 			</div>
 		</nav>  </header>
@@ -323,8 +322,13 @@ Contacto</a>
       
 @endif
 @endforeach
-
+</div>
 <a name="news"></a>
+<div class="pt-10">
+<span class="p-3 w-screen bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver todas las noticias.</a>
+
+</span>
+</div>
 
 <section class="container   p-10 md:py-20 px-0 md:p-10 md:px-0">
 
@@ -335,7 +339,7 @@ Contacto</a>
 @foreach($posts as $post)
 @if (!$loop->first)
 
-<div  style="max-width:400px;max-height:300px">
+<div class="md:max-h-56">
 
 <div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white  rounded-lg max-w-sm mb-5">
 <a href="{{route('showPost', ['id' => $post->id]);}}">
@@ -364,13 +368,13 @@ Contacto</a>
 </div>
 
 </section>
-<span class="p-3 px-5 bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver todas las noticias.</a>
 
-</span>
+
  <div class="container mx-auto flex flex-wrap">
 
 
  <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
+  
  <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
          
 
@@ -420,8 +424,9 @@ Contacto</a>
 
 </section>
 
-<aside class=" bg-blue-100 py-2 bw-full text-center md:w-1/3 container gap-3 max-w-sm flex flex-col items-center px-3">
-    <article class="text-left  pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-sm flex flex-col items-center px-3">
+<div class="grid h-screen place-items-center">
+    <article class="bg-blue-100 text-left overflow-auto  pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
              <ul class="mt-10 ">
@@ -477,7 +482,7 @@ Contacto</a>
             </article>
 
  
-
+</div>
  
 <div class="">
   
@@ -703,8 +708,8 @@ var southWest = L.latLng(-20.712, -77.227),
   
 var mymap = L.map('mapid',{
   maxBounds: bounds,
-  minZoom:6,
-  maxZoom:7
+  minZoom:7,
+  maxZoom:10
  
 }).setView([-38.505, -62.09], 4);
 L.marker([-52.7, -61.29], {icon: greenIcon}).addTo(mymap);

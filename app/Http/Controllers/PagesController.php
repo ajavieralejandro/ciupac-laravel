@@ -34,11 +34,11 @@ class PagesController extends Controller
             $logos = Logo::all()->where('type','CP');
             $logos1 = Logo::all()->where('type','F');
             $logos2 = Logo::all()->where('type','A');
-            $links = Link::paginate(10);
+            $links = Link::all();
 
             $about = About::first();
             $asambleas = Asamblea::all();
-            $articles = Articles::paginate(5);
+            $articles = Articles::all();
             $portrait = Portrait::first();
             $posts = Post::orderBy('created_at','DESC')->paginate(5)->where('visible');
             return view('welcome4',['members'=>$members,'image'=>$image,'logos'=>$logos,'posts'=>$posts,'locations'=>$locations,

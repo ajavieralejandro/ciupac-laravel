@@ -41,6 +41,8 @@ Route::resource('/blog',PostController::class);
 Auth::routes();
 Route::group([
             'middleware' => IsAdmin::class], function() {
+                Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
                 Route::get('/admin',[PagesController::class,'admin'])->name('admin');
                 Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team');
                 Route::put('/team', [\App\Http\Controllers\TeamController::class, 'updateMember'])->name('updateMember');
@@ -120,7 +122,6 @@ Route::group([
                 
                 });
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
 Route::get('/asamblea/{id}', [\App\Http\Controllers\AsambleaController::class, 'show'])->name('showAsamblea');
 Route::get('/noticias', [\App\Http\Controllers\PostController::class, 'noticias'])->name('showNoticias');

@@ -54,7 +54,7 @@
     <header>
 	<nav class="  px-4 py-4 flex justify-between items-center bg-white shadow-md w-full
             fixed top-0 left-0 right-0 z-10">
-		<a class="text-3xl font-bold leading-none" href="#">
+		<a class="text-3xl font-bold leading-none" href="{{route('welcome')}}">
     <img  src="{{asset('/public/images/ciupac.ico')}}"  />
 
 		</a>
@@ -141,7 +141,7 @@ Contacto</a>
 			<div class="mt-auto">
 			
 				<p class="my-4 text-xs text-center text-gray-400">
-					<span>Copyright © 2021</span>
+					<span>Copyright © 2023</span>
 				</p>
 			</div>
 		</nav> 
