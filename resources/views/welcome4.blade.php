@@ -474,7 +474,7 @@ Contacto</a>
 <div id="mapid"></div>
                 <div stlye="height:900px"></div>
                 <p  class="text-sm p-10 leading-relaxed text-gray-700">
-                  Explora nuestras localidades distribuidas por toda la provincia de Buenos Aires. 
+                  Explora las asambleas distribuidas por toda la provincia de Buenos Aires. 
                 </p>
              
             </article>
