@@ -367,12 +367,12 @@ Contacto</a>
 
 
  <div class="container mx-auto flex flex-wrap">
+
  <div class="pt-10">
 <span class="p-3  bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
 
 </span>
 </div>
-
  <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
   
  <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
