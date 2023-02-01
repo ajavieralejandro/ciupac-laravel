@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" >
 
 <meta charset="UTF-8">
@@ -176,7 +177,7 @@ html {
     <nav class="  px-4 py-4 flex justify-between items-center bg-white shadow-md w-full
             fixed top-0 left-0 right-0 z-10">
 		<a class="text-3xl font-bold leading-none" href="#">
-    <img  src="{{asset('/public/images/ciupac_2.ico')}}"  />
+    <img  src="{{asset('/public/images/ciupac_2.ico')}}" alt="logo"  />
 
 		</a>
 		<div class="lg:hidden">
@@ -226,7 +227,7 @@ Contacto</a></li>
 		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
 			<div class="flex items-center mb-8">
 				<a class="mr-auto text-3xl font-bold leading-none" href="#">
-        <img class="float-right" src="{{asset('/public/images/ciupac_2.ico')}}"  />
+        <img class="float-right" src="{{asset('/public/images/ciupac_2.ico')}}" alt="icono"  />
 
 				</a>
 				<button class="navbar-close">
@@ -265,7 +266,9 @@ Contacto</a>
 					<span>Copyright © 2023</span>
 				</p>
 			</div>
-		</nav>  </header>
+		</nav> 
+</div> 
+  </header>
   <main class="h-screen w-screen py-6 font-serif flex items-center justify-center  flex-wrap">
    <div>
 
@@ -273,7 +276,7 @@ Contacto</a>
 
 
     
-   <section class="container overflow-y-scroll  mx-auto p-10 py-20 px-0 :p-10 md:px-0">
+   <section class="container   mx-auto p-10 py-20 px-0 :p-10 md:px-0">
         <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
         <img class="xl:max-w-6xl" src="{{asset($portrait->image_path.'/'.$portrait->image_name)}}" alt="">
             <div class=" group-hover:scale-100 content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
@@ -281,7 +284,7 @@ Contacto</a>
                  
                 </div>
          
-                <img class="float-right w-1/2" src="{{asset('/public/images/Ciupac.jpeg')}}"  />
+                <img class="float-right w-1/2" src="{{asset('/public/images/Ciupac.jpeg')}}" alt="logo ciupac"  />
 
                 <h2 class="text-3xl font-semibold mt-4 md:mt-10">{{$portrait->title}}</h2>
     
@@ -335,11 +338,14 @@ Contacto</a>
 @if (!$loop->first)
 
 <div class="md:max-h-72">
-<a href="{{route('showPost', ['id' => $post->id]);}}">
+
 
 <div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white  rounded-lg max-w-sm mb-5">
-  
-        <img class="rounded-t-lg h-48 w-96 " src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
+<a  href="{{route('showPost', ['id' => $post->id]);}}">
+<img class="rounded-t-lg h-48 w-96 " src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
+
+</a>
+
     <div class="p-5">
             <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{$post->title}}</h5>
         <p class="font-normal text-gray-700 mb-3">{{$post->description}}</p>
@@ -349,7 +355,6 @@ Contacto</a>
     </div>
 
 </div>
-</a>
 
 
 </div>
@@ -427,7 +432,7 @@ Contacto</a>
     <article class="bg-blue-100 text-left   pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
-             <ul class="mt-10 overflow-y-scroll ">
+             <ul class="mt-10  ">
                @foreach($articles as $article)
                <a href="{{asset($article->path)}}">
                <li class="hover:text-green-500 text-black">
