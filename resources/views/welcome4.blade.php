@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es" >
 
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,11 @@
     
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-  <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/app.css') }}" rel="stylesheet" >
   <link rel="icon" href="{{asset('/public/images/ciupac_2.ico')}}">
 
     <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -366,16 +366,17 @@ Contacto</a>
   
 </div>
 </div>
+</div>
 </section>
 
 
  <div class="container mx-auto flex flex-wrap">
-
  <div class="pt-10">
 <p class="p-3  relative bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
 
 </p>
 </div>
+ 
  <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
   
  <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
@@ -384,7 +385,7 @@ Contacto</a>
 
      </section>
     
-
+ 
 
 <a name="about"></a>
 
@@ -467,7 +468,7 @@ Contacto</a>
 
 </section>
 
-
+</section>
 
 
 
