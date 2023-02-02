@@ -471,8 +471,8 @@ Contacto</a>
 </section>
 
 
-
-<div class="container mx-auto">
+</section>
+<div class="container mx-auto pt-10">
 
 
 <article class="flex flex-col  mx-auto  h-screen py-10  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
