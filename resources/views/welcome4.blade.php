@@ -472,6 +472,12 @@ Contacto</a>
 
 
 </section>
+
+ 
+<div class="">
+  
+<div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
+
 <div class="container mx-auto pt-10">
 
 
@@ -487,11 +493,6 @@ Contacto</a>
 
  
 </div>
- 
-<div class="">
-  
-<div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
-
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
       
