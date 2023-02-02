@@ -327,7 +327,7 @@ Contacto</a>
 </div>
 <a name="news"></a>
 
-<section class="container   p-10 md:py-20 px-0 md:p-10 md:px-0">
+<section class="container h-full w-full   p-10 md:py-20 px-0 md:p-10 md:px-0">
 
 
 
