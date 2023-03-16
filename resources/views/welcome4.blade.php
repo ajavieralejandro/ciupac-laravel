@@ -173,6 +173,9 @@ html {
 </head>
 
 <body class="scroll-smooth">
+ 
+
+
     <header>
     <nav class="  px-4 py-4 flex justify-between items-center bg-white shadow-md w-full
             fixed top-0 left-0 right-0 z-10">
@@ -211,11 +214,19 @@ Novedades</a></li>
 			</li>
 			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" 		href="{{route('welcome').'/#team'}}">
 Equipo</a></li>
+<li class="text-gray-300">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+				</svg>
+			</li>
+			<li><a class="text-sm text-gray-400 font-bold" 		href="{{route('welcome').'/#about'}}">Mediciones</a></li>
+			
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
+      
 			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" 		href="{{route('welcome').'/#contactsection'}}">
 Contacto</a></li>
 		</ul>
@@ -245,6 +256,9 @@ Home</a>
 					<li class="mb-1">
 						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#about'}}">
 Nosotros</a>
+<li class="mb-1">
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#about'}}">
+Mediciones</a>
 					</li>
 					<li class="mb-1">
 						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#news'}}">
@@ -327,71 +341,57 @@ Contacto</a>
 </div>
 <a name="news"></a>
 
-<section class="container md:h-full    p-10 md:py-20 px-0 md:p-10 md:px-0">
 
-
-
-<div class=" grid place-items-center 	 grid-cols-1 gap-1 md:grid-cols-4">
-  
-
-@foreach($posts as $post)
-@if (!$loop->first)
-
-<div class="md:max-h-72">
-
-
-<div class="transform duration-300 hover:-translate-y-1 cursor-pointer  hover:shadow-2xl  bg-white  rounded-lg max-w-sm mb-5">
-<a  href="{{route('showPost', ['id' => $post->id]);}}">
-<img class="rounded-t-lg h-48 w-96 " src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="">
-
-</a>
-
-    <div class="p-5">
-            <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{$post->title}}</h5>
-        <p class="font-normal text-gray-700 mb-3">{{$post->description}}</p>
-        <a class="hover:text-blue-400" href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
-<p>{{$post->created_at->format('d-m-Y')}}</p>
-
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Últimas Novedades</h1>
+        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500"></p>
     </div>
 
-</div>
 
-
-</div>
+    <div class="flex flex-wrap -m-4">
+    @foreach($posts as $post)
+@if (!$loop->first)
+      <div class="xl:w-1/4 md:w-1/2 p-4">
+        <div class="bg-gray-100 p-6 rounded-lg">
+          <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="content">
+          <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{$post->created_at->format('d/m/Y')}}</h3>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{{$post->title}}</h2>
+          <p class="leading-relaxed text-base">{{$post->description}}</p>
+          <a class="text-indigo-500 inline-flex items-center" href="{{route('showPost', ['id' => $post->id]);}}">Leer más
+            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="M12 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
 @endif
-
-    @endforeach
-
-
-  
-</div>
-</div>
-</div>
+@endforeach
+     
+    </div>
+     <div class="mt-10   gap-x-6">
+          <a href="{{route('showNoticias')}}"class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver más...</a>
+        </div>
+  </div>
+ 
 </section>
 
-
- <div class="container mx-auto flex flex-wrap">
- <div class="pt-10">
-<p class="p-3  relative bg-gray-200 float-right  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showNoticias')}}">Ver más noticias...</a>
-
-</p>
-</div>
- 
  <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
   
- <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10">
-         
-
-
-     </section>
-    
+ 
  
 
 <a name="about"></a>
 
 <section class="pt-40 pb-32 relative">
   
-<div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
+<div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" 
+style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
 </section>
 
     </section>
@@ -405,19 +405,44 @@ Contacto</a>
 
 
 
-
 <div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed" >
 
 
-
-<h2 class=" text-3xl font-semibold ">Nosotros </h2>
-
-      {!!$about->body!!}
-
+<div class="relative isolate px-6 pt-2 lg:px-8">
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+      <svg class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
+        <path fill="url(#45de2b6b-92d5-4d68-a6a0-9b9b2abad533)" fill-opacity=".3" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
+        <defs>
+          <linearGradient id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533" x1="1155.49" x2="-78.208" y1=".177" y2="474.645" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#9089FC" />
+            <stop offset="1" stop-color="#FF80B5" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
    
-  
+      <div class="">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Nosotros</h1>
+        <p class="mt-6 text-lg leading-8 text-gray-600">{!!$about->body!!}</p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a href="#" class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cargar Mediciones</a>
+        </div>
       </div>
+    </div>
+    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+      <svg class="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
+        <path fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)" fill-opacity=".3" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
+        <defs>
+          <linearGradient id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc" x1="1155.49" x2="-78.208" y1=".177" y2="474.645" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#9089FC" />
+            <stop offset="1" stop-color="#FF80B5" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
 
+</div>
       
 
 
@@ -429,8 +454,9 @@ Contacto</a>
 </section>
 
 <aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3">
-<div class="grid h-screen place-items-center">
-    <article class="bg-blue-100 text-left   pt-5 py-5   mx-auto  max-h-sm  px-12 transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+<div class="grid h-screen items-center ">
+
+    <article class="bg-grey-100 text-left   transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
                 <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
              </h1>
              <ul class="mt-10  ">
@@ -456,12 +482,10 @@ Contacto</a>
                @endforeach
              </ul>
             </article>
-           
 
-           
-       
-
-
+            
+          
+</div>
 
 </aside>
 
@@ -474,7 +498,7 @@ Contacto</a>
 </section>
 
  
-<div class="">
+<div class="pt-10">
   
 <div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
 
@@ -649,11 +673,10 @@ Contacto</a>
      @include('layouts.footerPage',['conf'=>$conf])
      
 
-</main>
 
 
 </body>
-
+</main>
 
 <script>
 // Burger menus
