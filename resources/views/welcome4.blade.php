@@ -759,7 +759,7 @@ var aux = @json($asambleas);
           
         );
         var marker = L.marker([element.latitude,element.longitude]).addTo(mymap);
-        marker.bindPopup(display).openPopup();
+        marker.bindPopup(display);
         
     });
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
