@@ -219,7 +219,7 @@ Equipo</a></li>
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 font-bold" 		href="http://ciupacperfiles.iado-conicet.gob.ar/">Mediciones</a></li>
+			<li><a class="text-sm text-gray-400 font-bold" 		href="{{route('welcome').'/#mediciones'}}">Mediciones</a></li>
 			
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
@@ -257,7 +257,7 @@ Home</a>
 						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#about'}}">
 Nosotros</a>
 <li class="mb-1">
-						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="http://ciupacperfiles.iado-conicet.gob.ar/">
+						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#mediciones'}}">
 Mediciones</a>
 					</li>
 					<li class="mb-1">
@@ -420,13 +420,27 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
         </defs>
       </svg>
     </div>
-   
+    <a name="mediciones"></a>
+
       <div class="">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Nosotros</h1>
         <p class="mt-6 text-lg leading-8 text-gray-600">{!!$about->body!!}</p>
+
         <div class="mt-10 flex items-center justify-center gap-x-6">
-          <a href="http://ciupacperfiles.iado-conicet.gob.ar/"  class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cargar Mediciones</a>
-        </div>
+
+        <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 rounded-t-lg cursor-pointer dark:bg-gray-800 dark:border-gray-600">
+        Mediciones
+</p>
+    <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a>
+    <a href="http://ciupaceventos.iado-conicet.gob.ar/"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Eventos y tormentas
+    </a>
+   
+</div>
+       
       </div>
     </div>
     <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
