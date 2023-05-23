@@ -119,9 +119,18 @@ Route::group([
                 Route::get('/links/{id}', [\App\Http\Controllers\LinkController::class, 'edit'])->name('editLink');
                 Route::delete('/link', [\App\Http\Controllers\LinkController::class, 'destroy'])->name('deleteLink');
 
+                //Estaciones 
+                Route::get('/verestaciones', [\App\Http\Controllers\StationController::class, 'index'])->name('stations');
+                Route::get('/crearEstacion', [\App\Http\Controllers\StationController::class, 'create'])->name('addStation');
+                Route::post('/crearEstacion', [\App\Http\Controllers\StationController::class, 'store'])->name('storeStation');
+                Route::delete('/estacion', [\App\Http\Controllers\StationController::class, 'destroy'])->name('deletestation');
+                
                 
                 });
 
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
+Route::get('/estacion/{id}', [\App\Http\Controllers\StationController::class, 'show'])->name('showStation');
 Route::get('/asamblea/{id}', [\App\Http\Controllers\AsambleaController::class, 'show'])->name('showAsamblea');
 Route::get('/noticias', [\App\Http\Controllers\PostController::class, 'noticias'])->name('showNoticias');
+Route::get('/estaciones', [\App\Http\Controllers\StationController::class, 'showStations'])->name('estaciones');
+Route::post('/searchEstacion', [\App\Http\Controllers\StationController::class, 'searchStations'])->name('searchStations');
