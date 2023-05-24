@@ -1,12 +1,13 @@
 @extends('layouts.homelayout')
 @section('content')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link href="{{ asset('css/estaciones.css') }}" rel="stylesheet">
+
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <div class="h-32"></div>
 
 <main class="pt-20 w-screen  font-serif flex items-center justify-center  flex-wrap">
 <div class="container ">
-
 <div class="grid grid-cols-12 gap-4 w-full">
   <div class="md:col-span-3 col-span-6 w-full overflow-hidden">
     <!-- Contenido de la primera columna -->
@@ -30,10 +31,10 @@
   </div>
   <div class="p-4 overflow-y-auto" >
   <ul class="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700  ">
-    @foreach($stations as $station)
+    @foreach($stations as $stationAux)
 
   <li class="inline-flex items-center gap-x-2  py-3 text-sm font-medium text-gray-800 dark:text-white">
-   <a href="{{route('showStation', ['id' => $station->id]);}}">{{$station->name}}</a>
+   <a href="{{route('showStation', ['id' => $stationAux->id]);}}">{{$stationAux->name}}</a>
   </li>
   @endforeach
   {{$stations->links()}}

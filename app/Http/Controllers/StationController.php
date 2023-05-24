@@ -82,7 +82,7 @@ class StationController extends Controller
         $station->latitude = $request->latitude;
         $station->mac = $request->mac;
         $station->save();
-        return redirect('/estaciones');
+        return redirect('/verestaciones');
     }
 
     /**
@@ -169,5 +169,8 @@ class StationController extends Controller
     public function destroy(Station $station)
     {
         //
+        $member = Station::find($request->post_id);
+        $member->delete();
+        return redirect('/verestaciones');
     }
 }
