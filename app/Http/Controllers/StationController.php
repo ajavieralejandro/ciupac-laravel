@@ -143,9 +143,13 @@ class StationController extends Controller
      * @param  \App\Models\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function edit(Station $station)
+    public function edit(Request $request)
     {
         //
+        $station =  Station::find($request->id);
+        return view('admin.editstation',['station'=>$station]);
+
+
     }
 
     /**
@@ -166,10 +170,10 @@ class StationController extends Controller
      * @param  \App\Models\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Station $station)
+    public function destroy(Request $request)
     {
         //
-        $member = Station::find($request->post_id);
+        $member = Station::find($request->station_id);
         $member->delete();
         return redirect('/verestaciones');
     }
