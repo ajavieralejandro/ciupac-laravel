@@ -58,7 +58,12 @@
     var southWest = L.latLng(-20.712, -77.227),
     northEast = L.latLng(-41.774,  -42.227),
     bounds = L.latLngBounds(southWest, northEast);
-  var map = L.map('map').setView([-38.505, -62.09], 7);
+  var map = L.map('map',{
+  maxBounds: bounds,
+  minZoom:7,
+  maxZoom:12,
+ 
+}).setView([-38.505, -62.09], 7);
   var app = @json($stations);
   app = app.data;
   app.forEach(element=>{
