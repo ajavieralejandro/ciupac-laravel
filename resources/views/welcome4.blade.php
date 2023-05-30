@@ -235,7 +235,7 @@ Contacto</a></li>
 
 	<div class="navbar-menu relative z-50 hidden">
 		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
-		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-scroll">
 			<div class="flex items-center mb-8">
 				<a class="mr-auto text-3xl font-bold leading-none" href="#">
         <img class="float-right" src="{{asset('/public/images/ciupac_2.ico')}}" alt="icono"  />
@@ -450,10 +450,10 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
 
 </section>
 
-<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3 overflow-hidden">
-<div class="grid h-screen items-center ">
+<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3 ">
+<div class="grid h-screen items-center overflow-y-scroll ">
 
-<div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white overflow-y-auto">
+<div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 rounded-t-lg cursor-pointer dark:bg-gray-800 dark:border-gray-600">
         Archivos de Interes
 </p>
@@ -475,6 +475,32 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
         Mediciones
 </p>
     <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a>
+    <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a>
+    <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a> <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
         Perfiles de playa
     </a>
     <a href="http://ciupaceventos.iado-conicet.gob.ar/"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
