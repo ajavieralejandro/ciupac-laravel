@@ -110,8 +110,12 @@ class StationController extends Controller
         $temperature = round($temperature, 1);
         $humidity = $data['outdoor']['humidity']['value'];
         $wind = $data['wind']['wind_speed']['value'];
+        $wind_gust = $data['wind']['wind_gust']['value'];
+        $rocio = $data['outdoor']['dew_point']['value'];
+        $rocio = 5*($rocio-32)/9;
+        $rocio= round($temperature, 1);
         $wind = $wind * 1.609;
-        $wind= round($wind, 2);
+        $wind= round($wind, 1);
         $windDirection = $data['wind']['wind_direction']['value'];
         $aux = $windDirection;
         $index = $windDirection % 360;
@@ -134,7 +138,8 @@ class StationController extends Controller
         return view('estaciones.estacion',['station'=>$station,'conf'=>$conf,
         'temperature'=>$temperature,'humidity'=>$humidity,'wind'=>$wind,
         'windD'=>$windDirection,'pressureA'=>$pressureA,'pressureR'=>$pressureR,
-        'uvi'=>$uvi,'rain'=>$rain,'stations'=>$stations
+        'uvi'=>$uvi,'rain'=>$rain,'stations'=>$stations,'rocio'=>$rocio,
+        'wind_gust'=>$wind_gust
     ]);
         
     }
