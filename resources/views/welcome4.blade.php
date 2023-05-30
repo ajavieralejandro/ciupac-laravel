@@ -361,7 +361,7 @@ Contacto</a>
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{$post->created_at->format('d/m/Y')}}</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{{$post->title}}</h2>
-          <p class="leading-relaxed text-base">{{$post->description}}</p>
+          <p class="leading-relaxed text-base">{{Str::limit($post->description,50)}}...</p>
           <a class="text-indigo-500 inline-flex items-center" href="{{route('showPost', ['id' => $post->id]);}}">Leer más
             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"></path>
