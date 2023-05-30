@@ -422,31 +422,10 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
     </div>
     <a name="mediciones"></a>
 
-      <div class="">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Nosotros</h1>
         <p class="mt-6 text-lg leading-8 text-gray-600">{!!$about->body!!}</p>
 
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-
-        <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 rounded-t-lg cursor-pointer dark:bg-gray-800 dark:border-gray-600">
-        Mediciones
-</p>
-    <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        Perfiles de playa
-    </a>
-    <a href="http://ciupaceventos.iado-conicet.gob.ar/"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        Eventos y tormentas
-    </a>
-    <a href="{{route('estaciones')}}"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        Estaciones
-    </a>
-   
-   
-</div>
-       
-      </div>
-    </div>
+      
     <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
       <svg class="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
         <path fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)" fill-opacity=".3" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
@@ -474,34 +453,41 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
 <aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3">
 <div class="grid h-screen items-center ">
 
-    <article class="bg-grey-100 text-left   transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
-                <h1 class="mt-0 text-3xl text-black leading-snug  min-h-33">Archivos de Interes 
-             </h1>
-             <ul class="mt-10  ">
-               @foreach($articles as $article)
-               <a href="{{asset($article->path)}}">
-               <li class="hover:text-green-500 text-black">
-       
-               <svg class="inline-block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> {{$article->name}}
-                 </li>
-               </a>
-               @endforeach
-             </ul>
-             <h1 class="pt-10 mt-0 text-3xl text-black leading-snug  min-h-33">Links
-             </h1>
-             <ul class="mt-10 ">
-               @foreach($links as $link)
-               <a href="{{$link->link}}">
-               <li class="hover:text-green-500 text-black">
-       
-               <svg class="inline-block w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>{{$link->name}}
-                 </li>
-               </a>
-               @endforeach
-             </ul>
-            </article>
+<div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 rounded-t-lg cursor-pointer dark:bg-gray-800 dark:border-gray-600">
+        Archivos de Interes
+</p>
+    @foreach($articles as $article)
+    <a href="{{asset($article->path)}}" class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        {{$article->name}}
+    </a>
+    @endforeach
+    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 cursor-pointer dark:bg-gray-800 dark:border-gray-600">
+        Links
+</p>
+@foreach($links as $link)
+    <a href="{{$link->link}}" class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        {{$link->name}}
+    </a>
+    @endforeach
 
-            
+    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200  cursor-pointer dark:bg-gray-800 dark:border-gray-600">
+        Mediciones
+</p>
+    <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Perfiles de playa
+    </a>
+    <a href="http://ciupaceventos.iado-conicet.gob.ar/"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Eventos y tormentas
+    </a>
+    <a href="{{route('estaciones')}}"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
+        Estaciones
+    </a>
+   
+   
+   
+</div>
+
           
 </div>
 
