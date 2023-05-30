@@ -450,10 +450,10 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
 
 </section>
 
-<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3">
+<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3 overflow-hidden">
 <div class="grid h-screen items-center ">
 
-<div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+<div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white overflow-y-auto">
     <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 rounded-t-lg cursor-pointer dark:bg-gray-800 dark:border-gray-600">
         Archivos de Interes
 </p>
