@@ -10,7 +10,7 @@
 
 
 <div class="grid grid-cols-12 gap-4 w-full">
-  <div class="md:col-span-3 col-span-6 w-full overflow-hidden">
+  <div class="md:col-span-3 col-span-12 w-full overflow-hidden">
     <!-- Contenido de la primera columna -->
     <div class="flex flex-col h-screen ">
 
@@ -46,7 +46,7 @@
   </div>
 </div>
   </div>
-  <div class="md:col-span-9 col-span-6 w-full">
+  <div class="md:col-span-9 col-span-12 w-full">
     <!-- Contenido de la segunda columna -->
     <div class="grid h-screen place-items-center">
          <!-- component -->
