@@ -7,8 +7,8 @@
 <div class="container ">
 
 
-<div class="grid grid-cols-12 gap-4 w-full">
-  <div class="md:col-span-3 col-span-6 w-full overflow-hidden">
+<div class="grid grid-cols-12 gap-4 w-full ">
+  <div class="md:col-span-3 col-span-6 w-full overflow-hidden ">
     <!-- Contenido de la primera columna -->
     <div class="flex flex-col h-screen ">
 

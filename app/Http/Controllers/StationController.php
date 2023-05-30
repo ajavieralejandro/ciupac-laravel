@@ -102,8 +102,9 @@ class StationController extends Controller
         $response = Http::get($url); 
         $data= $response->json();
         $conf = Configuration::first();
-
         $data = $data['data'];
+        if(count($data)==0 || $data==NULL)
+        return view('estaciones.problemas',['conf'=>$conf,'stations'=>$stations]);
         $temperature = $data['outdoor']['temperature']['value'];
         $temperature = 5*($temperature-32)/9;
         $temperature = round($temperature, 1);
