@@ -121,10 +121,11 @@ Route::group([
 
                 //Estaciones 
                 Route::get('/verestaciones', [\App\Http\Controllers\StationController::class, 'index'])->name('stations');
+                Route::get('/editStation/{id}', [\App\Http\Controllers\StationController::class, 'edit'])->name('editStation');
                 Route::get('/crearEstacion', [\App\Http\Controllers\StationController::class, 'create'])->name('addStation');
                 Route::post('/crearEstacion', [\App\Http\Controllers\StationController::class, 'store'])->name('storeStation');
                 Route::delete('/estacion', [\App\Http\Controllers\StationController::class, 'destroy'])->name('deletestation');
-                
+                Route::put('/updatestation', [\App\Http\Controllers\StationController::class, 'update'])->name('updateStation');
                 
                 });
 

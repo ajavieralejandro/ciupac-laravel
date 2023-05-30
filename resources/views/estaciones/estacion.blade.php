@@ -38,6 +38,7 @@
   </li>
   @endforeach
   {{$stations->links()}}
+  
 
 </ul>
 
@@ -87,6 +88,7 @@
 	</div>
 </div>
 </div>	  </div>
+</div>
 </div>
 </div>
 </main>

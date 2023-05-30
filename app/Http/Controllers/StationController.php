@@ -102,6 +102,7 @@ class StationController extends Controller
         $response = Http::get($url); 
         $data= $response->json();
         $conf = Configuration::first();
+
         $data = $data['data'];
         $temperature = $data['outdoor']['temperature']['value'];
         $temperature = 5*($temperature-32)/9;
@@ -159,9 +160,23 @@ class StationController extends Controller
      * @param  \App\Models\Station  $station
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStationRequest $request, Station $station)
+    public function update(Request $request)
     {
         //
+        $id = $request->id; 
+        $validated = $request->validate([
+            'name' => 'required|unique:locations|max:255',
+            'longitude' => 'required|numeric|between:-90,90'
+            ,
+            'latitude' => 'required|numeric|between:-90,90'
+            ,
+            'mac' =>'mac_address'
+
+        ]);
+        $station = Station::whereId($id)->update($validated);
+
+
+        return redirect('/verestaciones');
     }
 
     /**
