@@ -32,10 +32,10 @@
   </div>
   <div class="p-4 overflow-y-auto" >
   <ul class="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700  ">
-    @foreach($stations as $station)
+    @foreach($stations as $stationA)
 
   <li class="inline-flex items-center gap-x-2  py-3 text-sm font-medium text-gray-800 dark:text-white">
-   <a href="{{route('showStation', ['id' => $station->id]);}}">{{$station->name}}</a>
+   <a href="{{route('showStation', ['id' => $stationA->id]);}}">{{$stationA->name}}</a>
   </li>
   @endforeach
   {{$stations->links()}}
