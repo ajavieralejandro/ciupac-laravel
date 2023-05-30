@@ -54,7 +54,7 @@
          <!-- component -->
 <div
  class="card pt-22 min-w-sm max-w-sm border border-gray-100 bg-blue-400   transition-shadow test  shadow-lg hover:shadow-shadow-xl w-full bg-green-600 text-purple-50 rounded-md">
- <img src="https://img.freepik.com/free-vector/smartphone-repair-abstract-concept-illustration_335657-3783.jpg?w=740&t=st=1685417764~exp=1685418364~hmac=ed84ef79c0c7ac2f02c091ca87ec192f602d91fad68a7bbb7b556cd3f76f8e50" alt="technical issues"/>
+ <img src="https://images.unsplash.com/photo-1433840496881-cbd845929862?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="technical issues"/>
  <h2 class="text-md mb-2 px-4 pt-4">
   Problemas técnicos con la estación seleccionada, pruebe más tarde
  </h2>
