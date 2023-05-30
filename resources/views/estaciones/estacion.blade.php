@@ -3,6 +3,8 @@
 </div>
 </div>
 </div>
+<link href="{{ asset('/css/estaciones.css') }}" rel="stylesheet">
+
 <main class="pt-20 w-screen  font-serif flex items-center justify-center  flex-wrap">
 <div class="container ">
 
