@@ -100,8 +100,9 @@ class StationController extends Controller
         $mac = ($station->mac);
         $api_key = env('API_KEY');
         $api_token = env('API_TOKEN');
-        $url = "https://api.ecowitt.net/api/v3/device/real_time?application_key=".$api_key."api_key=".$api_token."&mac=".$mac."&call_back=all";
+        $url = 'https://api.ecowitt.net/api/v3/device/real_time?application_key='.$api_key.'&api_key='.$api_token.'&mac='.$mac.'&call_back=all';
         $response = Http::get($url); 
+
         $data= $response->json();
         $conf = Configuration::first();
         $data = $data['data'];
