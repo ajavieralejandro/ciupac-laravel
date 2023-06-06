@@ -335,6 +335,8 @@ Contacto</a>
              </div>
          </article>
          
+         
+         
       
 @endif
 @endforeach
@@ -345,7 +347,7 @@ Contacto</a>
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
-      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+      <div class="lg:w-1/2 grid w-full mb-6 lg:mb-0">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Últimas Novedades</h1>
         <div class="h-1 w-20 bg-indigo-500 rounded"></div>
       </div>
@@ -381,18 +383,13 @@ Contacto</a>
  
 </section>
 
- <section class="container  p-10 md:py-20 px-0 md:p-10 md:px-0">
-  
- 
- 
+
 
 <a name="about"></a>
 
-<section class="pt-40 pb-32 relative">
-  
-<div class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed" 
-style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})"></div>
-</section>
+
+
+
 
     </section>
     
@@ -401,44 +398,78 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
 <!-- Posts Section -->
 
 
+
+
+<aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100">
+	<nav class="space-y-8 text-sm">
+		<div class="space-y-2">
+			<h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Getting Started</h2>
+			<div class="flex flex-col space-y-1">
+				<a rel="noopener noreferrer" href="#">Installation</a>
+				<a rel="noopener noreferrer" href="#">Plugins</a>
+				<a rel="noopener noreferrer" href="#">Migrations</a>
+				<a rel="noopener noreferrer" href="#">Appearance</a>
+				<a rel="noopener noreferrer" href="#">Mamba UI</a>
+			</div>
+		</div>
+		<div class="flex flex-wrap">
+  <div class="w-full sm:w-6/12 md:w-4/12 px-4">
+    <div class="relative inline-flex align-middle w-full">
+      <button class="text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 bg-slate-700 ease-linear transition-all duration-150" type="button" onclick="openDropdown(event,'dropdown-id')">
+        White Dropdown
+      </button>
+      <div class="hidden bg-white  text-base z-0 float-left py-2 list-none text-left rounded shadow-lg mb-1" style="min-width:12rem" id="dropdown-id">
+      @foreach($links as $link)
+      <a href="{{$link->link}}" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700">
+          {{$link->name}}
+        </a>
+        <a href="{{$link->link}}" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700">
+          {{$link->name}}
+        </a>
+        
+      @endforeach
+       
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+<script>
+  function openDropdown(event,dropdownID){
+    let element = event.target;
+    while(element.nodeName !== "BUTTON"){
+      element = element.parentNode;
+    }
+    var popper = Popper.createPopper(element, document.getElementById(dropdownID), {
+      placement: 'top-end'
+    });
+    document.getElementById(dropdownID).classList.toggle("hidden");
+    document.getElementById(dropdownID).classList.toggle("block");
+  }
+</script>
+	</nav>
+  
+</aside>
+
 <section class="w-full grid md:w-2/3 flex flex-col items-center ">
 
 
-
+<div class=" rounded overflow-hidden shadow-lg">
+<div class="grid h-screen place-items-center">
 <div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed" >
 
 
 <div class="relative isolate px-6 pt-2 lg:px-8">
-    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-      <svg class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
-        <path fill="url(#45de2b6b-92d5-4d68-a6a0-9b9b2abad533)" fill-opacity=".3" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
-        <defs>
-          <linearGradient id="45de2b6b-92d5-4d68-a6a0-9b9b2abad533" x1="1155.49" x2="-78.208" y1=".177" y2="474.645" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#9089FC" />
-            <stop offset="1" stop-color="#FF80B5" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
+
     <a name="mediciones"></a>
 
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Nosotros</h1>
         <p class="mt-6 text-lg leading-8 text-gray-600">{!!$about->body!!}</p>
 
       
-    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-      <svg class="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]" viewBox="0 0 1155 678">
-        <path fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)" fill-opacity=".3" d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z" />
-        <defs>
-          <linearGradient id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc" x1="1155.49" x2="-78.208" y1=".177" y2="474.645" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#9089FC" />
-            <stop offset="1" stop-color="#FF80B5" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
+ 
   </div>
-
+  
+</div>
 </div>
       
 
@@ -446,53 +477,10 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
 
     
 
-  
+</div>
 
 </section>
 
-<aside class="  py-2 w-full text-center md:w-1/3  container gap-3 max-w-md flex flex-col items-center px-3 ">
-<div class="grid h-screen items-center overflow-y-scroll ">
-
-<div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 rounded-t-lg cursor-pointer dark:bg-gray-800 dark:border-gray-600">
-        Archivos de Interes
-</p>
-    @foreach($articles as $article)
-    <a href="{{asset($article->path)}}" class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        {{$article->name}}
-    </a>
-    @endforeach
-    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200 cursor-pointer dark:bg-gray-800 dark:border-gray-600">
-        Links
-</p>
-@foreach($links as $link)
-    <a href="{{$link->link}}" class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        {{$link->name}}
-    </a>
-    @endforeach
-
-    <p  aria-current="true" class="block w-full px-4 py-2 text-white bg-blue-400 border-b border-gray-200  cursor-pointer dark:bg-gray-800 dark:border-gray-600">
-        Mediciones
-</p>
-    <a href="http://ciupacperfiles.iado-conicet.gob.ar/"class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        Perfiles de playa
-    </a>
-   
-    <a href="http://ciupaceventos.iado-conicet.gob.ar/"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        Eventos y tormentas
-    </a>
-    <a href="{{route('estaciones')}}"  class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white">
-        Estaciones Meteorológicas en vivo 
-    </a>
-   
-   
-   
-</div>
-
-          
-</div>
-
-</aside>
 
 
 </section>
@@ -512,8 +500,7 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
 
 <article class="flex flex-col  mx-auto  h-screen py-10  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
-<div id="mapid"></div>
-                <div stlye="height:900px"></div>
+<div class="" id="mapid"></div>
                 <p  class="text-sm p-10 leading-relaxed text-gray-700">
                   Explora las asambleas distribuidas por toda la provincia de Buenos Aires. 
                 </p>
@@ -522,7 +509,9 @@ style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}}
 
  
 </div>
+
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+    
     <div>
       
     </div>

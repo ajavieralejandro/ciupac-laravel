@@ -51,7 +51,7 @@ class ArticlesController extends Controller
            $article = new Articles;
            $validatedData = $request->validate([
                'name' => 'required|max:50',
-               "document" => "required|mimes:pdf"
+               "document" => "required|mimes:pdf,xls"
        
               ]);
               $document = $request->file('document');

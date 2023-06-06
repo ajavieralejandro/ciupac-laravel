@@ -100,9 +100,8 @@ class StationController extends Controller
         $mac = ($station->mac);
         $api_key = env('API_KEY');
         $api_token = env('API_TOKEN');
-        $url = 'https://api.ecowitt.net/api/v3/device/real_time?application_key='.$api_key.'&api_key='.$api_token.'&mac='.$mac.'&call_back=all';
+        $url = "https://api.ecowitt.net/api/v3/device/real_time?application_key=".$api_key."&api_key=".$api_token."&mac=".$mac."&call_back=all";
         $response = Http::get($url); 
-
         $data= $response->json();
         $conf = Configuration::first();
         $data = $data['data'];
@@ -111,6 +110,10 @@ class StationController extends Controller
         $temperature = $data['outdoor']['temperature']['value'];
         $temperature = 5*($temperature-32)/9;
         $temperature = round($temperature, 1);
+        $feels_like = $data['outdoor']['feels_like']['value'];
+        $feels_like = 5*($feels_like-32)/9;
+        $feels_like = round($feels_like, 1);
+
         $humidity = $data['outdoor']['humidity']['value'];
         $wind = $data['wind']['wind_speed']['value'];
         $wind_gust = $data['wind']['wind_gust']['value'];
@@ -142,7 +145,7 @@ class StationController extends Controller
         'temperature'=>$temperature,'humidity'=>$humidity,'wind'=>$wind,
         'windD'=>$windDirection,'pressureA'=>$pressureA,'pressureR'=>$pressureR,
         'uvi'=>$uvi,'rain'=>$rain,'stations'=>$stations,'rocio'=>$rocio,
-        'wind_gust'=>$wind_gust
+        'wind_gust'=>$wind_gust,'feels_like'=>$feels_like
     ]);
         
     }
