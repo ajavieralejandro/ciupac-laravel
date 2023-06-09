@@ -26,7 +26,7 @@
 html {
   scroll-behavior: smooth;
 }
-#mapid { height: 900px; width:100%; }
+#mapid { height: 400px; width:100%; }
 
 </style>
 
@@ -401,64 +401,87 @@ Contacto</a>
 
 
 <aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100">
-	<nav class="space-y-8 text-sm">
-		<div class="space-y-2">
-			<h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">Getting Started</h2>
-			<div class="flex flex-col space-y-1">
-				<a rel="noopener noreferrer" href="#">Installation</a>
-				<a rel="noopener noreferrer" href="#">Plugins</a>
-				<a rel="noopener noreferrer" href="#">Migrations</a>
-				<a rel="noopener noreferrer" href="#">Appearance</a>
-				<a rel="noopener noreferrer" href="#">Mamba UI</a>
-			</div>
-		</div>
-		<div class="flex flex-wrap">
-  <div class="w-full sm:w-6/12 md:w-4/12 px-4">
-    <div class="relative inline-flex align-middle w-full">
-      <button class="text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 bg-slate-700 ease-linear transition-all duration-150" type="button" onclick="openDropdown(event,'dropdown-id')">
-        White Dropdown
-      </button>
-      <div class="hidden bg-white  text-base z-0 float-left py-2 list-none text-left rounded shadow-lg mb-1" style="min-width:12rem" id="dropdown-id">
-      @foreach($links as $link)
-      <a href="{{$link->link}}" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700">
-          {{$link->name}}
-        </a>
-        <a href="{{$link->link}}" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700">
-          {{$link->name}}
-        </a>
-        
-      @endforeach
-       
-    </div>
-  </div>
+<div class="px-8">
+    <ul class="text-slate-700 text-sm leading-6">
+ 
+        <li>
+            <a href="#basic-usage" class="block py-1 font-medium font-medium  dark:text-sky-400">Mediciones
+            </a>
+        </li>
+        <li class="ml-4">
+            <a href="#adding-an-outer-shadow" class="group flex items-start py-1 dark:text-sky-400">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Perfiles de Playa
+            </a>
+        </li>
+        <li class="ml-4">
+            <a href="#adding-an-inner-shadow"
+                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Eventos y tormentas
+            </a>
+        </li>
+        <li class="ml-4">
+            <a href="#removing-the-shadow"
+                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Estaciones Meteorológicas en vivo 
+            </a>
+        </li>
+        <li>
+            <a href="#applying-conditionally"
+                class="block py-1 font-medium hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">Archivos de Interes
+            </a>
+        </li>
+    
+     
+        <li>
+            <a href="#using-custom-values"
+                class="block py-1 font-medium hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">Links
+            </a>
+        </li>
+        <li class="ml-4">
+            <a href="#customizing-your-theme"
+                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Tutoriales
+            </a>
+        </li>
+        <li class="ml-4">
+            <a href="#arbitrary-values"
+                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Links de interés
+            </a>
+        </li>
+    </ul>
 </div>
-<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
-<script>
-  function openDropdown(event,dropdownID){
-    let element = event.target;
-    while(element.nodeName !== "BUTTON"){
-      element = element.parentNode;
-    }
-    var popper = Popper.createPopper(element, document.getElementById(dropdownID), {
-      placement: 'top-end'
-    });
-    document.getElementById(dropdownID).classList.toggle("hidden");
-    document.getElementById(dropdownID).classList.toggle("block");
-  }
-</script>
-	</nav>
-  
 </aside>
 
 <section class="w-full grid md:w-2/3 flex flex-col items-center ">
 
 
-<div class=" rounded overflow-hidden shadow-lg">
+<div class="  overflow-hidden ">
 <div class="grid h-screen place-items-center">
-<div class=" lg:px-0  text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed" >
+<div class=" lg:px-0  text-gray-700 mx-auto " >
 
 
-<div class="relative isolate px-6 pt-2 lg:px-8">
+<div class="relative isolate px-6 pt-2  lg:px-8 rounded">
 
     <a name="mediciones"></a>
 
@@ -495,17 +518,34 @@ Contacto</a>
   
 <div class="mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
 
-<div class="container mx-auto pt-10">
-
-
-<article class="flex flex-col  mx-auto  h-screen py-10  transform duration-500 hover:-translate-y-2 cursor-pointer  rounded-md">
+<div class="container mx-auto pt-10 pb-10">
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
-<div class="" id="mapid"></div>
-                <p  class="text-sm p-10 leading-relaxed text-gray-700">
-                  Explora las asambleas distribuidas por toda la provincia de Buenos Aires. 
-                </p>
-             
-            </article>
+
+<div class="grid grid-cols-1 sm:grid-cols-12">
+<div class="col-span-4">
+    <div class="p-4 col-span-4 overflow-y-auto" >
+  <ul class="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700  ">
+    @foreach($asambleas as $asamblea)
+
+  <li class="inline-flex items-center gap-x-2  py-3 text-sm font-medium text-gray-800 dark:text-white">
+   <a href="{{route('showAsamblea', ['id' => $asamblea->id]);}}">{{$asamblea->name}}</a>
+  </li>
+  @endforeach
+  
+
+</ul>
+
+  </div>
+    </div>
+    <div class="col-span-8">
+<div class="z-0" id="mapid"></div>
+
+</div>
+
+</div>
+
+
+
 
  
 </div>

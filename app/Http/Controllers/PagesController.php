@@ -29,7 +29,7 @@ class PagesController extends Controller
             return view('index');
         else{
             $locations = Location::all();
-            $members = Team::all()->where('status');
+            $members = Team::all()->where('status')->sortBy('priority');
             $image = Image::first();
             $logos = Logo::all()->where('type','CP');
             $logos1 = Logo::all()->where('type','F');

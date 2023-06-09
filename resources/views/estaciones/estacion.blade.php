@@ -86,7 +86,7 @@ html {
      <div class="space-y-2">
 
      <span class="flex space-x-2 items-center">UVI : {{$uvi}}</span>
-     <span class="flex space-x-2 items-center">Lluvia: {{$rain}}</span>
+     <span class="flex space-x-2 items-center">Precipitación diaria : {{$rain}}</span>
 
      <span class="flex space-x-2 items-center">Punto de rocio: {{$rocio}} ºC</span>
      <span class="flex space-x-2 items-center">rafaga máxima: {{$wind_gust}} km/h</span>

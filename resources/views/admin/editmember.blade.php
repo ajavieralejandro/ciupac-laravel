@@ -42,6 +42,13 @@
       </label>
       <input value="{{$member->name}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" placeholder="Username">
     </div>
+    <div class="mb-4 pt-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        priority
+      </label>
+      
+      <input value="{{$member->priority}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="priority" id="priority" type="number" placeholder="prioridad">
+    </div>
     <div class="mb-6">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
         email

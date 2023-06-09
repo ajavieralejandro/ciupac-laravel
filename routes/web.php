@@ -50,7 +50,7 @@ Route::group([
                 Route::get('/team/{id}', [\App\Http\Controllers\TeamController::class, 'editMember'])->name('editMember');
                 Route::get('/addmember', [\App\Http\Controllers\TeamController::class, 'addMember'])->name('addMember');
                 Route::get('/uploadImage',[\App\Http\Controllers\PortraitController::class, 'show'])->name('uploadImage');
-                Route::post('/uploadImage',[\App\Http\Controllers\PortraitController::class, 'store'])->name('storePortrait');
+                Route::post('/uploadIsmage',[\App\Http\Controllers\PortraitController::class, 'store'])->name('storePortrait');
                 Route::post('/addmember',[\App\Http\Controllers\TeamController::class, 'storeMember'])->name('storeMember');
                 Route::delete('/team',[\App\Http\Controllers\TeamController::class, 'deleteMember'])->name('deleteMember');
 

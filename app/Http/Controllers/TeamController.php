@@ -14,7 +14,7 @@ class TeamController extends Controller
 {
     //
     public function index(Request $request){
-        $data = Team::paginate(20);
+        $data = Team::paginate(20)->sortBy('priority');
         Cache::flush();
         return view('admin.team',['members'=>$data]);
 
@@ -35,6 +35,7 @@ class TeamController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required',
+            'priority'=>'required',
             'description' => 'required',
         ]);
         $member = Team::whereId($request->member_id)->update($validatedData);
@@ -86,6 +87,7 @@ class TeamController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:teams',
+            'priority'=>'required',
             'description' => 'required',
             'image'=>'required',
         ]);
@@ -94,6 +96,7 @@ class TeamController extends Controller
         $member->name = $request->name;
         $member->email = $request->email;
         $member->description = $request->description;
+        $member->priority = $request->priority;
         $member->image_name = "default";
         $member->image_path = "public/images/members";
         $member->path = "";
