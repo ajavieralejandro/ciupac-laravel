@@ -146,7 +146,7 @@ class StationController extends Controller
         'uvi'=>$uvi,'rain'=>$rain,'stations'=>$stations,'rocio'=>$rocio,
         'wind_gust'=>$wind_gust,'feels_like'=>$feels_like
     ]);
-        } catch (Throwable $e) {
+        } catch (Exception $e) {
             return view('estaciones.problemas',['conf'=>$conf,'stations'=>$stations]);
 
         }
