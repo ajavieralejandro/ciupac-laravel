@@ -141,4 +141,26 @@
   .compass .arrow.nnw {
     transform: rotate(-24.5deg);
   }
+
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1s ease-in forwards;
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
   

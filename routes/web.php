@@ -116,6 +116,8 @@ Route::group([
                 Route::get('/links', [\App\Http\Controllers\LinkController::class, 'index'])->name('links');
                 Route::get('/addLink', [\App\Http\Controllers\LinkController::class, 'create'])->name('addLink');
                 Route::post('/addLink', [\App\Http\Controllers\LinkController::class, 'store'])->name('storeLink');
+                Route::post('/updateLink', [\App\Http\Controllers\LinkController::class, 'update'])->name('updateLink');
+
                 Route::get('/links/{id}', [\App\Http\Controllers\LinkController::class, 'edit'])->name('editLink');
                 Route::delete('/link', [\App\Http\Controllers\LinkController::class, 'destroy'])->name('deleteLink');
 
@@ -132,6 +134,10 @@ Route::group([
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
 Route::get('/estacion/{id}', [\App\Http\Controllers\StationController::class, 'show'])->name('showStation');
 Route::get('/asamblea/{id}', [\App\Http\Controllers\AsambleaController::class, 'show'])->name('showAsamblea');
+Route::get('/archivos', [\App\Http\Controllers\ArticlesController::class, 'show'])->name('showArchivos');
+Route::get('/tutoriales', [\App\Http\Controllers\LinkController::class, 'tutorials'])->name('showTutoriales');
+Route::get('/links', [\App\Http\Controllers\LinkController::class, 'links'])->name('showLinks');
+
 Route::get('/noticias', [\App\Http\Controllers\PostController::class, 'noticias'])->name('showNoticias');
 Route::get('/estaciones', [\App\Http\Controllers\StationController::class, 'showStations'])->name('estaciones');
 Route::post('/searchEstacion', [\App\Http\Controllers\StationController::class, 'searchStations'])->name('searchStations');

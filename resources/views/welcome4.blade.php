@@ -164,6 +164,7 @@ html {
     text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
 }
     </style>
+<link href="{{ asset('/css/estaciones.css') }}" rel="stylesheet">
 
 
     <!-- AlpineJS -->
@@ -290,7 +291,7 @@ Contacto</a>
 
 
     
-   <section class="container   mx-auto p-10 py-20 px-0 :p-10 md:px-0">
+   <section class=" fade-in container   mx-auto p-10 py-20 px-0 :p-10 md:px-0">
         <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
         <img class="xl:max-w-6xl" src="{{asset($portrait->image_path.'/'.$portrait->image_name)}}" alt="">
             <div class=" group-hover:scale-100 content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
@@ -409,7 +410,7 @@ Contacto</a>
             </a>
         </li>
         <li class="ml-4">
-            <a href="#adding-an-outer-shadow" class="group flex items-start py-1 dark:text-sky-400">
+            <a href="http://ciupacperfiles.iado-conicet.gob.ar/" class="group flex items-start py-1 dark:text-sky-400">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
                     class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
                     <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -418,7 +419,7 @@ Contacto</a>
             </a>
         </li>
         <li class="ml-4">
-            <a href="#adding-an-inner-shadow"
+            <a href="http://ciupaceventos.iado-conicet.gob.ar/"
                 class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
                     class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
@@ -428,7 +429,7 @@ Contacto</a>
             </a>
         </li>
         <li class="ml-4">
-            <a href="#removing-the-shadow"
+            <a href="{{route('estaciones')}}"
                 class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
                     class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
@@ -438,7 +439,7 @@ Contacto</a>
             </a>
         </li>
         <li>
-            <a href="#applying-conditionally"
+            <a href="{{route('showArchivos')}}"
                 class="block py-1 font-medium hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">Archivos de Interes
             </a>
         </li>
@@ -450,7 +451,7 @@ Contacto</a>
             </a>
         </li>
         <li class="ml-4">
-            <a href="#customizing-your-theme"
+            <a href="{{route('showTutoriales')}}"
                 class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
                     class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
@@ -460,7 +461,7 @@ Contacto</a>
             </a>
         </li>
         <li class="ml-4">
-            <a href="#arbitrary-values"
+            <a href="{{route('showLinks')}}"
                 class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
                     class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
@@ -485,10 +486,31 @@ Contacto</a>
 
     <a name="mediciones"></a>
 
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Nosotros</h1>
-        <p class="mt-6 text-lg leading-8 text-gray-600">{!!$about->body!!}</p>
-
-      
+    <section class="flex items-center bg-stone-100 xl:h-screen font-poppins dark:bg-gray-800 ">
+        <div class="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
+            <div class="flex flex-wrap ">
+                <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
+                    <div class="relative lg:max-w-md">
+                        <img src="{{asset($about->image_path.'/'.$about->image_name)}}" alt="aboutimage"
+                            class="relative z-10 object-cover w-full rounded h-96">
+                
+                    </div>
+                </div>
+                <div class="w-full px-6 mb-10 lg:w-1/2 lg:mb-0 ">
+                    <div class="pl-4 mb-6 border-l-4 border-sky-500 ">
+                        <span class="text-sm text-gray-600 uppercase dark:text-gray-400">Proyecto Ciupac</span>
+                        <h1 class="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
+                            Nosotros
+                        </h1>
+                    </div>
+                    <p class="mb-6 text-base leading-7 text-gray-500 dark:text-gray-400">
+                      {!!$about->body!!}
+                    </p>
+                
+                </div>
+            </div>
+        </div>
+    </section>
  
   </div>
   
@@ -512,6 +534,7 @@ Contacto</a>
 
 
 </section>
+<div class="grid h-screen place-items-center ">
 
  
 <div class="pt-10">

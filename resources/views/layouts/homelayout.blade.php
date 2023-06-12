@@ -156,6 +156,7 @@ Mediciones</a>
 					<span>Copyright © 2023</span>
 				</p>
 			</div>
+	</div>
 		</nav> 
     </header>
   <main class="h-screen w-screen py-6  flex items-center justify-center  flex-wrap">

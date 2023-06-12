@@ -23,6 +23,10 @@
       </label>
       <input  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" >
     </div>
+    <div class="mb-4 pt-4">
+    <input id="default-checkbox" name="tutorial " type="checkbox"   checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-checkbox" class=" text-sm font-medium text-gray-900 dark:text-gray-300">Tutorial</label>
+</div>  
     <div class="mb-6">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
         Link

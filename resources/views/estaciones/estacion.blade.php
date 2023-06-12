@@ -59,7 +59,7 @@ html {
          <!-- component -->
          <div class="flex justify-center w-full ">
 <div
- class="card  pt-2  border border-gray-100 bg-blue-300   transition-shadow test  shadow-lg hover:shadow-shadow-xl   text-purple-50 rounded-md">
+ class="fade-in card  pt-2  border border-gray-100 bg-blue-300   transition-shadow test  shadow-lg hover:shadow-shadow-xl   text-purple-50 rounded-md">
  <h2 class="text-md mb-2 px-4 pt-2">
    <div class="flex justify-between">
      <div class="badge relative top-0">

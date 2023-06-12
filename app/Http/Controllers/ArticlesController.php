@@ -6,6 +6,7 @@ use App\Http\Requests\StoreArticlesRequest;
 use App\Http\Requests\UpdateArticlesRequest;
 use App\Models\Articles;
 use Illuminate\Http\Request;
+use App\Models\Configuration;
 
 
 class ArticlesController extends Controller
@@ -51,7 +52,7 @@ class ArticlesController extends Controller
            $article = new Articles;
            $validatedData = $request->validate([
                'name' => 'required|max:50',
-               "document" => "required|mimes:pdf,xls"
+               "document" => "required|mimes:pdf,xlsx"
        
               ]);
               $document = $request->file('document');
@@ -79,6 +80,11 @@ class ArticlesController extends Controller
     public function show(Articles $articles)
     {
         //
+        $articles = Articles::paginate(20);
+        $conf = Configuration::first();
+
+        return view('archivos.archivos',['articles'=>$articles,'conf'=>$conf]);
+        
     }
 
     /**

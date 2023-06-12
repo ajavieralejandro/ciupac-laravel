@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Link;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use  App\Models\Configuration;
+
+
 
 class LinkController extends Controller
 {
@@ -26,8 +30,21 @@ class LinkController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.addLink');
+      
+    }
+
+    public function links(){
+        $tutorials = Link::where('tutorial',0)->get();
+        $conf = Configuration::first();
+        return view('archivos.tutoriales',['conf'=>$conf,'tutorials'=>$tutorials]);
+       
+    }
+
+    public function tutorials(){
+        $tutorials = Link::where('tutorial',1)->get();
+        $conf = Configuration::first();
+        return view('archivos.tutoriales',['conf'=>$conf,'tutorials'=>$tutorials]);
+
     }
 
     /**
@@ -40,13 +57,17 @@ class LinkController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|unique:links|max:255',
-            'link' =>  'required|unique:links|max:255'
+            'link' =>  'required|unique:links|max:255',
 
         ]);
         $link = new Link;
         $link->name = $request->name;
         $link->link = $request->link;
-        $link->save();
+        if($request->tutorial)
+        $link->tutorial = true;
+    else 
+        $link->tutorial = false;
+                $link->save();
         return redirect('/links');
     }
 
@@ -81,9 +102,24 @@ class LinkController extends Controller
      * @param  \App\Models\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Link $link)
+    public function update(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required','unique:links,id_to_ignore',
+            'link' =>  'required','unique:links,id_to_ignore','max:255',
+
+        ]);
+        $link = Link::whereId($request->link_id)->update($validated);
+        $link = Link::find($request->link_id);
+        if($request->tutorial)
+            $link->tutorial = true;
+        else 
+            $link->tutorial = false;
+        $link->save();
+        return redirect('/links');
+
+
     }
 
     /**
