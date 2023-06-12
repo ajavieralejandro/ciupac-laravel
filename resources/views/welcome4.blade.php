@@ -544,15 +544,16 @@ Contacto</a>
 <div class="container mx-auto pt-10 pb-10">
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
 
-<div class="grid grid-cols-1 sm:grid-cols-12">
+<div class="grid grid-cols-1 sm:grid-cols-12 overflow-hidden">
 <div class="col-span-4">
     <div class="p-4 col-span-4 overflow-y-auto" >
-  <ul class="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700  ">
+  <ul class="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700 overflow-y-scroll  ">
     @foreach($asambleas as $asamblea)
 
   <li class="inline-flex items-center gap-x-2  py-3 text-sm font-medium text-gray-800 dark:text-white">
    <a href="{{route('showAsamblea', ['id' => $asamblea->id]);}}">{{$asamblea->name}}</a>
   </li>
+  
   @endforeach
   
 
