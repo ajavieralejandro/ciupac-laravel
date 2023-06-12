@@ -95,7 +95,8 @@ class StationController extends Controller
     {
         //Retorno la vista con la estación seleccionada
         //Muestro la lista de estaciones
-        $stations = Station::paginate(20);
+        try {
+            $stations = Station::paginate(20);
         $station =  Station::find($request->id);
         $mac = ($station->mac);
         $api_key = env('API_KEY');
@@ -105,8 +106,6 @@ class StationController extends Controller
         $data= $response->json();
         $conf = Configuration::first();
         $data = $data['data'];
-        if(count($data)==0 || $data==NULL)
-        return view('estaciones.problemas',['conf'=>$conf,'stations'=>$stations]);
         $temperature = $data['outdoor']['temperature']['value'];
         $temperature = 5*($temperature-32)/9;
         $temperature = round($temperature, 1);
@@ -147,6 +146,11 @@ class StationController extends Controller
         'uvi'=>$uvi,'rain'=>$rain,'stations'=>$stations,'rocio'=>$rocio,
         'wind_gust'=>$wind_gust,'feels_like'=>$feels_like
     ]);
+        } catch (Throwable $e) {
+            return view('estaciones.problemas',['conf'=>$conf,'stations'=>$stations]);
+
+        }
+        
         
     }
 
