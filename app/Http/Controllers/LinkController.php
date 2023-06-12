@@ -34,7 +34,7 @@ class LinkController extends Controller
     }
 
     public function links(){
-        $tutorials = Link::where('tutorial',0)->get();
+          $tutorials = Link::where('tutorial',0)->get();
         $conf = Configuration::first();
         return view('archivos.tutoriales',['conf'=>$conf,'tutorials'=>$tutorials]);
        
@@ -92,7 +92,7 @@ class LinkController extends Controller
     {
         //
         $link = Link::find($request->id);
-        return view('admin.editlink',['link'=>$link]);
+        return view('admin.editLink',['link'=>$link]);
     }
 
     /**
