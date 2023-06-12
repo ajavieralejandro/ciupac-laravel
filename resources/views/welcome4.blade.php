@@ -486,7 +486,7 @@ Contacto</a>
 
     <a name="mediciones"></a>
 
-    <section class="flex items-center bg-stone-100 xl:h-screen font-poppins dark:bg-gray-800 ">
+    <section class="flex h-screen items-center bg-stone-100 xl:h-screen font-poppins dark:bg-gray-800 ">
         <div class="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
             <div class="flex flex-wrap ">
                 <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
@@ -496,14 +496,14 @@ Contacto</a>
                 
                     </div>
                 </div>
-                <div class="w-full px-6 mb-10 lg:w-1/2 lg:mb-0 ">
-                    <div class="pl-4 mb-6 border-l-4 border-sky-500 ">
+                <div class="w-full  px-6 mb-10 lg:w-1/2 lg:mb-0   ">
+                    <div class="pl-4 mb-6 border-l-4 border-sky-500  ">
                         <span class="text-sm text-gray-600 uppercase dark:text-gray-400">Proyecto Ciupac</span>
                         <h1 class="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
                             Nosotros
                         </h1>
                     </div>
-                    <p class="mb-6 text-base leading-7 text-gray-500 dark:text-gray-400">
+                    <p class="mb-6 text-base leading-7 text-gray-500 dark:text-gray-400 ">
                       {!!$about->body!!}
                     </p>
                 
