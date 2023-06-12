@@ -136,7 +136,7 @@ Route::get('/estacion/{id}', [\App\Http\Controllers\StationController::class, 's
 Route::get('/asamblea/{id}', [\App\Http\Controllers\AsambleaController::class, 'show'])->name('showAsamblea');
 Route::get('/archivos', [\App\Http\Controllers\ArticlesController::class, 'show'])->name('showArchivos');
 Route::get('/tutoriales', [\App\Http\Controllers\LinkController::class, 'tutorials'])->name('showTutoriales');
-Route::get('/links', [\App\Http\Controllers\LinkController::class, 'links'])->name('showLinks');
+Route::get('/linksdeinteres', [\App\Http\Controllers\LinkController::class, 'links'])->name('showLinks');
 
 Route::get('/noticias', [\App\Http\Controllers\PostController::class, 'noticias'])->name('showNoticias');
 Route::get('/estaciones', [\App\Http\Controllers\StationController::class, 'showStations'])->name('estaciones');
