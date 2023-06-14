@@ -614,13 +614,11 @@ Contacto</a>
       <p class="mb-1 text-lg font-bold text-center text-black">{{$member->name}}</p>
       <p class="mb-4 text-xs text-center text-black">{{$member->email}}</p>
 
-    </div>
-
+</div>
     @endforeach
  
-  </div>
-  </div>
-
+</div>
+</div>
   
   
          <!-- Section: Design Block -->
@@ -680,7 +678,7 @@ Contacto</a>
   <a name="contactsection"></a>
 
   
-<section >
+<section class="w-screen" >
 
 
 <div style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})">
@@ -719,12 +717,6 @@ Contacto</a>
 <!-- Container for demo purpose -->
 
      @include('layouts.footerPage',['conf'=>$conf])
-     
-
-
-
-</body>
-</main>
 
 <script>
 // Burger menus
@@ -843,6 +835,13 @@ $('#myForm').on('submit', function(event) {
     });
 });
 </script>
+     
+
+     </main>
+
+
+</body>
+
 
 
 </html>
