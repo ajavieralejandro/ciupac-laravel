@@ -291,7 +291,7 @@ Contacto</a>
 
 
     
-   <section class=" fade-in container   mx-auto p-10 py-20 px-0 :p-10 md:px-0">
+   <section class=" fade-in container  w-screen  mx-auto p-10 py-20 px-0 :p-10 md:px-0">
         <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
         <img class="xl:max-w-6xl" src="{{asset($portrait->image_path.'/'.$portrait->image_name)}}" alt="">
             <div class=" group-hover:scale-100 content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
@@ -314,7 +314,7 @@ Contacto</a>
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
  <a name="news"></a>
- <div class="container mx-auto flex flex-wrap">
+ <div class="container mx-auto flex flex-wrap w-screen">
 @foreach($posts as $post)
 @if ($loop->first)
 
@@ -345,7 +345,7 @@ Contacto</a>
 <a name="news"></a>
 
 
-<section class="text-gray-600 body-font">
+<section class="text-gray-600 body-font w-screen">
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 grid w-full mb-6 lg:mb-0">
@@ -496,14 +496,14 @@ Contacto</a>
                 
                     </div>
                 </div>
-                <div class="w-full sm:h-screen   px-6 mb-10 lg:w-1/2 lg:mb-0 overflow-hidden   ">
+                <div class="w-full pt-6  px-6 mb-10 lg:w-1/2 lg:mb-0    ">
                     <div class="pl-4 mb-6 border-l-4 border-sky-500  ">
                         <span class="text-sm text-gray-600 uppercase dark:text-gray-400">Proyecto Ciupac</span>
                         <h1 class="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
                             Nosotros
                         </h1>
                     </div>
-                    <div class="h-full">
+                    <div class="h-screen">
                     <p class="m-auto pt-2 text-base leading-7 text-gray-500 dark:text-gray-400 ">
                       {!!$about->body!!}
                     </p>
