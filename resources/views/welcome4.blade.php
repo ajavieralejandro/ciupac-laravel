@@ -835,7 +835,7 @@ $('#myForm').on('submit', function(event) {
     });
 });
 </script>
-     
+</div>
 
      </main>
 
