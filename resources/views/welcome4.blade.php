@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ciupac</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
+    <meta name="author" content="Javier Amorosi">
+    <meta name="description" content="Proyecto Ciupac">
     
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
@@ -313,7 +313,7 @@ Contacto</a>
 
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
- <a name="news"></a>
+ <a id="news"></a>
  <div class="container mx-auto flex flex-wrap w-screen">
 @foreach($posts as $post)
 @if ($loop->first)
@@ -342,7 +342,7 @@ Contacto</a>
 @endif
 @endforeach
 </div>
-<a name="news"></a>
+<a id="news"></a>
 
 
 <section class="text-gray-600 body-font w-screen">
@@ -386,7 +386,7 @@ Contacto</a>
 
 
 
-<a name="about"></a>
+<a id="about"></a>
 
 
 
@@ -579,17 +579,15 @@ Contacto</a>
 
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     
-    <div>
-      
-    </div>
+   
     <a name="team"></a>
 
     
     <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
       <span class="relative inline-block">
       <div class="flex justify-center items-center ">
-      <svg class="w-10 h-10 content-center animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-</div>
+        <svg class="w-10 h-10 content-center animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+      </div>
         <span class="relative">Conoce</span>
       </span>
       a nuestro equipo
@@ -602,7 +600,7 @@ Contacto</a>
     @foreach($members as $member)
     <div>
       <div class="relative overflow-hidden transition duration-300 transform rounded-lg shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
-        <img class="object-cover w-full h-56 md:h-64 xl:h-80"        src="{{asset($member->image_path.'/'.$member->image_name)}}"
+        <img alt="team member" class="object-cover w-full h-56 md:h-64 xl:h-80"        src="{{asset($member->image_path.'/'.$member->image_name)}}"
  alt="Person" />
         <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
           <p class="mb-4 text-xs  text-white whitespace-pre-line	">
@@ -626,19 +624,8 @@ Contacto</a>
   
   
          <!-- Section: Design Block -->
-  <section class="mb-32 text-gray-800 text-center">
-    <style>
-      .grayscale {
-        filter: grayscale(100%);
-      }
-      .custom-img {
-  background-image: url({{asset($about->image_path.'/'.$about->image_name)}});
-  background-size: contain;
-  background-repeat: no-repeat;
+  <section class="mb-32 w-screen text-gray-800 text-center">
 
-
-}
-    </style>
     <h2 class="text-3xl font-bold mb-12">Instituciones contrapartes </h2>
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center">
@@ -812,7 +799,7 @@ var aux = @json($asambleas);
           display+= `
           <div>
           <a href="/asamblea/${asamblea.id}">
-          <img src="${asamblea.image_path}/${asamblea.image_name}" />
+          <img alt="asamblea" src="${asamblea.image_path}/${asamblea.image_name}" />
           <span className="text-light">${asamblea.name}</span>
           </div>
           </a>
