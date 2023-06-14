@@ -313,14 +313,13 @@ Contacto</a>
 
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
- <a id="news"></a>
  <div class="container mx-auto flex flex-wrap w-screen">
 @foreach($posts as $post)
 @if ($loop->first)
 
  <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}})">
             <div class="w-fit opacity-80 bg-black">
-             <h1 class=" mt-5 text-4xl text-white leading-snug  min-h-33">{{$post->title}}
+             <h1 class=" mt-5 text-4xl text-white leading-snug  min-h-33">{{$post->title}}</h1>
              <h1 class=" text-4xl text-white leading-snug  min-h-33">{{$post->description}}
 
              </h1>
@@ -378,7 +377,7 @@ Contacto</a>
      
     </div>
      <div class="mt-10   gap-x-6">
-          <a href="{{route('showNoticias')}}"class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver más...</a>
+          <a href="{{route('showNoticias')}}" class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver más...</a>
         </div>
   </div>
  
@@ -392,7 +391,6 @@ Contacto</a>
 
 
 
-    </section>
     
 
 
