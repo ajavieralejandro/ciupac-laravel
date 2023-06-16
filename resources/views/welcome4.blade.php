@@ -375,8 +375,8 @@ Contacto</a>
 
         <section class="m-4 md:m-8 dark:bg-gray-800 dark:text-gray-100">
 	<div class="container p-4 mx-auto my-6 space-y-1 text-center">
-		<span class="text-xs font-semibold tracking-wider uppercase dark:text-violet-400">shortcut to your dream ui</span>
-		<h2 class="pb-3 text-3xl font-bold md:text-4xl">Proyecto Ciupac</h2>
+		<span class="text-xs font-semibold tracking-wider uppercase dark:text-violet-400">Proyecto Ciupac</span>
+		<h2 class="pb-3 text-3xl font-bold md:text-4xl">Mediciones</h2>
 		<p>En esta sección podrás encontrar diferentes datos de las mediciones que hacemos en el proyecto CiuPAC 
 ¿Vos también querés ayudarnos y participar?
 Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
