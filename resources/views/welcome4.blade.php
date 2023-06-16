@@ -373,7 +373,7 @@ Contacto</a>
     </section>
         </div>
 
-        <section class="m-4 md:m-8 dark:bg-gray-800 dark:text-gray-100">
+        <section class="m-4 md:m-8 dark:bg-gray-800 dark:text-gray-100 w-screen">
 	<div class="container p-4 mx-auto my-6 space-y-1 text-center">
 		<span class="text-xs font-semibold tracking-wider uppercase dark:text-violet-400">Proyecto Ciupac</span>
 		<h2 class="pb-3 text-3xl font-bold md:text-4xl">Mediciones</h2>
