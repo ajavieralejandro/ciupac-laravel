@@ -117,7 +117,7 @@ html {
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
-    var stationA = @json($stationA);
+    var stationA = @json($station);
 
     var southWest = L.latLng(-20.712, -77.227),
     northEast = L.latLng(-41.774,  -42.227),

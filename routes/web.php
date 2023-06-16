@@ -33,6 +33,8 @@ use App\Http\Middleware\IsAdmin;
 */
 
 Route::get('/',[PagesController::class,'index'])->name('welcome');
+Route::get('/coastSnap',[PagesController::class,'coastSnap'])->name('coastSnap');
+
 Route::resource('/blog',PostController::class);
 
 /*Route::get('/', function () {

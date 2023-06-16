@@ -54,5 +54,9 @@ class PagesController extends Controller
         return view('admin.adminpanel');
     }
 
+    public function coastSnap(){
+        return view('index');
+    }
+
     
 }

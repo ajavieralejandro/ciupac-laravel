@@ -220,13 +220,32 @@ Equipo</a></li>
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 font-bold" 		href="{{route('welcome').'/#mediciones'}}">Mediciones</a></li>
+			<li><a onClick="myFunction()" class="text-sm text-gray-400 hover:text-gray-500 font-bold" >Mediciones</a>
+      <div id="menuMediciones" class="hidden	 absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+    <div class="py-1" role="none">
+      <ul>
+        <li>      <a href="http://ciupaceventos.iado-conicet.gob.ar/" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Eventos y Tormentas</a>
+</li>
+        <li>      <a href="http://ciupacperfiles.iado-conicet.gob.ar/" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Perfiles de Playa</a>
+</li>
+        <li>      <a href="{{route('estaciones')}}" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Estaciones Meteorológicas</a>
+</li>
+        <li>      <a href="{{route('coastSnap')}}" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">CoastSnap</a>
+</li>
+
+      </ul>
+      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+
+    </div>
+  </div>
+    </li>
 			
 			<li class="text-gray-300">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
+     
       
 			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" 		href="{{route('welcome').'/#contactsection'}}">
 Contacto</a></li>
@@ -257,10 +276,54 @@ Home</a>
 					<li class="mb-1">
 						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#about'}}">
 Nosotros</a>
-<li class="mb-1">
-						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#mediciones'}}">
-Mediciones</a>
-					</li>
+</li>
+<li>
+            <a onClick="showDropdown()" href="#basic-usage" class="block  p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >Mediciones
+            </a>
+        </li>
+        <div id="dropdown" class="hidden">
+        <li class="ml-4">
+            <a href="http://ciupacperfiles.iado-conicet.gob.ar/"   class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Perfiles de Playa
+            </a>
+        </li>
+        <li class="ml-4">
+            <a href="http://ciupaceventos.iado-conicet.gob.ar/"
+                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Eventos y tormentas
+            </a>
+        </li>
+        <li class="ml-4">
+            <a href="{{route('estaciones')}}"
+                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>Estaciones Meteorológicas
+            </a>
+        </li>
+
+        <li class="ml-4">
+            <a href="{{route('coastSnap')}}"
+                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                <svg width="3" height="24" viewBox="0 -9 3 24"
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    </path>
+                </svg>CoastSnap
+            </a>
+        </li>
+        </div>
+      
 					<li class="mb-1">
 						<a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" 		href="{{route('welcome').'/#news'}}">
 Novedades</a>
@@ -310,32 +373,130 @@ Contacto</a>
     </section>
         </div>
 
+        <section class="m-4 md:m-8 dark:bg-gray-800 dark:text-gray-100">
+	<div class="container p-4 mx-auto my-6 space-y-1 text-center">
+		<span class="text-xs font-semibold tracking-wider uppercase dark:text-violet-400">shortcut to your dream ui</span>
+		<h2 class="pb-3 text-3xl font-bold md:text-4xl">Proyecto Ciupac</h2>
+		<p>En esta sección podrás encontrar diferentes datos de las mediciones que hacemos en el proyecto CiuPAC 
+¿Vos también querés ayudarnos y participar?
+Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
+	</div>
+	<div class="container grid justify-center gap-4 mx-auto lg:grid-cols-2 xl:grid-cols-4">
+		<div class="flex flex-col px-8 py-6  hover:text-blue-500">
+    <a  href="http://ciupacperfiles.iado-conicet.gob.ar/">
+
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">Perfiles de Playa</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Acá vas a poder encontrar las últimas mediciones de perfiles de playa que realizamos en las diferentes localidades de la costa de la provincia de Buenos Aires  </p>
+			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="http://ciupacperfiles.iado-conicet.gob.ar/">
+				<span>Ingresar</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+				</svg>
+			</a>
+</a>
+		</div>
+		<div class="flex flex-col px-8 py-6 lg:border-none xl:border-solid hover:text-blue-500">
+    <a href="http://ciupaceventos.iado-conicet.gob.ar/">
+
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">Eventos y tormentas</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Sumate registrando los daños producidos por el paso de tormentas o eventos térmicos (de frio o calor) en tu localidad</p>
+			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="http://ciupaceventos.iado-conicet.gob.ar/">
+				<span>Ingresar</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+				</svg>
+			</a>
+</a>
+		</div>
+		<div class="flex flex-col px-8 py-6 hover:text-blue-500">
+    <a  href="{{route('estaciones')}}">
+
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100 ">Estaciones Meteorológicas</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Acá encontrarás los datos en vivo de nuestras estaciones meteorológicas </p>
+			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="{{route('estaciones')}}">
+				<span>Ingresar</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+				</svg>
+			</a>
+</a>
+		</div>
+		<div class="flex flex-col px-8 py-6 hover:text-blue-500">
+    <a  href="{{route('coastSnap')}}">
+
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">CoastSnap</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Pronto podrás encontrar en esta sección cómo sumar tus fotos en la playa a nuestro proyecto para que podamos ver la variación de la costa (sección en construcción)</p>
+			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="/docs">
+				<span>Ingresar</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+				</svg>
+			</a>
+</a>
+		</div>
+	</div>
+</section>
 
        <!-- Posts Section  <div class="container mx-auto px-20">
  -->
  <div class="container mx-auto flex flex-wrap w-screen">
 @foreach($posts as $post)
 @if ($loop->first)
+<section class="dark:bg-gray-800 w-screen dark:text-gray-100">
+	<div class="container flex flex-col-reverse mx-auto lg:flex-row">
+		<div class="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
+			<div class="flex space-x-2 sm:space-x-4">
+      <svg       class="flex-shrink-0 w-6 h-6"
+ fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"></path>
+</svg>
+				<div class="space-y-2 hover:text-blue-400 ">
+        <a href="{{route('showArchivos')}}">
 
- <article class="p-10 w-screen  rounded-xl text-gray-100  bg-center bg-cover transform duration-500 hover:-translate-y-1 cursor-pointer" style="background-image: url({{asset($post->image_path.'/'.$post->image_name)}})">
-            <div class="w-fit opacity-80 bg-black">
-             <h1 class=" mt-5 text-4xl text-white leading-snug  min-h-33">{{$post->title}}</h1>
-             <h1 class=" text-4xl text-white leading-snug  min-h-33">{{$post->description}}
+					<p class=" text-lg font-medium leading-snug">Archivos de Interés</p>
+					<p class=" leading-snug">Explora nuestros distintos archivos, documentos, etc...</p>
+</a>
+				</div>
+			</div>
+			<div class="flex space-x-2 sm:space-x-4">
+			<svg  class="flex-shrink-0 w-6 h-6"  fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z"></path>
+</svg>
+				<div class="space-y-2 hover:text-blue-400">
+        <a href="{{route('showTutoriales')}}">
 
-             </h1>
-             </div>
-             <div class="mt-20">
-            
-             </div>
-             <div class="mt-16 flex justify-between ">
-              <span   ></span>
-                 <span class="p-3 px-5 bg-gray-200  rounded-md text-base hover:bg-blue-400 cursor-pointer hover:text-white text-black ">        <a  href="{{route('showPost', ['id' => $post->id]);}}">Leer más...</a>
+					<p class=" text-lg font-medium leading-snug">Tutoriales</p>
+					<p class=" leading-snug">Sección de tutoriales disponibles para cargar datos...</p>
+      </a>
+        </div>
+			</div>
+			<div class="flex space-x-2 sm:space-x-4">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-shrink-0 w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+				</svg>
+				<div class="space-y-2 hover:text-blue-400">
+        <a href="{{route('showLinks')}}">
 
-         </span>
-             </div>
-         </article>
-         
-         
+					<p class=" text-lg font-medium leading-snug">Entrevistas</p>
+					<p class="leading-snug">Entrevistas brindadas por los integrantes del proyecto a diversos medios</p>
+        </a>
+        </div>
+			</div>
+		</div>
+		<div class="lg:w-1/2 xl:w-3/5 dark:bg-gray-800">
+    <div class="w-full rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+	<img src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="noticia" class="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500">
+	<div class="flex flex-col justify-between p-6 space-y-8">
+		<div class="space-y-2">
+			<h2 class="text-3xl font-semibold text-center">{{$post->title}}</h2>
+			<p class="dark:text-gray-100 text-center">{{$post->description}}</p>
+		</div>
+		<a href="{{route('showPost', ['id' => $post->id]);}}" type="button" class="flex items-center justify-center w-full p-3 font-semibold tracki rounded-md dark:bg-violet-400 dark:text-gray-900">Leer más</a>
+	</div>
+</div>
+		</div>
+	</div>
+</section>
          
       
 @endif
@@ -343,13 +504,12 @@ Contacto</a>
 </div>
 <a id="news"></a>
 
-
 <section class="text-gray-600 body-font w-screen">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container px-5 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
       <div class="lg:w-1/2 grid w-full mb-6 lg:mb-0">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Últimas Novedades</h1>
-        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Últimas Noticias</h1>
+        <div class="h-1 w-20 bg-blue-500 rounded"></div>
       </div>
       <p class="lg:w-1/2 w-full leading-relaxed text-gray-500"></p>
     </div>
@@ -358,13 +518,13 @@ Contacto</a>
     <div class="flex flex-wrap -m-4">
     @foreach($posts as $post)
 @if (!$loop->first)
-      <div class="xl:w-1/4 md:w-1/2 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg">
+      <div class="xl:w-1/4 md:w-1/2 w-screen p-4">
+        <div class=" p-6 rounded-lg">
           <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="content">
           <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">{{$post->created_at->format('d/m/Y')}}</h3>
           <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{{$post->title}}</h2>
           <p class="leading-relaxed text-base">{{Str::limit($post->description,50)}}</p>
-          <a class="text-indigo-500 inline-flex items-center" href="{{route('showPost', ['id' => $post->id]);}}">Leer más
+          <a class="text-blue-500 inline-flex items-center" href="{{route('showPost', ['id' => $post->id]);}}">Leer más
             <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h14"></path>
               <path d="M12 5l7 7-7 7"></path>
@@ -376,7 +536,7 @@ Contacto</a>
 @endforeach
      
     </div>
-     <div class="mt-10   gap-x-6">
+     <div class="mt-10 pt-12   gap-x-6">
           <a href="{{route('showNoticias')}}" class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver más...</a>
         </div>
   </div>
@@ -399,140 +559,75 @@ Contacto</a>
 
 
 
-<aside class="w-full p-6 sm:w-60 dark:bg-gray-900 dark:text-gray-100">
-<div class="px-8">
-    <ul class="text-slate-700 text-sm leading-6">
- 
-        <li>
-            <a href="#basic-usage" class="block py-1 font-medium font-medium  dark:text-sky-400">Mediciones
-            </a>
-        </li>
-        <li class="ml-4">
-            <a href="http://ciupacperfiles.iado-conicet.gob.ar/" class="group flex items-start py-1 dark:text-sky-400">
-                <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
-                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                    </path>
-                </svg>Perfiles de Playa
-            </a>
-        </li>
-        <li class="ml-4">
-            <a href="http://ciupaceventos.iado-conicet.gob.ar/"
-                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
-                <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
-                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                    </path>
-                </svg>Eventos y tormentas
-            </a>
-        </li>
-        <li class="ml-4">
-            <a href="{{route('estaciones')}}"
-                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
-                <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
-                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                    </path>
-                </svg>Estaciones Meteorológicas en vivo 
-            </a>
-        </li>
-        <li>
-            <a href="{{route('showArchivos')}}"
-                class="block py-1 font-medium hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">Archivos de Interes
-            </a>
-        </li>
-    
-     
-        <li>
-            <a href="#using-custom-values"
-                class="block py-1 font-medium hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">Links
-            </a>
-        </li>
-        <li class="ml-4">
-            <a href="{{route('showTutoriales')}}"
-                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
-                <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
-                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                    </path>
-                </svg>Tutoriales
-            </a>
-        </li>
-        <li class="ml-4">
-            <a href="{{route('showLinks')}}"
-                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
-                <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
-                    <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                    </path>
-                </svg>Links de interés
-            </a>
-        </li>
-    </ul>
-</div>
-</aside>
 
-<section class="w-full grid md:w-2/3 flex flex-col items-center ">
+</section>
 
 
-<div class="  overflow-hidden ">
-<div class="grid h-screen place-items-center">
-<div class=" lg:px-0  text-gray-700 mx-auto " >
-
-
-<div class="relative isolate px-6 pt-2  lg:px-8 rounded">
-
-    <a name="mediciones"></a>
-
-    <section class="flex h-screen items-center bg-stone-100 xl:h-screen font-poppins dark:bg-gray-800 ">
-        <div class="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
-            <div class="flex flex-wrap ">
-                <div class="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
-                    <div class="relative lg:max-w-md">
-                        <img src="{{asset($about->image_path.'/'.$about->image_name)}}" alt="aboutimage"
-                            class="relative z-10 object-cover w-full rounded h-96">
-                
-                    </div>
-                </div>
-                <div class="w-full pt-6  px-6 mb-10 lg:w-1/2 lg:mb-0    ">
-                    <div class="pl-4 mb-6 border-l-4 border-sky-500  ">
-                        <span class="text-sm text-gray-600 uppercase dark:text-gray-400">Proyecto Ciupac</span>
-                        <h1 class="mt-2 text-3xl font-black text-gray-700 md:text-5xl dark:text-gray-300">
-                            Nosotros
-                        </h1>
-                    </div>
-                    <div class="h-screen">
-                    <p class="m-auto pt-2 text-base leading-7 text-gray-500 dark:text-gray-400 ">
-                      {!!$about->body!!}
-                    </p>
-                    </div>
-                </div>
+<!-- ====== About Section Start -->
+<section class="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
+  <div class="container mx-auto">
+    <div class="-mx-4 flex flex-wrap items-center justify-between">
+      <div class="w-full px-4 lg:w-6/12">
+        <div class="-mx-3 flex items-center sm:-mx-4">
+          <div class="w-full px-3 sm:px-4 xl:w-1/2">
+            <div class="py-3 sm:py-4">
+              <img
+                src="http://ciupac.iado-conicet.gob.ar/public/images/imagenasamblea/image-2MVvr.jpg"
+                alt=""
+                class="w-full rounded-2xl"
+              />
             </div>
+            <div class="py-3 sm:py-4">
+              <img
+                src="http://ciupac.iado-conicet.gob.ar/public/images/imagenasamblea/image-0CwFU.jpg"
+                alt=""
+                class="w-full rounded-2xl"
+              />
+            </div>
+          </div>
+          <div class="w-full px-3 sm:px-4 xl:w-1/2">
+            <div class="relative z-0 my-4">
+              <img
+                src="http://ciupac.iado-conicet.gob.ar/public/images/imagenasamblea/image-cJ1tb.jpg"
+                alt=""
+                class="w-full rounded-2xl"
+              />
+         
+            </div>
+          </div>
         </div>
-    </section>
- 
+      </div>
+      <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
+        <div class="mt-10 lg:mt-0">
+          <span class="text-primary mb-2 block text-lg font-semibold">
+            Proyecto Ciupac
+          </span>
+          <h2 class="text-dark mb-8 text-3xl font-bold sm:text-4xl">
+            Nosotros
+          </h2>
+          <p class="text-body-color mb-8 text-base">
+            {!!$about->body!!}
+          </p>
+          <p class="text-body-color mb-12 text-base">
+            A domain name is one of the first steps to establishing your brand.
+            Secure a consistent brand image with a domain name that matches your
+            business.
+          </p>
+          <a
+            href="javascript:void(0)"
+            class="bg-primary inline-flex items-center justify-center rounded-lg py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-  
-</div>
-</div>
-      
-
-
-
-    
-
-</div>
-
 </section>
+<!-- ====== About Section End -->
 
 
 
-</section>
-
-</section>
-
-
-</section>
 <div class="grid  place-items-center  ">
 
  
@@ -715,6 +810,26 @@ Contacto</a>
 <!-- Container for demo purpose -->
 
      @include('layouts.footerPage',['conf'=>$conf])
+<script>
+  function myFunction() {
+  var x = document.getElementById("menuMediciones");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function showDropdown() {
+  var x = document.getElementById("dropdown");
+  if(x.classList.contains("hidden"))
+  x.classList.remove("hidden");
+  else
+  x.classList.add("hidden");
+  
+
+}
+</script>
 
 <script>
 // Burger menus
