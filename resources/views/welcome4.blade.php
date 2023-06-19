@@ -608,11 +608,7 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
           <p class="text-body-color mb-8 text-base">
             {!!$about->body!!}
           </p>
-          <p class="text-body-color mb-12 text-base">
-            A domain name is one of the first steps to establishing your brand.
-            Secure a consistent brand image with a domain name that matches your
-            business.
-          </p>
+
           <a
             href="javascript:void(0)"
             class="bg-primary inline-flex items-center justify-center rounded-lg py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
@@ -776,7 +772,7 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 
 <div style="background-image:url({{asset($about->image_path.'/'.$about->image_name)}})">
 
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-white ">
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
       <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contactanos</h2>
       <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Hacenos conocer tu inquietud</p>
