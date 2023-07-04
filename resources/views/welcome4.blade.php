@@ -220,7 +220,7 @@ Equipo</a></li>
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a onClick="myFunction()" class="text-sm text-gray-400 hover:text-gray-500 font-bold" >Mediciones</a>
+			<li><a onClick="myFunction()" class="cursor-pointer text-sm text-gray-400 hover:text-gray-500 font-bold" >Mediciones</a>
       <div id="menuMediciones" class="hidden	 absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
     <div class="py-1" role="none">
       <ul>
@@ -278,14 +278,14 @@ Home</a>
 Nosotros</a>
 </li>
 <li>
-            <a onClick="showDropdown()" href="#basic-usage" class="block  p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >Mediciones
+            <a onClick="showDropdown()" href="#basic-usage" class="block cursor-pointer  p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" >Mediciones
             </a>
         </li>
         <div id="dropdown" class="hidden">
         <li class="ml-4">
-            <a href="http://ciupacperfiles.iado-conicet.gob.ar/"   class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+            <a href="http://ciupacperfiles.iado-conicet.gob.ar/"   class="group flex items-start py-1 hover:text-slate-900  ">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 s ">
                     <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                     </path>
                 </svg>Perfiles de Playa
@@ -293,9 +293,9 @@ Nosotros</a>
         </li>
         <li class="ml-4">
             <a href="http://ciupaceventos.iado-conicet.gob.ar/"
-                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                class="group flex items-start py-1 hover:text-slate-900 ">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600">
                     <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                     </path>
                 </svg>Eventos y tormentas
@@ -303,9 +303,9 @@ Nosotros</a>
         </li>
         <li class="ml-4">
             <a href="{{route('estaciones')}}"
-                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                class="group flex items-start py-1 hover:text-slate-900 ">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 ">
                     <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                     </path>
                 </svg>Estaciones Meteorológicas
@@ -314,9 +314,9 @@ Nosotros</a>
 
         <li class="ml-4">
             <a href="{{route('coastSnap')}}"
-                class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
+                class="group flex items-start py-1 hover:text-slate-900 ">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
-                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">
+                    class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 ">
                     <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
                     </path>
                 </svg>CoastSnap
@@ -373,9 +373,9 @@ Contacto</a>
     </section>
         </div>
 
-        <section class="m-4 md:m-8 dark:bg-gray-800 dark:text-gray-100 w-screen">
+        <section class="m-4 md:m-8  w-screen">
 	<div class="container p-4 mx-auto my-6 space-y-1 text-center">
-		<span class="text-xs font-semibold tracking-wider uppercase dark:text-violet-400">Proyecto Ciupac</span>
+		<span class="text-xs font-semibold tracking-wider uppercase ">Proyecto Ciupac</span>
 		<h2 class="pb-3 text-3xl font-bold md:text-4xl">Mediciones</h2>
 		<p>En esta sección podrás encontrar diferentes datos de las mediciones que hacemos en el proyecto CiuPAC 
 ¿Vos también querés ayudarnos y participar?
@@ -385,9 +385,9 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 		<div class="flex flex-col px-8 py-6  hover:text-blue-500">
     <a  href="http://ciupacperfiles.iado-conicet.gob.ar/">
 
-			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">Perfiles de Playa</h2>
-			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Acá vas a poder encontrar las últimas mediciones de perfiles de playa que realizamos en las diferentes localidades de la costa de la provincia de Buenos Aires  </p>
-			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="http://ciupacperfiles.iado-conicet.gob.ar/">
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font ">Perfiles de Playa</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed ">Acá vas a poder encontrar las últimas mediciones de perfiles de playa que realizamos en las diferentes localidades de la costa de la provincia de Buenos Aires  </p>
+			<a class="inline-flex items-center space-x-2 text-sm " href="http://ciupacperfiles.iado-conicet.gob.ar/">
 				<span>Ingresar</span>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
 					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -398,9 +398,9 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 		<div class="flex flex-col px-8 py-6 lg:border-none xl:border-solid hover:text-blue-500">
     <a href="http://ciupaceventos.iado-conicet.gob.ar/">
 
-			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">Eventos y tormentas</h2>
-			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Sumate registrando los daños producidos por el paso de tormentas o eventos térmicos (de frio o calor) en tu localidad</p>
-			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="http://ciupaceventos.iado-conicet.gob.ar/">
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font ">Eventos y tormentas</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed ">Sumate registrando los daños producidos por el paso de tormentas o eventos térmicos (de frio o calor) en tu localidad</p>
+			<a class="inline-flex items-center space-x-2 text-sm " href="http://ciupaceventos.iado-conicet.gob.ar/">
 				<span>Ingresar</span>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
 					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -411,9 +411,9 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 		<div class="flex flex-col px-8 py-6 hover:text-blue-500">
     <a  href="{{route('estaciones')}}">
 
-			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100 ">Estaciones Meteorológicas</h2>
-			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Acá encontrarás los datos en vivo de nuestras estaciones meteorológicas </p>
-			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="{{route('estaciones')}}">
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font  ">Estaciones Meteorológicas</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed ">Acá encontrarás los datos en vivo de nuestras estaciones meteorológicas </p>
+			<a class="inline-flex items-center space-x-2 text-sm " href="{{route('estaciones')}}">
 				<span>Ingresar</span>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
 					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -424,9 +424,9 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 		<div class="flex flex-col px-8 py-6 hover:text-blue-500">
     <a  href="{{route('coastSnap')}}">
 
-			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">CoastSnap</h2>
-			<p class="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">Pronto podrás encontrar en esta sección cómo sumar tus fotos en la playa a nuestro proyecto para que podamos ver la variación de la costa (sección en construcción)</p>
-			<a class="inline-flex items-center space-x-2 text-sm dark:text-violet-400" href="/docs">
+			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font ">CoastSnap</h2>
+			<p class="flex-1 mb-4 text-base leading-relaxed ">Pronto podrás encontrar en esta sección cómo sumar tus fotos en la playa a nuestro proyecto para que podamos ver la variación de la costa (sección en construcción)</p>
+			<a class="inline-flex items-center space-x-2 text-sm " href="/docs">
 				<span>Ingresar</span>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
 					<path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -442,9 +442,9 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
  <div class="container mx-auto flex flex-wrap w-screen">
 @foreach($posts as $post)
 @if ($loop->first)
-<section class="dark:bg-gray-800 w-screen dark:text-gray-100">
+<section class=" w-screen ">
 	<div class="container flex flex-col-reverse mx-auto lg:flex-row">
-		<div class="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 dark:bg-violet-400 dark:text-gray-900">
+		<div class="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 ">
 			<div class="flex space-x-2 sm:space-x-4">
       <svg       class="flex-shrink-0 w-6 h-6"
  fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -483,15 +483,15 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
         </div>
 			</div>
 		</div>
-		<div class="lg:w-1/2 xl:w-3/5 dark:bg-gray-800">
-    <div class="w-full rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
-	<img src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="noticia" class="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500">
+		<div class="lg:w-1/2 xl:w-3/5 ">
+    <div class="w-full rounded-md shadow-md ">
+	<img src="{{asset($post->image_path.'/'.$post->image_name)}}" alt="noticia" class="object-cover object-center w-full rounded-t-md h-72 ">
 	<div class="flex flex-col justify-between p-6 space-y-8">
 		<div class="space-y-2">
 			<h2 class="text-3xl font-semibold text-center">{{$post->title}}</h2>
-			<p class="dark:text-gray-100 text-center">{{$post->description}}</p>
+			<p class=" text-center">{{$post->description}}</p>
 		</div>
-		<a href="{{route('showPost', ['id' => $post->id]);}}" type="button" class="flex items-center justify-center w-full p-3 font-semibold tracki rounded-md dark:bg-violet-400 dark:text-gray-900">Leer más</a>
+		<a href="{{route('showPost', ['id' => $post->id]);}}" type="button" class="flex items-center justify-center w-full p-3 font-semibold tracki rounded-md hover:text-blue-400 ">Leer más</a>
 	</div>
 </div>
 		</div>
@@ -635,12 +635,15 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
 
 <div class="grid grid-cols-1 sm:grid-cols-12 ">
+  
 <div class="col-span-4 ">
     <div class="p-4 col-span-4 " >
-  <ul class="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700 max-h-80	overflow-y-scroll   ">
+      
+      
+  <ul class="max-w-xs flex flex-col divide-y divide-gray-200  max-h-80	overflow-y-scroll   ">
     @foreach($asambleas as $asamblea)
 
-  <li class="inline-flex items-center gap-x-2  py-3 text-sm font-medium text-gray-800 dark:text-white">
+  <li class="inline-flex items-center gap-x-2  py-3 text-sm font-medium text-gray-800 ">
    <a href="{{route('showAsamblea', ['id' => $asamblea->id]);}}">{{$asamblea->name}}</a>
   </li>
 
@@ -774,23 +777,23 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 
 <section class="bg-white ">
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Contactanos</h2>
-      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Hacenos conocer tu inquietud</p>
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 ">Contactanos</h2>
+      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 sm:text-xl">Hacenos conocer tu inquietud</p>
       <form id="myForm" class="space-y-8">
           <div>
-              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">e-mail</label>
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">e-mail</label>
               <input  name="email"
-          type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
+          type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "  required>
           </div>
           <div>
-              <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Título</label>
-              <input     name="name" type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"  required>
+              <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 ">Título</label>
+              <input     name="name" type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "  required>
           </div>
           <div class="sm:col-span-2">
-              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Mensaje</label>
-              <textarea           name="message" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" ></textarea>
+              <label for="message" class="block mb-2 text-sm font-medium text-gray-900 ">Mensaje</label>
+              <textarea           name="message" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500   " ></textarea>
           </div>
-          <button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-blue-300 sm:w-fit hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 hover:bg-blue-500 dark:focus:ring-primary-800">Enviar mensaje</button>
+          <button type="submit" class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-blue-300 sm:w-fit hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-primary-300  hover:bg-blue-500">Enviar mensaje</button>
       </form>
   </div>
 </section>
