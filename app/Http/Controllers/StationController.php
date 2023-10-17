@@ -99,7 +99,7 @@ class StationController extends Controller
         //Retorno la vista con la estación seleccionada
         //Muestro la lista de estaciones
         try {
-            $stations = Station::paginate(20);
+        $stations = Station::paginate(20);
         $station =  Station::find($request->id);
         $mac = ($station->mac);
         $api_key = env('API_KEY');
@@ -168,7 +168,6 @@ class StationController extends Controller
         //
         $station =  Station::find($request->id);
         return view('admin.editstation',['station'=>$station]);
-
 
     }
 

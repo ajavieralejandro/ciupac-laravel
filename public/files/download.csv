@@ -1,0 +1,4 @@
+name,temperature,feels_like,humidity,wind,wind_gust,dew_point,wind_direction,pressure_relative,pressure_absolute,uvi,created_at
+"Monte hermoson 2",15,15,73,3.5,2.2,15,NE,1010.4,1016.5,1,"2023-09-14 16:07:52"
+"Monte hermoson 2",14.7,14.7,74,1.1,1.1,14.7,E,1010.4,1016.1,2,"2023-09-14 16:13:43"
+Ciupac,14.4,14.4,69,6.1,5.8,14.4,N,1011.1,1014.4,1,"2023-09-14 16:13:44"

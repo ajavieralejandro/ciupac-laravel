@@ -27,25 +27,22 @@
                             Name</th>
                         <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Latitud
+                            Wind
                         </th>
                         <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Longitud</th>
+                        Temperature</th>
                         <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Edit</th>
+                            UVI</th>
                         <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Delete</th>
-                            <th
-                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Registros</th>
+                            Time</th>
                     </tr>
                 </thead>
 
                 <tbody class="bg-white">
-                    @foreach($stations as $station)
+                    @foreach($registers as $register)
                     <tr>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div class="flex items-center">
@@ -53,89 +50,75 @@
 
                                 <div class="ml-4">
                                     <div class="text-sm font-medium leading-5 text-gray-900">
-                                        {{$station->name}}
+                                        {{$register->name}}
                                     </div>
                                 </div>
                             </div>
                         </td>
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <div class="text-sm leading-5 text-gray-500">{{$station->latitude}}</div>
+                            <div class="flex items-center">
+                              
+
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium leading-5 text-gray-900">
+                                        {{$register->wind}}
+                                    </div>
+                                </div>
+                            </div>
                         </td>
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                            <div class="text-sm leading-5 text-gray-500">{{$station->longitude}}</div>
+                            <div class="flex items-center">
+                              
+
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium leading-5 text-gray-900">
+                                        {{$register->temperature}}
+                                    </div>
+                                </div>
+                            </div>
                         </td>
 
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="flex items-center">
+                              
 
-                        <td
-                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <a href="{{route('editStation', ['id' => $station->id]);}}">                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                            </a>
-                        </td>
-                        <td
-                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <form method="POST" action="{{route('deletestation')}}">
-                            @csrf
-                            @method('delete')
-                            <input type="hidden" name="station_id" value="{{$station->id}}"/>
-
-
-
-
-                            <button type="submit" class="   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400  hover:text-green-700" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                         <span class="sr-only">Icon description</span>
-  
-                        </button>  
-                        </form>                       
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium leading-5 text-gray-900">
+                                        {{$register->uvi}}
+                                    </div>
+                                </div>
+                            </div>
                         </td>
 
-                        <td
-                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                             <a href="{{route('showRegistersStation', ['mac' => $station->mac]);}}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-</svg>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="flex items-center">
+                              
 
-                            </a>
+                                <div class="ml-4">
+                                    <div class="text-sm font-medium leading-5 text-gray-900">
+                                        {{$register->created_at}}
+                                    </div>
+                                </div>
+                            </div>
                         </td>
-                    
+
+                            
+                      
                     </tr>
-                    
 
                     @endforeach
 
-           
+
                  
                 </tbody>
-            </table>
-
-            <a href={{route('addStation')}}>
-            <button class="w-full bg-transparent rounded inline-flex items-center h-10 px-5 text-green-500 transition-colors duration-150  rounded-lg focus:shadow-outline hover:text-white hover:bg-green-800">
                 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-</svg>
-  <span class="pl-4">Agregar Estacion</span>
-</button>
-</a>
-        </div>
-    </div>  
-</div>
-
-</div>
-<div class="container m-auto">
-{{$stations->links()}}
-<div class="grid p-12 place-items-center">
+            </table>
+            
+           
+    </div>
+    <div class="grid p-12 place-items-center">
     <button class="bg-green-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 inline-flex" type="button" onclick="toggleModal('modal-id')">
 
     <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
@@ -143,8 +126,9 @@
   Descargar Registros
 </button>
 </div>
-<form enctype="multipart/form-data" method="POST" action={{route('generateAllReports')}}>
+<form enctype="multipart/form-data" method="POST" action={{route('reportRegistersStation')}}>
                     @csrf
+<input name="mac" type="hidden" value={{$mac}}>
 
 <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
   <div class="relative w-auto my-6 mx-auto max-w-3xl">
@@ -213,15 +197,15 @@
   }
 </script>
 
-<script>
-function add()
-{
-  const elem = document.getElementById("errorMessage");
-  elem.style.display = 'none';}
-</script>
-
                      
 </div>
+ 
 </div>
+
+<div class="container m-auto">
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/datepicker.min.js"></script>
+
 
 @endsection

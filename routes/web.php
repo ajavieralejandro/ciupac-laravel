@@ -10,6 +10,8 @@ use App\Http\Controllers\PortraitController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\StationRegisterController;
+
 
 
 
@@ -130,6 +132,13 @@ Route::group([
                 Route::post('/crearEstacion', [\App\Http\Controllers\StationController::class, 'store'])->name('storeStation');
                 Route::delete('/estacion', [\App\Http\Controllers\StationController::class, 'destroy'])->name('deletestation');
                 Route::put('/updatestation', [\App\Http\Controllers\StationController::class, 'update'])->name('updateStation');
+
+                //Registros de estaciones
+
+                Route::get('/registroEstacion/{mac}', [\App\Http\Controllers\StationRegisterController::class, 'show'])->name('showRegistersStation');
+                Route::post('/downloadReport', [\App\Http\Controllers\StationRegisterController::class, 'generateReport'])->name('reportRegistersStation');
+                Route::post('/downloadAllReport', [\App\Http\Controllers\StationRegisterController::class, 'generateAllReports'])->name('generateAllReports');
+
                 
                 });
 
