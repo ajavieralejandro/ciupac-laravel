@@ -188,7 +188,7 @@ Nosotros</a>
         </li>
 
         <li class="ml-4">
-            <a href="{{route('coastSnap')}}"
+            <a href="http://ciupaccoastsnap.iado-conicet.gob.ar/"
                 class="group flex items-start py-1 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
                     class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-500">

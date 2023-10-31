@@ -230,7 +230,7 @@ Equipo</a></li>
 </li>
         <li>      <a href="{{route('estaciones')}}" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Estaciones Meteorológicas</a>
 </li>
-        <li>      <a href="{{route('coastSnap')}}" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">CoastSnap</a>
+        <li>      <a href="http://ciupaccoastsnap.iado-conicet.gob.ar/" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">CoastSnap</a>
 </li>
 
       </ul>
@@ -313,7 +313,7 @@ Nosotros</a>
         </li>
 
         <li class="ml-4">
-            <a href="{{route('coastSnap')}}"
+            <a href="http://ciupaccoastsnap.iado-conicet.gob.ar/"
                 class="group flex items-start py-1 hover:text-slate-900 ">
                 <svg width="3" height="24" viewBox="0 -9 3 24"
                     class="mr-2 text-slate-400 overflow-visible group-hover:text-slate-600 ">
@@ -422,7 +422,7 @@ Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
 </a>
 		</div>
 		<div class="flex flex-col px-8 py-6 hover:text-blue-500">
-    <a  href="{{route('coastSnap')}}">
+    <a  href="http://ciupaccoastsnap.iado-conicet.gob.ar/">
 
 			<h2 class="mb-2 text-lg font-semibold sm:text-xl title-font ">CoastSnap</h2>
 			<p class="flex-1 mb-4 text-base leading-relaxed ">Pronto podrás encontrar en esta sección cómo sumar tus fotos en la playa a nuestro proyecto para que podamos ver la variación de la costa (sección en construcción)</p>
