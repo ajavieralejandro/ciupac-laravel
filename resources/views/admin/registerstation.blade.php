@@ -3,9 +3,14 @@
 
 
 <div class="container mx-auto px-20 pb-10">
-
+<a href="{{ route('stations') }}
+"class="inline-flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600">
+Atras
+</a>
 
 <div class="flex flex-col mt-8">
+
+
 @if (session('message'))
 <div class="pb-8">
 <div id="errorMessage" class=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -17,7 +22,9 @@
 </div>
 </div>
 @endif
+
     <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+      
         <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
             <table class="min-w-full">
                 <thead>
@@ -118,7 +125,13 @@
             
            
     </div>
+
+
     <div class="grid p-12 place-items-center">
+    {{ $registers->links() }}
+</div>
+<div class="grid p-12 place-items-center">
+
     <button class="bg-green-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 inline-flex" type="button" onclick="toggleModal('modal-id')">
 
     <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>

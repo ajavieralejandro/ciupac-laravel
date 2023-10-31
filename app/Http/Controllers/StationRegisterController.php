@@ -15,7 +15,7 @@ class StationRegisterController extends Controller
     //
     public function show(Request $request){
         $mac = $request->mac;
-        $registers = stationRegister::where('mac',$mac)->get();
+        $registers = stationRegister::where('mac',$mac)->orderBy('created_at', 'desc')->paginate(10);
 
        
         return view('admin.registerstation',['registers'=>$registers,'mac'=>$request->mac]);
@@ -34,7 +34,7 @@ class StationRegisterController extends Controller
          $date1 = date("Y-m-d", strtotime($date1));
          $date2 = date("Y-m-d", strtotime($date2));
          $ldate = date('Y-m-d H:i:s');
-         if($date2>$ldate)
+         if($date2>$ldate || $date2<$date1)
                 $date2=$ldate;
         $registers = stationRegister::where([
                 ['mac','=',$mac,],
