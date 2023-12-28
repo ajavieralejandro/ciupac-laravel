@@ -98,6 +98,7 @@ class StationController extends Controller
     {
         //Retorno la vista con la estación seleccionada
         //Muestro la lista de estaciones
+        $response; 
         try {
         $stations = Station::paginate(20);
         $station =  Station::find($request->id);
