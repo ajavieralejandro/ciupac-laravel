@@ -102,7 +102,7 @@ class Kernel extends ConsoleKernel
 
 
             
-        })->hourly();
+        })->everyTenMinutes();
 
     }
 

@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
 
-                <tbody class="bg-white">
+                <tbody c    lass="bg-white">
                     @foreach($posts as $post)
                     <tr>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -97,6 +97,7 @@
                  
                 </tbody>
             </table>
+            {{$posts->links()}}
             <a href={{route('newPost')}}>
             <button class="w-full bg-transparent rounded inline-flex items-center h-10 px-5 text-green-500 transition-colors duration-150  rounded-lg focus:shadow-outline hover:text-white hover:bg-green-800">
                 
