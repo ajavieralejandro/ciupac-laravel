@@ -56,6 +56,8 @@ class Kernel extends ConsoleKernel
                         $rocio= round($temperature, 1);
                         $wind = $wind * 1.609;
                         $wind= round($wind, 1);
+                        $wind_gust = $wind_gust * 1.609;
+                        $wind_gust= round($wind_gust, 1);
                         $windDirection = $data['wind']['wind_direction']['value'];
                         $aux = $windDirection;
                         $index = $windDirection % 360;
