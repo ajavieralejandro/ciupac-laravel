@@ -139,6 +139,9 @@ Route::group([
                 Route::post('/downloadReport', [\App\Http\Controllers\StationRegisterController::class, 'generateReport'])->name('reportRegistersStation');
                 Route::post('/downloadAllReport', [\App\Http\Controllers\StationRegisterController::class, 'generateAllReports'])->name('generateAllReports');
 
+                //Report Routes
+
+                Route::get('/reportes/{id}', [\App\Http\Controllers\StationRegisterReportController::class, 'show'])->name('uploadReport');
                 
                 });
 

@@ -48,6 +48,7 @@ class StationRegisterReportController extends Controller
     public function show(StationRegisterReport $stationRegisterReport)
     {
         //
+        return view('admin.uploadReport');
     }
 
     /**
