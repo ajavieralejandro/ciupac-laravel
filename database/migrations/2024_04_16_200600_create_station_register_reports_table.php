@@ -19,7 +19,6 @@ class CreateStationRegisterReportsTable extends Migration
             $table->string('path');
             $table->unsignedBigInteger('station_id');
             $table->foreign('station_id')->references('id')->on('stations')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

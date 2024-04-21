@@ -33,7 +33,7 @@ class StationRegisterController extends Controller
 
          $date1 = date("Y-m-d", strtotime($date1));
          $date2 = date("Y-m-d", strtotime($date2));
-         $ldate = date('Y-m-d H:i:s');
+         $ldate = date('Y-m-d');
          if($date2>$ldate || $date2<$date1)
                 $date2=$ldate;
         $registers = stationRegister::where([
