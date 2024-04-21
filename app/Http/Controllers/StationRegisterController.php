@@ -26,16 +26,18 @@ class StationRegisterController extends Controller
         $mac = $request->mac;
         $date1 = $request->date1;
         $date2 = $request->date2;
-        $date1 = str_replace(str_split(
-            '/'), '-', $date1);
-            $date2 = str_replace(str_split(
-                '/'), '-', $date2);
-
+        //$date1 = str_replace(str_split(
+            //'/'), '-', $date1);
+            //$date2 = str_replace(str_split(
+              //  '/'), '-', $date2);
+         //dd((date("Y-m-d", strtotime($date2))));
          $date1 = date("Y-m-d", strtotime($date1));
          $date2 = date("Y-m-d", strtotime($date2));
          $ldate = date('Y-m-d');
+
          if($date2>$ldate || $date2<$date1)
                 $date2=$ldate;
+        //dd([$date1,$date2,$ldate]);
         $registers = stationRegister::where([
                 ['mac','=',$mac,],['created_at','>=',$date1],
                 ['created_at','<=',$date2]
