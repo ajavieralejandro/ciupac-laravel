@@ -37,14 +37,12 @@ class StationRegisterController extends Controller
          if($date2>$ldate || $date2<$date1)
                 $date2=$ldate;
         $registers = stationRegister::where([
-                ['mac','=',$mac,],
+                ['mac','=',$mac,],['created_at','>=',$date1],
+                ['created_at','<=',$date2]
               
 
 
                 ])
-                ->where('created_at','>=',$date1)
-                ->where('created_at','<=',$date2)
-
                 ->get();
         /*
         $data = [];
