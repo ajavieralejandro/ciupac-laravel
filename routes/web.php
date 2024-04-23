@@ -42,6 +42,7 @@ Route::resource('/blog',PostController::class);
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+Auth::routes();
 Auth::routes(['register' => false]);
 Route::group([
             'middleware' => IsAdmin::class], function() {
