@@ -19,8 +19,12 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        if($user==null || !$user->is_admin)
+        if($user==null )
             return redirect()->route('login');
+        if(!$user->is_admin)
+            return redirect()->route('users');
+       
+
         return $next($request);
 
         /*

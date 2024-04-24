@@ -36,14 +36,12 @@ use App\Http\Middleware\IsAdmin;
 
 Route::get('/',[PagesController::class,'index'])->name('welcome');
 Route::get('/coastSnap',[PagesController::class,'coastSnap'])->name('coastSnap');
-
 Route::resource('/blog',PostController::class);
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::get('/users', function () {
+    return view('home');
+})->name('users');
 Auth::routes();
-Auth::routes(['register' => false]);
 Route::group([
             'middleware' => IsAdmin::class], function() {
                 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
