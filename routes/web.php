@@ -19,6 +19,7 @@ use App\Http\Controllers\StationRegisterController;
 
 
 use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\Authenticate;
 
 
 
@@ -40,7 +41,7 @@ Route::resource('/blog',PostController::class);
 
 Route::get('/users', function () {
     return view('home');
-})->name('users');
+})->name('users')->middleware(Authenticate::class);
 Auth::routes();
 Route::group([
             'middleware' => IsAdmin::class], function() {
