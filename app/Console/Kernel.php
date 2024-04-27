@@ -53,7 +53,7 @@ class Kernel extends ConsoleKernel
                         $wind_gust = $data['wind']['wind_gust']['value'];
                         $rocio = $data['outdoor']['dew_point']['value'];
                         $rocio = 5*($rocio-32)/9;
-                        $rocio= round($temperature, 1);
+                        $rocio= round($rocio, 1);
                         $wind = $wind * 1.609;
                         $wind= round($wind, 1);
                         $wind_gust = $wind_gust * 1.609;
