@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStationRegisterReportRequest;
 use App\Http\Requests\UpdateStationRegisterReportRequest;
 use App\Models\StationRegisterReport;
+use Illuminate\Http\Request;
 
 class StationRegisterReportController extends Controller
 {
@@ -34,9 +35,29 @@ class StationRegisterReportController extends Controller
      * @param  \App\Http\Requests\StoreStationRegisterReportRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStationRegisterReportRequest $request)
+    public function store(Request $request)
     {
         //
+        $count = StationRegisterReport::count();
+        $article = new StationRegisterReport;
+        $validatedData = $request->validate([
+            'name' => 'required|max:50',
+            "document" => "required|mimes:pdf,xlsx"
+    
+           ]);
+           $document = $request->file('document');
+           $extension = $document->extension();
+           $uniqueFileName = $request->name.'.'.$extension;
+     
+     $request->file('document')->move(public_path('public/reports/'), $uniqueFileName);
+           
+        
+           $article->name = $request->name;
+           $article->path = "public/documents/".$uniqueFileName;
+ 
+        $article->save();
+
+        return redirect('/verestaciones');
     }
 
     /**
