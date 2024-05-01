@@ -138,6 +138,7 @@ Route::group([
                 Route::get('/registroEstacion/{mac}', [\App\Http\Controllers\StationRegisterController::class, 'show'])->name('showRegistersStation');
                 Route::post('/downloadReport', [\App\Http\Controllers\StationRegisterController::class, 'generateReport'])->name('reportRegistersStation');
                 Route::post('/downloadAllReport', [\App\Http\Controllers\StationRegisterController::class, 'generateAllReports'])->name('generateAllReports');
+                Route::post('/uploadReport', [\App\Http\Controllers\StationRegisterReportController::class, 'store'])->name('uploadReportPdf');
 
                 //Report Routes
 

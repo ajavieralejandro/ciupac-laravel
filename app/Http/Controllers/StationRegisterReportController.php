@@ -51,7 +51,7 @@ class StationRegisterReportController extends Controller
      
      $request->file('document')->move(public_path('public/reports/'), $uniqueFileName);
            
-        
+           $article->station_id = $request->station_id;
            $article->name = $request->name;
            $article->path = "public/reports/".$uniqueFileName;
  
@@ -66,10 +66,11 @@ class StationRegisterReportController extends Controller
      * @param  \App\Models\StationRegisterReport  $stationRegisterReport
      * @return \Illuminate\Http\Response
      */
-    public function show(StationRegisterReport $stationRegisterReport)
+    public function show(Request $request)
     {
         //
-        return view('admin.uploadReport');
+        $station_id = $request->route('id');
+        return view('admin.uploadReport',["station_id"=>$station_id]);
     }
 
     /**

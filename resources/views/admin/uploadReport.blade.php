@@ -2,9 +2,10 @@
 @section('content')
 <div class="flex justify-center mt-8">
     <div class="w-full max-w-xs">
-        <form enctype="multipart/form-data" action={{ route('uploadReport') }} method="POST"
+        <form enctype="multipart/form-data" action={{ route('uploadReportPdf') }} method="POST"
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             @csrf
+            {{ Form::hidden('station_id', $station_id) }}
 
 
             <div class="m-4">
