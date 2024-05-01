@@ -53,7 +53,7 @@ class StationRegisterReportController extends Controller
            
         
            $article->name = $request->name;
-           $article->path = "public/documents/".$uniqueFileName;
+           $article->path = "public/reports/".$uniqueFileName;
  
         $article->save();
 
