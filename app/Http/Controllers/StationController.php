@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreStationRequest;
 use App\Http\Requests\UpdateStationRequest;
 use App\Models\Station;
+use App\Models\StationRegisterReport;
+
 use Http;
 use Illuminate\Http\Request;
 use App\Models\Configuration;
@@ -102,6 +104,7 @@ class StationController extends Controller
         try {
         $stations = Station::paginate(20);
         $station =  Station::find($request->id);
+        $report = StationRegisterReport::where('station_id','=',$station->id)->first();
         $mac = ($station->mac);
         $api_key = env('API_KEY');
         $api_token = env('API_TOKEN');
@@ -148,7 +151,7 @@ class StationController extends Controller
         'temperature'=>$temperature,'humidity'=>$humidity,'wind'=>$wind,
         'windD'=>$windDirection,'pressureA'=>$pressureA,'pressureR'=>$pressureR,
         'uvi'=>$uvi,'rain'=>$rain,'stations'=>$stations,'rocio'=>$rocio,
-        'wind_gust'=>$wind_gust,'feels_like'=>$feels_like
+        'wind_gust'=>$wind_gust,'feels_like'=>$feels_like,'report'=>$report
     ]);
         } catch (Exception $e) {
             return view('estaciones.problemas',['conf'=>$conf,'stations'=>$stations]);

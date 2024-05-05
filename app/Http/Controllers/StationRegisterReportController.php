@@ -52,7 +52,7 @@ class StationRegisterReportController extends Controller
      $request->file('document')->move(public_path('public/reports/'), $uniqueFileName);
            
            $article->station_id = $request->station_id;
-           $article->name = $request->name;
+           $article->name = $request->name+"station_"+$station_id+"_"+$count;
            $article->path = "public/reports/".$uniqueFileName;
  
         $article->save();
