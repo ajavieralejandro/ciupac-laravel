@@ -144,6 +144,12 @@ Route::group([
 
                 Route::get('/reportes/{id}', [\App\Http\Controllers\StationRegisterReportController::class, 'show'])->name('uploadReport');
                 
+
+                //User Routes
+
+                Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('usersIndex');
+
+
                 });
 
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
