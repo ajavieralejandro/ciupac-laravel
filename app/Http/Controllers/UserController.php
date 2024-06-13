@@ -23,5 +23,9 @@ class UserController extends Controller
 
 
     }
+
+    public function storeUser(){
+        return view('admin.users.register');
+    }
     
 }

@@ -108,7 +108,7 @@
                     </tbody>
                 </table>
                 {{ $users->links() }}
-                <a href={{ route('newPost') }}>
+                <a href={{ route('storeUser') }}>
                     <button
                         class="w-full bg-transparent rounded inline-flex items-center h-10 px-5 text-green-500 transition-colors duration-150  rounded-lg focus:shadow-outline hover:text-white hover:bg-green-800">
 

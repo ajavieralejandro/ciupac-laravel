@@ -39,11 +39,10 @@ use App\Http\Middleware\Authenticate;
 Route::get('/',[PagesController::class,'index'])->name('welcome');
 Route::get('/coastSnap',[PagesController::class,'coastSnap'])->name('coastSnap');
 Route::resource('/blog',PostController::class);
-
+Auth::routes();
 Route::get('/users', function () {
     return view('home');
 })->name('users')->middleware(Authenticate::class);
-Auth::routes();
 Route::group([
             'middleware' => IsAdmin::class], function() {
                 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -98,6 +97,8 @@ Route::group([
                 Route::post('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'store'])->name('storeArticle');
                 Route::delete('/article', [\App\Http\Controllers\ArticlesController::class, 'destroy'])->name('deleteArticle');
                 Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('usersIndex');
+                Route::get('/storeUser', [\App\Http\Controllers\UserController::class, 'storeUser'])->name('storeUser');
+
                 Route::get('/authUser/{id}', [\App\Http\Controllers\UserController::class, 'authUser'])->name('authUser');
 
                 //configuration
