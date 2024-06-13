@@ -59,7 +59,7 @@ class ArticlesController extends Controller
               $extension = $document->extension();
               $uniqueFileName = $request->name.'.'.$extension;
         
-        $request->file('document')->move(public_path('public/documents/'), $uniqueFileName);
+            $request->file('document')->move(public_path('public/documents/'), $uniqueFileName);
               
            
               $article->name = $request->name;

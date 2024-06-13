@@ -11,6 +11,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\StationRegisterController;
+use App\Http\Controllers\BasuraController;
 
 
 
@@ -96,6 +97,8 @@ Route::group([
                 Route::get('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'create'])->name('addArticle');
                 Route::post('/addArticle', [\App\Http\Controllers\ArticlesController::class, 'store'])->name('storeArticle');
                 Route::delete('/article', [\App\Http\Controllers\ArticlesController::class, 'destroy'])->name('deleteArticle');
+                Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('usersIndex');
+                Route::get('/authUser/{id}', [\App\Http\Controllers\UserController::class, 'authUser'])->name('authUser');
 
                 //configuration
                 Route::get('/config', [\App\Http\Controllers\ConfigurationController::class, 'index'])->name('config');
@@ -147,7 +150,6 @@ Route::group([
 
                 //User Routes
 
-                Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('usersIndex');
 
 
                 });
@@ -162,3 +164,4 @@ Route::get('/linksdeinteres', [\App\Http\Controllers\LinkController::class, 'lin
 Route::get('/noticias', [\App\Http\Controllers\PostController::class, 'noticias'])->name('showNoticias');
 Route::get('/estaciones', [\App\Http\Controllers\StationController::class, 'showStations'])->name('estaciones');
 Route::post('/searchEstacion', [\App\Http\Controllers\StationController::class, 'searchStations'])->name('searchStations');
+Route::get('/plantillaBasura', [\App\Http\Controllers\BasuraController::class, 'show']);

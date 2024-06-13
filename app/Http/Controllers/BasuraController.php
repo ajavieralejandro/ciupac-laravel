@@ -48,6 +48,7 @@ class BasuraController extends Controller
     public function show(Basura $basura)
     {
         //
+        return view('admin.Basura.basura');
     }
 
     /**
