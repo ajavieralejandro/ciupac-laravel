@@ -20,7 +20,7 @@ class IsAuth
         if($user==null )
             return redirect()->route('login');
         if(!$user->is_auth)
-            return redirect()->route('home');
+            return redirect()->route('basura');
         
 
         return $next($request);

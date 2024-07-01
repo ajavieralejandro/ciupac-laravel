@@ -29,7 +29,9 @@ class UserController extends Controller
     public function storeUser(){
         return view('admin.users.register');
     }
-
+    public function userCarga(){
+        return view('users');
+    }
 
     public function store(Request $request)
     {

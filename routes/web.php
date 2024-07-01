@@ -40,13 +40,12 @@ Route::get('/',[PagesController::class,'index'])->name('welcome');
 Route::get('/coastSnap',[PagesController::class,'coastSnap'])->name('coastSnap');
 Route::resource('/blog',PostController::class);
 Auth::routes();
-Route::get('/users', function () {
-    return view('home');
-})->name('users')->middleware(Authenticate::class);
+Route::get('/basura', [\App\Http\Controllers\BasuraController::class, 'show'])
+->middleware(Authenticate::class);
 Route::group([
             'middleware' => IsAdmin::class], function() {
                 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+                
                 Route::get('/admin',[PagesController::class,'admin'])->name('admin');
                 Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team');
                 Route::put('/team', [\App\Http\Controllers\TeamController::class, 'updateMember'])->name('updateMember');
@@ -164,4 +163,3 @@ Route::get('/linksdeinteres', [\App\Http\Controllers\LinkController::class, 'lin
 Route::get('/noticias', [\App\Http\Controllers\PostController::class, 'noticias'])->name('showNoticias');
 Route::get('/estaciones', [\App\Http\Controllers\StationController::class, 'showStations'])->name('estaciones');
 Route::post('/searchEstacion', [\App\Http\Controllers\StationController::class, 'searchStations'])->name('searchStations');
-Route::get('/plantillaBasura', [\App\Http\Controllers\BasuraController::class, 'show']);

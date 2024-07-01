@@ -21,8 +21,8 @@ class IsAdmin
         $user = Auth::user();
         if($user==null )
             return redirect()->route('login');
-        //if(!$user->is_admin)
-            //return redirect()->route('dashboard');
+        if(!$user->is_admin)
+            return redirect()->route('pepin');
        
 
         return $next($request);
