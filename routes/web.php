@@ -150,8 +150,7 @@ Route::group([
                 
 
                 //User Routes
-
-
+                Route::post('/users', [\App\Http\Controllers\UserController::class, 'store'])->name('users.store');
 
                 });
 
