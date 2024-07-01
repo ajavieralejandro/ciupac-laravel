@@ -22,8 +22,8 @@ class IsAdmin
         if($user==null )
             return redirect()->route('login');
         if(!$user->is_admin)
-            return redirect()->route('pepin');
-       
+            return redirect()->route('basura');
+
 
         return $next($request);
 

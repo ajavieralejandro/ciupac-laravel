@@ -17,9 +17,10 @@ class IsAuth
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
+
         if($user==null )
             return redirect()->route('login');
-        if(!$user->is_auth)
+        if(!$user->is_admin)
             return redirect()->route('basura');
         
 

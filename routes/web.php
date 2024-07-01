@@ -40,12 +40,12 @@ Route::get('/',[PagesController::class,'index'])->name('welcome');
 Route::get('/coastSnap',[PagesController::class,'coastSnap'])->name('coastSnap');
 Route::resource('/blog',PostController::class);
 Auth::routes();
-Route::get('/basura', [\App\Http\Controllers\BasuraController::class, 'show'])
+Route::get('/basura', [\App\Http\Controllers\BasuraController::class, 'show'])->name('basura')
 ->middleware(Authenticate::class);
 Route::group([
             'middleware' => IsAdmin::class], function() {
                 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-                
+
                 Route::get('/admin',[PagesController::class,'admin'])->name('admin');
                 Route::get('/team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team');
                 Route::put('/team', [\App\Http\Controllers\TeamController::class, 'updateMember'])->name('updateMember');
