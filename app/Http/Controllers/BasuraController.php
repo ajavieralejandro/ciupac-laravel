@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBasuraRequest;
 use App\Http\Requests\UpdateBasuraRequest;
 use App\Models\Basura;
+use App\Models\Location;
+
 
 class BasuraController extends Controller
 {
@@ -48,7 +50,9 @@ class BasuraController extends Controller
     public function show(Basura $basura)
     {
         //
-        return view('admin.Basura.basura');
+        $data = Location::all();
+
+        return view('admin.Basura.basura',['locations'=>$data]);
     }
 
     /**

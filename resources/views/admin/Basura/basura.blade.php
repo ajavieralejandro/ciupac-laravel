@@ -17,6 +17,10 @@
                         </div>
 
                         <div class="lg:col-span-2">
+                            <input type="date" name="{{ $name ?? 'date' }}"
+                                id="{{ $id ?? 'date-input' }}"
+                                value="{{ $value ?? old($name ?? 'date') }}"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
                             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                 <div class="md:col-span-5">
                                     <label for="full_name">Responsable Medicion</label>
@@ -26,9 +30,13 @@
 
                                 <div class="md:col-span-5">
                                     <label for="localidad">Localidad</label>
-                                    <input type="text" name="localidad" id="full_name"
-                                        class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
-                                </div>
+                                    <select name="location" id="location_select"
+                                        class='mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md'>
+                                        @foreach($locations as $location)
+                                            <option value="{{ $location->id }}">
+                                                {{ $location->name }}</option>
+                                        @endforeach
+                                    </select></div>
 
 
                                 <div class="md:col-span-3">
