@@ -112,6 +112,7 @@ class StationController extends Controller
         $response = Http::get($url); 
         $data= $response->json();
         $conf = Configuration::first();
+        dd($conf);
         $data = $data['data'];
         $temperature = $data['outdoor']['temperature']['value'];
         $temperature = 5*($temperature-32)/9;

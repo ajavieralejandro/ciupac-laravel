@@ -42,6 +42,8 @@ Route::resource('/blog',PostController::class);
 Auth::routes();
 Route::get('/basura', [\App\Http\Controllers\BasuraController::class, 'show'])->name('basura')
 ->middleware(Authenticate::class);
+Route::post('/basura', [\App\Http\Controllers\BasuraController::class, 'store'])->name('add_medicion_basura')
+->middleware(Authenticate::class);
 Route::group([
             'middleware' => IsAdmin::class], function() {
                 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');

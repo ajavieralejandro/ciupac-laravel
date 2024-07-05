@@ -6,6 +6,7 @@ use App\Http\Requests\StoreBasuraRequest;
 use App\Http\Requests\UpdateBasuraRequest;
 use App\Models\Basura;
 use App\Models\Location;
+use Illuminate\Http\Request;
 
 
 class BasuraController extends Controller
@@ -36,9 +37,10 @@ class BasuraController extends Controller
      * @param  \App\Http\Requests\StoreBasuraRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBasuraRequest $request)
+    public function store(Request $request)
     {
         //
+        dd($request);
     }
 
     /**
