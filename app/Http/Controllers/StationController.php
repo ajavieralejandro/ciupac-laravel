@@ -112,6 +112,7 @@ class StationController extends Controller
         $api_token = env('API_TOKEN');
         $url = "https://api.ecowitt.net/api/v3/device/real_time?application_key=".$api_key."&api_key=".$api_token."&mac=".$mac."&call_back=all";
         $response = Http::get($url); 
+        dd($response);
         $data= $response->json();
         $data = $data['data'];
         $temperature = $data['outdoor']['temperature']['value'];
