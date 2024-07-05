@@ -101,6 +101,8 @@ class StationController extends Controller
         //Retorno la vista con la estación seleccionada
         //Muestro la lista de estaciones
         $response; 
+        $conf = Configuration::first();
+
         try {
         $stations = Station::paginate(20);
         $station =  Station::find($request->id);
@@ -111,8 +113,6 @@ class StationController extends Controller
         $url = "https://api.ecowitt.net/api/v3/device/real_time?application_key=".$api_key."&api_key=".$api_token."&mac=".$mac."&call_back=all";
         $response = Http::get($url); 
         $data= $response->json();
-        $conf = Configuration::first();
-        dd($conf);
         $data = $data['data'];
         $temperature = $data['outdoor']['temperature']['value'];
         $temperature = 5*($temperature-32)/9;
