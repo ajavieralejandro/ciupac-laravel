@@ -40,8 +40,45 @@ class BasuraController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
-    }
+        // Validar los datos del formulario
+        $validation = $request->validate([
+            'fecha_hora' => 'required|date',
+            'largo_perfil' => 'required|string|max:255',
+            'responsable_medicion' => 'required|string|max:255',
+            'localidad' => 'required|exists:locations,id',
+            'sitio_perfil' => 'required|string|max:255',
+            'coincide_perfil' => 'nullable|boolean',
+            'hora_bajamar' => 'required|date_format:H:i',
+            'distancia_pleamar_mojon' => 'required|integer',
+            'distancia_agua_pleamar' => 'required|integer',
+            'personas_sector1' => 'required|integer',
+            'personas_sector2' => 'required|integer',
+            'cestos_area_medicion' => 'required|integer',
+            'cestos_derecha_izquierda' => 'required|integer',
+        ]);
+        // Crear una nueva instancia del modelo Measurement y asignar los datos
+        $measurement = new Basura();
+        $measurement->fecha_hora = $request->fecha_hora;
+        $measurement->largo_perfil = $request->largo_perfil;
+        $measurement->responsable_medicion = $request->responsable_medicion;
+        $measurement->localidad = $request->localidad;
+        $measurement->sitio_perfil = $request->sitio_perfil;
+        $measurement->coincide_perfil = $request->coincide_perfil ? true : false;
+        $measurement->hora_bajamar = $request->hora_bajamar;
+        $measurement->distancia_pleamar_mojon = $request->distancia_pleamar_mojon;
+        $measurement->distancia_agua_pleamar = $request->distancia_agua_pleamar;
+        $measurement->personas_sector1 = $request->personas_sector1;
+        $measurement->personas_sector2 = $request->personas_sector2;
+        $measurement->cestos_area_medicion = $request->cestos_area_medicion;
+        $measurement->cestos_derecha_izquierda = $request->cestos_derecha_izquierda;
+
+        // Guardar la nueva medición en la base de datos
+        $measurement->save();
+        // Redirigir a una página de éxito o devolver una respuesta JSON
+        $data = Location::all();
+
+        return view('admin.Basura.basura',['locations'=>$data]);
+        }
 
     /**
      * Display the specified resource.

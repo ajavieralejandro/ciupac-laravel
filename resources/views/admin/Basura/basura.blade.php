@@ -2,199 +2,139 @@
 @section('content')
 <!-- component -->
 @if(Auth::user()->is_auth)
-    <form name="add-blog-post-form" id="add-blog-post-form" method="post"
-        action="{{ route('add_medicion_basura') }}">
-        @csrf
-        <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-            <div class="container max-w-screen-lg mx-auto">
-                <div>
-                    <h2 class="font-semibold text-xl text-gray-600">Responsive Form</h2>
-                    <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
+    <div class="pt-12 flex items-center justify-center">
 
-                    <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-                        <div class="grid gap-4 gap-y-2 text-sm text-center grid-cols-1 lg:grid-cols-3">
-                            <div class="text-gray-600">
-                                <p class="font-medium text-lg">Medición</p>
-                                <p>Ingrese Fecha y hora</p>
-                                <div class="pt-2">
-                                    <input type="datetime-local" name="hora" id="id_hora" value="hora" min='00:00'
-                                        max="23:59" step="1"
-                                        class='mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md' />
+        <div class="max-w-xl rounded overflow-hidden shadow-lg">
 
 
-                                </div>
-                            </div>
+            <form name="add-blog-post-form" id="add-blog-post-form" method="post"
+                action="{{ route('add_medicion_basura') }}">
+                @csrf
+                <div class="grid grid-cols-1 md:grid-cols-2 m-2 gap-4">
+                    <!-- Fecha y Hora -->
+                    <div class="mb-4">
+                        <label for="fecha_hora" class="block text-gray-700 font-bold mb-2">Fecha y Hora:</label>
+                        <input type="datetime-local" id="fecha_hora" name="fecha_hora"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
 
-                            <div class="lg:col-span-2">
+                    <!-- Largo del Perfil -->
+                    <div class="mb-4">
+                        <label for="largo_perfil" class="block text-gray-700 font-bold mb-2">Largo del Perfil:</label>
+                        <input type="text" id="largo_perfil" name="largo_perfil" class="w-full p-2 border rounded-md"
+                            required>
+                    </div>
 
-                                <div class="pt-2">
+                    <!-- Responsable de la Medición -->
+                    <div class="mb-4">
+                        <label for="responsable_medicion" class="block text-gray-700 font-bold mb-2">Responsable de la
+                            Medición:</label>
+                        <input type="text" id="responsable_medicion" name="responsable_medicion"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
 
-                                </div>
-                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-                                    <div class="md:col-span-5">
-                                        <label for="full_name">Responsable Medicion</label>
-                                        <input type="text" name="full_name" id="full_name"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
-                                    </div>
+                    <!-- Localidad -->
+                    <div class="mb-4">
+                        <label for="localidad" class="block text-gray-700 font-bold mb-2">Localidad:</label>
+                        <select id="localidad" name="localidad" class="w-full p-2 border rounded-md" required>
+                            @foreach($locations as $localidad)
+                                <option value="{{ $localidad->id }}">{{ $localidad->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                                    <div class="md:col-span-5">
-                                        <label for="localidad">Localidad</label>
-                                        <select name="location" id="location_select"
-                                            class='mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md'>
-                                            @foreach($locations as $location)
-                                                <option value="{{ $location->id }}">
-                                                    {{ $location->name }}</option>
-                                            @endforeach
-                                        </select></div>
+                    <!-- Sitio o Perfil -->
+                    <div class="mb-4">
+                        <label for="sitio_perfil" class="block text-gray-700 font-bold mb-2">Sitio o Perfil:</label>
+                        <input type="text" id="sitio_perfil" name="sitio_perfil" class="w-full p-2 border rounded-md"
+                            required>
+                    </div>
 
+                    <!-- Coincide con el Perfil -->
+                    <div class="mb-4 flex items-center">
+                        <input type="checkbox" id="coincide_perfil" name="coincide_perfil" class="mr-2">
+                        <label for="coincide_perfil" class="text-gray-700 font-bold">Coincide con el Perfil</label>
+                    </div>
 
-                                    <div class="md:col-span-3">
-                                        <label for="address">Personas sector 1</label>
-                                        <input type="text" name="address" id="address"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
-                                            placeholder="" />
-                                    </div>
-
-                                    <div class="md:col-span-2">
-                                        <label for="city">Personas sector 2</label>
-                                        <input type="text" name="city" id="city"
-                                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value=""
-                                            placeholder="" />
-                                    </div>
-
-                                    <div class="pt-2">
-                                        <label for="largo" class="block text-sm font-medium text-gray-700">Largo</label>
-                                        <input type="text" name="largo" id="largo"
-                                            value="{{ old('largo') }}"
-                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" />
-                                        @error('largo')
-                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-
-                                    <div class="pt-2">
-                                        <label for="sitio_perfil" class="block text-sm font-medium text-gray-700">Sitio
-                                            Perfil</label>
-                                        <input type="text" name="sitio_perfil" id="sitio_perfil"
-                                            value="{{ old('sitio_perfil') }}"
-                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" />
-                                        @error('sitio_perfil')
-                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-
-                                    <div class="pt-2">
-                                        <label for="hora_bajamar" class="block text-sm font-medium text-gray-700">Hora
-                                            Bajamar</label>
-                                        <input type="text" name="hora_bajamar" id="hora_bajamar"
-                                            value="{{ old('hora_bajamar') }}"
-                                            class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" />
-                                        @error('hora_bajamar')
-                                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                        @enderror
-                                    </div>
+                </div>
+                <!-- Hora Bajamar -->
+                <div class="grid grid-cols-1 md:grid-cols-2 m-2 gap-4">
 
 
+                    <div class="mb-4">
+                        <label for="hora_bajamar" class="block text-gray-700 font-bold mb-2">Hora Bajamar:</label>
+                        <input type="time" id="hora_bajamar" name="hora_bajamar" class="w-full p-2 border rounded-md"
+                            required>
+                    </div>
 
-                                    <div class="md:col-span-2">
+                    <!-- Distancia entre mojón hasta última línea de pleamar -->
+                    <div class="mb-4">
+                        <label for="distancia_pleamar_mojon" class="block text-gray-700 font-bold mb-2">Distancia entre
+                            mojón
+                            hasta
+                            última línea de pleamar:</label>
+                        <input type="text" id="distancia_pleamar_mojon" name="distancia_pleamar_mojon"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
 
-                                    </div>
+                    <!-- Distancia entre última línea de pleamar hasta línea de agua -->
+                    <div class="mb-4">
+                        <label for="distancia_agua_pleamar" class="block text-gray-700 font-bold mb-2">Distancia entre
+                            última
+                            línea
+                            de pleamar hasta línea de agua:</label>
+                        <input type="text" id="distancia_agua_pleamar" name="distancia_agua_pleamar"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
 
-                                    <div class="md:col-span-2">
-                                        <label for="state">State / province</label>
-                                        <div
-                                            class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                                            <input name="state" id="state" placeholder="State"
-                                                class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
-                                                value="" />
-                                            <button tabindex="-1"
-                                                class="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
-                                                <svg class="w-4 h-4 mx-2 fill-current"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                                </svg>
-                                            </button>
-                                            <button tabindex="-1" for="show_more"
-                                                class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-blue-600">
-                                                <svg class="w-4 h-4 mx-2 fill-current"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <polyline points="18 15 12 9 6 15"></polyline>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
+                    <!-- Cantidad de personas en este sector 1 -->
+                    <div class="mb-4">
+                        <label for="personas_sector1" class="block text-gray-700 font-bold mb-2">Cantidad de personas en
+                            este
+                            sector
+                            1:</label>
+                        <input type="number" id="personas_sector1" name="personas_sector1"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
 
-                                    <div class="md:col-span-1">
-                                        <label for="zipcode">Zipcode</label>
-                                        <input type="text" name="zipcode" id="zipcode"
-                                            class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50"
-                                            placeholder="" value="" />
-                                    </div>
+                    <!-- Cantidad de personas en este sector 2 -->
+                    <div class="mb-4">
+                        <label for="personas_sector2" class="block text-gray-700 font-bold mb-2">Cantidad de personas en
+                            este
+                            sector
+                            2:</label>
+                        <input type="number" id="personas_sector2" name="personas_sector2"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
 
-                                    <div class="md:col-span-5">
-                                        <div class="inline-flex items-center">
-                                            <input type="checkbox" name="billing_same" id="billing_same"
-                                                class="form-checkbox" />
-                                            <label for="billing_same" class="ml-2">My billing address is different than
-                                                above.</label>
-                                        </div>
-                                    </div>
+                    <!-- Cantidad de cestos de residuos en el área de medición -->
+                    <div class="mb-4">
+                        <label for="cestos_area_medicion" class="block text-gray-700 font-bold mb-2">Cantidad de cestos
+                            de
+                            residuos
+                            en el área de medición:</label>
+                        <input type="number" id="cestos_area_medicion" name="cestos_area_medicion"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
 
-                                    <div class="md:col-span-2">
-                                        <label for="soda">How many soda pops?</label>
-                                        <div
-                                            class="h-10 w-28 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                                            <button tabindex="-1" for="show_more"
-                                                class="cursor-pointer outline-none focus:outline-none border-r border-gray-200 transition-all text-gray-500 hover:text-blue-600">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                            <input name="soda" id="soda" placeholder="0"
-                                                class="px-2 text-center appearance-none outline-none text-gray-800 w-full bg-transparent"
-                                                value="0" />
-                                            <button tabindex="-1" for="show_more"
-                                                class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-500 hover:text-blue-600">
-                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="h-4 w-4 mx-2 fill-current" viewBox="0 0 20 20"
-                                                    fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    <div class="md:col-span-5 text-right">
-                                        <div class="inline-flex items-end">
-                                            <button
-                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Cantidad de cestos de residuos 50 m a la derecha y 50 m a la izquierda del área censada -->
+                    <div class="mb-4">
+                        <label for="cestos_derecha_izquierda" class="block text-gray-700 font-bold mb-2">Cantidad de
+                            cestos
+                            de
+                            residuos 50 m a la derecha y 50 m a la izquierda del área censada:</label>
+                        <input type="number" id="cestos_derecha_izquierda" name="cestos_derecha_izquierda"
+                            class="w-full p-2 border rounded-md" required>
                     </div>
                 </div>
-
-                <a href="https://www.buymeacoffee.com/dgauderman" target="_blank"
-                    class="md:absolute bottom-0 right-0 p-4 float-right">
-                    <img src="https://www.buymeacoffee.com/assets/img/guidelines/logo-mark-3.svg" alt="Buy Me A Coffee"
-                        class="transition-all rounded-full w-14 -rotate-45 hover:shadow-sm shadow-lg ring hover:ring-4 ring-white">
-                </a>
-            </div>
+                <!-- Submit Button -->
+                <div class="mb-4">
+                    <button type="submit"
+                        class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Enviar</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 @endif
 <h1>No tienes permiso para cargar basura manda un mail a : </h1>
 @endsection
