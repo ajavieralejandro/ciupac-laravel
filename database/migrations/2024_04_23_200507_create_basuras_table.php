@@ -18,6 +18,7 @@ class CreateBasurasTable extends Migration
             $table->dateTime('fecha_hora');
             $table->string('largo_perfil');
             $table->string('responsable_medicion');
+            $table->foreignId('user_id')->constrained('users')->onDeleteCascade(); // Assuming there is a 'localidades' table
             $table->foreignId('localidad')->constrained('locations')->onDeleteCascade(); // Assuming there is a 'localidades' table
             $table->string('sitio_perfil');
             $table->boolean('coincide_perfil')->default(false);
@@ -26,7 +27,8 @@ class CreateBasurasTable extends Migration
             $table->string('distancia_agua_pleamar');
             $table->integer('personas_sector1');
             $table->integer('personas_sector2');
-            $table->integer('cestos_area_medicion');
+            $table->integer('cestos_area_medicion_1');
+            $table->integer('cestos_area_medicion_2');
             $table->integer('cestos_derecha_izquierda');
             $table->timestamps();
         });

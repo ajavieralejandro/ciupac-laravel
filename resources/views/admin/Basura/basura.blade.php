@@ -112,8 +112,18 @@
                         <label for="cestos_area_medicion" class="block text-gray-700 font-bold mb-2">Cantidad de cestos
                             de
                             residuos
-                            en el área de medición:</label>
-                        <input type="number" id="cestos_area_medicion" name="cestos_area_medicion"
+                            en el área de medición 1:</label>
+                        <input type="number" id="cestos_area_medicion_1" name="cestos_area_medicion_1"
+                            class="w-full p-2 border rounded-md" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="cestos_area_medicion_2" class="block text-gray-700 font-bold mb-2">Cantidad de
+                            cestos
+                            de
+                            residuos
+                            en el área de medición 2:</label>
+                        <input type="number" id="cestos_area_medicion_2" name="cestos_area_medicion_2"
                             class="w-full p-2 border rounded-md" required>
                     </div>
 
@@ -122,7 +132,7 @@
                         <label for="cestos_derecha_izquierda" class="block text-gray-700 font-bold mb-2">Cantidad de
                             cestos
                             de
-                            residuos 50 m a la derecha y 50 m a la izquierda del área censada:</label>
+                            residuos 50 m a la derecha y 50 m a la izquierda </label>
                         <input type="number" id="cestos_derecha_izquierda" name="cestos_derecha_izquierda"
                             class="w-full p-2 border rounded-md" required>
                     </div>

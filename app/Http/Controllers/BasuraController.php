@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateBasuraRequest;
 use App\Models\Basura;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class BasuraController extends Controller
@@ -41,24 +42,13 @@ class BasuraController extends Controller
     {
         //
         // Validar los datos del formulario
-        $validation = $request->validate([
-            'fecha_hora' => 'required|date',
-            'largo_perfil' => 'required|string|max:255',
-            'responsable_medicion' => 'required|string|max:255',
-            'localidad' => 'required|exists:locations,id',
-            'sitio_perfil' => 'required|string|max:255',
-            'coincide_perfil' => 'nullable|boolean',
-            'hora_bajamar' => 'required|date_format:H:i',
-            'distancia_pleamar_mojon' => 'required|integer',
-            'distancia_agua_pleamar' => 'required|integer',
-            'personas_sector1' => 'required|integer',
-            'personas_sector2' => 'required|integer',
-            'cestos_area_medicion' => 'required|integer',
-            'cestos_derecha_izquierda' => 'required|integer',
-        ]);
+        $user = Auth::user();
+        
+        
         // Crear una nueva instancia del modelo Measurement y asignar los datos
         $measurement = new Basura();
         $measurement->fecha_hora = $request->fecha_hora;
+        $measurement->user_id = $user->id;
         $measurement->largo_perfil = $request->largo_perfil;
         $measurement->responsable_medicion = $request->responsable_medicion;
         $measurement->localidad = $request->localidad;
@@ -69,7 +59,9 @@ class BasuraController extends Controller
         $measurement->distancia_agua_pleamar = $request->distancia_agua_pleamar;
         $measurement->personas_sector1 = $request->personas_sector1;
         $measurement->personas_sector2 = $request->personas_sector2;
-        $measurement->cestos_area_medicion = $request->cestos_area_medicion;
+        $measurement->cestos_area_medicion_1 = $request->cestos_area_medicion_1;
+        $measurement->cestos_area_medicion_2 = $request->cestos_area_medicion_2;
+
         $measurement->cestos_derecha_izquierda = $request->cestos_derecha_izquierda;
 
         // Guardar la nueva medición en la base de datos
