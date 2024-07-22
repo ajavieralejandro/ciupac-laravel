@@ -20,6 +20,27 @@ class BasuraController extends Controller
     public function index()
     {
         //
+        $user_id = Auth::user()->id;
+        $basuras = Basura::where('user_id','=',$user_id)->paginate(10);
+        return view('admin.Basura.table',['basuras'=>$basuras]);
+    }
+
+    public function medicionesBasura(){
+        $basuras = Basura::with('localidad')->get();
+        $localidades = [];
+        $mediciones = [];
+        //obtengo las las locaciones
+        foreach($basuras as $key=>$basura){
+            $localidad = Location::where('id','=',$basura->id)->get()->first();
+            $localidades[$key]=($localidad);
+        }
+       
+        foreach($localidades as $key=>$localidad){
+            $medicion = Basura::where('localidad','=',$localidad->id)->orderby('created_at', 'desc')->first();
+            $mediciones[$key]= $medicion;
+        }
+        dd($mediciones);
+
     }
 
     /**
@@ -44,7 +65,23 @@ class BasuraController extends Controller
         // Validar los datos del formulario
         $user = Auth::user();
         
-        
+        $validation = $request->validate([
+            'fecha_hora' => 'required|date',
+            'largo_perfil' => 'required|string|max:255',
+            'responsable_medicion' => 'required|string|max:255',
+            'localidad' => 'required|exists:locations,id',
+            'sitio_perfil' => 'required|string|max:255',
+            'coincide_perfil' => 'nullable|boolean',
+            'hora_bajamar' => 'required|date_format:H:i',
+            'distancia_pleamar_mojon' => 'required|integer',
+            'distancia_agua_pleamar' => 'required|integer',
+            'personas_sector1' => 'required|integer',
+            'personas_sector2' => 'required|integer',
+            'cestos_area_medicion_1' => 'required|integer',
+            'cestos_area_medicion_2' => 'required|integer',
+
+            'cestos_derecha_izquierda' => 'required|integer',
+        ]);
         // Crear una nueva instancia del modelo Measurement y asignar los datos
         $measurement = new Basura();
         $measurement->fecha_hora = $request->fecha_hora;

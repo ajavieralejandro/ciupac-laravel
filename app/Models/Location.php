@@ -10,7 +10,8 @@ class Location extends Model
     protected $fillable = [
         'name',
         'latitude',
-        'longitude'
+        'longitude',
+        'id'
     ];
     use HasFactory;
     public function asambleas()

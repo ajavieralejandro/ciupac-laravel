@@ -132,7 +132,7 @@
                         <label for="cestos_derecha_izquierda" class="block text-gray-700 font-bold mb-2">Cantidad de
                             cestos
                             de
-                            residuos 50 m a la derecha y 50 m a la izquierda del área censada:</label>
+                            residuos 50 m a la derecha y 50 m a la izquierda </label>
                         <input type="number" id="cestos_derecha_izquierda" name="cestos_derecha_izquierda"
                             class="w-full p-2 border rounded-md" required>
                     </div>
