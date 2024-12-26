@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Basura;
+
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -31,6 +34,13 @@ class UserController extends Controller
     }
     public function userCarga(){
         return view('users');
+    }
+
+    public function userDashboard(){
+        $user = Auth::user();
+        $mediciones = Basura::where('user_id','=',$user->id)->with('localidad')->paginate(10);
+
+        return view('admin.users.dashboard',compact('mediciones'));
     }
 
     public function store(Request $request)

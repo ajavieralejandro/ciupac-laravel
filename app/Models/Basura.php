@@ -10,7 +10,7 @@ class Basura extends Model
     protected $fillable = [];
     public function localidad()
     {
-        return $this->belongsTo('App\Models\Location');
+        return $this->belongsTo('App\Models\Location', 'localidad_id');
     }
     use HasFactory;
 }
