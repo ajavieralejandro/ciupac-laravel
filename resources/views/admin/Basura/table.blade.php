@@ -18,6 +18,10 @@
                                 </th>
                                 <th scope="col"
                                     class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                    Responsable
+                                </th>
+                                <th scope="col"
+                                    class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                     Fecha
                                 </th>
 
@@ -35,12 +39,19 @@
                                     <td
                                         class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         {{ $basura->id }}</td>
+
+                                    <td
+                                        class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $basura->responsable_medicion }}</td>
                                     <td
                                         class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                                         {{ $basura->fecha_hora }}</td>
 
                                     <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                                         <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <a href="#"
+                                            class="text-blue-600 dark:text-blue-500 hover:underline">Eliminar</a>
+
                                     </td>
                                 </tr>
 
@@ -57,10 +68,6 @@
         </div>
     </div>
 
-    <p class="mt-5">This table component is part of a larger, open-source library of Tailwind CSS components. Learn
-        more
-        by going to the official <a class="text-blue-600 hover:underline" href="#" target="_blank">Flowbite
-            Documentation</a>.
-    </p>
+
 </div>
 @endsection

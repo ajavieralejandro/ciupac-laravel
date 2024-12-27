@@ -30,15 +30,16 @@ class BasuraController extends Controller
 
     public function getMonthMeditions(Request $request){
         // Get the current date
+        $month = $request->month;
         $today = Carbon::now();
-
+        
         // Calculate the start and end dates for the last month
         $startDate = $today->copy()->subMonth()->startOfMonth();
         $endDate = $today->copy()->subMonth()->endOfMonth();
 
         // Fetch waste data grouped by location
         $wasteData = Basura::with('localidad') // Eager load the localidad relationship
-            ->whereMonth('fecha_hora','=',12)
+            ->whereMonth('fecha_hora','=',$month)
             ->get()
             ->groupBy('localidad_id')->toArray();
          // Group by localidad_id

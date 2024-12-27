@@ -21,11 +21,13 @@
 
         // Basuras data from the server
         var basuras = @json($basuras); // Pass the PHP variable to JavaScript
-        console.log(basuras);
+        console.log("basuras es : ", basuras);
         // Loop through the basuras and add markers to the map
         for (var localidadId in basuras) {
             if (basuras.hasOwnProperty(localidadId)) {
                 var localidadData = basuras[localidadId];
+
+
 
                 // Assuming each localidad has a lat and lng property
                 // You may need to adjust this based on your actual data structure

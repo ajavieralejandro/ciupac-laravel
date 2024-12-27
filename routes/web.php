@@ -40,7 +40,7 @@ Route::get('/',[PagesController::class,'index'])->name('welcome');
 Route::get('/coastSnap',[PagesController::class,'coastSnap'])->name('coastSnap');
 Route::resource('/blog',PostController::class);
 Auth::routes();
-Route::get('/mediciones_basura', [\App\Http\Controllers\BasuraController::class, 'getMonthMeditions'])->name('mediciones_basura');
+Route::get('/mediciones_basura/{month}', [\App\Http\Controllers\BasuraController::class, 'getMonthMeditions'])->name('mediciones_basura');
 Route::get('/basura', [\App\Http\Controllers\BasuraController::class, 'show'])->name('basura')
 ->middleware(Authenticate::class);
 Route::get('/basuras', [\App\Http\Controllers\BasuraController::class, 'index'])->name('basuras_index')
