@@ -12,6 +12,7 @@ use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\StationRegisterController;
 use App\Http\Controllers\BasuraController;
+use App\Http\Controllers\UserLocationController;
 
 
 
@@ -55,6 +56,9 @@ Route::group(['middleware'=>Authenticate::class],function(){
 Route::get('/medicionesBasura', [\App\Http\Controllers\BasuraController::class, 'medicionesBasura'])->name('medicion_basura');
 Route::group([
             'middleware' => IsAdmin::class], function() {
+
+            Route::get('/assign-locations', [UserLocationController::class, 'index'])->name('assign.locations');
+            Route::post('/assign-locations', [UserLocationController::class, 'store'])->name('assign.locations.store');
                 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
                 Route::get('/admin',[PagesController::class,'admin'])->name('admin');

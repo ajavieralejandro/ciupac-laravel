@@ -18,4 +18,13 @@ class Location extends Model
     {
         return $this->hasMany(Asamblea::class);
     }
+
+    public function users()
+{
+    return $this->belongsToMany(User::class, 'location_user');
+}
+    public function mediciones()
+    {
+        return $this->hasMany(Basura::class);
+    }
 }
