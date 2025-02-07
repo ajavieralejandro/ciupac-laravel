@@ -173,7 +173,7 @@ class BasuraController extends Controller
     public function show(Basura $basura)
     {
         //
-        $data = Location::all();
+        $data = Auth::user()->locations()->get();
         $users = User::all();
         return view('admin.Basura.basura',['localidades'=>$data,'users'=>$users]);
  
