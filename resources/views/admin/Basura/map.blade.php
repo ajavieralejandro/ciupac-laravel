@@ -11,7 +11,7 @@
 
     <script>
         // Initialize the map
-        var map = L.map('map').setView([20.0, -100.0], 5); // Set initial view (latitude, longitude, zoom level)
+        var map = L.map('map').setView([20.0, -100.0], 5);
 
         // Add OpenStreetMap tile layer
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -22,24 +22,37 @@
         // Basuras data from the server
         var basuras = @json($basuras); // Pass the PHP variable to JavaScript
         console.log("basuras es : ", basuras);
+
+        // Function to calculate total waste for a given localidad
+        function calcularTotalResiduos(localidadData) {
+            let total = 0;
+            const keysToSum = [
+                "residuos_papel", "residuos_goma", "residuos_vidrio", "residuos_ceramica",
+                "residuos_cigarrillos", "desechos_sanitarios", "residuos_ropa", "residuos_madera",
+                "residuos_metal", "residuos_otros"
+            ];
+
+            localidadData.forEach(entry => {
+                keysToSum.forEach(key => {
+                    total += entry[key] || 0;
+                });
+            });
+
+            return total;
+        }
+
         // Loop through the basuras and add markers to the map
         for (var localidadId in basuras) {
             if (basuras.hasOwnProperty(localidadId)) {
                 var localidadData = basuras[localidadId];
+                var lat = localidadData[0].localidad.latitude;
+                var lng = localidadData[0].localidad.longitude;
 
+                var totalResiduos = calcularTotalResiduos(localidadData);
 
-
-                // Assuming each localidad has a lat and lng property
-                // You may need to adjust this based on your actual data structure
-                // Here we assume that the first item in the array has the location data
-                var lat = localidadData[0].localidad.latitude; // Get latitude from the first item
-                var lng = localidadData[0].localidad.longitude; // Get longitude from the first item
-
-                // Create a marker for each localidad
                 L.marker([lat, lng])
                     .addTo(map)
-                    .bindPopup('Localidad ID: ' + localidadId + '<br>Waste Count: ' + localidadData
-                        .length); // Customize popup content
+                    .bindPopup('Localidad ID: ' + localidadId + '<br>Total Residuos: ' + totalResiduos);
             }
         }
 
