@@ -22,7 +22,7 @@ class IsAdmin
         if($user==null )
             return redirect()->route('login');
         if(!$user->is_admin)
-            return redirect()->route('basura');
+            return redirect()->route('userDashboard');
 
 
         return $next($request);

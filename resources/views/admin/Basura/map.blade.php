@@ -1,8 +1,8 @@
 @extends('layouts.homelayout')
 
 @section('content')
-<div class="relative w-screen h-screen">
-    <div id="map" class="absolute top-0 left-0 w-full" style="top: 64px; bottom: 0;"></div>
+<div class="relative w-screen">
+    <div id="map" class="absolute top-0 left-0 w-full"></div>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -12,12 +12,38 @@
     document.addEventListener("DOMContentLoaded", function () {
         console.log("Iniciando mapa...");
 
-        // Ajustar la altura del mapa para que no pase la navbar
-        var navbarHeight = document.querySelector('nav').offsetHeight;
-        document.getElementById('map').style.height = `calc(100vh - ${navbarHeight}px)`;
+        function ajustarAlturaMapa() {
+            var navbar = document.querySelector('nav');
+            var navbarHeight = navbar ? navbar.offsetHeight : 64; // Default 64px si no encuentra navbar
+            var mapElement = document.getElementById('map');
 
-        // Inicializar el mapa centrado en la Provincia de Buenos Aires
-        var map = L.map('map').setView([-36.6769, -60.5586], 6);
+            if (mapElement) {
+                mapElement.style.height = `calc(100vh - ${navbarHeight}px)`;
+            }
+        }
+
+        // Ejecutar ajuste cuando se carga la página
+        ajustarAlturaMapa();
+
+        // Si la navbar cambia de tamaño (por ejemplo, en un responsive), reajustamos
+        window.addEventListener("resize", ajustarAlturaMapa);
+
+        // Definir límites para Buenos Aires
+        var southWest = L.latLng(-41.774, -77.227);
+        var northEast = L.latLng(-20.712, -42.227);
+        var bounds = L.latLngBounds(southWest, northEast);
+
+        // Inicializar el mapa centrado en Buenos Aires
+        var map = L.map('map', {
+            center: [-36.6769, -60.5586], // Coordenadas de Buenos Aires
+            zoom: 7,
+            minZoom: 7,
+            maxZoom: 12,
+            maxBounds: bounds,
+            maxBoundsViscosity: 1.0, // Evita que el usuario se desplace fuera de los límites
+        });
+
+        // Agregar capa de OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
@@ -26,7 +52,7 @@
         console.log("Mapa cargado correctamente.");
 
         // Obtener datos de basuras desde Laravel
-        var basuras = @json($basuras); // Pasamos datos del backend al frontend
+        var basuras = @json($basuras);
         console.log("Datos de basuras recibidos:", basuras);
 
         // Función para calcular total de residuos de cada localidad
@@ -64,7 +90,6 @@
                     );
             }
         }
-
     });
 
 </script>

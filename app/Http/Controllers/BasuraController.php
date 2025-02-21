@@ -23,9 +23,15 @@ class BasuraController extends Controller
     public function index()
     {
         //
-        $user_id = Auth::user()->id;
-        $basuras = Basura::where('user_id','=',$user_id)->paginate(10);
-        return view('admin.Basura.table',['basuras'=>$basuras]);
+        $user = Auth::user();
+
+        if ($user->is_admin) {
+            $basuras = Basura::paginate(10); // Trae todas las basuras
+        } else {
+            $basuras = Basura::where('user_id', $user->id)->paginate(10); // Solo las del usuario
+        }
+        
+        return view('admin.Basura.table', ['basuras' => $basuras]);
     }
 
     public function getMonthMeditions(Request $request){
