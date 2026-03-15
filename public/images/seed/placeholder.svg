@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#e2e8f0"/>
+  <rect x="320" y="165" width="160" height="120" rx="8" fill="#cbd5e1"/>
+  <polygon points="320,285 400,185 480,285" fill="#94a3b8"/>
+  <circle cx="460" cy="205" r="20" fill="#94a3b8"/>
+  <rect x="340" y="250" width="120" height="8" rx="4" fill="#94a3b8"/>
+  <text x="400" y="335" text-anchor="middle" fill="#64748b" font-size="16" font-family="sans-serif, Arial">CIUPAC — imagen de prueba</text>
+  <text x="400" y="358" text-anchor="middle" fill="#94a3b8" font-size="12" font-family="sans-serif, Arial">Reemplazar desde el panel admin</text>
+</svg>
