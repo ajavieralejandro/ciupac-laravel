@@ -141,7 +141,7 @@
                                             ºC</span>
                                         @if($report!=null)
                                             <div class="pt-6 text-right">
-                                                <a href="{{ url($report->path) }}"
+                                                <a href="{{ route('downloadStationReport', ['report' => $report->id]) }}"
                                                     class=" bg-green-300 text-white font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded">
                                                     Descargar Reporte</a>
 

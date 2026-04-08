@@ -60,7 +60,7 @@ class AsambleaController extends Controller
         $count = Asamblea::count();
         $asamblea = new Asamblea;
         $asamblea->name = $request->title;
-        $asamblea->description = $request->content;
+        $asamblea->description = $this->sanitizeRichText($request->content);
         $asamblea->location_id = $request->location_id;
         $image = $request->file('image');
         $extension = $image->extension();
@@ -141,7 +141,7 @@ class AsambleaController extends Controller
         $member = Asamblea::find($request->asamblea_id);
         $member->name = $request->name;
         $member->location_id = $request->location_id;
-        $member->description = $request->content;
+        $member->description = $this->sanitizeRichText($request->content);
 
         if($request->image){
 

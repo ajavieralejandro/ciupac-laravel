@@ -48,37 +48,28 @@
 
                                 <td
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                    @if(!$user->is_auth)
+                                    <form method="POST" action="{{ route('authUser', ['id' => $user->id]) }}">
+                                        @csrf
+                                        @method('PATCH')
 
-                                        <a
-                                            href="{{ route('authUser', ['id' => $user->id]); }}">
-                                            <svg class="w-8 h-8 text-red-500 hover:text-green-500"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
-                                            </svg>
-
-                                        </a>
-                                    @endif
-
-                                    @if($user->is_auth)
-
-                                        <a
-                                            href="{{ route('authUser', ['id' => $user->id]); }}">
-
-                                            <svg class="w-8 h-8 text-red-500 hover:text-green-500"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="m4.5 12.75 6 6 9-13.5" />
-                                            </svg>
-
-
-
-                                        </a>
-                                    @endif
-
+                                        <button type="submit" class="inline-flex items-center">
+                                            @if(!$user->is_auth)
+                                                <svg class="w-8 h-8 text-red-500 hover:text-green-500"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+                                                </svg>
+                                            @else
+                                                <svg class="w-8 h-8 text-red-500 hover:text-green-500"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="m4.5 12.75 6 6 9-13.5" />
+                                                </svg>
+                                            @endif
+                                        </button>
+                                    </form>
                                 </td>
                                 <td
                                     class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">

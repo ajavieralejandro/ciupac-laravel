@@ -15,7 +15,7 @@
       <div class="text-gray-900 font-bold text-xl mb-2">{{$post->title}}</div>
       <p class="text-gray-700 text-base">{{$post->description}}</p>
 
-      <p class="text-gray-700 text-base">{!! substr($post->body, 0,  200) !!}...</p>
+      <p class="text-gray-700 text-base">{{ \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/', ' ', strip_tags($post->body ?? ''))), 200) }}</p>
     </div>
     <div class="flex items-center">
       <div class="text-sm">

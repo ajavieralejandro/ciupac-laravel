@@ -30,8 +30,13 @@
      
       </div>
 
+      @php
+        $postBody = function_exists('clean')
+            ? clean($post->body ?? '', 'ciupac_content')
+            : strip_tags($post->body ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
+      @endphp
       <div class="text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
-     {!!$post->body!!}
+     {!! $postBody !!}
 
       </div>
       

@@ -65,7 +65,7 @@ class PostController extends Controller
         $post = new Post;
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->body = $request->content;
+        $post->body = $this->sanitizeRichText($request->content);
         $file= $request->file('image');
         $extension = $file->extension();
         $count = Post::count();
@@ -97,11 +97,10 @@ class PostController extends Controller
      */
     public function show(Request $request)
     {
-        //
-        $member = Post::find($request->route('id'));
+        $member = Post::where('visible', true)->findOrFail($request->route('id'));
         $conf = Configuration::first();
-        return view('layouts.post',['post'=>$member,'conf'=>$conf]);
 
+        return view('layouts.post',['post'=>$member,'conf'=>$conf]);
     }
 
     /**
@@ -139,7 +138,7 @@ class PostController extends Controller
             $member->visible=true;
         else
             $member->visible=false;
-        $member->body = $request->content;
+        $member->body = $this->sanitizeRichText($request->content);
 
         if($request->image){
 

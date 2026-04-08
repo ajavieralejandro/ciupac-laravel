@@ -39,7 +39,8 @@ use App\Http\Middleware\Authenticate;
 
 Route::get('/',[PagesController::class,'index'])->name('welcome');
 Route::get('/coastSnap',[PagesController::class,'coastSnap'])->name('coastSnap');
-Route::resource('/blog',PostController::class);
+Route::get('/blog', [PostController::class, 'noticias'])->name('blog.index');
+Route::get('/blog/{id}', [PostController::class, 'show'])->whereNumber('id')->name('blog.show');
 Auth::routes();
 Route::get('/mediciones_basura/{month}', [\App\Http\Controllers\BasuraController::class, 'getMonthMeditions'])->name('mediciones_basura');
 Route::get('/basura', [\App\Http\Controllers\BasuraController::class, 'show'])->name('basura')
@@ -113,7 +114,7 @@ Route::group([
                 Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('usersIndex');
                 Route::get('/storeUser', [\App\Http\Controllers\UserController::class, 'storeUser'])->name('storeUser');
 
-                Route::get('/authUser/{id}', [\App\Http\Controllers\UserController::class, 'authUser'])->name('authUser');
+                Route::patch('/authUser/{id}', [\App\Http\Controllers\UserController::class, 'authUser'])->name('authUser');
 
                 //configuration
                 Route::get('/config', [\App\Http\Controllers\ConfigurationController::class, 'index'])->name('config');
@@ -168,6 +169,7 @@ Route::group([
 
                 });
 
+Route::get('/station-report/{report}/download', [\App\Http\Controllers\StationRegisterReportController::class, 'download'])->whereNumber('report')->name('downloadStationReport');
 Route::get('/post/{id}', [\App\Http\Controllers\PostController::class, 'show'])->name('showPost');
 Route::get('/estacion/{id}', [\App\Http\Controllers\StationController::class, 'show'])->name('showStation');
 Route::get('/asamblea/{id}', [\App\Http\Controllers\AsambleaController::class, 'show'])->name('showAsamblea');

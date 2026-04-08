@@ -6,6 +6,7 @@ use App\Http\Requests\StoreStationRegisterReportRequest;
 use App\Http\Requests\UpdateStationRegisterReportRequest;
 use App\Models\StationRegisterReport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StationRegisterReportController extends Controller
 {
@@ -37,24 +38,24 @@ class StationRegisterReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $count = StationRegisterReport::count();
         $article = new StationRegisterReport;
         $validatedData = $request->validate([
             'name' => 'required|max:50',
-            "document" => "required|mimes:pdf,xlsx"
-    
-           ]);
-           $document = $request->file('document');
-           $extension = $document->extension();
-           $uniqueFileName = $request->name.'.'.$extension;
-     
-     $request->file('document')->move(public_path('public/reports/'), $uniqueFileName);
-           
-           $article->station_id = $request->station_id;
-           $article->name = $request->name+"station_"+$station_id+"_"+$count;
-           $article->path = "public/reports/".$uniqueFileName;
- 
+            'station_id' => 'required|exists:stations,id',
+            'document' => 'required|mimes:pdf,xlsx'
+        ]);
+
+        $document = $request->file('document');
+        $extension = $document->extension();
+        $uniqueFileName = $request->name.'.'.$extension;
+
+        $request->file('document')->move(public_path('public/reports/'), $uniqueFileName);
+
+        $article->station_id = $request->station_id;
+        $article->name = $request->name.'_station_'.$request->station_id.'_'.$count;
+        $article->path = 'public/reports/'.$uniqueFileName;
+
         $article->save();
 
         return redirect('/verestaciones');
@@ -105,5 +106,28 @@ class StationRegisterReportController extends Controller
     public function destroy(StationRegisterReport $stationRegisterReport)
     {
         //
+    }
+
+    public function download(StationRegisterReport $report)
+    {
+        $relativePath = ltrim($report->path, '/');
+
+        if (!Str::startsWith($relativePath, ['public/reports/', 'reports/'])) {
+            abort(404);
+        }
+
+        $candidatePaths = [
+            public_path($relativePath),
+            storage_path('app/'.$relativePath),
+            storage_path('app/public/'.$relativePath),
+        ];
+
+        foreach ($candidatePaths as $path) {
+            if (is_file($path)) {
+                return response()->download($path, basename($path));
+            }
+        }
+
+        abort(404);
     }
 }

@@ -69,11 +69,7 @@
         
                         <div class="mb-8">
                             <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br>
-                            <textarea name="content" class="border-2 border-gray-500">
-                                @if($portrait)
-                                {!!$portrait->body!!}
-                                @endif
-                            </textarea>
+                            <textarea name="content" class="border-2 border-gray-500">{{ old('content', $portrait ? $portrait->body : '') }}</textarea>
                         </div>
 
 

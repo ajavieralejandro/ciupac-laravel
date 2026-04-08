@@ -25,10 +25,15 @@
            
 <div class="max-w-lg m-auto">
 
-  <p class="mb-4">
+  @php
+    $asambleaDescription = function_exists('clean')
+        ? clean($asamblea->description ?? '', 'ciupac_content')
+        : strip_tags($asamblea->description ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
+  @endphp
+  <div class="mb-4">
     
-  {!!$asamblea->description!!}
-  </p>
+  {!! $asambleaDescription !!}
+  </div>
  
 </div>
           

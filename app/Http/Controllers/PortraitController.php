@@ -52,7 +52,7 @@ class PortraitController extends Controller
             ]);
     
             $portrait = new Portrait;
-            $portrait->body = $request->content;
+            $portrait->body = $this->sanitizeRichText($request->content);
             $portrait->title = $request->title;
             $file= $request->file('image');
             $extension = $file->extension();
@@ -74,7 +74,7 @@ class PortraitController extends Controller
             'content' => 'required',
         ]);
         $portrait = Portrait::first();
-        $portrait->body = $request->content;
+        $portrait->body = $this->sanitizeRichText($request->content);
         $portrait->title = $request->title;
 
         if($request->image){

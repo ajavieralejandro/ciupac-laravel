@@ -65,72 +65,11 @@ class StationRegisterController extends Controller
         
         return response()->download(public_path('/upload'.$fileName));
         */
-          // these are the headers for the csv file. Not required but good to have one incase of system didn't recongize it properly
             if($registers->count()>0){
-                $headers = array(
-                    'Content-Type' => 'text/csv'
-                  );
-          
-          
-                  //I am storing the csv file in public >> files folder. So that why I am creating files folder
-                  if (!File::exists(public_path()."/files")) {
-                      File::makeDirectory(public_path() . "/files");
-                  }
-          
-                  //creating the download file
-                  $filename =  public_path("files/download.csv");
-                  $handle = fopen($filename, 'w');
-          
-                  //adding the first row
-                  fputcsv($handle, [
-                    "name",
-                    "temperature",
-                    "feels_like",
-                    "humidity",
-                    "wind",
-                    "wind_gust",
-                    "dew_point",
-                    "wind_direction",
-                    "pressure_relative",
-                    "pressure_absolute",
-                    "uvi",
-                    "created_at"
-  
-                  ]);
-          
-                  //adding the data from the array
-                  //"[{\\,\\"uvi\":\"1\",\"created_at\":\"2023-09-14T19:07:52.000000Z\",\"updated_at\":\"2023-09-14T19:07:52.000000Z\"},{\"id\":2,\"mac\":\"BC:FF:4D:0F:B7:C2\",\"name\":\"Monte hermoson 2\",\"temperature\":14.7,\"feels_like\":14.7,\"humidity\":74,\"wind\":1.1,\"wind_gust\":\"1.1\",\"dew_point\":\"14.7\",\"wind_direction\":\"E\",\"pressure_relative\":\"1010.4\",\"pressure_absolute\":\"1016.1\",\"uvi\":\"2\",\"created_at\":\"2023-09-14T19:13:43.000000Z\",\"updated_at\":\"2023-09-14T19:13:43.000000Z\"}]"
-                  foreach ($registers as $register) {
-                      fputcsv($handle, [
-                          $register->name,
-                          $register->temperature,
-                          $register->feels_like,
-                          $register->humidity,
-                          $register->wind,
-                          $register->wind_gust,
-                          $register->dew_point,
-                          $register->wind_direction,
-                          $register->pressure_relative,
-                          $register->pressure_absolute,
-                          $register->uvi,
-                          $register->created_at
-        
-        
-        
-                      ]);
-          
-                  }
-                  fclose($handle);
-          
-                  //download command
-                  return  response()->download($filename, "download.csv", $headers);
-        
+                return $this->streamRegistersCsvDownload($registers, 'download.csv');
             }
 
-            return back()->with('message', 'Cannot find records!');           
-
-            
-        
+            return back()->with('message', 'Cannot find records!');
     }
 
     public function generateAllReports(Request $request){
@@ -178,69 +117,53 @@ class StationRegisterController extends Controller
         
         return response()->download(public_path('/upload'.$fileName));
         */
-          // these are the headers for the csv file. Not required but good to have one incase of system didn't recongize it properly
             if($registers->count()>0){
-                $headers = array(
-                    'Content-Type' => 'text/csv'
-                  );
-          
-          
-                  //I am storing the csv file in public >> files folder. So that why I am creating files folder
-                  if (!File::exists(public_path()."/files")) {
-                      File::makeDirectory(public_path() . "/files");
-                  }
-          
-                  //creating the download file
-                  $filename =  public_path("files/download.csv");
-                  $handle = fopen($filename, 'w');
-          
-                  //adding the first row
-                  fputcsv($handle, [
-                    "name",
-                    "temperature",
-                    "feels_like",
-                    "humidity",
-                    "wind",
-                    "wind_gust",
-                    "dew_point",
-                    "wind_direction",
-                    "pressure_relative",
-                    "pressure_absolute",
-                    "uvi",
-                    "created_at"
-  
-                  ]);
-          
-                  //adding the data from the array
-                  //"[{\\,\\"uvi\":\"1\",\"created_at\":\"2023-09-14T19:07:52.000000Z\",\"updated_at\":\"2023-09-14T19:07:52.000000Z\"},{\"id\":2,\"mac\":\"BC:FF:4D:0F:B7:C2\",\"name\":\"Monte hermoson 2\",\"temperature\":14.7,\"feels_like\":14.7,\"humidity\":74,\"wind\":1.1,\"wind_gust\":\"1.1\",\"dew_point\":\"14.7\",\"wind_direction\":\"E\",\"pressure_relative\":\"1010.4\",\"pressure_absolute\":\"1016.1\",\"uvi\":\"2\",\"created_at\":\"2023-09-14T19:13:43.000000Z\",\"updated_at\":\"2023-09-14T19:13:43.000000Z\"}]"
-                  foreach ($registers as $register) {
-                      fputcsv($handle, [
-                          $register->name,
-                          $register->temperature,
-                          $register->feels_like,
-                          $register->humidity,
-                          $register->wind,
-                          $register->wind_gust,
-                          $register->dew_point,
-                          $register->wind_direction,
-                          $register->pressure_relative,
-                          $register->pressure_absolute,
-                          $register->uvi,
-                          $register->created_at
-        
-        
-        
-                      ]);
-          
-                  }
-                  fclose($handle);
-          
-                  //download command
-                  return  response()->download($filename, "download.csv", $headers);
-        
+                return $this->streamRegistersCsvDownload($registers, 'download.csv');
             }
 
-            return back()->with('message', 'Cannot find records!');           
-        
+            return back()->with('message', 'Cannot find records!');
+    }
+
+    protected function streamRegistersCsvDownload($registers, $filename = 'download.csv')
+    {
+        return response()->streamDownload(function () use ($registers) {
+            $handle = fopen('php://output', 'w');
+
+            fputcsv($handle, [
+                'name',
+                'temperature',
+                'feels_like',
+                'humidity',
+                'wind',
+                'wind_gust',
+                'dew_point',
+                'wind_direction',
+                'pressure_relative',
+                'pressure_absolute',
+                'uvi',
+                'created_at',
+            ]);
+
+            foreach ($registers as $register) {
+                fputcsv($handle, [
+                    $register->name,
+                    $register->temperature,
+                    $register->feels_like,
+                    $register->humidity,
+                    $register->wind,
+                    $register->wind_gust,
+                    $register->dew_point,
+                    $register->wind_direction,
+                    $register->pressure_relative,
+                    $register->pressure_absolute,
+                    $register->uvi,
+                    $register->created_at,
+                ]);
+            }
+
+            fclose($handle);
+        }, $filename, [
+            'Content-Type' => 'text/csv',
+        ]);
     }
 }

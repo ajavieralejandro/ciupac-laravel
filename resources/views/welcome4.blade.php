@@ -162,7 +162,12 @@
 
                         <h2 class="text-3xl font-semibold mt-4 md:mt-10">{{ $portrait->title }}</h2>
 
-                        {!!$portrait->body!!}
+                        @php
+                            $portraitBody = function_exists('clean')
+                                ? clean($portrait->body ?? '', 'ciupac_content')
+                                : strip_tags($portrait->body ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
+                        @endphp
+                        {!! $portraitBody !!}
 
                     </div>
                 </section>
@@ -439,9 +444,14 @@
                             <h2 class="text-dark mb-8 text-3xl font-bold sm:text-4xl">
                                 Nosotros
                             </h2>
-                            <p class="text-body-color mb-8 text-base">
-                                {!!$about->body!!}
-                            </p>
+                            @php
+                                $aboutBody = function_exists('clean')
+                                    ? clean($about->body ?? '', 'ciupac_content')
+                                    : strip_tags($about->body ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
+                            @endphp
+                            <div class="text-body-color mb-8 text-base">
+                                {!! $aboutBody !!}
+                            </div>
 
                             <a href="javascript:void(0)"
                                 class="bg-primary inline-flex items-center justify-center rounded-lg py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10">

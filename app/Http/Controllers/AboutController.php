@@ -49,7 +49,7 @@ class AboutController extends Controller
             ]);
     
             $about = new About;
-            $about->body = $request->content;
+            $about->body = $this->sanitizeRichText($request->content);
             $file= $request->file('image');
             $extension = $file->extension();
             $count = About::count();
@@ -75,7 +75,7 @@ class AboutController extends Controller
             'content' => 'required',
         ]);
         $about = About::first();
-        $about->body = $request->content;
+        $about->body = $this->sanitizeRichText($request->content);
 
         if($request->image){
 
