@@ -1,288 +1,292 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Dashboard')
 
 @section('content')
-<div class="container mx-auto px-20">
-    <div>
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4 pt-20 pb-10 lg:pt-40 lg:pb-20"
-            style="cursor: auto;">
+@php
+    $totalUsuarios = \App\Models\User::count();
+    $totalProfesores = class_exists(\App\Models\Team::class) ? \App\Models\Team::count() : 0;
 
-            <!-- Ícono 1: Equipo -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('team') }} rel='stylesheet'>
-                        <svg class="hover:text-green-500 h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </a>
+    $metricCards = [
+        [
+            'title' => 'Total usuarios',
+            'value' => $totalUsuarios,
+            'icon' => '👥',
+            'accent' => 'primary',
+            'description' => 'Usuarios registrados en el sistema.',
+        ],
+        [
+            'title' => 'Total turnos',
+            'value' => 0,
+            'icon' => '🗓️',
+            'accent' => 'success',
+            'description' => 'Métrica pendiente de integración.',
+        ],
+        [
+            'title' => 'Total inscripciones',
+            'value' => 0,
+            'icon' => '📝',
+            'accent' => 'warning',
+            'description' => 'Métrica pendiente de integración.',
+        ],
+        [
+            'title' => 'Total profesores',
+            'value' => $totalProfesores,
+            'icon' => '🎓',
+            'accent' => 'info',
+            'description' => 'Miembros cargados en el equipo.',
+        ],
+    ];
+
+    $modules = [
+        [
+            'title' => 'Equipo',
+            'description' => 'Crea, edita o elimina miembros del equipo.',
+            'icon' => '👥',
+            'url' => route('team'),
+            'button' => 'Gestionar equipo',
+        ],
+        [
+            'title' => 'Portada',
+            'description' => 'Actualiza la imagen principal del sitio.',
+            'icon' => '🖼️',
+            'url' => route('uploadImage'),
+            'button' => 'Editar portada',
+        ],
+        [
+            'title' => 'Locaciones',
+            'description' => 'Administra locaciones y puntos asociados.',
+            'icon' => '📍',
+            'url' => route('locations'),
+            'button' => 'Ver locaciones',
+        ],
+        [
+            'title' => 'Logos',
+            'description' => 'Gestiona logos y variantes visibles.',
+            'icon' => '🏷️',
+            'url' => route('logos'),
+            'button' => 'Gestionar logos',
+        ],
+        [
+            'title' => 'About',
+            'description' => 'Edita contenido e imagen de la sección institucional.',
+            'icon' => '💬',
+            'url' => route('showAbout'),
+            'button' => 'Editar about',
+        ],
+        [
+            'title' => 'Artículos',
+            'description' => 'Sube y administra documentos y archivos.',
+            'icon' => '📄',
+            'url' => route('showArticles'),
+            'button' => 'Ver artículos',
+        ],
+        [
+            'title' => 'Asambleas',
+            'description' => 'Gestiona asambleas e imágenes relacionadas.',
+            'icon' => '🏛️',
+            'url' => route('asambleas'),
+            'button' => 'Ir a asambleas',
+        ],
+        [
+            'title' => 'Posts',
+            'description' => 'Publica y edita noticias del sitio.',
+            'icon' => '📰',
+            'url' => route('posts'),
+            'button' => 'Gestionar posts',
+        ],
+        [
+            'title' => 'Configuración',
+            'description' => 'Ajusta datos institucionales y visibilidad.',
+            'icon' => '⚙️',
+            'url' => route('config'),
+            'button' => 'Abrir configuración',
+        ],
+        [
+            'title' => 'Links',
+            'description' => 'Administra links y recursos de interés.',
+            'icon' => '🔗',
+            'url' => route('links'),
+            'button' => 'Ver links',
+        ],
+        [
+            'title' => 'Estaciones',
+            'description' => 'Conecta, edita y monitorea estaciones.',
+            'icon' => '📡',
+            'url' => route('stations'),
+            'button' => 'Gestionar estaciones',
+        ],
+        [
+            'title' => 'Usuarios',
+            'description' => 'Registra y administra usuarios del sistema.',
+            'icon' => '🙍',
+            'url' => route('usersIndex'),
+            'button' => 'Ver usuarios',
+        ],
+        [
+            'title' => 'Asignar locaciones',
+            'description' => 'Relaciona usuarios con sus locaciones.',
+            'icon' => '🧭',
+            'url' => route('assign.locations'),
+            'button' => 'Asignar locaciones',
+        ],
+        [
+            'title' => 'Basuras',
+            'description' => 'Visualiza y gestiona las mediciones cargadas.',
+            'icon' => '♻️',
+            'url' => route('basuras_index'),
+            'button' => 'Ver mediciones',
+        ],
+    ];
+@endphp
+
+<style>
+    .dashboard-ocean {
+        background: linear-gradient(180deg, #e0f7fa 0%, #ffffff 100%);
+        border-radius: 16px;
+        padding: 1rem;
+    }
+
+    .dashboard-hero {
+        background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+        color: #ffffff;
+        border-radius: 12px;
+    }
+
+    .ocean-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        border-radius: 12px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .ocean-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .metric-icon {
+        font-size: 2rem;
+        line-height: 1;
+        color: #0d6efd;
+    }
+</style>
+
+<div class="dashboard-ocean">
+@include('admin.partials.page-header', [
+    'title' => 'Dashboard',
+])
+
+<div class="mb-4 p-3 dashboard-hero shadow-sm">
+    <h4 class="mb-0">Dashboard</h4>
+    <small>Panel de administración</small>
+    <div class="d-flex gap-3 mt-3">
+        <a href="#modulos-admin" class="btn btn-outline-light">Ver módulos</a>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    @foreach($metricCards as $metric)
+        <div class="col-12 col-md-6 col-xl-3">
+            <div class="card shadow-sm border-0 h-100 ocean-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <p class="text-muted mb-1">{{ $metric['title'] }}</p>
+                            <h2 class="mb-0 fw-bold">{{ $metric['value'] }}</h2>
+                        </div>
+                        <div class="metric-icon text-primary">{{ $metric['icon'] }}</div>
+                    </div>
+                    <span class="badge bg-{{ $metric['accent'] }}-subtle text-dark">
+                        Resumen
+                    </span>
+                    <p class="text-muted small mb-0 mt-3">{{ $metric['description'] }}</p>
                 </div>
-                <h3 class="text-lg font-bold mb-2">
-                    1. Equipo
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Crea, edita o elimina miembros del equipo.
-                </p>
             </div>
+        </div>
+    @endforeach
+</div>
 
-            <!-- Ícono 2: Portada -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('uploadImage') }} rel='stylesheet'>
-                        <svg class="hover:text-green-500 h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                            <circle cx="8.5" cy="8.5" r="1.5" />
-                            <polyline points="21 15 16 10 5 21" />
-                        </svg>
-                    </a>
+<div class="row g-4 mb-4">
+    <div class="col-12 col-lg-7">
+        <div class="card shadow-sm border-0 h-100 ocean-card">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h5 class="mb-1">Acciones rápidas</h5>
+                        <p class="text-muted mb-0">Accesos directos para tareas frecuentes del panel.</p>
+                    </div>
+                    <span class="badge bg-light text-dark border">Atajos</span>
                 </div>
-                <h3 class="text-lg font-bold mb-2">
-                    2. Portada
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Actualiza la imagen de portada a la página.
-                </p>
-            </div>
 
-            <!-- Ícono 3: Locaciones -->
-            <div class="p-6 bg-gray-100 rounded-lg" style="cursor: auto;">
-                <div class="mb-5" style="cursor: auto;">
-                    <a href={{ route('locations') }} rel='stylesheet'>
-                        <svg class="hover:text-green-500 h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </a>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="btn btn-primary" disabled>Crear turno</button>
+                    <button type="button" class="btn btn-outline-primary" disabled>Ver inscripciones</button>
+                    <button type="button" class="btn btn-outline-secondary" disabled>Gestionar alumnos</button>
                 </div>
-                <h3 class="text-lg font-bold mb-2">
-                    3. Locaciones
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Agrega, edita o elimina una locación.
-                </p>
-            </div>
 
-            <!-- Ícono 4: Logos -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('logos') }} rel='stylesheet'>
-                        <svg class="hover:text-green-500 h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                        </svg>
-                    </a>
+                <div class="alert alert-light border mt-3 mb-0" role="alert">
+                    Estos accesos quedan preparados como placeholders hasta integrar sus módulos reales.
                 </div>
-                <h3 class="text-lg font-bold mb-2">
-                    4. Logos
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Agrega, edita o elimina logos.
-                </p>
             </div>
-
-            <!-- Ícono 5: About -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('showAbout') }} rel='stylesheet'>
-                        <svg class="hover:text-green-500 h-8 w-8 text-red-500" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    5. About
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Modifica la imagen y el texto de la sección about.
-                </p>
-            </div>
-
-            <!-- Ícono 6: Artículos -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('showArticles') }} rel='stylesheet'>
-                        <svg class="w-8 h-8 text-red-500 hover:text-green-500" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    6. Artículos
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Agrega, edita o elimina los archivos pdf.
-                </p>
-            </div>
-
-            <!-- Ícono 7: Asambleas -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('asambleas') }} rel='stylesheet'>
-                        <svg class="w-8 h-8 text-red-500 hover:text-green-500" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    7. Asambleas
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Agrega y edita las asambleas, y sus imágenes.
-                </p>
-            </div>
-
-            <!-- Ícono 8: Posts -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('posts') }} rel='stylesheet'>
-                        <svg class="w-8 h-8 text-red-500 hover:text-green-500" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    8. Posts
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Agrega, edita y setea la visibilidad de las noticias.
-                </p>
-            </div>
-
-            <!-- Ícono 9: Configuración -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('config') }} rel='stylesheet'>
-                        <svg class="w-8 h-8 text-red-500 hover:text-green-500" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    9. Configuración
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Setea direcciones, redes sociales y visibilidad.
-                </p>
-            </div>
-
-            <!-- Ícono 10: Links -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('links') }} rel='stylesheet'>
-                        <svg class="w-8 h-8 text-red-500 hover:text-green-500" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    10. Links
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Agrega, edita links de interés.
-                </p>
-            </div>
-
-            <!-- Ícono 11: Estaciones -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('stations') }} rel='stylesheet'>
-                        <svg class="w-8 h-8 text-red-500 hover:text-green-500" fill="none" stroke="currentColor"
-                            stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    11. Estaciones
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Agrega, edita y conecta las estaciones.
-                </p>
-            </div>
-
-            <!-- Ícono 12: Usuarios -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href={{ route('usersIndex') }} rel='stylesheet'>
-                        <svg class="w-8 h-8 text-red-500 hover:text-green-500" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    12. Usuarios
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Registra usuarios para que suban mediciones.
-                </p>
-            </div>
-
-            <!-- Ícono 13: Asignar Locaciones -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href="{{ route('assign.locations') }}" rel='stylesheet'>
-                        <svg class="hover:text-green-500 h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    13. Asignar Locaciones
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Asigna locaciones a los usuarios.
-                </p>
-            </div>
-
-            <!-- Ícono 14: Basuras -->
-            <div class="p-6 bg-gray-100 rounded-lg">
-                <div class="mb-5">
-                    <a href="{{ route('basuras_index') }}" rel='stylesheet'>
-                        <svg class="hover:text-green-500 h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 9l6 6m0-6l-6 6" />
-                        </svg>
-                    </a>
-                </div>
-                <h3 class="text-lg font-bold mb-2">
-                    14. Basuras
-                </h3>
-                <p class="text-sm leading-6 text-gray-600">
-                    Visualiza y gestiona las mediciones de basuras.
-                </p>
-            </div>
-
         </div>
     </div>
+
+    <div class="col-12 col-lg-5">
+        <div class="card shadow-sm border-0 h-100 ocean-card">
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h5 class="mb-1">Actividad reciente</h5>
+                        <p class="text-muted mb-0">Últimos movimientos del panel administrativo.</p>
+                    </div>
+                    <span class="badge bg-light text-dark border">Placeholder</span>
+                </div>
+
+                <div class="border rounded p-3 bg-light-subtle">
+                    <p class="mb-2 fw-semibold">Todavía no hay actividad reciente disponible.</p>
+                    <p class="text-muted mb-0 small">
+                        Cuando se conecten eventos o auditoría, esta sección podrá mostrar altas, ediciones y cambios relevantes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modulos-admin" class="card shadow-sm border-0 ocean-card">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h5 class="mb-1">Módulos de administración</h5>
+                <p class="text-muted mb-0">Accesos existentes del sistema preservados dentro del nuevo dashboard.</p>
+            </div>
+            <span class="badge bg-dark">{{ count($modules) }} módulos</span>
+        </div>
+
+        <div class="row g-4">
+            @foreach($modules as $module)
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="card h-100 border-0 shadow-sm ocean-card">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h6 class="mb-1">{{ $module['title'] }}</h6>
+                                    <p class="text-muted small mb-0">{{ $module['description'] }}</p>
+                                </div>
+                                <span class="fs-4">{{ $module['icon'] }}</span>
+                            </div>
+
+                            <div class="mt-auto pt-3">
+                                <a href="{{ $module['url'] }}" class="btn btn-primary">
+                                    {{ $module['button'] }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
 </div>
 @endsection

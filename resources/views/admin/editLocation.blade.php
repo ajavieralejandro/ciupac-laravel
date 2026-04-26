@@ -1,59 +1,58 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Locaciones')
+
 @section('content')
-<div class="flex justify-center mt-8">
+<div class="container-fluid py-3">
+  @include('admin.partials.page-header', [
+    'title' => 'Locaciones',
+  ])
 
-<div class="w-full max-w-xs">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-7 col-xl-6">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h5 class="mb-0">Editar locación</h5>
+        </div>
 
-  <form enctype="multipart/form-data" action={{route('updateLocation')}} method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    @csrf
-    @method('put')
-    <input type="hidden" name="location_id" value="{{$location->id}}"/>
+        <div class="card-body">
+          <form enctype="multipart/form-data" action="{{ route('updateLocation') }}" method="POST">
+            @csrf
+            @method('put')
+            <input type="hidden" name="location_id" value="{{ $location->id }}"/>
 
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul class="mb-0">
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
 
-    
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input value="{{ $location->name }}" name="name" id="name" type="text" class="form-control">
+            </div>
 
-  <div class="m-4">
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+            <div class="mb-3">
+              <label for="longitude" class="form-label">Longitud</label>
+              <input value="{{ $location->longitude }}" name="longitude" id="longitude" type="text" class="form-control">
+            </div>
+
+            <div class="mb-3">
+              <label for="latitude" class="form-label">Latitud</label>
+              <input value="{{ $location->latitude }}" name="latitude" id="latitude" type="text" class="form-control">
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+              <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-@endif
-        
-    <div class="mb-4 pt-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        name
-      </label>
-      <input value="{{$location->name}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" >
-    </div>
-    <div class="mb-6">
-      <label  class="block text-gray-700 text-sm font-bold mb-2" for="email">
-        Longitude
-      </label>
-      <input value="{{$location->longitude}}" name="longitude" class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="text" >
-    </div>
-    <div class="mb-6">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-        Latitude
-      </label>
-      <input value="{{$location->latitude}}" name="latitude" class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="text" >
-    </div>
-
-  
-    <div class="flex justify-center pt-5">
-    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="submit">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Edit Location</button>
-    </div>
-    
-
-    
-    
-  </form>
-
+  </div>
 </div>
-</div>
-
 @endsection

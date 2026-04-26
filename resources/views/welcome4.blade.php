@@ -1,6 +1,16 @@
 @extends('layouts.homelayout')
 
 @section('content')
+@php
+    $featuredPost = $posts->first();
+    $aboutBody = function_exists('clean')
+        ? clean($about->body ?? '', 'ciupac_content')
+        : strip_tags($about->body ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
+    $portraitBody = function_exists('clean')
+        ? clean($portrait->body ?? '', 'ciupac_content')
+        : strip_tags($portrait->body ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
+    $aboutGallery = collect($asambleas)->take(3);
+@endphp
 
 <style>
     html {
@@ -8,743 +18,447 @@
     }
 
     #mapid {
-        height: 400px;
+        min-height: 420px;
         width: 100%;
+        border-radius: 1rem;
     }
 
-    .font-family-karla {
-        font-family: karla;
-    }
-
-    html,
-    body {
-        margin: 0px;
-        padding: 0px;
-    }
-
-    .carousel {
-        position: relative;
-        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-        margin-top: 26px;
-    }
-
-    .carousel-inner {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-    }
-
-    .carousel-open:checked+.carousel-item {
-        position: static;
-        opacity: 100;
-    }
-
-    .carousel-item {
-        position: absolute;
+    .reveal {
         opacity: 0;
-        -webkit-transition: opacity 0.6s ease-out;
-        transition: opacity 0.6s ease-out;
+        transform: translateY(28px);
+        transition: opacity .7s ease, transform .7s ease;
     }
 
-    .carousel-item img {
-        display: block;
-        height: auto;
-        max-width: 100%;
+    .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .carousel-control {
-        background: rgba(0, 0, 0, 0.28);
-        border-radius: 50%;
-        color: #fff;
-        cursor: pointer;
-        display: none;
-        font-size: 40px;
-        height: 40px;
-        line-height: 35px;
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translate(0, -50%);
-        cursor: pointer;
-        -ms-transform: translate(0, -50%);
-        transform: translate(0, -50%);
-        text-align: center;
-        width: 40px;
-        z-index: 10;
+    .glass-card {
+        background: rgba(255, 255, 255, .82);
+        backdrop-filter: blur(8px);
     }
 
-    .carousel-control.prev {
-        left: 2%;
+    .surface-gradient {
+        background: radial-gradient(circle at top right, rgba(59, 130, 246, .18), transparent 45%), radial-gradient(circle at bottom left, rgba(14, 165, 233, .12), transparent 35%);
     }
 
-    .carousel-control.next {
-        right: 2%;
+    .logo-card img {
+        filter: grayscale(100%);
+        transition: filter .35s ease, transform .35s ease;
     }
 
-    .carousel-control:hover {
-        background: rgba(0, 0, 0, 0.8);
-        color: #aaaaaa;
+    .logo-card:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.03);
     }
 
-    #carousel-1:checked~.control-1,
-    #carousel-2:checked~.control-2,
-    #carousel-3:checked~.control-3 {
-        display: block;
+    .map-popup-title {
+        font-weight: 700;
+        margin-bottom: 6px;
     }
 
-    .carousel-indicators {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: absolute;
-        bottom: 2%;
-        left: 0;
-        right: 0;
-        text-align: center;
-        z-index: 10;
+    .map-popup-item {
+        margin-top: 8px;
     }
 
-    .carousel-indicators li {
-        display: inline-block;
-        margin: 0 5px;
-    }
-
-    .carousel-bullet {
-        color: #fff;
-        cursor: pointer;
-        display: block;
-        font-size: 35px;
-    }
-
-    .carousel-bullet:hover {
-        color: #aaaaaa;
-    }
-
-    #carousel-1:checked~.control-1~.carousel-indicators li:nth-child(1) .carousel-bullet,
-    #carousel-2:checked~.control-2~.carousel-indicators li:nth-child(2) .carousel-bullet,
-    #carousel-3:checked~.control-3~.carousel-indicators li:nth-child(3) .carousel-bullet {
-        color: #428bca;
-    }
-
-    #title {
-        width: 100%;
-        position: absolute;
-        padding: 0px;
-        margin: 0px auto;
-        text-align: center;
-        font-size: 27px;
-        color: rgba(255, 255, 255, 1);
-        font-family: 'Open Sans', sans-serif;
-        z-index: 9999;
-        text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+    .map-popup-item img {
+        border-radius: 8px;
     }
 </style>
 
-<link href="{{ asset('/css/estaciones.css') }}" rel="stylesheet">
-
-
-
-
-
-            <section class=" fade-in container  w-screen  mx-auto p-10 py-20 px-0 :p-10 md:px-0">
-                <section
-                    class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">
-                    <img class="xl:max-w-6xl"
-                        src="{{ asset($portrait->image_path.'/'.$portrait->image_name) }}"
-                        alt="">
-                    <div
-                        class=" group-hover:scale-100 content bg-white p-2 pt-8 md:p-12 pb-12 lg:max-w-lg w-full lg:absolute top-48 right-5">
-                        <div class="flex justify-between font-bold text-sm">
-
+<div class="w-full overflow-x-hidden bg-slate-50 text-slate-800">
+    <section class="relative overflow-hidden surface-gradient">
+        <div class="mx-auto max-w-7xl px-4 pt-24 pb-14 sm:px-6 lg:px-8 lg:pt-28 lg:pb-20">
+            <div class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+                <div class="reveal lg:col-span-7">
+                    <div class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl transition duration-500 hover:-translate-y-1 hover:shadow-2xl">
+                        <img class="h-[320px] w-full object-cover sm:h-[430px]" src="{{ asset($portrait->image_path.'/'.$portrait->image_name) }}" alt="Portada CIUPAC">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/15 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-4 text-white">
+                            <span class="inline-flex items-center rounded-full border border-white/40 bg-white/15 px-4 py-1 text-xs font-semibold uppercase tracking-widest">Proyecto CIUPAC</span>
+                            <a href="#contactsection" class="inline-flex items-center rounded-full border border-white/45 bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/25">Contactanos</a>
                         </div>
-
-                        <img class="float-right w-1/2"
-                            src="{{ asset('/public/images/Ciupac.jpeg') }}" alt="logo ciupac" />
-
-                        <h2 class="text-3xl font-semibold mt-4 md:mt-10">{{ $portrait->title }}</h2>
-
-                        @php
-                            $portraitBody = function_exists('clean')
-                                ? clean($portrait->body ?? '', 'ciupac_content')
-                                : strip_tags($portrait->body ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
-                        @endphp
-                        {!! $portraitBody !!}
-
                     </div>
-                </section>
-            </section>
-
-        <section class="m-4 md:m-8  w-screen">
-            <div class="container p-4 mx-auto my-6 space-y-1 text-center">
-                <span class="text-xs font-semibold tracking-wider uppercase ">Proyecto Ciupac</span>
-                <h2 class="pb-3 text-3xl font-bold md:text-4xl">Mediciones</h2>
-                <p>En esta sección podrás encontrar diferentes datos de las mediciones que hacemos en el proyecto CiuPAC
-                    ¿Vos también querés ayudarnos y participar?
-                    Podes hacerlo registrando eventos o sacando fotos, sumate!</p>
-            </div>
-            <div class="container grid justify-center gap-4 mx-auto lg:grid-cols-2 xl:grid-cols-4">
-                <div class="flex flex-col px-8 py-6  hover:text-blue-500">
-                    <a href="http://ciupacperfiles.iado-conicet.gob.ar/">
-
-                        <h2 class="mb-2 text-lg font-semibold sm:text-xl title-font ">Perfiles de Playa</h2>
-                        <p class="flex-1 mb-4 text-base leading-relaxed ">Acá vas a poder encontrar las últimas
-                            mediciones de perfiles de playa que realizamos en las diferentes localidades de la costa de
-                            la provincia de Buenos Aires </p>
-                        <a class="inline-flex items-center space-x-2 text-sm "
-                            href="http://ciupacperfiles.iado-conicet.gob.ar/">
-                            <span>Ingresar</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-4 h-4">
-                                <path fill-rule="evenodd"
-                                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                    </a>
                 </div>
-                <div class="flex flex-col px-8 py-6 lg:border-none xl:border-solid hover:text-blue-500">
-                    <a href="http://ciupaceventos.iado-conicet.gob.ar/">
 
-                        <h2 class="mb-2 text-lg font-semibold sm:text-xl title-font ">Eventos y tormentas</h2>
-                        <p class="flex-1 mb-4 text-base leading-relaxed ">Sumate registrando los daños producidos por el
-                            paso de tormentas o eventos térmicos (de frio o calor) en tu localidad</p>
-                        <a class="inline-flex items-center space-x-2 text-sm "
-                            href="http://ciupaceventos.iado-conicet.gob.ar/">
-                            <span>Ingresar</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-4 h-4">
-                                <path fill-rule="evenodd"
-                                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                    </a>
-                </div>
-                <div class="flex flex-col px-8 py-6 hover:text-blue-500">
-                    <a href="{{ route('estaciones') }}">
-
-                        <h2 class="mb-2 text-lg font-semibold sm:text-xl title-font  ">Estaciones Meteorológicas</h2>
-                        <p class="flex-1 mb-4 text-base leading-relaxed ">Acá encontrarás los datos en vivo de nuestras
-                            estaciones meteorológicas </p>
-                        <a class="inline-flex items-center space-x-2 text-sm "
-                            href="{{ route('estaciones') }}">
-                            <span>Ingresar</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-4 h-4">
-                                <path fill-rule="evenodd"
-                                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                    </a>
-                </div>
-                <div class="flex flex-col px-8 py-6 hover:text-blue-500">
-                    <a href="http://ciupaccoastsnap.iado-conicet.gob.ar/">
-
-                        <h2 class="mb-2 text-lg font-semibold sm:text-xl title-font ">CoastSnap</h2>
-                        <p class="flex-1 mb-4 text-base leading-relaxed ">Pronto podrás encontrar en esta sección cómo
-                            sumar tus fotos en la playa a nuestro proyecto para que podamos ver la variación de la costa
-                            (sección en construcción)</p>
-                        <a class="inline-flex items-center space-x-2 text-sm " href="/docs">
-                            <span>Ingresar</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                class="w-4 h-4">
-                                <path fill-rule="evenodd"
-                                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                    </a>
+                <div class="reveal lg:col-span-5">
+                    <div class="glass-card rounded-3xl border border-slate-200 p-6 shadow-xl sm:p-8">
+                        <img class="mb-5 h-16 w-auto" src="{{ asset('/public/images/Ciupac.jpeg') }}" alt="Logo CIUPAC" />
+                        <h1 class="mb-3 text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">{{ $portrait->title }}</h1>
+                        <div class="prose prose-slate max-w-none text-base leading-relaxed">{!! $portraitBody !!}</div>
+                        <div class="mt-6 flex flex-wrap items-center gap-3">
+                            <a href="#news" class="inline-flex items-center rounded-xl bg-sky-500 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-sky-600 hover:shadow-lg">Ver novedades</a>
+                            <a href="#about" class="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-400 hover:shadow-md">Conocer más</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Posts Section  <div class="container mx-auto px-20">
- -->
-        <div class="container mx-auto flex flex-wrap w-screen">
-            @foreach($posts as $post)
-                @if($loop->first)
-                    <section class=" w-screen ">
-                        <div class="container flex flex-col-reverse mx-auto lg:flex-row">
-                            <div class="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5 ">
-                                <div class="flex space-x-2 sm:space-x-4">
-                                    <svg class="flex-shrink-0 w-6 h-6" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                        aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z">
-                                        </path>
-                                    </svg>
-                                    <div class="space-y-2 hover:text-blue-400 ">
-                                        <a href="{{ route('showArchivos') }}">
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8" id="mediciones">
+        <div class="reveal mb-10 text-center">
+            <span class="inline-flex rounded-full bg-sky-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-sky-700">Proyecto CIUPAC</span>
+            <h2 class="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">Mediciones</h2>
+            <p class="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">En esta sección podés explorar los distintos módulos de datos del proyecto y participar activamente registrando eventos y observaciones.</p>
+        </div>
 
-                                            <p class=" text-lg font-medium leading-snug">Archivos de Interés</p>
-                                            <p class=" leading-snug">Explora nuestros distintos archivos, documentos,
-                                                etc...</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="flex space-x-2 sm:space-x-4">
-                                    <svg class="flex-shrink-0 w-6 h-6" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                        aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z">
-                                        </path>
-                                    </svg>
-                                    <div class="space-y-2 hover:text-blue-400">
-                                        <a href="{{ route('showTutoriales') }}">
+        <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            <a href="http://ciupacperfiles.iado-conicet.gob.ar/" class="reveal group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-sky-200 hover:shadow-xl">
+                <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-sky-100 text-sky-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 15l4-4 4 4 6-6"/></svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">Perfiles de Playa</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">Consultá las últimas mediciones de perfiles de playa de distintas localidades de la costa bonaerense.</p>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-sky-600 transition group-hover:gap-2">Ingresar
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </span>
+            </a>
 
-                                            <p class=" text-lg font-medium leading-snug">Tutoriales</p>
-                                            <p class=" leading-snug">Sección de tutoriales disponibles para cargar
-                                                datos...</p>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="flex space-x-2 sm:space-x-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" class="flex-shrink-0 w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
-                                        </path>
-                                    </svg>
-                                    <div class="space-y-2 hover:text-blue-400">
-                                        <a href="{{ route('showLinks') }}">
+            <a href="http://ciupaceventos.iado-conicet.gob.ar/" class="reveal group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-sky-200 hover:shadow-xl">
+                <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999A5 5 0 005 9.5"/></svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">Eventos y tormentas</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">Registrá daños y eventos térmicos en tu localidad para fortalecer la base de datos colaborativa.</p>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 transition group-hover:gap-2">Ingresar
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </span>
+            </a>
 
-                                            <p class=" text-lg font-medium leading-snug">Entrevistas</p>
-                                            <p class="leading-snug">Entrevistas brindadas por los integrantes del
-                                                proyecto a diversos medios</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="lg:w-1/2 xl:w-3/5 ">
-                                <div class="w-full rounded-md shadow-md ">
-                                    <img src="{{ asset($post->image_path.'/'.$post->image_name) }}"
-                                        alt="noticia" class="object-cover object-center w-full rounded-t-md h-72 ">
-                                    <div class="flex flex-col justify-between p-6 space-y-8">
-                                        <div class="space-y-2">
-                                            <h2 class="text-3xl font-semibold text-center">{{ $post->title }}</h2>
-                                            <p class=" text-center">{{ $post->description }}</p>
-                                        </div>
-                                        <a href="{{ route('showPost', ['id' => $post->id]); }}"
-                                            type="button"
-                                            class="flex items-center justify-center w-full p-3 font-semibold tracki rounded-md hover:text-blue-400 ">Leer
-                                            más</a>
-                                    </div>
-                                </div>
+            <a href="{{ route('estaciones') }}" class="reveal group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-sky-200 hover:shadow-xl">
+                <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 13v-1m4 1v-3m4 3V8m-9 9h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">Estaciones Meteorológicas</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">Seguí las mediciones en vivo de nuestras estaciones y su evolución temporal.</p>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-emerald-600 transition group-hover:gap-2">Ingresar
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </span>
+            </a>
+
+            <a href="http://ciupaccoastsnap.iado-conicet.gob.ar/" class="reveal group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-sky-200 hover:shadow-xl">
+                <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 7h18M7 3v4m10-4v4M5 11h14v9H5z"/></svg>
+                </div>
+                <h3 class="text-lg font-semibold text-slate-900">CoastSnap</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">Pronto vas a poder sumar tus fotos de costa para analizar su variación temporal.</p>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-amber-600 transition group-hover:gap-2">Ingresar
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    @if($featuredPost)
+    <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="reveal overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
+            <div class="grid lg:grid-cols-12">
+                <div class="relative h-64 lg:col-span-7 lg:h-full">
+                    <img src="{{ asset($featuredPost->image_path.'/'.$featuredPost->image_name) }}" alt="Noticia destacada" class="h-full w-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/65 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="mb-2 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider">Destacada</span>
+                        <h2 class="text-2xl font-bold leading-tight sm:text-3xl">{{ $featuredPost->title }}</h2>
+                    </div>
+                </div>
+                <div class="lg:col-span-5">
+                    <div class="flex h-full flex-col justify-between p-6 sm:p-8">
+                        <div>
+                            <p class="text-sm font-semibold uppercase tracking-wide text-sky-600">Última publicación</p>
+                            <p class="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">{{ $featuredPost->description }}</p>
+                            <div class="mt-6 space-y-3 text-sm text-slate-600">
+                                <a href="{{ route('showArchivos') }}" class="group flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-700">
+                                    <span class="font-semibold">Archivos de interés</span>
+                                    <span class="transition group-hover:translate-x-1">→</span>
+                                </a>
+                                <a href="{{ route('showTutoriales') }}" class="group flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-700">
+                                    <span class="font-semibold">Tutoriales</span>
+                                    <span class="transition group-hover:translate-x-1">→</span>
+                                </a>
+                                <a href="{{ route('showLinks') }}" class="group flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-700">
+                                    <span class="font-semibold">Entrevistas</span>
+                                    <span class="transition group-hover:translate-x-1">→</span>
+                                </a>
                             </div>
                         </div>
-                    </section>
+                        <a href="{{ route('showPost', ['id' => $featuredPost->id]) }}" class="mt-8 inline-flex w-full items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
 
+    <a id="news"></a>
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="reveal flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+                <span class="inline-flex rounded-full bg-slate-200 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700">Novedades</span>
+                <h2 class="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">Últimas Noticias</h2>
+            </div>
+            <a href="{{ route('showNoticias') }}" class="inline-flex items-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-sky-600">Ver más...</a>
+        </div>
 
+        <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+            @foreach($posts as $post)
+                @if(!$loop->first)
+                    <article class="reveal group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                        <div class="relative overflow-hidden">
+                            <img class="h-44 w-full object-cover transition duration-500 group-hover:scale-105" src="{{ asset($post->image_path.'/'.$post->image_name) }}" alt="{{ $post->title }}">
+                            <span class="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-slate-700">{{ $post->created_at->format('d/m/Y') }}</span>
+                        </div>
+                        <div class="flex flex-1 flex-col p-5">
+                            <h3 class="text-lg font-semibold leading-snug text-slate-900">{{ $post->title }}</h3>
+                            <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ Str::limit($post->description, 90) }}</p>
+                            <a class="mt-auto pt-4 text-sm font-semibold text-sky-600 transition hover:text-sky-700" href="{{ route('showPost', ['id' => $post->id]) }}">Leer más →</a>
+                        </div>
+                    </article>
                 @endif
             @endforeach
         </div>
-        <a id="news"></a>
+    </section>
 
-        <section class="text-gray-600 body-font w-screen">
-            <div class="container px-5 mx-auto">
-                <div class="flex flex-wrap w-full mb-20">
-                    <div class="lg:w-1/2 grid w-full mb-6 lg:mb-0">
-                        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Últimas Noticias</h1>
-                        <div class="h-1 w-20 bg-blue-500 rounded"></div>
-                    </div>
-                    <p class="lg:w-1/2 w-full leading-relaxed text-gray-500"></p>
+    <a id="about"></a>
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-10 lg:grid-cols-12">
+            <div class="reveal lg:col-span-6">
+                <div class="grid grid-cols-2 gap-4">
+                    @forelse($aboutGallery as $galleryAsamblea)
+                        <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm {{ $loop->first ? 'col-span-2' : '' }}">
+                            <img src="{{ asset($galleryAsamblea->image_path.'/'.$galleryAsamblea->image_name) }}" alt="{{ $galleryAsamblea->name }}" class="h-52 w-full object-cover transition duration-500 hover:scale-105 {{ $loop->first ? 'sm:h-64' : 'sm:h-52' }}">
+                        </div>
+                    @empty
+                        <div class="col-span-2 rounded-2xl border border-dashed border-slate-300 p-10 text-center text-slate-500">Sin imágenes disponibles</div>
+                    @endforelse
                 </div>
+            </div>
+            <div class="reveal lg:col-span-6">
+                <span class="inline-flex rounded-full bg-sky-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-sky-700">Proyecto CIUPAC</span>
+                <h2 class="mt-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">Nosotros</h2>
+                <div class="prose prose-slate mt-5 max-w-none leading-relaxed">{!! $aboutBody !!}</div>
+            </div>
+        </div>
+    </section>
 
+    <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div class="reveal overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+            <div class="grid gap-6 p-6 lg:grid-cols-12 lg:p-8">
+                <div class="lg:col-span-4">
+                    <h2 class="text-2xl font-bold text-slate-900">Localidades</h2>
+                    <p class="mt-2 text-sm text-slate-600">Explorá las asambleas disponibles por ubicación.</p>
+                    <ul class="mt-5 max-h-[320px] divide-y divide-slate-200 overflow-y-auto rounded-xl border border-slate-200">
+                        @foreach($asambleas as $asamblea)
+                            <li class="px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-sky-50 hover:text-sky-700">
+                                <a href="{{ route('showAsamblea', ['id' => $asamblea->id]) }}" class="block">{{ $asamblea->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="lg:col-span-8">
+                    <div id="mapid" class="z-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="flex flex-wrap -m-4">
-                    @foreach($posts as $post)
-                        @if(!$loop->first)
-                            <div class="xl:w-1/4 md:w-1/2 w-screen p-4">
-                                <div class=" p-6 rounded-lg">
-                                    <img class="h-40 rounded w-full object-cover object-center mb-6"
-                                        src="{{ asset($post->image_path.'/'.$post->image_name) }}"
-                                        alt="content">
-                                    <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                                        {{ $post->created_at->format('d/m/Y') }}</h3>
-                                    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">{{ $post->title }}
-                                    </h2>
-                                    <p class="leading-relaxed text-base">{{ Str::limit($post->description,50) }}
-                                    </p>
-                                    <a class="text-blue-500 inline-flex items-center"
-                                        href="{{ route('showPost', ['id' => $post->id]); }}">Leer
-                                        más
-                                        <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor"
-                                            stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M5 12h14"></path>
-                                            <path d="M12 5l7 7-7 7"></path>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        @endif
+    <a name="team"></a>
+    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="reveal mb-10 text-center">
+            <span class="inline-flex rounded-full bg-indigo-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-indigo-700">Equipo</span>
+            <h2 class="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">Conocé a nuestro equipo</h2>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            @foreach($members as $member)
+                <article class="reveal group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="relative h-72 overflow-hidden">
+                        <img alt="{{ $member->name }}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" src="{{ asset($member->image_path.'/'.$member->image_name) }}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
+                        <div class="absolute inset-x-4 bottom-4 translate-y-3 text-sm text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                            <p class="line-clamp-5 whitespace-pre-line text-xs leading-relaxed">{{ $member->description }}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="text-lg font-semibold text-slate-900">{{ $member->name }}</p>
+                        <p class="mt-1 text-xs text-slate-500">{{ $member->email }}</p>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <div class="space-y-14 text-center text-slate-800">
+            <div class="reveal">
+                <h2 class="text-2xl font-bold sm:text-3xl">Instituciones contrapartes</h2>
+                <div class="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+                    @foreach($logos as $logo)
+                        <div class="logo-card rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+                            <img src="{{ asset($logo->image_path.'/'.$logo->image_name) }}" class="mx-auto h-16 w-auto object-contain" alt="Logo contraparte">
+                        </div>
                     @endforeach
-
-                </div>
-                <div class="mt-10 pt-12   gap-x-6">
-                    <a href="{{ route('showNoticias') }}"
-                        class="rounded-md bg-blue-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ver
-                        más...</a>
                 </div>
             </div>
 
-        </section>
-
-
-
-        <a id="about"></a>
-
-
-
-
-
-
-
-
-        <!-- Posts Section -->
-
-
-
-
-
-        </section>
-
-
-        <!-- ====== About Section Start -->
-        <section class="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
-            <div class="container mx-auto">
-                <div class="-mx-4 flex flex-wrap items-center justify-between">
-                    <div class="w-full px-4 lg:w-6/12">
-                        <div class="-mx-3 flex items-center sm:-mx-4">
-                            <div class="w-full px-3 sm:px-4 xl:w-1/2">
-                                <div class="py-3 sm:py-4">
-                                    <img src="http://ciupac.iado-conicet.gob.ar/public/images/imagenasamblea/image-2MVvr.jpg"
-                                        alt="" class="w-full rounded-2xl" />
-                                </div>
-                                <div class="py-3 sm:py-4">
-                                    <img src="http://ciupac.iado-conicet.gob.ar/public/images/imagenasamblea/image-0CwFU.jpg"
-                                        alt="" class="w-full rounded-2xl" />
-                                </div>
-                            </div>
-                            <div class="w-full px-3 sm:px-4 xl:w-1/2">
-                                <div class="relative z-0 my-4">
-                                    <img src="http://ciupac.iado-conicet.gob.ar/public/images/imagenasamblea/image-cJ1tb.jpg"
-                                        alt="" class="w-full rounded-2xl" />
-
-                                </div>
-                            </div>
+            <div class="reveal">
+                <h2 class="text-2xl font-bold sm:text-3xl">Financia</h2>
+                <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    @foreach($logos1 as $logo)
+                        <div class="logo-card rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md">
+                            <img src="{{ asset($logo->image_path.'/'.$logo->image_name) }}" class="mx-auto h-20 w-auto object-contain" alt="Logo financia">
                         </div>
-                    </div>
-                    <div class="w-full px-4 lg:w-1/2 xl:w-5/12">
-                        <div class="mt-10 lg:mt-0">
-                            <span class="text-primary mb-2 block text-lg font-semibold">
-                                Proyecto Ciupac
-                            </span>
-                            <h2 class="text-dark mb-8 text-3xl font-bold sm:text-4xl">
-                                Nosotros
-                            </h2>
-                            @php
-                                $aboutBody = function_exists('clean')
-                                    ? clean($about->body ?? '', 'ciupac_content')
-                                    : strip_tags($about->body ?? '', '<p><br><b><strong><i><em><ul><ol><li><h2><h3><h4><blockquote>');
-                            @endphp
-                            <div class="text-body-color mb-8 text-base">
-                                {!! $aboutBody !!}
-                            </div>
-
-                            <a href="javascript:void(0)"
-                                class="bg-primary inline-flex items-center justify-center rounded-lg py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10">
-                                Get Started
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </section>
-        <!-- ====== About Section End -->
 
-
-
-        <div class="grid  place-items-center  ">
-
-
-            <div class="pt-10 ">
-
-                <div class="mx-auto sm:max-w-xl md:max-w-full  lg:max-w-screen-xl ">
-
-                    <div class="container mx-auto pt-10 pb-10 overflow-hidden">
-                        <h2 class="font-bold mb-5 text-gray-800">Localidades</h2>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-12 ">
-
-                            <div class="col-span-4 ">
-                                <div class="p-4 col-span-4 ">
-
-
-                                    <ul
-                                        class="max-w-xs flex flex-col divide-y divide-gray-200  max-h-80	overflow-y-scroll   ">
-                                        @foreach($asambleas as $asamblea)
-
-                                            <li
-                                                class="inline-flex items-center gap-x-2  py-3 text-sm font-medium text-gray-800 ">
-                                                <a
-                                                    href="{{ route('showAsamblea', ['id' => $asamblea->id]); }}">{{ $asamblea->name }}</a>
-                                            </li>
-
-
-
-                                        @endforeach
-
-
-                                    </ul>
-
-                                </div>
-                            </div>
-                            <div class="col-span-8">
-                                <div class="z-0" id="mapid"></div>
-
-                            </div>
-
+            <div class="reveal">
+                <h2 class="text-2xl font-bold sm:text-3xl">Instituciones que nos acompañan</h2>
+                <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    @foreach($logos2 as $logo)
+                        <div class="logo-card rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+                            <img src="{{ asset($logo->image_path.'/'.$logo->image_name) }}" class="mx-auto h-16 w-auto object-contain" alt="Logo institución">
                         </div>
-
-
-
-
-
-                    </div>
-
-                    <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-
-
-                        <a name="team"></a>
-
-
-                        <h2
-                            class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-                            <span class="relative inline-block">
-                                <div class="flex justify-center items-center ">
-                                    <svg class="w-10 h-10 content-center animate-bounce" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <span class="relative">Conoce</span>
-                            </span>
-                            a nuestro equipo
-                        </h2>
-
-                        <p class="text-base text-gray-700 md:text-lg">
-                        </p>
-                    </div>
-                    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-                        @foreach($members as $member)
-                            <div>
-                                <div
-                                    class="relative overflow-hidden transition duration-300 transform rounded-lg shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
-                                    <img alt="team member" class="object-cover w-full h-56 md:h-64 xl:h-80"
-                                        src="{{ asset($member->image_path.'/'.$member->image_name) }}"
-                                        alt="Person" />
-                                    <div
-                                        class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-                                        <p class="mb-4 text-xs  text-white whitespace-pre-line	">
-                                            {{ $member->description }}
-                                        </p>
-                                        <div class="flex items-center justify-center space-x-3">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="mb-1 text-lg font-bold text-center text-black">{{ $member->name }}</p>
-                                <p class="mb-4 text-xs text-center text-black">{{ $member->email }}</p>
-
-                            </div>
-                        @endforeach
-
-                    </div>
+                    @endforeach
                 </div>
-
-
-                <!-- Section: Design Block -->
-                <section class="mb-32 w-screen text-gray-800 text-center">
-
-                    <h2 class="text-3xl font-bold mb-12">Instituciones contrapartes </h2>
-
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center">
-                        @foreach($logos as $logo)
-                            <div class="mb-12 lg:mb-0">
-                                <img src="{{ asset($logo->image_path.'/'.$logo->image_name) }}"
-                                    class="img-fluid  px-6 md:px-12" alt="logo" />
-                            </div>
-                        @endforeach
-
-
-                    </div>
-                    <div class="pt-10">
-
-                        <h2 class="text-3xl font-bold mb-12">Financia </h2>
-
-                        <div class="grid grid-cols-1 gap-2 content-center w-full">
-                            @foreach($logos1 as $logo)
-                                <div class="grid place-items-center"> <img
-                                        src="{{ asset($logo->image_path.'/'.$logo->image_name) }}"
-                                        class="img-fluid  px-6 md:px-12" alt="logo" />
-                                </div>
-                            @endforeach
-                        </div>
-
-                    </div>
-                    <div class="pt-10">
-                        <h2 class="text-3xl font-bold mb-12 pt-10">Instituciones que nos acompañan</h2>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 content-center w-full">
-                            @foreach($logos2 as $logo)
-                                <div class="mb-12 pt-10 lg:mb-0 block">
-                                    <img src="{{ asset($logo->image_path.'/'.$logo->image_name) }}"
-                                        class="img-fluid  px-6 md:px-12" alt="logo" />
-                                </div>
-                            @endforeach
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <a name="contactsection"></a>
-
-
-                <section class="w-screen">
-
-
-                    <div
-                        style="background-image:url({{ asset($about->image_path.'/'.$about->image_name) }})">
-
-                        <section class="bg-white ">
-                            <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-                                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 ">
-                                    Contactanos</h2>
-                                <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 sm:text-xl">Hacenos conocer
-                                    tu inquietud</p>
-                                <form id="myForm" class="space-y-8">
-                                    <div>
-                                        <label for="email"
-                                            class="block mb-2 text-sm font-medium text-gray-900 ">e-mail</label>
-                                        <input name="email" type="email" id="email"
-                                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                                            required>
-                                    </div>
-                                    <div>
-                                        <label for="subject"
-                                            class="block mb-2 text-sm font-medium text-gray-900 ">Título</label>
-                                        <input name="name" type="text" id="subject"
-                                            class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
-                                            required>
-                                    </div>
-                                    <div class="sm:col-span-2">
-                                        <label for="message"
-                                            class="block mb-2 text-sm font-medium text-gray-900 ">Mensaje</label>
-                                        <textarea name="message" id="message" rows="6"
-                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500   "></textarea>
-                                    </div>
-                                    <button type="submit"
-                                        class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg bg-blue-300 sm:w-fit hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-primary-300  hover:bg-blue-500">Enviar
-                                        mensaje</button>
-                                </form>
-                            </div>
-                        </section>
-
-
-                    </div>
-
-
-                </section>
-                <!-- Section: Design Block -->
-
             </div>
-            <!-- Container for demo purpose -->
+        </div>
+    </section>
 
-            @include('layouts.footerPage',['conf'=>$conf])
-            <script>
-                var greenIcon = L.icon({
-                    iconUrl: "{{ url('/public/images/iconomalvinas.ico') }}",
+    <a name="contactsection"></a>
+    <section class="relative overflow-hidden py-16">
+        <div class="absolute inset-0 opacity-20" style="background-image:url({{ asset($about->image_path.'/'.$about->image_name) }});background-size:cover;background-position:center"></div>
+        <div class="absolute inset-0 bg-slate-900/70"></div>
 
-                    iconSize: [159, 120], // size of the icon
-                    shadowSize: [50, 64], // size of the shadow
-                    iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-                    shadowAnchor: [4, 62], // the same for the shadow
-                    popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-                });
-                var southWest = L.latLng(-20.712, -77.227),
-                    northEast = L.latLng(-41.774, -42.227),
-                    bounds = L.latLngBounds(southWest, northEast);
+        <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <div class="reveal rounded-3xl border border-white/25 bg-white/10 p-6 shadow-2xl backdrop-blur sm:p-10">
+                <h2 class="text-center text-3xl font-extrabold text-white sm:text-4xl">Contactanos</h2>
+                <p class="mx-auto mt-3 max-w-xl text-center text-sm text-slate-200 sm:text-base">Hacenos conocer tu inquietud. Te respondemos a la brevedad.</p>
 
-                var mymap = L.map('mapid', {
-                    maxBounds: bounds,
-                    minZoom: 7,
-                    maxZoom: 12,
+                <form id="myForm" class="mt-8 space-y-5">
+                    <div>
+                        <label for="email" class="mb-2 block text-sm font-semibold text-white">E-mail</label>
+                        <input name="email" type="email" id="email" class="w-full rounded-xl border border-white/30 bg-white/90 px-4 py-3 text-sm text-slate-900 shadow-sm transition focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300" required>
+                    </div>
+                    <div>
+                        <label for="subject" class="mb-2 block text-sm font-semibold text-white">Título</label>
+                        <input name="name" type="text" id="subject" class="w-full rounded-xl border border-white/30 bg-white/90 px-4 py-3 text-sm text-slate-900 shadow-sm transition focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300" required>
+                    </div>
+                    <div>
+                        <label for="message" class="mb-2 block text-sm font-semibold text-white">Mensaje</label>
+                        <textarea name="message" id="message" rows="6" class="w-full rounded-xl border border-white/30 bg-white/90 px-4 py-3 text-sm text-slate-900 shadow-sm transition focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300" required></textarea>
+                    </div>
+                    <button type="submit" class="inline-flex w-full items-center justify-center rounded-xl bg-sky-500 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-sky-600 hover:shadow-xl sm:w-auto">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-                }).setView([-38.505, -62.09], 4);
-                mymap.setZoom(8);
-                L.marker([-52.7, -61.29], {
-                    icon: greenIcon
-                }).addTo(mymap);
-                var app = @json($locations);
-                var aux = @json($asambleas);
-                app.forEach(element => {
-                    var display = `<h1>${element.name}</h1>`;
-                    var asambleas = aux.filter(asamblea => asamblea.location_id == element.id);
-                    asambleas.forEach(asamblea =>
-                        display += `
-          <div>
-          <a href="/asamblea/${asamblea.id}">
-          <img alt="asamblea" src="${asamblea.image_path}/${asamblea.image_name}" />
-          <span className="text-light">${asamblea.name}</span>
-          </div>
-          </a>
-          `
+    @include('layouts.footerPage',['conf'=>$conf])
+</div>
 
-                    );
-                    var marker = L.marker([element.latitude, element.longitude]).addTo(mymap);
-                    marker.bindPopup(display);
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const revealItems = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12
+        });
 
-                });
-                L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(mymap);
+        revealItems.forEach((item, index) => {
+            item.style.transitionDelay = (index % 6) * 60 + 'ms';
+            observer.observe(item);
+        });
+    });
+</script>
 
-            </script>
+<script>
+    var greenIcon = L.icon({
+        iconUrl: "{{ url('/public/images/iconomalvinas.ico') }}",
+        iconSize: [159, 120],
+        shadowSize: [50, 64],
+        iconAnchor: [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor: [-3, -76]
+    });
 
-            <script>
-                $('#myForm').on('submit', function (event) {
-                    const inputs = document.getElementById("myForm").elements;
-                    event.preventDefault(); // prevent reload
-                    let username = inputs[0].value;
-                    let email = inputs[1].value;
-                    let message = inputs[2].value;
-                    var formData = new FormData(this);
-                    formData.append('from_name', username);
-                    formData.append('message', message);
-                    formData.append('email', email);
-                    formData.append('service_id', 'service_9dgk7kn');
-                    formData.append('template_id', 'template_xkto9ir');
-                    formData.append('user_id', 'user_KRxr45LRpsTkhXElJp8Wx');
+    var southWest = L.latLng(-20.712, -77.227),
+        northEast = L.latLng(-41.774, -42.227),
+        bounds = L.latLngBounds(southWest, northEast);
 
+    var mymap = L.map('mapid', {
+        maxBounds: bounds,
+        minZoom: 7,
+        maxZoom: 12,
+    }).setView([-38.505, -62.09], 4);
 
-                    $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
-                        type: 'POST',
-                        data: formData,
-                        contentType: false, // auto-detection
-                        processData: false // no need to parse formData to string
-                    }).done(function () {
-                        alert('Tu mail fue enviado!');
-                    }).fail(function (error) {
-                        alert('Oops... ' + JSON.stringify(error));
-                    });
-                });
+    mymap.setZoom(8);
+    L.marker([-52.7, -61.29], {
+        icon: greenIcon
+    }).addTo(mymap);
 
-            </script>
+    var app = @json($locations);
+    var aux = @json($asambleas);
+
+    app.forEach(element => {
+        var display = `<h1 class="map-popup-title">${element.name}</h1>`;
+        var asambleas = aux.filter(asamblea => asamblea.location_id == element.id);
+
+        asambleas.forEach(asamblea =>
+            display += `
+            <div class="map-popup-item">
+                <a href="/asamblea/${asamblea.id}">
+                    <img alt="asamblea" src="/${asamblea.image_path}/${asamblea.image_name}" />
+                    <span>${asamblea.name}</span>
+                </a>
+            </div>
+            `
+        );
+
+        var marker = L.marker([element.latitude, element.longitude]).addTo(mymap);
+        marker.bindPopup(display);
+    });
+
+    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
+</script>
+
+<script>
+    $('#myForm').on('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const username = $('[name="name"]').val();
+        const email = $('[name="email"]').val();
+        const message = $('[name="message"]').val();
+
+        formData.append('from_name', username);
+        formData.append('message', message);
+        formData.append('email', email);
+        formData.append('service_id', 'service_9dgk7kn');
+        formData.append('template_id', 'template_xkto9ir');
+        formData.append('user_id', 'user_KRxr45LRpsTkhXElJp8Wx');
+
+        $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false
+        }).done(function () {
+            alert('Tu mail fue enviado!');
+            $('#myForm')[0].reset();
+        }).fail(function (error) {
+            alert('Oops... ' + JSON.stringify(error));
+        });
+    });
+</script>
 
 @endsection
