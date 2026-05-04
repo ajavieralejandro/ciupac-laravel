@@ -13,6 +13,10 @@
 	<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
 		<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" href="{{ route('welcome') }}">Home</a></li>
 		<li class="text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></li>
+		<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" href="{{ route('estaciones') }}">Estaciones</a></li>
+		<li class="text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></li>
+		<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" href="{{ route('showNoticias') }}">Noticias</a></li>
+		<li class="text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></li>
 		<li><a class="text-sm text-gray-400 font-bold" href="{{ route('welcome').'/#about' }}">Nosotros</a></li>
 		<li class="text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></li>
 		<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" href="{{ route('welcome').'/#news' }}">Novedades</a></li>
@@ -35,6 +39,10 @@
 		</li>
 		<li class="text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></li>
 		<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" href="{{ route('welcome').'/#contactsection' }}">Contacto</a></li>
+		@if (Route::has('login'))
+			<li class="text-gray-300"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" /></svg></li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500 font-bold" href="{{ route('login') }}">Login</a></li>
+		@endif
 	</ul>
 </nav>
 
@@ -52,6 +60,8 @@
 		<div>
 			<ul>
 				<li class="mb-1"><a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('welcome') }}">Home</a></li>
+				<li class="mb-1"><a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('estaciones') }}">Estaciones</a></li>
+				<li class="mb-1"><a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('showNoticias') }}">Noticias</a></li>
 				<li class="mb-1"><a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('welcome').'/#about' }}">Nosotros</a></li>
 				<li><a onClick="showDropdown()" href="#basic-usage" class="cursor-pointer block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded">Mediciones</a></li>
 				<div id="dropdown" class="hidden">
@@ -64,6 +74,9 @@
 				<li class="mb-1"><a class="block navbar-burger p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('welcome').'/#news' }}">Novedades</a></li>
 				<li class="mb-1"><a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('welcome').'/#team' }}">Equipo</a></li>
 				<li class="mb-1"><a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('welcome').'/#contactsection' }}">Contacto</a></li>
+				@if (Route::has('login'))
+					<li class="mb-1"><a class="block p-4 navbar-burger text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{{ route('login') }}">Login</a></li>
+				@endif
 			</ul>
 		</div>
 		<div class="mt-auto">

@@ -5,13 +5,14 @@
 @section('content')
 <div class="container-fluid py-3">
   @include('admin.partials.page-header', [
-    'title' => 'Equipo',
+    'title' => '👥 Equipo',
+    'subtitle' => 'Crea, edita o elimina miembros del equipo.',
   ])
 
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8 col-xl-7">
-      <div class="card shadow-sm">
-        <div class="card-header">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-white">
           <h5 class="mb-0">Crear miembro</h5>
         </div>
 
@@ -59,8 +60,9 @@
               <label for="default-checkbox" class="form-check-label">Visible</label>
             </div>
 
-            <div class="d-flex justify-content-end mt-3">
-              <button class="btn btn-primary" type="submit">➕ Agregar miembro</button>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <a href="{{ route('team') }}" class="btn btn-outline-primary">Volver</a>
+              <button class="btn btn-primary" type="submit">Guardar</button>
             </div>
           </form>
         </div>

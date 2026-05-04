@@ -1,5 +1,6 @@
 @php
     $title = $title ?? '';
+    $subtitle = $subtitle ?? null;
     $breadcrumbs = $breadcrumbs ?? [];
     $actions = $actions ?? null;
 @endphp
@@ -7,6 +8,9 @@
 <div class="d-flex flex-wrap align-items-start justify-content-between mb-3">
     <div>
         <h4 class="mb-1">{{ $title }}</h4>
+        @if($subtitle)
+            <p class="text-muted mb-0">{{ $subtitle }}</p>
+        @endif
 
         @if(!empty($breadcrumbs))
             <nav aria-label="breadcrumb">

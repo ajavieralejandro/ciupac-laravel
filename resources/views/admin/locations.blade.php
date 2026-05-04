@@ -5,13 +5,14 @@
 @section('content')
 <div class="container-fluid py-3">
     @include('admin.partials.page-header', [
-        'title' => 'Locaciones',
+        'title' => '📍 Locaciones',
+        'subtitle' => 'Administra locaciones y puntos asociados.',
     ])
 
-    <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Locaciones</h5>
-            <a href="{{ route('createLocation') }}" class="btn btn-primary">➕ Nueva locación</a>
+            <a href="{{ route('createLocation') }}" class="btn btn-primary">Nueva locación</a>
         </div>
 
         <div class="card-body">
@@ -55,7 +56,10 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4" class="text-center text-muted py-4">No hay locaciones cargadas.</td>
+                                <td colspan="4" class="text-center py-5">
+                                    <div class="text-muted mb-2">No hay locaciones cargadas.</div>
+                                    <a href="{{ route('createLocation') }}" class="btn btn-primary">Crear primera locación</a>
+                                </td>
                             </tr>
                         @endforelse
                     </tbody>

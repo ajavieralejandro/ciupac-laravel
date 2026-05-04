@@ -1,54 +1,59 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Links')
+
 @section('content')
-<div class="flex justify-center mt-8">
-<div class="w-full max-w-xs">
+<div class="container-fluid py-3">
+  @include('admin.partials.page-header', [
+    'title' => '🔗 Links',
+    'subtitle' => 'Administra links y recursos de interés.',
+  ])
 
-  <form enctype="multipart/form-data" action={{route('updateLink')}} method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    @csrf
-    <input type="hidden" name="link_id" value="{{$link->id}}"/>
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-7 col-xl-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-white">
+          <h5 class="mb-0">Editar link</h5>
+        </div>
 
-  <div class="m-4">
-  @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        <div class="card-body">
+          <form enctype="multipart/form-data" action="{{ route('updateLink') }}" method="POST">
+            @csrf
+            <input type="hidden" name="link_id" value="{{ $link->id }}"/>
+
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul class="mb-0">
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input value="{{ $link->name }}" class="form-control" name="name" id="name" type="text">
+            </div>
+
+            <div class="form-check mb-3">
+              <input id="default-checkbox" name="tutorial" @if($link->tutorial) checked @endif type="checkbox" class="form-check-input">
+              <label for="default-checkbox" class="form-check-label">Tutorial</label>
+            </div>
+
+            <div class="mb-3">
+              <label for="link" class="form-label">Link</label>
+              <input value="{{ $link->link }}" name="link" id="link" class="form-control" type="text">
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <a href="{{ route('links') }}" class="btn btn-outline-primary">Volver</a>
+              <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-@endif
-        
-    <div class="mb-4 pt-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-        name
-      </label>
-      <input value="{{$link->name}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" >
-    </div>
-    <div class="mb-4 pt-4">
-    <input id="default-checkbox" name="tutorial" @if($link->tutorial) checked @endif  type="checkbox"    class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-    <label for="default-checkbox" class=" text-sm font-medium text-gray-900 dark:text-gray-300">Tutorial</label>
-</div>  
-    <div class="mb-6">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-        Link
-      </label>
-      <input value="{{$link->link}}" name="link" class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="text" >
-    </div>
-    
-
-  
-    <div class="flex justify-center pt-5">
-    <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" type="submit">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>Agregar Link</button>
-    </div>
-
-    
-
-    
-    
-  </form>
-
+  </div>
 </div>
-</div>
-
 @endsection

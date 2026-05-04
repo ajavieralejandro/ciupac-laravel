@@ -5,13 +5,14 @@
 @section('content')
 <div class="container-fluid py-3">
   @include('admin.partials.page-header', [
-    'title' => 'Locaciones',
+    'title' => '📍 Locaciones',
+    'subtitle' => 'Administra locaciones y puntos asociados.',
   ])
 
   <div class="row justify-content-center">
     <div class="col-12 col-lg-7 col-xl-6">
-      <div class="card shadow-sm">
-        <div class="card-header">
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-white">
           <h5 class="mb-0">Crear locación</h5>
         </div>
 
@@ -44,8 +45,9 @@
               <input name="latitude" id="latitude" type="text" class="form-control" value="{{ old('latitude') }}">
             </div>
 
-            <div class="d-flex justify-content-end mt-3">
-              <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <a href="{{ route('locations') }}" class="btn btn-outline-primary">Volver</a>
+              <button class="btn btn-primary" type="submit">Guardar</button>
             </div>
           </form>
         </div>

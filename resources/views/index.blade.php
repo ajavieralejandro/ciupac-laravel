@@ -185,10 +185,12 @@ body {
 </head>
 </head>
 
-<body class="scroll-smooth">
-    <header>
+<body class="scroll-smooth bg-slate-50">
+        <header>
+                @include('layouts.navbar')
+        </header>
 
-  <main class="h-screen w-screen py-6 font-serif flex items-center justify-center  flex-wrap">
+    <main class="min-h-screen w-screen pt-28 pb-10 font-serif flex items-center justify-center flex-wrap">
  
   <section class="container mx-auto p-10 md:py-20 px-0 md:p-10 md:px-0">
         <section class="relative px-10 md:p-0 transform duration-500 hover:shadow-2xl cursor-pointer hover:-translate-y-1 ">

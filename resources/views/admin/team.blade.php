@@ -5,13 +5,14 @@
 @section('content')
 <div class="container-fluid py-3">
     @include('admin.partials.page-header', [
-        'title' => 'Equipo',
+        'title' => '👥 Equipo',
+        'subtitle' => 'Crea, edita o elimina miembros del equipo.',
     ])
 
-    <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Miembros del equipo</h5>
-            <a href="{{ route('addMember') }}" class="btn btn-primary">➕ Agregar miembro</a>
+            <a href="{{ route('addMember') }}" class="btn btn-primary">Agregar miembro</a>
         </div>
 
         <div class="card-body">
@@ -59,7 +60,10 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="text-center text-muted py-4">No hay miembros cargados.</td>
+                                <td colspan="5" class="text-center py-5">
+                                    <div class="text-muted mb-2">No hay miembros cargados.</div>
+                                    <a href="{{ route('addMember') }}" class="btn btn-primary">Crear primer miembro</a>
+                                </td>
                             </tr>
                         @endforelse
                     </tbody>

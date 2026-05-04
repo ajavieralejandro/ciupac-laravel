@@ -1,91 +1,72 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Links')
+
 @section('content')
+<div class="container-fluid py-3">
+    @include('admin.partials.page-header', [
+        'title' => '🔗 Links',
+        'subtitle' => 'Administra links y recursos de interés.',
+    ])
 
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <div>
+                <h5 class="mb-0">Listado de links</h5>
+                <small class="text-muted">Gestiona tutoriales y recursos externos.</small>
+            </div>
+            <a href="{{ route('addLink') }}" class="btn btn-primary">Nuevo link</a>
+        </div>
 
-<div class="container mx-auto px-20 pb-10">
-
-
-<div class="flex flex-col mt-8">
-  
-    <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-            <table class="min-w-full">
-                <thead>
-                    <tr>
-                        <th
-                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Name</th>
-                      
-                        <th
-                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Edit</th>
-                        <th
-                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                            Delete</th>
-                    </tr>
-                </thead>
-
-                <tbody class="bg-white">
-                    @foreach($links as $link)
-                    <tr>
-                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                         
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium leading-5 text-gray-900">
-                                        {{$link->name}}
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>URL</th>
+                            <th class="text-end">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($links as $link)
+                            <tr>
+                                <td class="fw-semibold">{{ $link->name }}</td>
+                                <td>
+                                    @if($link->tutorial)
+                                        <span class="badge bg-primary-subtle text-primary">Tutorial</span>
+                                    @else
+                                        <span class="badge bg-secondary-subtle text-secondary-emphasis">Recurso</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ $link->link }}" target="_blank" rel="noopener noreferrer" class="text-decoration-none">{{ $link->link }}</a>
+                                </td>
+                                <td class="text-end">
+                                    <div class="d-inline-flex gap-2">
+                                        <a href="{{ route('editLink', ['id' => $link->id]) }}" class="btn btn-outline-primary">Editar</a>
+                                        <form method="POST" action="{{ route('deleteLink') }}" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="hidden" name="link_id" value="{{ $link->id }}"/>
+                                            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                        </form>
                                     </div>
-                                </div>
-                            </div>
-                        </td>
-
-                        
-
-                        <td
-                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <a href="{{route('editLink', ['id' => $link->id]);}}">                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                            </a>
-                        </td>
-                        <td
-                            class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <form method="POST" action="{{route('deleteLink')}}">
-                            @csrf
-                            @method('delete')
-
-
-                            <input type="hidden" name="link_id" value="{{$link->id}}"/>
-
-                            <button type="submit" class="   focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400  hover:text-green-700" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>
-                         <span class="sr-only">Icon description</span>
-  
-                        </button>  
-                        </form>                       
-                        </td>
-                    </tr>
-                    @endforeach
-                 
-                </tbody>
-            </table>
-            <a href={{route('addLink')}}>
-            <button class="w-full bg-transparent rounded inline-flex items-center h-10 px-5 text-green-500 transition-colors duration-150  rounded-lg focus:shadow-outline hover:text-white hover:bg-green-800">
-                
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-</svg>
-  <span class="pl-4">Agregar Link</span>
-</button>
-</a>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center py-5">
+                                    <div class="text-muted mb-2">No hay links cargados.</div>
+                                    <a href="{{ route('addLink') }}" class="btn btn-primary">Crear primer link</a>
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
 </div>
 @endsection
