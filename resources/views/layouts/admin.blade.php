@@ -13,28 +13,6 @@
         body.admin-ocean-bg {
             background: linear-gradient(180deg, #e0f7fa 0%, #ffffff 100%);
         }
-
-        .admin-sidebar {
-            width: 260px;
-            min-height: 100vh;
-            background: #0a2540;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .admin-sidebar .border-bottom {
-            border-color: rgba(255, 255, 255, 0.12) !important;
-        }
-
-        .admin-sidebar .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .admin-sidebar .nav-link:hover,
-        .admin-sidebar .nav-link.active {
-            background: #0d6efd !important;
-            color: #ffffff !important;
-        }
     </style>
 </head>
 <body class="admin-ocean-bg">
